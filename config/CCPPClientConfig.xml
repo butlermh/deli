@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<CCPPTestClientConfig>
+  <headers>
+    <header>
+      <name>Accept</name>
+      <value>text/html,text/plain</value>
+    </header>
+    <header>
+      <name>User-Agent</name>
+      <value>CCPP Test Client</value>
+    </header>
+    <!--<header>
+      <name>Connection</name>
+      <value>close</value>
+    </header>-->
+  </headers>
+
+  <quoteHeaderValues>true</quoteHeaderValues>
+  <includeProfileHeader>true</includeProfileHeader>
+
+  <CCPPex>
+    <HTTPextNamespace>19</HTTPextNamespace>
+    <mandatoryExtension>false</mandatoryExtension>
+    <hopByHop>false</hopByHop>
+  </CCPPex>
+
+  <WHTTP>
+    <omitXWapPrefix>false</omitXWapPrefix>
+  </WHTTP>
+</CCPPTestClientConfig>

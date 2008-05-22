@@ -1,0 +1,92 @@
+Outstanding issues:
+
+- Add a configuration option so DELI automatically retrives 
+vocabularies which it has not been explicitly configured for
+From Sean Gallacher
+
+Sorry to bother you again but I was wondering if you could clear up a matter with DELI I
+am having a difficult time understanding.  I have defined a vocabulary and placed it at
+http://sean:8080/ccpp/profiles/UAPROF/ccppschema-20030912.  I then create a profile
+which references this vocabulary that is in turn sent to DELI for parsing.  During the
+parsing phase DELI returns the message "Attribute no defined in vocabulary" for each
+attribute in the profile.  I then went and created a local vocabulary .rdfs file and
+placed in in config/vocab.  After doing so, I placed an entry in namespaceConfig.xml
+for the URL http://sean:8080/ccpp/profiles/UAPROF/ccppschema-20030912 to reference the
+new local vocabulary in config/vocab.  Now everything works just fine.
+
+My question is, are the profile vocabularies only referenced locally in config/vocab
+based on entries in the namespaceConfig.xml file? Or, if the URL vocabulary reference
+in a profile has no entry in the namespaceConfig.xml file does it fetch the vocabulary
+from the Internet (If so, could you explain why my reference does not seem to be
+working)?
+
+Thanks in advance,
+
+-Sean
+
+- From Eduaro Carillo
+
+> Why the devices that are in the list of profiles of the profile folder 
+> are different from the list of devices that are in the file 
+> locprofiles.xml? 
+> When a request is received , if the user user-agent that is received is 
+> not found in the file locprofiles.xml, DELI makes the comparison with 
+> the profiles that are in the folder profiles directly? 
+> In this last case the comparison would be done using the 
+> RecipientAppAgent attribute?
+
+- If a profile has a UTF encoding problem, the validator
+incorrectly concludes it is unreachable. This seems to
+be an issue that ARP is not passing errors to the ARP 
+error handler.
+
+- Need to add a switch to turn debug information on and off at command
+line in validator
+
+- Need to run validator over profiles supplied with DELI
+
+- Need clear provenance of profiles supplied with DELI. Perhaps
+include manufacturers profiles, with automatic script to update
+their versions, then make distinction between corrected versions
+and original versions.
+
+- It is not correct to include MMS vocabulary in vocabularies 
+that follow it; it means the validator incorrectly reports errors. 
+Need to go back other vocabularies, remove unnecessary variations
+from .original files wherever possible. 
+
+- DELI cannot process multiple instances of the same property in
+  different components. 
+
+- Need to update the documentation! Lots of changes, which haven't
+  been fully documented. For current documentation see
+  http://www-uk.hpl.hp.com/people/marbut
+
+- Started to added Ant 1.5.4 to the distribution to simplify 
+configuration and to avoid having to distribute the war in target 
+download file, reducing its size. Currently the bulk of the download 
+is Jena 2. However just included .jars, need to determine what other
+files are needed.
+
+It is also worth checking with the Jena 2 folks to see if they have
+a smaller version of their parser. 
+
+- Outstanding capability class bug logged on Sourceforge.
+
+- DELI doesn't really use the approach that Semantic Web programs
+  use as it doesn't use an RDF model as its main data structure,
+  rather it reads in data as RDF then converts it to its own
+  data structure. It would be interesting to explore whether using
+  an RDF model as the main data structure would simplify things.
+  For example:
+  - instead of parsing the vocabularies, could keep the vocabularies
+  as RDF. Currently the vocabularies are converted from RDF because
+  originally DELI used an XML format for vocabularies, and the
+  original UAProf vocab format stored some essential information
+  in comments. One way to overcome this would be to get rid of 
+  the XML format (it's hardly used now) and when the vocabularies
+  are read in, convert the comments to additional RDF statements, 
+  then query the vocabulary model directly when profiles are 
+  processed later. 
+
+

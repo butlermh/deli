@@ -1,0 +1,134 @@
+<project name="Deli" default="build" basedir=".">
+	<target name="init">
+		<property environment="env"/>
+		<!--
+			<property name="http.proxyPort" value="8088"/>
+			<property name="http.proxyHost" value="garlic.hpl.hp.com"/>
+		-->
+		<property name="profile" value="profiles/msie.rdf"/>
+		<property name="buildLibDir" value="lib/tools/lib"/>
+		<property name="path" value="com/hp/hpl/deli"/>
+		<property name="classpath" value="lib/antlr-2.7.5.jar;
+				lib/commons-logging-1.1.1.jar;
+				lib/concurrent.jar;
+				lib/httpunit-1.4/jar;
+				lib/icu4j_3_4.jar;
+				lib/jakarta-oro-2.0.5.jar;
+				lib/jena.jar;
+				lib/junit.jar;
+				lib/log4j-1.2.12.jar;
+				lib/rdf-api-2001-01-19.jar;
+				lib/servlet-api.jar;
+				lib/xercesImpl.jar;
+                lib/xml-apis.jar;
+				lib/xmlParserAPIs.jar;
+				lib/buildTools/httpunit-1.4.jar;
+                lib/buildTools/junit-3.7.jar;
+                lib/buildTools/Tidy.jar;
+				lib/iri.jar"/>
+	</target>
+
+	<target name="compile" depends="init"
+		description="Compile DELI">
+		<mkdir dir="build"/>
+		<javac srcdir="src" destdir="build" debug="true" deprecation="true" classpath="${classpath}"/>
+	</target>
+
+	<target name="jars" depends="init,compile"
+		description="Build the DELI jarfiles">
+		<jar jarfile="lib/deli.jar" basedir="build/" excludes="com/hp/hpl/deliTest/,com/hp/hpl/deliScratchpad/,com/hp/hpl/deliTestClient/"/>
+		<jar jarfile="lib/deliTest.jar" basedir="build/" excludes="com/hp/hpl/deli/,com/hp/hpl/deliScratchpad/,com/hp/hpl/deliTestClient/"/>
+		<jar jarfile="lib/deliTestClient.jar" basedir="build/" excludes="com/hp/hpl/deliTest/,com/hp/hpl/deli/,com/hp/hpl/deliScratchpad/"/>
+	</target>
+
+	<target name="warfile" depends="init,jars"
+		description="Build the warfile for the DELI hello world application">
+		<mkdir dir="warfile"/>
+		<war warfile="warfile/ccpp.war" webxml="config/web.xml">
+			<lib dir="lib" excludes="testlibs/">
+				<exclude name="servlet.jar"/>
+			</lib>
+			<zipfileset dir="profiles" prefix="WEB-INF/profiles"/>
+			<zipfileset dir="config" prefix="WEB-INF/config"/>
+		</war>
+	</target>
+
+	<target name="doc" depends="init"
+		description="Build the DELI javadocs">
+		<mkdir dir="javadoc"/>
+		<mkdir dir="javadoc/user"/>
+		<mkdir dir="javadoc/developer"/>
+		<javadoc sourcepath="src;." destdir="javadoc/user" public="true" packagenames="com.hp.hpl.deli" classpath="${classpath}"/>
+		<javadoc sourcepath="src;." destdir="javadoc/developer" private="true" packagenames="com.hp.hpl.deli" classpath="${classpath}"/>
+	</target>
+
+	<target name="UAProfValidatorProxy" depends="init"
+		description="Run the UAProf Validator via a http proxy">
+		<echo message="DELI Validator http://delicon.sourceforge.net/"/>
+		<echo message="Running automated test for all profiles specified in profiles.n3"/>
+		<echo message="For output see validprofiles.txt"/>
+		<java classname="com.hp.hpl.deli.UAProfValidator" classpath="${classpath};build" fork="true" output="validprofiles.txt"/>
+	</target>
+
+	<target name="validate" depends="init"
+		description="Validate profile">
+		<echo message="DELI Validator http://delicon.sourceforge.net/"/>
+		<echo message="Specify file to validate with -Dprofile=the profile"/>
+		<echo message="Validating ${profile}"/>
+		<java classname="com.hp.hpl.deli.UAProfValidator" classpath="${classpath};build" fork="true">
+			<arg value="${profile}"/>
+	        </java>
+	</target>
+
+	<target name="runW3CTests" depends="init"
+		description="Run the W3C test harness">
+		<java classname="com.hp.hpl.deliTest.W3CTestHarness" classpath="${classpath};build" fork="true">
+			<condition property="http.proxyHost">
+				<jvmarg value="-Dhttp.proxyHost=${http.proxyHost}"/>
+				<jvmarg value="-Dhttp.proxyPort=${http.proxyPort}"/>
+			</condition>
+	        </java>
+	</target>
+
+	<target name="runJUnitTests" depends="init"
+		description="Run the JUnit test harness">
+		<java classname="com.hp.hpl.deliTest.DeliTest" classpath="${classpath};build" fork="true">
+	        </java>
+	</target>
+
+	<target name="runTests" depends="init"
+		description="Run the Java test harness">
+		<java classname="com.hp.hpl.deliTest.TestHarness" classpath="${classpath};build" fork="true">
+		</java>
+	</target>
+
+	<target name="clean" depends="init"
+		description="Delete all build artifacts">
+		<delete dir="build"/>
+                <delete dir="warfile"/>
+		<delete dir="javadoc"/>
+		<delete dir="javadoc/user"/>
+		<delete dir="javadoc/developer"/>
+		<delete dir="profiles/manufacturerProfiles"/>
+		<delete dir="config/rdf"/>
+	</target>
+
+	<target name="build" depends="init,compile,jars,warfile,doc"
+		description="Build everything"/>
+
+	<target name="convertRDFtoJava">
+		<echo>Extracting ${class} from ${schema} and converting to Java</echo>
+		<!-- params: schema, namespace, class -->
+		<java classname="jena.schemagen" classpath="${classpath}">
+			<arg line="--inference -i config/${schema} -e N3 -a ${namespace} --package com.hp.hpl.deli -o src/com/hp/hpl/deli/${class}.java -n ${class}" />
+		</java>
+	</target>
+
+	<target name="deliSchema" depends="init">
+		<antcall target="convertRDFtoJava">
+			<param name="schema" value="deliSchema.n3" />
+			<param name="namespace" value="http://delicon.sourceforge.net/schema#"/>
+			<param name="class" value="DeliSchema" />
+		</antcall>
+	</target>
+</project>

@@ -1,0 +1,14 @@
+@prefix deli: <http://delicon.sourceforge.net/schema#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+
+_:config 
+	deli:localProfilesFile "config/profiles.n3" ;
+	deli:localProfilesPath "profiles" ;
+	deli:debug "false" ;
+ 	deli:printDefaults "true" ;
+ 	deli:printProfileBeforeMerge "false" ;
+ 	deli:processUndefinedAttributes "false" ;
+ 	deli:namespaceConfigFile "config/namespaceConfig.n3";
+	deli:datatypeValidationOn "true" ;
+	deli:enforceUAProfTwoDatatypes "true" .

@@ -1,0 +1,497 @@
+To do
+
+- add a command line switch to DELI so the validator outputs the original 
+profile, with the validation remarks in comments at the top
+- add some "quick start" validation instructions to the DELI website
+- add a simple servlet to the DELI distribution, so it is possible to access the 
+validator via this servlet
+
+07/01/05
+
+> Hi Mark,
+> I downloaded the new version, installed it and yes, it seems to work now. 
+> Thanks !
+> Other problem (at least for me) I found is that I have to be under $DELI_HOME 
+> in order to get results correctly.
+> I set DELI_HOME and other stuff, CATALINA_HOME, JAVA_HOME, CLASSPATH etc, but 
+> if I move e.g. to /tmp and run "java com.hp.hpl.deli.UAProfValidator 
+> /some/path/Nokiaprofile.xml"
+> I get NullPointer exeptions and lots of com.hp.hpl.deli.XXX errors + 
+> jena/arp/rdf errors.
+> This doesn't happen with previous version (0.9.7).
+> The reason I'd like this to work from whatever directory is that I'm doing 
+> web-application (perl/php) that first uploads the uaprofile file and validates 
+> it after that. Web user is not "root" and somehow classpath+env-settings 
+> doesn't seem to work via CGI script now. 
+
+> Maybe I have missed something. If you know why this is happening, let me know.
+
+Here is a fix. You need to update Workspace.java to the enclosed file, then 
+rebuild DELI by calling ant, then when you call the validator you need to pass 
+it the location of DELI e.g.
+
+java -DdeliHome=c:\jcvs\new2\deli com.hp.hpl.deli.UAProfValidator 
+/some/path/Nokiaprofile.xml 
+
+Your path will be slightly different as you are on Linux e.g.
+
+java -DdeliHome=/usr/local/deli com.hp.hpl.deli.UAProfValidator 
+/some/path/Nokiaprofile.xml
+
+I think the problem probably did happen in version 0.9.7, it just kept quiet 
+about it.
+
+06/01/05
+
+Fixed problem with tab characters in BluetoothProfile in DELI.
+
+07/12/04
+
+Added a mode that enforces RDF datatype checking in UAProf 2. It can be turned
+on and off using 
+<enforceUAProfTwoDatatypes>true</enforceUAProfTwoDatatypes>
+it is off by default. 
+
+Fixed this problem:
+
+There are two System.exit() in the Vocabulary.java file 
+that create problems when using your lib (delicon) inside an 
+application server. You could replace them by throwing a 
+RuntimeExecption. The profile that kicks the problem is :
+
+Profile: Processing HTTP request
+ProcessHttpRequest: Starting to process HTTP request F
+ound profile reference: http://motorola.handango.com/phoneconfig/V980/Profile/V980_NO_BEARER.rdf
+Unable to find useragent 
+MOT-V980/80.2E.2AI MIB/2.2.1 Profile/MIDP-2.0 Configuration/CLDC-1.1 
+in local profile database 
+Retrieving profile 
+http://motorola.handango.com/phoneconfig/V980/Profile/V980_NO_BEARER.rdf
+ProfileCache: Retrieving profile
+Profile: Processing profile reference
+Getting resource: /XXXX/http://motorola.handango.com/phoneconfig/V980/Profile/V980_NO_BEARER.rdf
+The profile uses http://www.3gpp.org/profiles/PSS/ccppschema-PSS5#
+The profile uses http://www.wapforum.org/profiles/MMS/ccppschema-20010111#
+The profile uses http://www.3gpp.org/profiles/PSS/ 
+The profile uses http://www.openmobilealliance.org/tech/profiles/UAPROF/ccppschema-20021212#
+Error [C: http://www.3gpp.org/profiles/PSS/ccppschema-PSS5#Streaming, A: http://www.3gpp.org/profiles/PSS/ccppschema-PSS5PssAccept] 
+Attribute not defined in vocabulary 
+Fatal error: cannot create new attribute when namespace is null
+
+
+08/12/03
+
+Fixed the Handspring Treo / Sprint PCS bug reported by Gerry Lawless.
+
+I now have a larger problem. A Treo 600
+(http://www.handspring.com/products/communicators/treo600_overview.jhtml)
+device attempted to access my site on Friday. The DELI process produced an
+error of the following and it shut down my application server.
+
+[12/5/03 14:57:53:450 EST] 1d198484 SystemOut     O Fatal error: cannot
+create new attribute when namespace is null
+
+The Treo 600's headers look like this:
+
+2003.12.05 14:57:53.055
+accept = text/html, application/vnd.wap.xhtml+xml, application/xhtml+xml;
+profile="http://www.wapforum.org/xhtml", image/gif, image/jpeg,
+image/pjpeg, */*,image/png;q=0.125,image/x-jng;q=0.125,
+video/x-mng;q=0.125,image/vnd.wap.wbmp;q=0.125,
+image/x-mng;q=0.125,image/bmp;q=0.125,image/x-bmp;q=0.125
+accept-language = en, *;q=0.8
+cache-control = no-transform
+client-ip = 10.17.137.2
+clientid = DALPtLS2cKeekwzleS0mt00-@sprintpcs.com
+host = wa.eternalegypt.org
+ua-color = color12
+ua-pixels = 160x160
+user-agent = Mozilla/4.0 (compatible; MSIE 6.0; Windows 95; PalmSource;
+Blazer 3.0) 16;160x160
+via = HTTP/1.1 langgbe2 (MIG 1.2 HTG 724 Solutions), HTTP/1.1
+lanlannggink05[0A11890A] (Traffic-Server/5.2.1-58913 [uScH])
+x-wap-profile =
+"http://device.sprintpcs.com/Handspring/HSTR600HK/Blazer30010.rdf"
+x-wap-proxy-cookie = none
+
+Do you think the Blazer's RDF (Blazer30010.rdf) could have done this? A
+colleague mentioned that this RDF references a XSL file (uaprof.xsl) and
+that it maybe causing the error.
+
+I am currently using Deli-0.9.7.  I have tried a newer version, but as you
+mentioned in your documentation, Jena 2.0 has some trouble w/ some RDFs.
+Should I try to upgrade anyway? Any suggestions?
+
+Thanks, Gerry
+
+27/11/03
+
+- Integrated localProfiles and manufacturerProfiles into
+a single RDF file.
+
+Note the way manufacturerProfiles is loaded will not
+be compatible with Cocoon, this needs to be
+fixed before this new version of DELI is incorporated
+into C2. 
+
+26/11/03
+
+- Tested UAProf V2.0 datatyping using sample profiles
+from UAProf V2 spec. 
+
+- Resolved the XML schema problem by changing the
+local version of the UAProf 2 XML Schema to use
+xsd:string instead of xsd:anySimpleType
+
+21/11/03
+
+- Added (untested) support for UAProf V2.0 datatyping.
+
+Untested because I haven't got any UAProf V2.0 profiles - 
+asked Nokia if they can supply one.
+
+The code checks that profiles use the datatype defined in
+the schema, but it doesn't check the contents of the
+profile object. DELI did have a facility to do this
+using the uaprofValidatorConfig.xml file, but I turned it
+off because it was obvious that profiles were using a much
+wider range of characters. There are two problems with 
+implementing it with UAProf 2.0
+
+a) the definitions of literals and dimensions are more 
+restrictive than the ones used previously in DELI, so 
+profiles are even more likely to fail
+e.g DELI definitions
+
+Literal
+[A-Za-z0-9/.\\\-;:_ ()=*+]+
+
+Dimension
+[0-9,.]+x[0-9,.]+
+
+UAProf 2.0 definitions
+
+Literal
+[A-Za-z0-9/.\-_]+
+
+Dimension
+[0-9]+x[0-9]+
+
+b) The other problem is that Jena 2.0 can't process the UAProf V2.0
+schema file:
+
+[Error] xmlschema-20030226:15:46: st-props-correct.4.1: The type definition is n
+ot a valid restriction with repect to the base type 'xsd:anySimpleType'.
+[Error] xmlschema-20030226:15:46: cos-applicable-facets: Facet 'enumeration' is
+not allowed by this type.
+[Error] xmlschema-20030226:25:46: st-props-correct.4.1: The type definition is n
+ot a valid restriction with repect to the base type 'xsd:anySimpleType'.
+[Error] xmlschema-20030226:25:46: cos-applicable-facets: Facet 'pattern' is not
+allowed by this type.
+
+This is a Jena problem - ask jena-dev@yahoogroups.com
+
+11/11/03
+
+- Fixed bug in DeliUtil.removeWhitespaces.
+
+- Fixed problem with ARP printing warnings when dealing with 
+relative URIs:
+
+There was some discussion about this with respect to the W3C RDF 
+validator which also uses ARP, see
+
+http://lists.w3.org/Archives/Public/www-rdf-interest/2003Aug/0121.html
+http://lists.w3.org/Archives/Public/www-rdf-interest/2003Aug/0132.html
+http://lists.w3.org/Archives/Public/www-rdf-interest/2003Aug/0134.html
+
+and the conclusion was that validators should not do this. 
+
+01/10/03
+
+- Added a configuration option in deliConfig.xml to turn
+datatyping validation on and off. Here datatyping validation
+means checking that the contents of literals conform to 
+the EBNF definitions in the OMA / WAP Forum specs, rather
+than checking that the profile uses RDF datatyping correctly.
+
+30/09/03
+
+- Added new automated test facility for testing manufacturer 
+profiles. The file 
+config/manufacturerProfiles.xml 
+lists all currently known manufacturer UAProf profiles. 
+Ant converts this to RDF using the stylesheet 
+stylesheets/manufacturerProfiles.xsl
+To run the automated test use the command
+java com.hp.hpl.deli.UAProfValidator
+(i.e. no arguments)
+or if you are behind a firewall you need to configure
+your proxy e.g.
+java -Dhttp.proxyHost=garlic.hpl.hp.com 
+-Dhttp.proxyPort=8088 com.hp.hpl.deli.UAProfValidator
+
+KNOWN ISSUE: For some reason the automated test facility
+cannot retrieve SonyEricsson profiles. Internet Explorer
+can retrieve the profiles from their website, but DELI
+cannot. Not sure why this. 
+
+29/09/03
+
+- Added code to suppress Jena 2 RDF warnings at console except
+when DELI is used in validator mode.
+
+- instead of using rdf:about's in schema files, switched back
+to using rdf:ID's as originally used in files but now using
+xml:base definition at the top.
+
+26/09/03
+
+- DELI did not work with Cocoon 2.1.2 due to a problem with Xerces
+and XMLReader. Therefore I decided to update DELI to use Jena 2.0.
+However Jena 2 occassionally refuses to read files due to UTF
+encoding problems that were processable using Jena 1 or other
+XML tools. 
+
+An advantage of using Jena 2 is it is up to date with the latest
+W3C RDF-core WG decisions. 
+
+17/09/03
+
+- The Nokia 6220 profile gets the RDF namespace wrong. 
+As a result, when DELI tried to validate this profile
+it could not find any RDF information, hence it could
+not find any errors, so it says it is valid. Now DELI 
+prints a warning if it cannot find any RDF in a profile,
+and marks the profile as invalid. 
+
+29/08/03
+
+- DELI can now process more than one CC/PP namespace.
+
+- The processor and validation code is more tightly integrated,
+  which resolves some problems encountered when validating
+  profiles that require namespace aliasing.
+
+- Replaced legacy profiles with local profiles, they allow
+  DELI to be configured to insert extra information even for
+  devices that use UAProf e.g. add network operator specific
+  properties.
+
+02/08/02
+
+Capability Classes:
+- Added use of ternary logic when evaluating capability classes. 
+  Now we have available the classes that were matched, unmatched, 
+  but also those that were unresolved due to insufficient information 
+  available from the Profile.
+
+- The old CapabilityClass has now been replaced by CapabilityDefinition, 
+  which loads the capability class definitions from an xml configuration 
+  file.
+
+- The CapabilityClass class now stores the RESULT of evaluating a 
+  profile against the definitions in CapabilityDefinition after calling 
+  its constructor with a Profile (See javadoc for more information). 
+
+- Added namespace support to distinguish between different vocabularies 
+  in capability classes. For use of this see the example in capClass.xml 
+  ('namespaceAlias' attribute on an operand specifies a group of namespaces 
+  that the attribute must be a member of, 'namespace' attribute on an 
+  operand specifies a single namespace (and all of its aliasUri's from 
+  namespaceConfig.xml) which the operands attribute must be a member of to 
+  be evaluated).
+ 
+Workspace class:
+- The getResource() method now attempts to get resources starting with 
+  'jndi' as a global resource -- see Workspace.getResource() source code.
+
+- The storage of debug log information in the workspace has temporarily 
+  been disabled. (This is as a result of the intermitant problem of tomcat 
+  stalling before processing a request containing ccpp information). Debug 
+  information can still be printed to the terminal by setting debug to true 
+  in the deliConfig.xml file.
+
+- Vocabularies/Namespaces are now configured in external an file: 
+  namespaceConfig.xml
+
+- By default debugging is turned on in the workspace so that we get any 
+  error messages before the workspace has been setup & configured.
+
+Vocabulary class:
+- Alias URIs for vocabularies which are refered to by multiple misused 
+  namespace URIs have been added. In previous versions of DELI the same 
+  vocabulary was loaded and stored in memory multiple times with different 
+  namespaces, but this version loads the vocabulary just once -- and looks 
+  up the actual namespace being used from a list of aliases (as defined in 
+  namespaceConfig.xml). Note that the <uri> specified in a <namespace> 
+  declaration in namespaceConfig.xml will be the uri used internally by DELI 
+  & returned whenever attribute.getUri() etc... is called on a profile.
+
+Testing:
+- JUnit tests can be executed by running 'java com.hp.hpl.deliTest.DeliTest'
+
+- The TestHarness has been moved to a scratchpad area in deli (package 
+  com.hp.hpl.deliScratchpad)
+
+22/05/02
+
+*NOTE* This release has a minor version number change because it
+  should be regarded as alpha quality. This is because I am currently
+  updating the test harnesses for DELI (see last item) so the next
+  major version will have a much improved test harness based on
+  JUnit. However I'm trying to work to a monthly release cycle and
+  there have been some significant changes in DELI so I have decided
+  to do an interim release. 
+- Included Johannes Koch's legacy profile database. For more details
+  of this see http://pixels.pixelpark.com/~koch/uaprof/
+- Changed Workspace so it is implemented as a singleton. This means
+  you can only have one instance of workspace. This is instantiated
+  at run time. To set the servlet context and the configuration file
+  you have to call the configure method. For more details, see
+  Workspace.java
+- Added a serialisation interface to Workspace and Profile so that
+  DELI can be used with Enterprise Java Beans. I envision DELI being
+  used with EJB's as follows: create the workspace on the servlet,
+  then serialise the workspace and send it to the EJB. The workspace
+  is invariant after calling configure (in effect configure is used
+  for two stage construction). Then when the servlet receives HTTP 
+  requests, the profile can be extracted in the conventional DELI
+  manner. Now use serialisation on the profile so that it can
+  be sent to the EJB. For examples of using serialisation on Workspace
+  and Profiles see EricssonT39SerializeProfile.java.
+- There have been a number of changes to the build.xml file and
+  the directory structure. These changes were made to simplify
+  using DELI in Netbeans. 
+- Work is ongoing creating a new set of test harnesses for DELI
+  using JUnit and HttpUnit / ServletUnit. Progress has been hampered
+  by the fact that ServletUnit does not fully implement the 
+  HttpServletRequest interface. I am talking to the ServletUnit
+  developers so hope to resolve this in the future.
+
+22/04/02
+
+- Added facility to turn reference profile cache on and off for test
+  purposes at request of Stu Lewis.
+- Moved capabilityClass support into Workspace. 
+
+19/04/02
+
+- Added test cases for HTTP-ex support and resolved some HTTP-ex bugs.
+- Starting to improve test harness. Test plan is now written using XML so
+  test plan can be generated in HTML using XSLT. Test plan is also used to
+  comment tests when running test harness. Created an automatic batch test
+  utility. 
+- Added alpha quality capability class support.
+
+15/03/02
+
+- Added support for HTTP-ex.
+- DELI now recognises defaults regardless of whether they are ccpp:defaults
+or ccpp:Defaults in compliance with the CC/PP Structure and vocabularies
+working draft.
+- The test cases incorrectly used ccpp:default not ccpp:defaults. This error
+has now been corrected.
+- DELI 0.42 could not process the Mitsubshi Trium profile as it omitted
+any component definitions. Strictly such a profile is not compliant with
+CC/PP but it is desirable for DELI to be fault tolerant in such situation. 
+Added a fallback mode to process profiles that do this. 
+ 
+31/01/02
+
+- When Cocoon upgraded to Xerces-2.0.0 it was found that DELI had
+  unnecessary dependencies on Xerces-1.4.4. These have no been
+  removed. 
+
+29/01/02
+
+- DELI can now retrieve legacy profiles either via URLs or as local
+  files. This change was added at the request of Cocoon developers.
+
+25/01/02
+
+- DELI can now read UAProf schemas and extract vocabulary descriptions
+  from them (well, as long as they are correct RDFS - the ones on the
+  WAP Forum site contain a number of errors e.g.
+  * they don't use the correct RDF namespace
+  * they don't qualify ID and resource with rdf e.g. rdf:ID and 
+    rdf:resource
+  * they have unnecessary spaces at the start of some URIs and IDs
+  * they have unnecessary spaces at the end of some URIs and IDs
+  * they do not use the same RDF and RDFS namespace in the body of the 
+    schema as the namespace declaration.
+  * some elements that should be in the RDF namespace are incorrectly
+    declared in the RDFS namespace e.g. Bag should be in the RDF 
+    namespace
+  Therefore I've corrected the schemas and include the corrected
+  versions in the DELI distribution).
+  This is done by adding a statement to deliConfig.xml e.g.
+
+<schemaVocabularyFile 
+namespace="http://www.wapforum.org/profiles/UAPROF/ccppschema-20010330#">
+config/schemas/ccppschema-20010330.rdfs</schemaVocabularyFile>
+
+  where the namespace attribute declares the URI to associated with
+  the schema vocabulary and the element is the relative path to the
+  schema.
+  Note support for existing vocabulary definition files is still available.
+- At the request of Nick Denny of Panasonic I've added some code so
+  that DELI warning messages can be displayed via servlets as well
+  as via the servlet engine console. This is currently demonstrated in
+  TestCCPPServlet.java
+- DELI now uses Jena 1.3.0.
+- DELI now includes legacy profiles for Opera, Netscape and Amaya. 
+- Made changes to TestCCPPClient so that it can send HTTP requests with
+  a UAProf profile header but no UAProf profiles overrides.
+
+22/01/02
+
+- Fixed problem with deliServletConfig.xml file.
+
+21/01/02
+
+- DELI can now infer components from the attribute name / vocabulary
+  description if the profile does not use <rdf:type> to identify
+  components. This change was necessary to cope with the Ericsson
+  T68 and T39 profiles.
+- DELI can be configured to deal with multiple vocabularies where
+  each vocabulary corresponds to a different namespace URI. This
+  allows it to deal with WAP 1.2 and WAP 2.0 profiles.
+- DELI no longer crashes if it encounters a profile attribute it does
+  not recognise.
+
+21/11/01
+
+- Added test to explicitly check server can cope with W-HTTP
+  requests that do not contain profile references as per
+  section 9.1.1.1 of WAP UAProf specification.
+- Added Test Plan taken from User Guide to distribution.
+- TestHarness.java updated to reflect changes in Workspace API
+  introduced in Version 1.1.
+- Modified the file TestCCPPServlet.java to used the
+  term collection type instead of cardinality.
+- Added a new configuration option, profileDiffDigestVerification,
+  that allows verification of the profile diff digest to be
+  turned on or off to allow server optimization.
+    
+02/11/01
+
+- Updated the profiles to reflect that attributes such as ID or 
+  resource should not use default namespaces. 
+- Corrected an error in the ANT build file that was causing 
+  problems decompressing the WAR on some platforms. 
+
+30/10/01    
+
+- This version uses ServletContext.getRealPath to try to solve 
+  the relative paths problem. This has necessitated a change to 
+  the Workspace API - refer to the JavaDoc. 
+- Also fixes problem that default legacy devicefile does not 
+  recognise all versions of IE.
+
+22/10/01
+
+- First external release. 
+ 
+ 
+

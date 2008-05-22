@@ -1,0 +1,2410 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+
+ <meta name="generator" content="HTML Tidy for Windows (vers 1st July 2002), see www.w3.org">
+ <meta name="Generator" content="Microsoft Office HTML Filter 2.0">
+ <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+ <meta name="Originator" content="Microsoft Word 9">
+
+<title>DELI: A J2EE DElivery context LIbrary for CC/PP and UAProf</title>
+
+<style type="text/css">
+<!--
+ 
+p.MsoNormal, li.MsoNormal, div.MsoNormal
+        {
+        margin:0cm;
+        margin-bottom:.0001pt;
+        font-size:12.0pt;
+        font-family:"Times New Roman";}
+h1
+        {
+        margin-top:12.0pt;
+        margin-right:0cm;
+        margin-bottom:3.0pt;
+        margin-left:21.6pt;
+        text-indent:-21.6pt;
+        page-break-after:avoid;
+        font-size:16.0pt;
+        font-family:Arial;}
+h2
+        {
+        margin-top:12.0pt;
+        margin-right:0cm;
+        margin-bottom:3.0pt;
+        margin-left:28.8pt;
+        text-indent:-28.8pt;
+        page-break-after:avoid;
+        font-size:14.0pt;
+        font-family:Arial;
+        font-style:italic;}
+h3
+        {
+        margin-top:12.0pt;
+        margin-right:0cm;
+        margin-bottom:3.0pt;
+        margin-left:36.0pt;
+        text-indent:-36.0pt;
+        page-break-after:avoid;
+        font-size:13.0pt;
+        font-family:Arial;}
+h4
+        {
+        margin-top:12.0pt;
+        margin-right:0cm;
+        margin-bottom:3.0pt;
+        margin-left:43.2pt;
+        text-indent:-43.2pt;
+        page-break-after:avoid;
+        font-size:14.0pt;
+        font-family:"Times New Roman";}
+h5
+        {
+        margin-top:12.0pt;
+        margin-right:0cm;
+        margin-bottom:3.0pt;
+        margin-left:50.4pt;
+        text-indent:-50.4pt;
+        font-size:13.0pt;
+        font-family:"Times New Roman";
+        font-style:italic;}
+h6
+        {
+        margin-top:12.0pt;
+        margin-right:0cm;
+        margin-bottom:3.0pt;
+        margin-left:57.6pt;
+        text-indent:-57.6pt;
+        font-size:11.0pt;
+        font-family:"Times New Roman";}
+p.MsoHeading7, li.MsoHeading7, div.MsoHeading7
+        {
+        margin-top:12.0pt;
+        margin-right:0cm;
+        margin-bottom:3.0pt;
+        margin-left:64.8pt;
+        text-indent:-64.8pt;
+        font-size:12.0pt;
+        font-family:"Times New Roman";}
+p.MsoHeading8, li.MsoHeading8, div.MsoHeading8
+        {
+        margin-top:12.0pt;
+        margin-right:0cm;
+        margin-bottom:3.0pt;
+        margin-left:72.0pt;
+        text-indent:-72.0pt;
+        font-size:12.0pt;
+        font-family:"Times New Roman";
+        font-style:italic;}
+p.MsoHeading9, li.MsoHeading9, div.MsoHeading9
+        {
+        margin-top:12.0pt;
+        margin-right:0cm;
+        margin-bottom:3.0pt;
+        margin-left:79.2pt;
+        text-indent:-79.2pt;
+        font-size:11.0pt;
+        font-family:Arial;}
+p.MsoHeader, li.MsoHeader, div.MsoHeader
+        {margin:0cm;
+        margin-bottom:.0001pt;
+        font-size:12.0pt;
+        font-family:"Times New Roman";}
+p.MsoCaption, li.MsoCaption, div.MsoCaption
+        {
+        margin-top:6.0pt;
+        margin-right:0cm;
+        margin-bottom:6.0pt;
+        margin-left:0cm;
+        font-size:10.0pt;
+        font-family:"Times New Roman";
+        font-weight:bold;}
+span.MsoEndnoteReference
+        {vertical-align:super;}
+p.MsoEndnoteText, li.MsoEndnoteText, div.MsoEndnoteText
+        {margin:0cm;
+        margin-bottom:.0001pt;
+        font-size:10.0pt;
+        font-family:"Times New Roman";}
+p.MsoTitle, li.MsoTitle, div.MsoTitle
+        {margin-top:12.0pt;
+        margin-right:0cm;
+        margin-bottom:3.0pt;
+        margin-left:0cm;
+        page-break-after:avoid;
+        font-size:16.0pt;
+        font-family:Arial;
+        font-weight:bold;}
+p.MsoBodyText, li.MsoBodyText, div.MsoBodyText
+        {margin:0cm;
+        margin-bottom:.0001pt;
+        text-align:justify;
+        font-size:11.0pt;
+        font-family:"Times New Roman";}
+p.MsoSubtitle, li.MsoSubtitle, div.MsoSubtitle
+        {margin-top:0cm;
+        margin-right:0cm;
+        margin-bottom:3.0pt;
+        margin-left:0cm;
+        font-size:12.0pt;
+        font-family:Arial;}
+p.MsoDate, li.MsoDate, div.MsoDate
+        {
+        margin:0cm;
+        margin-bottom:.0001pt;
+        font-size:12.0pt;
+        font-family:"Times New Roman";}
+p.MsoBodyText2, li.MsoBodyText2, div.MsoBodyText2
+        {margin:0cm;
+        margin-bottom:.0001pt;
+        text-align:justify;
+        font-size:12.0pt;
+        font-family:"Times New Roman";}
+p.MsoBodyText3, li.MsoBodyText3, div.MsoBodyText3
+        {margin:0cm;
+        margin-bottom:.0001pt;
+        font-size:9.0pt;
+        font-family:"Courier New";}
+a:link, span.MsoHyperlink
+        {color:blue;
+        text-decoration:underline;}
+a:visited, span.MsoHyperlinkFollowed
+        {color:purple;
+        text-decoration:underline;}
+p.MsoPlainText, li.MsoPlainText, div.MsoPlainText
+        {margin:0cm;
+        margin-bottom:.0001pt;
+        font-size:10.0pt;
+        font-family:"Courier New";}
+pre
+        {margin:0cm;
+        margin-bottom:.0001pt;
+        font-size:10.0pt;
+        font-family:"Arial Unicode MS";
+        color:black;}
+p.Author, li.Author, div.Author
+        {
+        margin:0cm;
+        margin-bottom:.0001pt;
+        font-size:12.0pt;
+        font-family:Arial;}
+p.Abstract, li.Abstract, div.Abstract
+        {
+        margin:0cm;
+        margin-bottom:.0001pt;
+        font-size:11.0pt;
+        font-family:"Times New Roman";
+        text-decoration:underline;}
+p.Keywords, li.Keywords, div.Keywords
+        {
+        margin:0cm;
+        margin-bottom:.0001pt;
+        font-size:11.0pt;
+        font-family:"Times New Roman";
+        text-decoration:underline;}
+p.TestTitle, li.TestTitle, div.TestTitle
+        {
+        margin:0cm;
+        margin-bottom:.0001pt;
+        text-align:justify;
+        font-size:12.0pt;
+        font-family:"Times New Roman";
+        font-weight:bold;}
+p.Appendix1, li.Appendix1, div.Appendix1
+        {
+        margin-top:12.0pt;
+        margin-right:0cm;
+        margin-bottom:3.0pt;
+        margin-left:0cm;
+        page-break-after:avoid;
+        font-size:16.0pt;
+        font-family:Arial;
+        font-weight:bold;}
+p.Appendix2, li.Appendix2, div.Appendix2
+        {
+        margin-top:12.0pt;
+        margin-right:0cm;
+        margin-bottom:3.0pt;
+        margin-left:0cm;
+        page-break-after:avoid;
+        font-size:14.0pt;
+        font-family:Arial;
+        font-weight:bold;
+        font-style:italic;}
+span.t1
+        {
+        color:#990000;}
+ol
+        {margin-bottom:0cm;}
+ul
+        {margin-bottom:0cm;}
+-->
+</style>
+</head>
+<body lang="EN-GB" link="blue" vlink="purple">
+<div class="Section1">
+<p class="MsoTitle">DELI: A&nbsp; DElivery context LIbrary for
+CC/PP and UAProf</p>
+
+<p class="Author">Mark H. Butler</p>
+
+<p class="Author"><span style=
+'font-size:9.0pt; font-family:"Courier New"'>marbut@hplb.hpl.hp.com</span></p>
+
+<p class="MsoSubtitle">External Technical Report HPL-2001-260</p>
+
+<p class="MsoNormal"><b>REVISED VERSION 02/08/2002</b></p>
+
+<p class="MsoNormal">&nbsp;</p>
+
+<p class="Abstract"><span style=
+'font-size:12.0pt'>Abstract</span></p>
+
+<p class="MsoBodyText"><span style='font-size:12.0pt'>Different
+web-enabled devices have different input, output, hardware,
+software, network and browser capabilities. In order for a web
+server or web-based application to provide optimized content to
+different clients it requires a description of the capabilities of
+the client known as the delivery context. Recently two new
+compatible standards have been created for describing delivery
+context: Composite Capabilities / Preferences Profile (CC/PP)
+created by the W3C and User Agent Profile (UAProf) created by the
+WAP Forum. DELI is an open-source library developed at HP Labs that
+allows Java servlets to resolve HTTP requests containing delivery
+context information from CC/PP or UAProf capable devices and query
+the resolved profile. It also provides support for legacy devices
+so that the proprietary delivery context descriptions currently
+used by applications can be replaced by standardised CC/PP
+descriptions.</span></p>
+
+<p class="MsoNormal" style='text-align:justify'>&nbsp;</p>
+
+<p class="Keywords"><span style=
+'font-size:12.0pt'>Keywords</span></p>
+
+<p class="MsoBodyText2">Device Independence, Composite Capabilities
+/ Preferences Profile (CC/PP), Resource Description Framework
+(RDF), Wireless Access Protocol (WAP), User Agent Profile
+(UAProf)</p>
+
+<h1>1<span style=
+'font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+Introduction</h1>
+
+<p class="MsoNormal" style='text-align:justify'>Different
+web-enabled devices have different input, output, hardware,
+software, network and browser capabilities. In order for a web
+server or web-based application to provide optimized content to
+different clients it requires a description of the client
+capabilities. Recently two new compatible standards have been
+created for describing delivery context based on the Resource
+Description Framework (RDF)<a href="#_edn1" name="_ednref1" title=
+""><span class="MsoEndnoteReference">[1]</span></a>: Composite
+Capabilities / Preferences Profile (CC/PP) <span class=
+"MsoEndnoteReference"><a href="#_edn2" name="_ednref2" title=
+"">[2]</a></span> created by the W3C and User Agent Profile
+(UAProf) created by the WAP Forum<a href="#_edn3" name="_ednref3"
+title=""><span class="MsoEndnoteReference">[3]</span></a>.</p>
+
+<p class="MsoNormal" style='text-align:justify'>&nbsp;</p>
+
+<p class="MsoNormal" style='text-align:justify'>One of the design
+aims of these standards was the efficient delivery of delivery
+context to the server even via low bandwidth wireless networks.
+This is achieved by the use of <i>profile references</i> and
+<i>profile differences</i> that work as follows: instead of sending
+an entire profile with every request a client only sends a
+reference to a profile, stored on a third device known as a
+<i>profile repository</i>, along with a list of overrides specific
+to this particular client. The process of interpreting the profile
+references and differences is known as <i>profile
+resolution</i>.</p>
+
+<p class="MsoNormal" style='text-align:justify'>&nbsp;</p>
+
+<p class="MsoBodyText2">DELI is an open-source library developed at
+HP Labs that allows Java servlets to resolve HTTP requests
+containing CC/PP or UAProf information and query the resolved
+profile. This report describes how programmers can create delivery
+context-aware servlets using DELI. It also details some
+observations made during implemention and discusses their
+implications for CC/PP. The DELI library and accompanying
+test-harnesses discussed here are available open-source. To obtain
+a copy of the DELI source code, please refer to the DELI web-site<a
+href="#_edn4" name="_ednref4" title=""><span class=
+"MsoEndnoteReference">[4]</span></a>.</p>
+
+<h1>2<span style=
+'font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+RDF, CC/PP and UAProf</h1>
+
+<h2>2.1<span style=
+'font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+RDF</h2>
+
+<p class="MsoNormal" style='text-align:justify'>The Resource
+Description Framework (RDF) is the W3C foundation for processing
+metadatai.e. information about information. It aims to provide
+interoperability between applications that exchange
+machine-understandable information on the Web. RDF is currently
+described in two documents: the RDF Model and Syntax
+Specification<a href="#_edn5" name="_ednref5" title=""><span class=
+"MsoEndnoteReference">[5]</span></a> and RDF Schema Specification
+1.0<a href="#_edn6" name="_ednref6" title=""><span class=
+"MsoEndnoteReference">[6]</span></a>.</p>
+
+<p class="MsoNormal" style='text-align:justify'>&nbsp;</p>
+
+<p class="MsoBodyText2">Essentially RDF <i>models</i> consist of a
+collection of <i>statements</i> about <i>resources</i>. A resource
+is anything named by a <i>URI</i> plus an optional <i>anchor ID</i>
+e.g. in</p>
+
+<p class="MsoBodyText3">
+http://www.wapforum.org/profiles/UAPROF/ccppschema-20010430#HardwarePlatform</p>
+
+<p class="MsoBodyText2">the URI is everying before the hash and the
+anchor ID is everying after the hash. An RDF statement comprises of
+a specific resource together with a named <i>property</i> plus the
+value of that property for that resource. These three individual
+parts of a statement are called, respectively, the <i>subject</i>,
+the <i>predicate</i>, and the <i>object</i>. The object of a
+statement can be another resource or it can be a <i>literal</i>
+i.e. a simple string or other primitive datatype defined by XML. An
+RDF statement is shown in Figure 1.</p>
+
+<table cellpadding="0" cellspacing="0" align="left">
+<tr>
+<td width="72" height="0"></td>
+</tr>
+
+<tr>
+<td></td>
+<td><img width="405" height="114" src="image001.gif" alt=
+"A statement in RDF consists of a subject associated with an object by a predicate.">
+</td>
+</tr>
+</table>
+
+<br clear="all">
+&nbsp;<br>
+<br>
+<br clear="all">
+ 
+<p class="MsoBodyText2">RDF can be serialized using XML; CC/PP and
+UAProf profiles are normally written in this form. However viewing
+profiles in serialized form is deceptive as the underlying RDF
+model has a tree structure. In order to better understand this, it
+is suggested that the reader investigates the W3C RDF Validation
+Service<a href="#_edn7" name="_ednref7" title=""><span class=
+"MsoEndnoteReference">[7]</span></a>. For example try taking the
+profile in the UAProf specification (<span style=
+'font-size:9.0pt;font-family:"Courier New"'>DELI_ROOT\profiles\test01.rdf</span>
+in the DELI distribution) and process it using the W3C Validation
+service.</p>
+
+<p class="MsoBodyText2">&nbsp;</p>
+
+<p class="MsoBodyText2">It is important to note there are many
+possible serialisations of a single RDF model. This means that
+parsing RDF models written in the XML serialisation requires
+additional processing beyond that provided by an XML parser.
+Fortunately there are a number of RDF frameworks now available that
+automatically take XML serialisations of RDF and construct an RDF
+model. DELI currently uses Jena<a href="#_edn8" name="_ednref8"
+title=""><span class="MsoEndnoteReference">[8]</span></a>, an RDF
+Framework developed at HP Labs. For more details of using Jena to
+process RDF see Brian McBride&rsquo;s paper on Jena<a href="#_edn9"
+name="_ednref9" title=""><span class=
+"MsoEndnoteReference">[9]</span></a> and the HP Labs Semantic Web
+activity homepage<a href="#_edn10" name="_ednref10" title=""><span
+class="MsoEndnoteReference">[10]</span></a>.</p>
+
+<h2>2.2<span style=
+'font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+CC/PP</h2>
+
+<p class="MsoNormal" style='text-align:justify'>A CC/PP profile is
+a description of device capabilities and user preferences that can
+be used to guide the adaptation of content presented to that
+device. CC/PP is described in three documents: CC/PP Structure and
+Vocabularies<a href="#_edn11" name="_ednref11" title=""><span
+class="MsoEndnoteReference">[11]</span></a>, CC/PP Requirements and
+Architecture<a href="#_edn12" name="_ednref12" title=""><span
+class="MsoEndnoteReference">[12]</span></a> and CC/PP Terminology
+and Abbreviations<a href="#_edn13" name="_ednref13" title=""><span
+class="MsoEndnoteReference">[13]</span></a>. A proposed (and
+largely deprecated) protocol for CC/PP is described in two
+documents: CC/PP exchange protocol using HTTP extension framework<a
+href="#_edn14" name="_ednref14" title=""><span class=
+"MsoEndnoteReference">[14]</span></a> and Content Negotiation
+Header in HTTP Scenarios<a href="#_edn15" name="_ednref15" title=
+""><span class="MsoEndnoteReference">[15]</span></a>. The protocol
+work has been deprecated because the CC/PP Working Group was not
+chartered by the W3C to do protocol work. However these documents
+formed the basis for the UAProf protocol work to be discussed in
+the next section.</p>
+
+<p class="MsoNormal" style='text-align:justify'>&nbsp;</p>
+
+<p class="MsoNormal" style='text-align:justify'>A CC/PP profile is
+broadly constructed as a two level hierarchy: a profile has a
+number of <i>components</i> and each component has a number of
+<i>attributes</i>. The attributes of a component may be included
+directly in a profile document, or may be specified by reference to
+a default profile that may be stored separately and accessed via a
+URL. CC/PP distinguishes between default and non-default values
+attributes such that non-default values always takes
+precedence.&nbsp;</p>
+
+<p class="MsoNormal" style='text-align:justify'>&nbsp;</p>
+
+<p class="MsoNormal" style='text-align:justify'>Although a CC/PP
+profile is a two level hierarchy, it is commonly represented using
+an XML serialisation of an RDF model. Crucially the underlying RDF
+model describing a profile is more complicated than a two level
+hierarchy. This can be demonstrated by processing a profile using
+the W3C RDF validation service referenced in the previous section.
+Some examples of these complexities are as follows: Firstly simply
+giving a component a standard name (e.g. HardwarePlatform) is not
+sufficient to distinguish it as a particular component. In addition
+it must have an <span style=
+'font-size:9.0pt;font-family:"Courier New"'>rdf:type</span>property
+that indicates it is an instance of a particular component type in
+a particular namespace as shown in Figure 2.</p>
+
+<table cellpadding="0" cellspacing="0" align="left">
+<tr>
+<td width="12" height="0"></td>
+</tr>
+
+<tr>
+<td></td>
+<td><img width="521" height="175" src="image002.gif"></td>
+</tr>
+</table>
+
+<br clear="all">
+&nbsp;<br>
+<br>
+<br clear="all">
+ 
+<p class="MsoNormal" style='text-align:justify'>Secondly default
+values are represented by a component containing a second component
+referenced via a <span style=
+'font-size:9.0pt;font-family:"Courier New"'>ccpp:Defaults</span>
+property as shown in Figure 3. Note this Figure shows a profile
+with multiple values for the same attribute. Using the resolution
+rules, <span style=
+'font-size:9.0pt;font-family:"Courier New"'>SoundOutputCapable</span>
+will be resolved to <span style=
+'font-size:9.0pt; font-family:"Courier New"'>No</span>.</p>
+
+<p class="MsoNormal" style='text-align:justify'>&nbsp;</p>
+
+<table cellpadding="0" cellspacing="0">
+<tr>
+<td width="24" height="0"></td>
+</tr>
+
+<tr>
+<td></td>
+<td><img width="633" height="378" src="image003.gif" alt=
+"An RDF graph showing how defaults, type properties and components are used in CC/PP.">
+</td>
+</tr>
+</table>
+
+<br clear="all">
+Thirdly complex (multiple-value) attributes are represented by an
+RDF construct known as an anonymous node. The anonymous node has an
+associated <span style=
+'font-size:10.0pt;font-family:"Courier New"'>rdf:type</span>
+property that indicates whether it is an unordered (<span style=
+'font-size: 9.0pt;font-family:"Courier New"'>Bag</span>) list or an
+ordered (<span style=
+'font-size:9.0pt;font-family: "Courier New"'>Seq</span>) list. It
+also possesses several numbered properties that point to the
+multiple attribute values as shown in Figure 4.<br>
+<br>
+ 
+<p class="MsoNormal" style='text-align:justify'>&nbsp;</p>
+
+<br clear="all">
+ 
+<p class="MsoNormal" style='text-align:justify'><img width="634"
+height="379" src="image004.gif" alt=
+"An RDF graph showing how CC/PP attributes with multiple values are represented using containers and anonymous nodes.">
+<br clear="all">
+As an approved protocol does not yet exist for CC/PP, it has not
+been possible to implement a CC/PP protocol in DELI. However the
+DELI architecture has been designed so that it will be easy to add
+such a protocol in the future. In addition DELI was designed
+specifically so it can process many different CC/PP vocabularies.
+This is essential as CC/PP does not propose any vocabularies for
+describing device capabilities instead only providing an underlying
+structure for such vocabularies.</p>
+
+<h2>2.3<span style=
+'font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+UAProf</h2>
+
+<p class="MsoNormal" style='text-align:justify'>The UAProf
+specification<a href="#_edn16" name="_ednref16" title=""><span
+class="MsoEndnoteReference">[16]</span></a> is based on the CC/PP
+specification. Like CC/PP, a UAProf profile is a two level
+hierarchy composed of components and attributes. Unlike CC/PP, the
+UAProf specification also proposes a vocabulary &ndash; a specific
+set of components and attributes &ndash; to describe the next
+generation of WAP phones.</p>
+
+<p class="MsoNormal" style='text-align:justify'>&nbsp;</p>
+
+<p class="MsoBodyText2">The specification also describes two
+protocols for transmitting the profile from the client to the
+server. Currently DELI only supports one of the UAProf protocols.
+This is because the other UAProf protocol, based on HTTPex and WSP,
+is intended to be used for client to gateway communication rather
+than client to server communication. DELI attempts to provide
+server rather than gateway support so this protocol is beyond the
+scope of the current implementation. In addition UAProf can also be
+used when documents are &ldquo;pushed&rdquo; from the server to the
+client without the client issuing a request. DELI does not support
+the push environment at present. Finally the UAProf specification
+describes a binary encoding of UAProf profiles. Binary encoding and
+decoding of profiles is typically performed by the gateway so this
+is also beyond the scope of DELI.</p>
+
+<h3>2.3.1<span style=
+'font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+UAProf Profiles</h3>
+
+<p class="MsoNormal" style='text-align:justify'>Currently profiles
+using the UAProf vocabulary consist of six components: <span style=
+'font-size:9.0pt;font-family:"Courier New"'>HardwarePlatform</span>,
+<span style=
+'font-size:9.0pt;font-family:"Courier New"'>SoftwarePlatform</span>,
+<span style=
+'font-size:9.0pt;font-family:"Courier New"'>NetworkCharacteristics</span>,
+<span style=
+'font-size:9.0pt;font-family:"Courier New"'>BrowserUA</span>, <span
+style=
+'font-size:9.0pt;font-family:"Courier New"'>WapCharacteristics</span>
+and <span style=
+'font-size:9.0pt;font-family:"Courier New"'>PushCharacteristics</span>.
+These components contain attributes. In DELI each attribute has a
+distinct name and has an associated collection type, attribute type
+and resolution rule. In UAProf there are three collection
+types:</p>
+
+<p class="MsoBodyText2" align="left" style=
+'margin-left:36.0pt;text-align:left; text-indent:-18.0pt;'><span
+style='font-family:Symbol'>&middot;<span style=
+'font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+<span style=
+'font-size:9.0pt; font-family:"Courier New"'>Simple</span>contains
+a single value e.g. <span style=
+'font-size:9.0pt;font-family:"Courier New"'>ColorCapable</span> in
+<span style=
+'font-size:9.0pt;font-family:"Courier New"'>HardwarePlatform</span>.
+Note the UAProf specification does not give a name to single value
+attributes so the term Simple has been adopted from the CC/PP
+specification.</p>
+
+<ul style='margin-top:0cm' type="disc">
+<li class="MsoNormal"><span style=
+'font-size:9.0pt;font-family:"Courier New"'>Bag</span> contains
+multiple unordered values e.g. <span style=
+'font-size:9.0pt;font-family:"Courier New"'>BluetoothProfile</span>
+in the <span style=
+'font-size:9.0pt;font-family: "Courier New"'>HardwarePlatform</span>
+component.</li>
+
+<li class="MsoNormal"><span style=
+'font-size:9.0pt;font-family:"Courier New"'>Seq</span>contains
+multiple ordered values e.g. <span style=
+'font-size:9.0pt;font-family:"Courier New"'>Ccpp-AcceptLanguage</span>
+in the <span style=
+'font-size:9.0pt;font-family:"Courier New"'>SoftwarePlatform</span>
+component.</li>
+</ul>
+
+<p class="MsoNormal" style='text-align:justify'>&nbsp;</p>
+
+<p class="MsoBodyText2">In addition attributes can have one of four
+attribute types:</p>
+
+<p class="MsoBodyText3" style=
+'margin-left:36.0pt;text-indent:-18.0pt;'><span style=
+'font-family:Symbol'>&middot;<span style=
+'font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+String <span style=
+'font-size:12.0pt;font-family:"Times New Roman"'>e.g.</span>
+BrowserName <span style=
+'font-size:12.0pt;font-family:"Times New Roman"'>in</span>
+BrowserUA.</p>
+
+<ul style='margin-top:0cm' type="disc">
+<li class="MsoNormal" style='text-align:justify;'><span style=
+'font-size:9.0pt;font-family:"Courier New"'>Boolean</span> e.g.
+<span style=
+'font-size:9.0pt;font-family:"Courier New"'>ColorCapable</span> in
+<span style=
+'font-size:9.0pt;font-family: "Courier New"'>HardwarePlatform</span>.</li>
+
+<li class="MsoNormal" style='text-align:justify;'><span style=
+'font-size:9.0pt;font-family:"Courier New"'>Number</span> is a
+positive integer e.g. <span style=
+'font-size:9.0pt;font-family:"Courier New"'>BitsPerPixel</span> in
+<span style=
+'font-size:9.0pt;font-family: "Courier New"'>HardwarePlatform</span>.</li>
+
+<li class="MsoNormal"><span style=
+'font-size:9.0pt;font-family:"Courier New"'>Dimension</span> is a
+pair of positive integers e.g. <span style=
+'font-size:9.0pt;font-family:"Courier New"'>ScreenSize</span> in
+<span style=
+'font-size:9.0pt;font-family:"Courier New"'>HardwarePlatform</span>.</li>
+</ul>
+
+<p class="MsoNormal" style='text-align:justify'>&nbsp;</p>
+
+<p class="MsoNormal" style='text-align:justify'>Finally attributes
+are associated with a resolution rule:</p>
+
+<ul style='margin-top:0cm' type="disc">
+<li class="MsoNormal"><span style=
+'font-size:9.0pt;font-family:"Courier New"'>Locked</span> indicates
+the final value of an attribute is the first occurrence of the
+attribute outside the default description block.</li>
+
+<li class="MsoNormal"><span style=
+'font-size:9.0pt;font-family:"Courier New"'>Override</span>
+indicates the final value of an attribute is the last occurrence of
+the attribute outside the default description block.</li>
+
+<li class="MsoNormal"><span style=
+'font-size:9.0pt;font-family:"Courier New"'>Append</span> indicates
+the final value of the attribute is the list of all occurrences of
+the attribute outside the default description block.</li>
+</ul>
+
+<p class="MsoNormal" style='text-align:justify'>&nbsp;</p>
+
+<p class="MsoNormal" style='text-align:justify'>In DELI the UAProf
+vocabulary is described using a vocabulary definition file such as
+<span style=
+'font-size: 9.0pt;font-family:"Courier New"'>uaprof_vocab_30may2001.xml</span>found
+in the <span style=
+'font-size:9.0pt;font-family:"Courier New"'>config/vocab</span>
+directory. This describes the attribute name, component,
+collectionType, attributeType and resolution rule of each
+component. The vocabulary description file has the following
+format:</p>
+
+<p class="MsoNormal" style='text-align:justify'>&nbsp;</p>
+
+<p class="MsoBodyText3">&lt;?xml version="1.0"?&gt;</p>
+
+<p class="MsoBodyText3">&lt;vocabspec&gt;</p>
+
+<p class="MsoBodyText3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&lt;attribute&gt;</p>
+
+<p class="MsoBodyText3">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&lt;name&gt;CcppAccept&lt;/name&gt;</p>
+
+<p class="MsoBodyText3">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&lt;component&gt;SoftwarePlatform&lt;/component&gt;</p>
+
+<p class="MsoBodyText3">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&lt;collectionType&gt;Bag&lt;/collectionType&gt;</p>
+
+<p class="MsoBodyText3">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&lt;attributeType&gt;Literal&lt;/attributeType&gt;</p>
+
+<p class="MsoBodyText3">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&lt;resolution&gt;Append&lt;/resolution&gt;</p>
+
+<p class="MsoBodyText3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&lt;/attribute&gt;</p>
+
+<p class="MsoBodyText3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&hellip;</p>
+
+<p class="MsoBodyText3">&lt;/vocabspec&gt;</p>
+
+<p class="MsoBodyText3">&nbsp;</p>
+
+<p class="MsoNormal" style='text-align:justify'>Alternatively DELI
+can read UAProf schema files such as <span style=
+'font-size:9.0pt;font-family:"Courier New"'>ccppschema-20010330.rdfs</span>.
+found in the <span style=
+'font-size:9.0pt;font-family:"Courier New"'>config/vocab</span>
+directory. Note these files are derived from schemas obtained from
+the WAP Forum website but have been corrected for a number of RDF
+errors<a href="#_edn17" name="_ednref17" title=""><span class=
+"MsoEndnoteReference">[17]</span></a>. Currently there is a problem
+with the approach used to describe UAProf vocabularies using RDF
+schema. It is difficult to parse the schemas in RDF or XML as the
+schemas define attributeTypeand resolution in a comments field.
+DELI can parse the comments field to retrieve this information but
+hopefully a better mechanism for this will be proposed in later
+versions of UAProf.</p>
+
+<h3>2.3.2<span style=
+'font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+UAProf W-HTTP Protocol</h3>
+
+<p class="MsoBodyText2">As mentioned previously DELI only
+implements one of the UAProf protocols: transport via W-HTTP
+(Wireless profiled HTTP). An example W-HTTP request using this
+protocol is shown below:</p>
+
+<p class="MsoNormal" style='text-align:justify'>&nbsp;</p>
+
+<p class="MsoBodyText3">GET /ccpp/html/ HTTP/1.1</p>
+
+<p class="MsoBodyText3">Host: localhost</p>
+
+<p class="MsoBodyText3">
+x-wap-profile:"http://localhost:8080/ccpp/profiles/test09defaults.rdf",</p>
+
+<p class="MsoBodyText3" style='text-indent:36.0pt'>
+"1-Rb0sq/nuUFQU75vAjKyiHw=="</p>
+
+<p class="MsoBodyText3">x-wap-profile-diff:1;&lt;?xml
+version="1.0"?&gt;</p>
+
+<p class="MsoBodyText3">&nbsp;&lt;rdf:RDF
+xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#"</p>
+
+<p class="MsoBodyText3">&nbsp;
+xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"</p>
+
+<p class="MsoBodyText3">&nbsp;
+xmlns:prf="http://www.wapforum.org/profiles/UAPROF/ccppschema-20010430#"&gt;</p>
+
+<p class="MsoBodyText3">&nbsp; &lt;rdf:Description
+rdf:ID="MyDeviceProfile"&gt;</p>
+
+<p class="MsoBodyText3">&nbsp;&nbsp;&nbsp;&nbsp;
+&lt;prf:component&gt;</p>
+
+<p class="MsoBodyText3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&lt;rdf:Description rdf:ID="HardwarePlatform"&gt;</p>
+
+<p class="MsoBodyText3">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&lt;rdf:type</p>
+
+<p class="MsoBodyText3">&nbsp;
+rdf:resource="http://www.wapforum.org/profiles/UAPROF/ccppschema-</p>
+
+<p class="MsoBodyText3">&nbsp;&nbsp;&nbsp;
+20010426#HardwarePlatform"/&gt;</p>
+
+<p class="MsoBodyText3">&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&lt;prf:BitsPerPixel&gt;16&lt;/prf:BitsPerPixel&gt;</p>
+
+<p class="MsoBodyText3" style='text-indent:36.0pt'>
+&lt;/rdf:Description&gt;</p>
+
+<p class="MsoBodyText3">&nbsp;&nbsp;&nbsp;&nbsp;
+&lt;/prf:component&gt;</p>
+
+<p class="MsoBodyText3">&nbsp; &lt;/rdf:Description&gt;</p>
+
+<p class="MsoBodyText3">&nbsp;&lt;/rdf:RDF&gt;</p>
+
+<p class="MsoNormal" style='text-align:justify'>&nbsp;</p>
+
+<p class="MsoNormal" style='text-align:justify'>The first two lines
+of this request are standard HTTP and describe the resource that is
+being requested by the client, <span style=
+'font-size:9.0pt;font-family: "Courier New"'>http://localhost/ccpp/html</span>,
+and the method being used to make the request, <span style=
+'font-size:9.0pt; font-family:"Courier New"'>GET</span>, and the
+protocol being used <span style=
+'font-size:9.0pt;font-family:"Courier New"'>HTTP/1.1</span>. The
+remaining lines of the request describe the device delivery
+context. This is specified using a profile reference and a
+profile-diff. The profile is referenced via the <span style=
+'font-size:9.0pt; font-family:"Courier New"'>x-wap-profile</span>
+line and has the URI</p>
+
+<p class="MsoNormal" style='text-align:justify'>&nbsp;</p>
+
+<p class="MsoNormal" style='text-align:justify'><span style=
+'font-size:9.0pt;font-family:"Courier New"'>http://localhost:8080/ccpp/profiles/test09defaults.rdf</span>.</p>
+
+<p class="MsoNormal" style='text-align:justify'>&nbsp;</p>
+
+<p class="MsoNormal" style='text-align:justify'>After the profile
+reference, there is a value <span style=
+'font-size:9.0pt; font-family:"Courier New"'>1-Rb0sq/nuUFQU75vAjKyiHw==</span>known
+as a <i>profile-diff digest</i><span style=
+'font-size:10.0pt;font-family:"Courier New"'>.</span>The first part
+of the profile-diff-digest, <span style=
+'font-size:9.0pt;font-family:"Courier New"'>1-</span>, is the
+<i>profile-diff sequence number</i>. This is used to indicate the
+order of the profile-diffs and to indicate which profile-diff the
+profile-diff digest refers to. The remainder of the profile-diff
+digest is generated by applying the MD5 message digest algorithm<a
+href="#_edn18" name="_ednref18" title=""><span class=
+"MsoEndnoteReference">[18]</span></a> and Base64 algorithm<a href=
+"#_edn19" name="_ednref19" title=""><span class=
+"MsoEndnoteReference">[19]</span></a> to the corresponding
+profile-diff. The MD5 algorithm takes as input a message of
+arbitary length and produces as output a 128-bit
+&ldquo;fingerprint&rdquo; or &ldquo;message-digest&rdquo; of the
+input. The Base64 algorithm takes as input arbitary binary data and
+produces as output printable encoding data.</p>
+
+<p class="MsoNormal" style='text-align:justify'>&nbsp;</p>
+
+<p class="MsoNormal" style='text-align:justify'>After the
+profile-diff digest, the next line contains the <span style=
+'font-size:9.0pt;font-family:"Courier New"'>x-wap-profile-diff</span>.
+This request header field also has a profile-diff sequence number
+which indicates the processing order and that this profile-diff
+corresponds to the previous profile-diff-digest. The profile-diff
+itself consists of the XML fragment which spans the remainder of
+the request. Multi-line request header fields are permitted by the
+HTTP/1.1 specification<a href="#_edn20" name="_ednref20" title=
+""><span class="MsoEndnoteReference">[20]</span></a> as long as
+each subsequent line starts with either a tab character or a
+whitespace. Note not all servlet engines, for example early
+versions of Tomcat, fully support the HTTP/1.1 specification so may
+not allow multi-line request header fields.&nbsp;</p>
+
+<p class="MsoNormal" style='text-align:justify'>&nbsp;</p>
+
+<p class="MsoNormal" style='text-align:justify'>In addition to
+<span style=
+'font-size:9.0pt;font-family:"Courier New"'>x-wap-profile</span>
+and <span style=
+'font-size:9.0pt;font-family:"Courier New"'>x-wap-profile-diff</span>
+W-HTTP protocol adds a third extension header primarily used in
+responses. This header, <span style=
+'font-size:9.0pt;font-family: "Courier New"'>x-wap-profile-warning</span>
+indicates whether the server has used the UAProf information when
+generating the response. This can take five possible values: <span
+style='font-size:9.0pt; font-family:"Courier New"'>not
+applied</span>, <span style=
+'font-size:9.0pt;font-family:"Courier New"'>content selection
+applied</span>, <span style=
+'font-size:9.0pt;font-family:"Courier New"'>content generation
+applied</span>, <span style=
+'font-size:9.0pt;font-family:"Courier New"'>transformation
+applied</span> and <span style=
+'font-size:9.0pt;font-family:"Courier New"'>not
+supported</span>.</p>
+
+<h3>2.3.3<span style=
+'font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+Profile Resolution</h3>
+
+<p class="MsoBodyText2">When the server receives a HTTP request
+with UAProf request headers, it has to perform profile resolution
+i.e. retrieve the referenced profile(s) and any further profiles
+referenced via default blocks. It then has to merge these profiles
+and the profile-diffs while applying the UAProf resolution
+rules.</p>
+
+<p class="MsoBodyText2">&nbsp;</p>
+
+<p class="MsoBodyText2">DELI performs profile resolution by
+processing all profiles and profile-diffs in the following order:
+firstly it processes all referenced profiles in the order they are
+present in the <span style=
+'font-size:9.0pt;font-family:"Courier New"'>x-wap-profile</span>
+request header. If a referenced profile references an external
+default profile then that is included where it is referenced. It
+then processes all the profile-diffs. This profile processing
+operation involves building an RDF model for each profile or
+profile-diff and then extracting a list of attributes from the
+model. Each attribute is associated with an attribute name, an
+attribute type, a collection type, a resolution rule and either one
+or more default values or one or more non-default values. These
+attributes are then appended together in the order indicated.</p>
+
+<p class="MsoBodyText2">&nbsp;</p>
+
+<p class="MsoBodyText2">After DELI has produced the vector of
+profile attributes, profile merging is performed which involves
+taking each attribute in order from the list and placing it at a
+specific position in an array determined by the attribute name. If
+a collision occurs i.e. an attribute is already present in the
+array then the two attribute values are merged using the following
+rules:</p>
+
+<p class="MsoNormal">&nbsp;</p>
+
+<ul style='margin-top:0cm' type="disc">
+<li class="MsoNormal" style='text-align:justify;'>If the colliding
+attribute contains one or more default values it is ignored, as
+non-defaults always override defaults and a default takes the value
+of the first default value (or set of default values)
+encountered.</li>
+
+<li class="MsoNormal" style='text-align:justify;'>If the colliding
+attribute contains one or more non-default values and the original
+attribute only contains one or more default values, then the
+colliding attribute overrides the original attribute.</li>
+
+<li class="MsoNormal" style='text-align:justify;'>If the colliding
+attribute and the original attribute both contain non-default
+values, then the resolution rules are used. If the attribute
+resolution rule is <span style=
+'font-size:9.0pt;font-family:"Courier New"'>Locked</span> then
+non-default values cannot be subsequently overridden. If the
+attribute resolution rule is <span style=
+'font-size:9.0pt;font-family: "Courier New"'>Override</span> then
+non-default values can be subsequently overridden. If the attribute
+resolution rule is <span style=
+'font-size: 9.0pt;font-family:"Courier New"'>Append</span> then all
+the non-default values are appended together.</li>
+</ul>
+
+<p class="MsoNormal" style='text-align:justify'>&nbsp;</p>
+
+<p class="MsoNormal" style='text-align:justify'>Note that this
+algorithm does not perform merging in the RDF domain, rather it
+performs merging after the attributes have been retrieved from the
+RDF domain.</p>
+
+<h2>2.4<span style=
+'font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+Content Selection, Generation and Transformation</h2>
+
+<p class="MsoNormal" style='text-align:justify'>Neither the UAProf
+nor the CC/PP specifications consider how the profile should
+select, generate or transform content based on the resolved
+profile. An extensive discussion of this topic is beyond the scope
+of this report so the reader is instead referred to previous
+technical reports by the author discussing content transformation
+by XML / XSLT publishing frameworks<a href="#_edn21" name=
+"_ednref21" title=""><span class=
+"MsoEndnoteReference">[21]</span></a>, content generation using
+constraint optimisation and content negotiation<a href="#_edn22"
+name="_ednref22" title=""><span class=
+"MsoEndnoteReference">[22]</span></a>.</p>
+
+<p class="MsoNormal" style='text-align:justify'>&nbsp;</p>
+
+<p class="MsoNormal" style='text-align:justify'>DELI also currently
+provides no support for content selection, generation or
+transformation. Instead it is proposed that DELI should be
+integrated with existing applications that transform content for
+clients based on the user agent string. From version 2.0.2, Apache
+Cocoon<a href="#_edn23" name="_ednref23" title=""><span class=
+"MsoEndnoteReference">[23]</span></a> provides support for CC/PP
+using DELI. With DELI support enabled it is currently possible for
+XSLT stylesheets to query profile attributes. For more information
+on this, download the latest version of Cocoon from the Cocoon CVS
+and look at the static samples to see the DELI documentation.
+Future work will investigate other ways of using CC/PP information
+in Cocoon. Other frameworks such as Apache Jetspeed<a href=
+"#_edn24" name="_ednref24" title=""><span class=
+"MsoEndnoteReference">[24]</span></a> or Apache Struts<a href=
+"#_edn25" name="_ednref25" title=""><span class=
+"MsoEndnoteReference">[25]</span></a> could be adapted in a similar
+way. Future work will investigate how DELI can be used to support
+device independence.</p>
+
+<h1>3<span style=
+'font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+Installing DELI</h1>
+
+<p class="MsoNormal" style='text-align:justify'>In order to install
+DELI and run the test servlets, you will need a Java installation
+along with a Java Servlet engine that can accept WAR files such as
+Apache Tomcat 4<a href="#_edn26" name="_ednref26" title=""><span
+class="MsoEndnoteReference">[26]</span></a> or Mortbay Jetty<a
+href="#_edn27" name="_ednref27" title=""><span class=
+"MsoEndnoteReference">[27]</span></a>. In addition if you wish to
+do any development or customising of DELI you will need Apache
+ANT<a href="#_edn28" name="_ednref28" title=""><span class=
+"MsoEndnoteReference">[28]</span></a>.&nbsp; By default DELI
+supports the Nokia WAP Toolkit 2.1 (and higher) and Microsoft
+Internet Explorer as legacy devices so it may be helpful to have
+access to one of these.</p>
+
+<p class="MsoNormal" style='text-align:justify'>&nbsp;</p>
+
+<p class="MsoBodyText2">Installation of the DELI test servlet is
+easy. Once you have confirmed your Java Servlet engine is working
+correctly, unzip the DELI distribution file to the directory <span
+style='font-size:9.0pt;font-family:"Courier New"'>DELI_ROOT</span>.
+Copy the file <span style=
+'font-size:9.0pt;font-family:"Courier New"'>DELI_ROOT\warfiles\ccpp.war</span>into
+the <span style=
+'font-size:9.0pt;font-family:"Courier New"'>webapps</span>
+directory of the Servlet engine. For example if you installed
+Tomcat in <span style=
+'font-size:9.0pt;font-family:"Courier New"'>c:\apps32\tomcat</span>
+then you need to copy <span style=
+'font-size:9.0pt; font-family:"Courier New"'>ccpp.war</span> to
+<span style=
+'font-size:9.0pt;font-family:"Courier New"'>c:\apps32\tomcat\webapps\ccpp.war</span>.
+Start the servlet engine and use Internet Explorer to check the
+DELI installation is working. If you type the following address
+into MSIE</p>
+
+<p class="MsoBodyText2">&nbsp;</p>
+
+<p class="MsoBodyText3">http://localhost:8080/ccpp/html/</p>
+
+<p class="MsoBodyText2">&nbsp;</p>
+
+<p class="MsoBodyText2">then the browser should display the
+contents of the profile <span style=
+'font-size:9.0pt;font-family: "Courier New"'>profiles\msie.rdf</span>
+in the DELI distribution. In addition by default DELI will output
+debugging information to the Servlet engine console. Alternatively
+if you start the Nokia WAP toolkit, select the WAP 2000 simulator.
+This simulator is UAProf capable but you need to set the
+refererence profile in order to simulate UAProf. To do this select
+&ldquo;device settings&rdquo; from the settings menu. Then select
+the headers in tab in the device settings dialog box. In the text
+box &ldquo;User Agent Profile&rdquo; type the name of an available
+user profile e.g.</p>
+
+<p class="MsoBodyText2">&nbsp;</p>
+
+<p class="MsoBodyText3">
+http://localhost:8080/ccpp/profiles/nokia.rdf</p>
+
+<p class="MsoBodyText2">&nbsp;</p>
+
+<p class="MsoBodyText2">This configures the Nokia toolkit to
+simulate UAProf requests use the profile as a reference profile.
+Then request the following web page in the Nokia browser:</p>
+
+<p class="MsoBodyText2">&nbsp;</p>
+
+<p class="MsoBodyText3">http://localhost:8080/ccpp/wml/</p>
+
+<p class="MsoBodyText2"><span style=
+'font-size:10.0pt; font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class="MsoBodyText2">then the browser should display the
+contents of the profile <span style=
+'font-size:9.0pt;font-family: "Courier New"'>profiles\nokia.rdf</span>
+in the DELI distribution.</p>
+
+<p class="MsoBodyText2">&nbsp;</p>
+
+<p class="MsoBodyText2">Alternatively you can try sending some real
+UAProf requests to the server. To do this, you need to add various
+files to your classpath. Open a Dos/Unix shell and cd to <span
+style='font-size:9.0pt;font-family:"Courier New"'>DELI_ROOT</span>.
+Then set the environment variables <i><span style=
+'font-size:9.0pt;font-family:"Courier New"'>DELI_HOME</span></i>
+and <i><span style=
+'font-size:9.0pt;font-family:"Courier New"'>CATALINA_HOME</span></i>
+to point to the DELI root directory and tomcat root directory
+respectively. For example, in Windows you would execute
+&lsquo;<span style='font-size:8.0pt;font-family:"Courier New"'>set
+DELI_HOME=c:\deli</span>&rsquo; and &lsquo;<span style=
+'font-size:9.0pt;font-family:"Courier New"'>set
+CATALINA_HOME=c:\jakarta-tomcat-4.0.4</span> &lsquo;. Then run
+<span style=
+'font-size:9.0pt;font-family:"Courier New"'>winsetpath.bat</span>
+at the command line (note <span style=
+'font-size:9.0pt; font-family:"Courier New"'>winsetpath.bat</span>
+is Microsoft specific &ndash; for UNIX machines you may have to
+adapt this file). Then type</p>
+
+<p class="MsoBodyText2">&nbsp;</p>
+
+<p class="MsoBodyText2" align="left" style='text-align:left'><span
+style='font-size:9.0pt;font-family:"Courier New"'>java
+com.hp.hpl.deliTest.TestCCPPClient normal
+http://localhost:8080/ccpp/profiles/testprofiles/test09defaults.rdf
+profiles\testprofiles\test09.rdf output.html</span></p>
+
+<p class="MsoBodyText2">&nbsp;</p>
+
+<p class="MsoBodyText2">which sends a HTTP request to the server
+with a profile reference <span style=
+'font-size:9.0pt;font-family: "Courier New"'>&nbsp;http://localhost:8080/ccpp/profiles/testprofiles/test09defaults.rdf</span>
+and uses the file <span style=
+'font-size:9.0pt; font-family:"Courier New"'>profiles\testprofiles\test09.rdf</span>
+as a profile-diff. When it receives a response from the server it
+stores it in <span style=
+'font-size:9.0pt;font-family:"Courier New"'>output.html</span>. To
+view the server response open <span style=
+'font-size:9.0pt;font-family:"Courier New"'>output.html</span> in a
+web browser. For more details of running and testing DELI, see the
+Section 9.</p>
+
+<h2>3.1<span style=
+'font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+Configuring Legacy Devices</h2>
+
+<p class="MsoBodyText2">It is easy to configure DELI to recognise
+legacy devices via user-agent strings. User-agent strings are used
+by web clients to identify themselves when they send requests to
+web servers. This is done primarily for statistical purposes and
+the tracing of protocol violations but does support the automated
+recognition of user agents. For example early Netscape products
+generate user-agent strings that look like this:</p>
+
+<p class="MsoBodyText2">&nbsp;</p>
+
+<p class="MsoBodyText3">User-agent: Mozilla/4.04 (X11; I; SunOS 5.4
+sun4m)</p>
+
+<p class="MsoBodyText2">&nbsp;</p>
+
+<p class="MsoBodyText2">Where the user agent string has the
+following syntax:</p>
+
+<p class="MsoBodyText2">&nbsp;</p>
+
+<p class="MsoBodyText3">Browser / version( platform ;
+security-level; OS-or-CPU description)</p>
+
+<p class="MsoBodyText2">&nbsp;</p>
+
+<p class="MsoBodyText2">The legacy device configuration file maps
+user-agent strings on to profile references on a profile
+repository. In the test applications this is done by the <span
+style=
+'font-size:9.0pt;font-family:"Courier New"'>DELI_ROOT\config\legacyDevice.xml</span>
+file, although it is possible to select a different file via the
+DELI configuration. The legacy device configuration file has the
+following format:</p>
+
+<p class="MsoNormal">&nbsp;</p>
+
+<p class="MsoBodyText3">&lt;?xml version="1.0"?&gt;</p>
+
+<p class="MsoBodyText3">&lt;devices&gt;</p>
+
+<p class="MsoBodyText3">&nbsp; &lt;legacyDevice&gt;</p>
+
+<p class="MsoBodyText3">&nbsp;&nbsp;&nbsp;
+&lt;useragentstring&gt;MSIE&lt;/useragentstring&gt;</p>
+
+<p class="MsoBodyText3">&nbsp;&nbsp;&nbsp;
+&lt;profileref&gt;http://www.profiles.org/legacyProfiles/msie.rdf&lt;/profileref&gt;</p>
+
+<p class="MsoBodyText3">&nbsp; &lt;/legacyDevice&gt;</p>
+
+<p class="MsoBodyText3">&nbsp; &lt;legacyDevice&gt;</p>
+
+<p class="MsoBodyText3">&nbsp;&nbsp;&nbsp;
+&lt;useragentstring&gt;mozilla&lt;/useragentstring&gt;</p>
+
+<p class="MsoBodyText3">&nbsp;&nbsp;&nbsp;
+&lt;profileref&gt;resources/deli/legacyProfiles/mozSample.rdf&lt;/profileref&gt;</p>
+
+<p class="MsoBodyText3">&nbsp; &lt;/legacyDevice&gt;</p>
+
+<p class="MsoBodyText3">&lt;/devices&gt;</p>
+
+<p class="MsoBodyText3">&nbsp;</p>
+
+<p class="MsoBodyText2">Where <span style=
+'font-size:9.0pt;font-family:"Courier New"'>useragentstring</span>
+is a device unique string found in the user-agent string of the
+device and <span style=
+'font-size: 9.0pt;font-family:"Courier New"'>profileref</span> is
+either a local file URL for the appropriate profile on a profile
+repository. Note typically part of the user-agent string is used
+rather than the entire string. This is done to avoid problems due
+to cloaking and browser customisation.</p>
+
+<p class="MsoBodyText2">&nbsp;</p>
+
+<p class="MsoBodyText2"><i>Cloaking</i> is when a device or browser
+(e.g. Microsoft Internet Explorer) claims to be another browser
+(e.g. Mozilla) in order to ensure web servers will send it the
+correct content. <i>Browser customisation</i> is when the device
+manufacturer or the owner can change the user-agent string to add
+the company name. This means identical browsers may not have the
+same user agent string. In order to avoid confusion caused by
+cloaking and customisation it is necessary to think carefully about
+how much of the user-agent string to use and the order of legacy
+devices in the legacy device file. For example when creating a
+legacy device file it is a good idea to have an Internet Explorer
+legacy device before a Netscape legacy device as they both contain
+the user agent string Mozilla, but Internet Explorer will also
+contain the user agent string MSIE so it is possible to identify IE
+first.</p>
+
+<h2>3.2<span style=
+'font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+Rebuilding DELI</h2>
+
+<p class="MsoNormal" style='text-align:justify'>If you change any
+of the files e.g. configuration files or need to alter any of the
+source files it is necessary to rebuild the DELI web archive (WAR)
+file. In order to do this, just change to the <span style=
+'font-size:9.0pt; font-family:"Courier New"'>DELI_ROOT</span>
+directory and type <span style=
+'font-size:9.0pt;font-family:"Courier New"'>ant</span> at the
+command line. This takes the file <span style=
+'font-size:9.0pt;font-family:"Courier New"'>build.xml</span> which
+builds the WAR file. Then to redeploy DELI you need to stop your
+Servlet engine, delete the <span style=
+'font-size:9.0pt; font-family:"Courier New"'>ccpp</span> directory
+in the <span style=
+'font-size: 9.0pt;font-family:"Courier New"'>webapps</span>
+directory then copy the new <span style=
+'font-size:9.0pt;font-family:"Courier New"'>ccpp.war</span> file to
+the <span style=
+'font-size:9.0pt;font-family:"Courier New"'>webapps</span>
+directory. Now restart the Servlet engine.</p>
+
+<h1>4<span style=
+'font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+Workspaces</h1>
+
+<p class="MsoBodyText2">DELI uses the concept of a workspace
+configured to interpret profiles that use certain vocabularies, a
+set of certain resolution rules and requests that use a certain
+variant of HTTP. In addition the workspace contains a cache of
+referenced profiles, information about the vocabularies in use and
+the legacy device database. A workspace is configured using a
+configuration file such as <span style=
+'font-size:9.0pt;font-family:"Courier New"'>DELI_ROOT\config\deliConfig.xml</span>.
+The file is written in XML in the following format:</p>
+
+<p class="MsoBodyText2">&nbsp;</p>
+
+<p class="MsoBodyText3">&lt;?xml version="1.0"?&gt;</p>
+
+<p class="MsoBodyText3">&lt;deli&gt;</p>
+
+<p class="MsoBodyText3">
+&nbsp;&lt;legacyDeviceFile&gt;config/legacyDevice.xml&lt;/legacyDeviceFile&gt;</p>
+
+<p class="MsoBodyText3">&nbsp;&lt;debug&gt;false&lt;/debug&gt;</p>
+
+<p class="MsoBodyText3">
+&nbsp;&lt;printDefaults&gt;false&lt;/printDefaults&gt;</p>
+
+<p class="MsoBodyText3">
+&nbsp;&lt;printProfileBeforeMerge&gt;true&lt;/printProfileBeforeMerge&gt;</p>
+
+<p class="MsoBodyText3">
+&nbsp;&lt;processUndefinedAttributes&gt;true&lt;/processUndefinedAttributes&gt;</p>
+
+<p class="MsoBodyText3">
+&nbsp;&lt;useCapabilityClasses&gt;true&lt;/useCapabilityClasses&gt;</p>
+
+<p class="MsoBodyText3">
+&nbsp;&lt;capabilityClassFile&gt;config/capClass.xml&lt;/capabilityClassFile&gt;</p>
+
+<p class="MsoBodyText3">
+&nbsp;&lt;namespaceConfigFile&gt;config/namespaceConfig.xml&lt;/namespaceConfigFile&gt;</p>
+
+<p class="MsoBodyText3">&lt;/deli&gt;</p>
+
+<p class="MsoBodyText2">&nbsp;</p>
+
+<p class="MsoBodyText2">This file can contain caching, debugging,
+legacy device, protocol and vocabulary configuration directives as
+detailed in the subsequent sections.</p>
+
+<h2>4.1<span style=
+'font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+Caching options</h2>
+
+<p class="MsoBodyText2">The caching options control the way the
+workspace caches referenced profiles. DELI caches referenced
+profiles but not profile-diffs. This is because referenced profiles
+are associated with a unique identifier (the referenced profile
+URL) but profile-diffs are not. DELI can either cache profiles
+indefinitely or update stale profiles after a set interval. It is
+also possible to configure the maximum size of the profile
+cache.</p>
+
+<p class="MsoNormal" style='text-align:justify'>&nbsp;</p>
+
+<table border="1" cellspacing="0" cellpadding="0" width="559"
+style='width:419.4pt; border-collapse:collapse;border:none;'>
+<tr>
+<td width="199" valign="top" style=
+'width:149.4pt;border:solid black .75pt; padding:0cm 5.4pt 0cm 5.4pt'>
+<p class="MsoBodyText2" align="center" style='text-align:center'>
+<b>Element Name</b></p>
+</td>
+<td width="144" valign="top" style=
+'width:108.0pt;border:solid black .75pt; border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+<p class="MsoBodyText2" align="center" style='text-align:center'>
+<b>Default Value</b></p>
+</td>
+<td width="216" valign="top" style=
+'width:162.0pt;border:solid black .75pt; border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+<p class="MsoBodyText2" align="center" style='text-align:center'>
+<b>Description</b></p>
+</td>
+</tr>
+
+<tr>
+<td width="199" valign="top" style=
+'width:149.4pt;border:solid black .75pt; border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+<p class="MsoBodyText3">MaxCachedProfileLifetime</p>
+</td>
+<td width="144" valign="top" style=
+'width:108.0pt;border-top:none;border-left: none;border-bottom:solid black .75pt;border-right:solid black .75pt; padding:0cm 5.4pt 0cm 5.4pt'>
+<p class="MsoBodyText3">24 hours</p>
+</td>
+<td width="216" valign="top" style=
+'width:162.0pt;border-top:none;border-left: none;border-bottom:solid black .75pt;border-right:solid black .75pt; padding:0cm 5.4pt 0cm 5.4pt'>
+<p class="MsoBodyText2">The maximum lifetime of a cached profile in
+hours.</p>
+</td>
+</tr>
+
+<tr>
+<td width="199" valign="top" style=
+'width:149.4pt;border:solid black .75pt; border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+<p class="MsoBodyText3">MaxCacheSize</p>
+</td>
+<td width="144" valign="top" style=
+'width:108.0pt;border-top:none;border-left: none;border-bottom:solid black .75pt;border-right:solid black .75pt; padding:0cm 5.4pt 0cm 5.4pt'>
+<p class="MsoBodyText3">100</p>
+</td>
+<td width="216" valign="top" style=
+'width:162.0pt;border-top:none;border-left: none;border-bottom:solid black .75pt;border-right:solid black .75pt; padding:0cm 5.4pt 0cm 5.4pt'>
+<p class="MsoBodyText2">The maximum number of profiles in the
+profile cache.</p>
+</td>
+</tr>
+
+<tr>
+<td width="199" valign="top" style=
+'width:149.4pt;border:solid black .75pt; border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+<p class="MsoBodyText3">RefreshStaleProfiles</p>
+</td>
+<td width="144" valign="top" style=
+'width:108.0pt;border-top:none;border-left: none;border-bottom:solid black .75pt;border-right:solid black .75pt; padding:0cm 5.4pt 0cm 5.4pt'>
+<p class="MsoBodyText3">false</p>
+</td>
+<td width="216" valign="top" style=
+'width:162.0pt;border-top:none;border-left: none;border-bottom:solid black .75pt;border-right:solid black .75pt; padding:0cm 5.4pt 0cm 5.4pt'>
+<p class="MsoBodyText2">Do we refresh cached profiles after the
+maximum lifetime has expired?</p>
+</td>
+</tr>
+</table>
+
+<h2>4.2<span style=
+'font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+Debugging options</h2>
+
+<p class="MsoBodyText2">The debugging options are used to control
+the information that DELI prints to the Servlet engine console.</p>
+
+<p class="MsoNormal" style='text-align:justify'>&nbsp;</p>
+
+<table border="1" cellspacing="0" cellpadding="0" width="559"
+style='width:419.4pt; border-collapse:collapse;border:none;'>
+<tr>
+<td width="199" valign="top" style=
+'width:149.4pt;border:solid black .75pt; padding:0cm 5.4pt 0cm 5.4pt'>
+<p class="MsoBodyText2" align="center" style='text-align:center'>
+<b>Element Name</b></p>
+</td>
+<td width="144" valign="top" style=
+'width:108.0pt;border:solid black .75pt; border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+<p class="MsoBodyText2" align="center" style='text-align:center'>
+<b>Default Value</b></p>
+</td>
+<td width="216" valign="top" style=
+'width:162.0pt;border:solid black .75pt; border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+<p class="MsoBodyText2" align="center" style='text-align:center'>
+<b>Description</b></p>
+</td>
+</tr>
+
+<tr>
+<td width="199" valign="top" style=
+'width:149.4pt;border:solid black .75pt; border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+<p class="MsoBodyText3">Debug</p>
+</td>
+<td width="144" valign="top" style=
+'width:108.0pt;border-top:none;border-left: none;border-bottom:solid black .75pt;border-right:solid black .75pt; padding:0cm 5.4pt 0cm 5.4pt'>
+<p class="MsoBodyText3">true</p>
+</td>
+<td width="216" valign="top" style=
+'width:162.0pt;border-top:none;border-left: none;border-bottom:solid black .75pt;border-right:solid black .75pt; padding:0cm 5.4pt 0cm 5.4pt'>
+<p class="MsoBodyText2">Is the automatic debug log information
+turned on?</p>
+</td>
+</tr>
+
+<tr>
+<td width="199" valign="top" style=
+'width:149.4pt;border:solid black .75pt; border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+<p class="MsoBodyText3">printDefaults</p>
+</td>
+<td width="144" valign="top" style=
+'width:108.0pt;border-top:none;border-left: none;border-bottom:solid black .75pt;border-right:solid black .75pt; padding:0cm 5.4pt 0cm 5.4pt'>
+<p class="MsoBodyText3">true</p>
+</td>
+<td width="216" valign="top" style=
+'width:162.0pt;border-top:none;border-left: none;border-bottom:solid black .75pt;border-right:solid black .75pt; padding:0cm 5.4pt 0cm 5.4pt'>
+<p class="MsoBodyText2">Print both default and override values of
+attributes for debugging purposes?</p>
+</td>
+</tr>
+
+<tr>
+<td width="199" valign="top" style=
+'width:149.4pt;border:solid black .75pt; border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+<p class="MsoBodyText3">printProfileBeforeMerge</p>
+</td>
+<td width="144" valign="top" style=
+'width:108.0pt;border-top:none;border-left: none;border-bottom:solid black .75pt;border-right:solid black .75pt; padding:0cm 5.4pt 0cm 5.4pt'>
+<p class="MsoBodyText3">false</p>
+</td>
+<td width="216" valign="top" style=
+'width:162.0pt;border-top:none;border-left: none;border-bottom:solid black .75pt;border-right:solid black .75pt; padding:0cm 5.4pt 0cm 5.4pt'>
+<p class="MsoBodyText2">Print the profile before merging for
+debugging purposes?</p>
+</td>
+</tr>
+</table>
+
+<h2>4.3<span style=
+'font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+Legacy device options</h2>
+
+<p class="MsoBodyText2">As already mentioned DELI can support
+legacy devices by recognising the user-agent string supplied by a
+client and mapping it on to a profile. In order to use this
+facility it is necessary to supply an XML file that contains
+information about legacy device user-agent strings and the
+corresponding profile URLs.</p>
+
+<p class="MsoNormal">&nbsp;</p>
+
+<table border="1" cellspacing="0" cellpadding="0" width="559"
+style='width:419.4pt; border-collapse:collapse;border:none;'>
+<tr>
+<td width="163" valign="top" style=
+'width:122.4pt;border:solid black .75pt; padding:0cm 5.4pt 0cm 5.4pt'>
+<p class="MsoBodyText2" align="center" style='text-align:center'>
+<b>Element Name</b></p>
+</td>
+<td width="192" valign="top" style=
+'width:144.0pt;border:solid black .75pt; border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+<p class="MsoBodyText2" align="center" style='text-align:center'>
+<b>Default Value</b></p>
+</td>
+<td width="204" valign="top" style=
+'width:153.0pt;border:solid black .75pt; border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+<p class="MsoBodyText2" align="center" style='text-align:center'>
+<b>Description</b></p>
+</td>
+</tr>
+
+<tr>
+<td width="163" valign="top" style=
+'width:122.4pt;border:solid black .75pt; border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+<p class="MsoBodyText3">supportLegacyDevices</p>
+</td>
+<td width="192" valign="top" style=
+'width:144.0pt;border-top:none;border-left: none;border-bottom:solid black .75pt;border-right:solid black .75pt; padding:0cm 5.4pt 0cm 5.4pt'>
+<p class="MsoBodyText3">true</p>
+</td>
+<td width="204" valign="top" style=
+'width:153.0pt;border-top:none;border-left: none;border-bottom:solid black .75pt;border-right:solid black .75pt; padding:0cm 5.4pt 0cm 5.4pt'>
+<p class="MsoBodyText2">Is the legacy device database turned
+on?</p>
+</td>
+</tr>
+
+<tr>
+<td width="163" valign="top" style=
+'width:122.4pt;border:solid black .75pt; border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+<p class="MsoBodyText3">legacyDeviceFile</p>
+</td>
+<td width="192" valign="top" style=
+'width:144.0pt;border-top:none;border-left: none;border-bottom:solid black .75pt;border-right:solid black .75pt; padding:0cm 5.4pt 0cm 5.4pt'>
+<p class="MsoBodyText3">config/legacyDevice.xml</p>
+</td>
+<td width="204" valign="top" style=
+'width:153.0pt;border-top:none;border-left: none;border-bottom:solid black .75pt;border-right:solid black .75pt; padding:0cm 5.4pt 0cm 5.4pt'>
+<p class="MsoBodyText2">The file containing the legacy device
+database.</p>
+</td>
+</tr>
+</table>
+
+<h2>4.4<span style=
+'font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+Protocol options</h2>
+
+<p class="MsoBodyText2">DELI has a number of protocol options.
+Firstly it is possible to switch on whitespace normalisation in
+profile-diffs prior to calculating the profile-diff-digest in order
+to accommodate a modification to the UAProf protocol that has been
+proposed by IBM. When a server receives the request, it
+recalculates the profile-diff-digest. If additional whitespaces
+have been added to the request header by a proxy then there is a
+danger the two profile-diff digests will differ so the profile-diff
+will be rejected. Therefore IBM have proposed the following
+normalisation procedure prior to profile-diff digest calculation:
+all leading and trailing white spaces are eliminated (white space
+as defined in RFC 2616 section 2.2). Then all non-trailing or
+non-leading linear white space contained in the profile
+description, including line folding of multiple HTTP header lines,
+is replaced with one single space (SP) character. This implies that
+property values, represented as XML attributes or XML element
+character data, MUST be adhering to white space compression as
+mandated in RFC 2616 section 2.2.</p>
+
+<p class="MsoBodyText2">&nbsp;</p>
+
+<p class="MsoBodyText2">Secondly there are two options that
+determine the type of objects returned by three Workspace factory
+methods. <span style=
+'font-size: 9.0pt;font-family:"Courier New"'>ccppReaderType</span>
+is used to select the object returned by the <span style=
+'font-size:9.0pt;font-family:"Courier New"'>processProfileFactory()</span>
+method and protocol is used to select the object returned by the
+<span style=
+'font-size:9.0pt;font-family:"Courier New"'>processHttpFactory()</span>
+method and the <span style=
+'font-size:9.0pt; font-family:"Courier New"'>profileAttributeFactory()</span>
+method. These options are provided so it will be easy to integrate
+other RDF processors and other protocols in the future. At present
+the default values are the only available options.</p>
+
+<p class="MsoNormal">&nbsp;</p>
+
+<table border="1" cellspacing="0" cellpadding="0" width="559"
+style='width:419.4pt; border-collapse:collapse;border:none;'>
+<tr>
+<td width="199" valign="top" style=
+'width:149.4pt;border:solid black .75pt; padding:0cm 5.4pt 0cm 5.4pt'>
+<p class="MsoBodyText2" align="center" style='text-align:center'>
+<b>Element Name</b></p>
+</td>
+<td width="144" valign="top" style=
+'width:108.0pt;border:solid black .75pt; border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+<p class="MsoBodyText2" align="center" style='text-align:center'>
+<b>Default Value</b></p>
+</td>
+<td width="216" valign="top" style=
+'width:162.0pt;border:solid black .75pt; border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+<p class="MsoBodyText2" align="center" style='text-align:center'>
+<b>Description</b></p>
+</td>
+</tr>
+
+<tr>
+<td width="199" valign="top" style=
+'width:149.4pt;border:solid black .75pt; border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+<p class="MsoBodyText3">normaliseWhitespaceInProfileDiff</p>
+</td>
+<td width="144" valign="top" style=
+'width:108.0pt;border-top:none;border-left: none;border-bottom:solid black .75pt;border-right:solid black .75pt; padding:0cm 5.4pt 0cm 5.4pt'>
+<p class="MsoBodyText3">true</p>
+</td>
+<td width="216" valign="top" style=
+'width:162.0pt;border-top:none;border-left: none;border-bottom:solid black .75pt;border-right:solid black .75pt; padding:0cm 5.4pt 0cm 5.4pt'>
+<p class="MsoBodyText2">Is whitespace normalisation of the
+profile-diff prior to calculating the profile-diff-digest turned
+on?</p>
+</td>
+</tr>
+
+<tr>
+<td width="199" valign="top" style=
+'width:149.4pt;border:solid black .75pt; border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+<p class="MsoBodyText3">ccppReaderType</p>
+</td>
+<td width="144" valign="top" style=
+'width:108.0pt;border-top:none;border-left: none;border-bottom:solid black .75pt;border-right:solid black .75pt; padding:0cm 5.4pt 0cm 5.4pt'>
+<p class="MsoBodyText3">jena</p>
+</td>
+<td width="216" valign="top" style=
+'width:162.0pt;border-top:none;border-left: none;border-bottom:solid black .75pt;border-right:solid black .75pt; padding:0cm 5.4pt 0cm 5.4pt'>
+<p class="MsoBodyText2">The CC/PP reader to use for processing
+profiles.</p>
+</td>
+</tr>
+
+<tr>
+<td width="199" valign="top" style=
+'width:149.4pt;border:solid black .75pt; border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+<p class="MsoBodyText3">protocol</p>
+</td>
+<td width="144" valign="top" style=
+'width:108.0pt;border-top:none;border-left: none;border-bottom:solid black .75pt;border-right:solid black .75pt; padding:0cm 5.4pt 0cm 5.4pt'>
+<p class="MsoBodyText3">UAProf</p>
+</td>
+<td width="216" valign="top" style=
+'width:162.0pt;border-top:none;border-left: none;border-bottom:solid black .75pt;border-right:solid black .75pt; padding:0cm 5.4pt 0cm 5.4pt'>
+<p class="MsoBodyText2">The protocol used for profile
+transmission.</p>
+</td>
+</tr>
+</table>
+
+<h2>4.5<span style=
+'font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+Vocabulary options</h2>
+
+<p class="MsoBodyText2">DELI has a number of vocabulary options.
+Firstly it is possible to configure the vocabularies using an XML
+file (by default <span style=
+'font-size:9.0pt;font-family:"Courier New"'>namespaceConfig.xml</span>).
+This file contains information about specific CC/PP vocabulary
+configuration i.e. references to vocabulary namespace URIs and
+their associated XML or RDF schema file containing the attribute
+names, the components they belong to, the collection type, the
+attribute type and the resolution rule used by a specific
+vocabulary.</p>
+
+<p class="MsoBodyText2">Secondly it is possible to specify the URI
+to be used for the RDF namespace and the CC/PP or UAProf namespace.
+This is important because as the specifications are revised they
+adopt new namespaces. Thirdly it is possible to set the string used
+to represent components in the vocabulary.</p>
+
+<p class="MsoBodyText2">&nbsp;</p>
+
+<table border="1" cellspacing="0" cellpadding="0" width="559"
+style='width:419.4pt; border-collapse:collapse;border:none;'>
+<tr>
+<td width="199" valign="top" style=
+'width:149.4pt;border:solid black .75pt; padding:0cm 5.4pt 0cm 5.4pt'>
+<p class="MsoBodyText2" align="center" style='text-align:center'>
+<b>Element Name</b></p>
+</td>
+<td width="144" valign="top" style=
+'width:108.0pt;border:solid black .75pt; border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+<p class="MsoBodyText2" align="center" style='text-align:center'>
+<b>Default Value</b></p>
+</td>
+<td width="216" valign="top" style=
+'width:162.0pt;border:solid black .75pt; border-left:none;padding:0cm 5.4pt 0cm 5.4pt'>
+<p class="MsoBodyText2" align="center" style='text-align:center'>
+<b>Description</b></p>
+</td>
+</tr>
+
+<tr>
+<td width="199" valign="top" style=
+'width:149.4pt;border:solid black .75pt; border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+<p class="MsoBodyText3">namespaceConfigFile</p>
+</td>
+<td width="144" valign="top" style=
+'width:108.0pt;border-top:none;border-left: none;border-bottom:solid black .75pt;border-right:solid black .75pt; padding:0cm 5.4pt 0cm 5.4pt'>
+<p class="MsoBodyText3">config/namespaceConfig.xml</p>
+</td>
+<td width="216" valign="top" style=
+'width:162.0pt;border-top:none;border-left: none;border-bottom:solid black .75pt;border-right:solid black .75pt; padding:0cm 5.4pt 0cm 5.4pt'>
+<p class="MsoBodyText2">The file containing the mapping of
+vocabulary namespace URIs to XML/RDF schema vocabulary
+specifications.</p>
+</td>
+</tr>
+
+<tr>
+<td width="199" valign="top" style=
+'width:149.4pt;border:solid black .75pt; border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+<p class="MsoBodyText3">RdfUri</p>
+</td>
+<td width="144" valign="top" style=
+'width:108.0pt;border-top:none;border-left: none;border-bottom:solid black .75pt;border-right:solid black .75pt; padding:0cm 5.4pt 0cm 5.4pt'>
+<p class="MsoBodyText3">
+http://www.w3.org/1999/02/22-rdf-syntax-ns#</p>
+</td>
+<td width="216" valign="top" style=
+'width:162.0pt;border-top:none;border-left: none;border-bottom:solid black .75pt;border-right:solid black .75pt; padding:0cm 5.4pt 0cm 5.4pt'>
+<p class="MsoBodyText2">The namespace used for RDF constructs.</p>
+</td>
+</tr>
+
+<tr>
+<td width="199" valign="top" style=
+'width:149.4pt;border:solid black .75pt; border-top:none;padding:0cm 5.4pt 0cm 5.4pt'>
+<p class="MsoBodyText3">ComponentProperty</p>
+</td>
+<td width="144" valign="top" style=
+'width:108.0pt;border-top:none;border-left: none;border-bottom:solid black .75pt;border-right:solid black .75pt; padding:0cm 5.4pt 0cm 5.4pt'>
+<p class="MsoBodyText3">component</p>
+</td>
+<td width="216" valign="top" style=
+'width:162.0pt;border-top:none;border-left: none;border-bottom:solid black .75pt;border-right:solid black .75pt; padding:0cm 5.4pt 0cm 5.4pt'>
+<p class="MsoBodyText2">The name for components.</p>
+</td>
+</tr>
+</table>
+
+<p class="MsoBodyText2">&nbsp;</p>
+
+<p class="MsoBodyText2">The <span style=
+'font-size:9.0pt; font-family:"Courier New"'>namespaceConfigFile</span>
+referenced by <span style=
+'font-size:9.0pt;font-family:"Courier New"'>deliConfig.xml</span>
+above takes the following format:</p>
+
+<p class="MsoBodyText2">&nbsp;</p>
+
+<p class="MsoBodyText3">&lt;?xml version="1.0"?&gt;</p>
+
+<p class="MsoBodyText3">&lt;namespaceConfig&gt;</p>
+
+<p class="MsoBodyText3">&lt;namespaceDeclaration&gt;</p>
+
+<p class="MsoBodyText3">&nbsp; &lt;namespace&gt;</p>
+
+<p class="MsoBodyText3">&nbsp;&nbsp;
+&lt;uri&gt;http://www.wapforum.org/UAPROF/ccppschema-20000405#&lt;/uri&gt;</p>
+
+<p class="MsoBodyText3">&nbsp;&nbsp;
+&lt;vocabularyFile&gt;config/vocab/uaprof_vocab_05apr2000.xml&lt;/vocabularyFile&gt;</p>
+
+<p class="MsoBodyText3">&nbsp; &lt;/namespace&gt;</p>
+
+<p class="MsoBodyText3">&nbsp; &lt;namespace&gt;</p>
+
+<p class="MsoBodyText3">&nbsp;&nbsp;
+&lt;uri&gt;http://www.wapforum.org/UAPROF/ccppschema-20010330#&lt;/uri&gt;</p>
+
+<p class="MsoBodyText3">&nbsp;&nbsp;
+&lt;aliasUri&gt;http://www.wapforum.org/UAPROF/ccppschema-19991014#&lt;/aliasUri&gt;</p>
+
+<p class="MsoBodyText3">&nbsp;&nbsp;
+&lt;aliasUri&gt;http://www.wapforum.org/UAPROF/ccppschema-20010430#&lt;/aliasUri&gt;</p>
+
+<p class="MsoBodyText3">&nbsp;&nbsp;
+&lt;schemaVocabularyFile&gt;config/vocab/ccppschema-20010330.rdfs&lt;/schemaVocabularyFile&gt;</p>
+
+<p class="MsoBodyText3">&nbsp; &lt;/namespace&gt;</p>
+
+<p class="MsoBodyText3">&lt;/namespaceDeclaration&gt;</p>
+
+<p class="MsoBodyText3">&lt;/namespaceConfig&gt;</p>
+
+<p class="MsoNormal" style='text-align:justify'>&nbsp;</p>
+
+<p class="MsoBodyText2">Each <span style=
+'font-size:9.0pt;font-family:"Courier New"'>namespace</span>
+defines a specific vocabulary definition and associates it with a
+URI specified by <span style=
+'font-size:9.0pt;font-family:"Courier New"'>uri</span>. Due to the
+misuse of namespaces, a regular problem is the use of multiple
+namespace URIs to refer to the same vocabulary. To overcome this an
+<span style=
+'font-size:9.0pt;font-family:"Courier New"'>aliasUri</span> element
+has been introduced for specifying alternative URIs that should
+also map to this vocabulary definition. Either a <span style=
+'font-size:9.0pt;font-family:"Courier New"'>vocabularyFile</span>
+(The file containing the vocabulary specification in XML) or a
+<span style=
+'font-size:9.0pt;font-family:"Courier New"'>schemaVocabularyFile</span>
+(The file containing the vocabulary specification as an UAProf RDF
+Schema.) must also be specified.</p>
+
+<h1>5<span style=
+'font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+Creating a DELI servlet</h1>
+
+<p class="MsoBodyText2">In order to understand how to construct
+servlets with DELI, the reader is encouraged to examine the example
+servlets in the DELI distribution:</p>
+
+<p class="MsoBodyText2">&nbsp;</p>
+
+<p class="MsoBodyText2"><span style=
+'font-size:9.0pt; font-family:"Courier New"'>DELI_ROOT\src\com\hp\hpl\deliTest\TestCCPPServlet.java</span></p>
+
+<p class="MsoBodyText2"><span style=
+'font-size:9.0pt; font-family:"Courier New"'>DELI_ROOT\src\com\hp\hpl\deliTest\TestCCPPServletWML.java</span></p>
+
+<p class="MsoBodyText2">&nbsp;</p>
+
+<p class="MsoBodyText2">In order to create a Java servlet that uses
+the DELI library it is necessary to include the DELI package,
+e.g.</p>
+
+<p class="MsoNormal">&nbsp;</p>
+
+<p class="MsoBodyText3">import com.hp.hpl.deli.*;</p>
+
+<p class="MsoBodyText3">&nbsp;</p>
+
+<p class="MsoBodyText2">and to include a servletContext as a class
+data member e.g.</p>
+
+<p class="MsoBodyText3">&nbsp;</p>
+
+<p class="MsoBodyText3">ServletContext servletContext;</p>
+
+<p class="MsoBodyText2">&nbsp;</p>
+
+<p class="MsoBodyText2">Then when the servlet is initialized query
+the servletContext to determine the path to the servlet and use
+this information to create the workspace e.g.</p>
+
+<p class="MsoBodyText2">&nbsp;</p>
+
+<p class="MsoBodyText3">public void init(ServletConfig config)
+throws ServletException</p>
+
+<p class="MsoBodyText3">{</p>
+
+<p class="MsoBodyText3">&nbsp;super.init(config);</p>
+
+<p class="MsoBodyText3">&nbsp;</p>
+
+<p class="MsoBodyText3">&nbsp;try</p>
+
+<p class="MsoBodyText3">&nbsp;{</p>
+
+<p class="MsoBodyText3">&nbsp;</p>
+
+<p class="MsoBodyText3">&nbsp; servletContext =
+config.getServletContext();</p>
+
+<p class="MsoBodyText3">&nbsp;
+Workspace.getInstance().configure(servletContext,"config/deliConfig.xml");</p>
+
+<p class="MsoBodyText3">&nbsp;</p>
+
+<p class="MsoBodyText3">&nbsp;} catch (Exception e) {</p>
+
+<p class="MsoBodyText3">&nbsp;</p>
+
+<p class="MsoBodyText3">&nbsp; try</p>
+
+<p class="MsoBodyText3">&nbsp; {</p>
+
+<p class="MsoBodyText3" style='margin-left:36.0pt'>
+Workspace.getInstance().configure((ServletContext) null,&nbsp;
+"config/deliConfig.xml");</p>
+
+<p class="MsoBodyText3">&nbsp; } catch (Exception f) {</p>
+
+<p class="MsoBodyText3">&nbsp;&nbsp;
+System.out.println(f.toString());</p>
+
+<p class="MsoBodyText3">&nbsp; }</p>
+
+<p class="MsoBodyText3">&nbsp;</p>
+
+<p class="MsoBodyText3">&nbsp;}</p>
+
+<p class="MsoBodyText3">&nbsp;</p>
+
+<p class="MsoBodyText3">}</p>
+
+<p class="MsoBodyText3">&nbsp;</p>
+
+<p class="MsoBodyText2">Once the workspace is initialised (note
+that the Workspace class is a Singleton, and should not be directly
+instantiated, but rather accessed by use of the static method
+getInstance()), profile resolution is achieved by creating a new
+profile using a <span style=
+'font-size:9.0pt;font-family:"Courier New"'>HttpServletRequest</span>
+e.g.</p>
+
+<p class="MsoBodyText2">&nbsp;</p>
+
+<p class="MsoBodyText3">public void doGet(HttpServletRequest req,
+HttpServletResponse res) throws ServletException, IOException</p>
+
+<p class="MsoBodyText3">{</p>
+
+<p class="MsoBodyText3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Profile myProfile = new Profile(req);</p>
+
+<p class="MsoBodyText3">&nbsp;</p>
+
+<p class="MsoBodyText2">Then the <span style=
+'font-size:9.0pt;font-family:"Courier New"'>addWarningHeader()</span>
+can be used to add an <span style=
+'font-size:9.0pt;font-family:"Courier New"'>x-wap-profile-warning</span>
+to the response header e.g.</p>
+
+<p class="MsoBodyText3">&nbsp;</p>
+
+<p class="MsoBodyText3">res =
+UAProfCreateHttpResponse.addWarningHeader(res,
+UAProfCreateHttpResponse.CONTENT_GENERATION_APPLIED);</p>
+
+<p class="MsoBodyText3">}</p>
+
+<p class="MsoBodyText3">&nbsp;</p>
+
+<p class="MsoBodyText2">The profile can be manipulated by using the
+standard Vector methods which will retrieve profile attributes
+e.g.</p>
+
+<p class="MsoBodyText2">&nbsp;</p>
+
+<p class="MsoBodyText3">for (int i = 0; i &lt; myProfile.size();
+i++)</p>
+
+<p class="MsoBodyText3">{</p>
+
+<p class="MsoBodyText3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ProfileAttribute p = (ProfileAttribute)myProfile.get(i);</p>
+
+<p class="MsoBodyText3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+out.println("&lt;TD&gt;"+p.get()+"&lt;/TD&gt;");</p>
+
+<p class="MsoBodyText3">}</p>
+
+<p class="MsoBodyText3">&nbsp;</p>
+
+<p class="MsoBodyText2">Or by directly retrieving a profile
+attribute e.g.</p>
+
+<p class="MsoBodyText2">&nbsp;</p>
+
+<p class="MsoBodyText3">
+System.out.println(myProfile.getAttribute("BrowserName").toString());</p>
+
+<p class="MsoBodyText3">&nbsp;</p>
+
+<p class="MsoBodyText2">In addition it is possible to query profile
+attributes using the <span style=
+'font-size:9.0pt;font-family: "Courier New"'>get()</span>, <span
+style=
+'font-size:9.0pt;font-family:"Courier New"'>getAttribute()</span>,
+<span style=
+'font-size:9.0pt;font-family:"Courier New"'>getCollectionType()</span>,
+<span style=
+'font-size:9.0pt;font-family:"Courier New"'>getComponent()</span>,
+<span style=
+'font-size:9.0pt;font-family:"Courier New"'>getDefaultValue()</span>,
+<span style=
+'font-size:9.0pt;font-family:"Courier New"'>getResolution()</span>,
+<span style=
+'font-size:9.0pt;font-family:"Courier New"'>getType()</span> and
+<span style=
+'font-size:9.0pt;font-family:"Courier New"'>getValue()</span>
+methods. Full details of the DELI API are contained in the Javadoc
+in the <span style=
+'font-size:9.0pt;font-family:"Courier New"'>DELI_ROOT\javadoc\user</span>
+directory which describes the classes and methods exported by the
+DELI package.</p>
+
+<h1>6<span style=
+'font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+Expanding DELI</h1>
+
+<p class="MsoBodyText2">As well as providing an implementation of
+UAProf, DELI has been designed for extensibility so that it can be
+used to experiment with different possible implementations of
+UAProf and CC/PP. This is achieved by the use of two abstract
+classes that allow DELI to be extended so it can cope with new
+vocabularies or protocols. This section will describe these
+abstract classes but developers are also referred to the Javadoc at
+<span style=
+'font-size:9.0pt;font-family:"Courier New"'>DELI_ROOT\javadoc\developer</span>
+directory that details all the internal classes and methods used by
+DELI.</p>
+
+<h2>6.1<span style=
+'font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+ProcessProfile</h2>
+
+<p class="MsoBodyText2">The <span style=
+'font-size:9.0pt; font-family:"Courier New"'>ProcessProfile</span>
+abstract class defines a class with three methods that convert a
+profile from the XML serialised form of RDF to a vector of profile
+attributes. This class has been provided to support experimentation
+with different RDF processors. Currently the Jena framework is used
+to process the profile, but it may be useful to implement profile
+processing using other RDF parsers to test efficiency.
+Alternatively this class could be used to test the relative
+efficiency of profiles serialized directly in XML rather than
+profiles serialized in XML via RDF.</p>
+
+<p class="MsoBodyText2">&nbsp;</p>
+
+<p class="MsoBodyText2">An outline for an implementaiton of this
+abstract class is shown below. The methods accept a String for a
+profile URL, a file containing a profile URL, or a Vector
+containing profiles or profile-diffs as Strings. All the methods
+return a vector of profile attributes prior to resolution. For an
+example implementation, see</p>
+
+<p class="MsoBodyText2"><span style=
+'font-size:9.0pt; font-family:"Courier New"'>DELI_ROOT\src\com\hp\hpl\deli\JenaProcessProfile.java</span></p>
+
+<p class="MsoBodyText2">&nbsp;</p>
+
+<p class="MsoBodyText2">If you create a new implementation of <span
+style=
+'font-size:9.0pt;font-family:"Courier New"'>ProcessProfile</span>
+you will also need to add some code to the <span style=
+'font-size:9.0pt;font-family:"Courier New"'>ProcessProfileFactory</span>
+method in <span style=
+'font-size:9.0pt;font-family: "Courier New"'>Workspace</span>. This
+method uses the <span style=
+'font-size: 9.0pt;font-family:"Courier New"'>ccppReaderType</span>
+setting to determine which type of <span style=
+'font-size:9.0pt;font-family:"Courier New"'>ProcessProfile</span>
+is returned.</p>
+
+<p class="MsoNormal">&nbsp;</p>
+
+<p class="MsoBodyText3">package com.hp.hpl.deli;</p>
+
+<p class="MsoBodyText3">&nbsp;</p>
+
+<p class="MsoBodyText3">class <i>ProcessorType</i>ProcessProfile
+extends ProcessProfile</p>
+
+<p class="MsoBodyText3">{</p>
+
+<p class="MsoBodyText3">&nbsp;</p>
+
+<p class="MsoBodyText3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+protected Vector process(String url)</p>
+
+<p class="MsoBodyText3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {</p>
+
+<p class="MsoBodyText3">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&hellip;</p>
+
+<p class="MsoBodyText3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</p>
+
+<p class="MsoBodyText3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+
+<p class="MsoBodyText3" style='text-indent:36.0pt'>protected Vector
+process(FileReader file)</p>
+
+<p class="MsoBodyText3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {</p>
+
+<p class="MsoBodyText3">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&hellip;</p>
+
+<p class="MsoBodyText3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</p>
+
+<p class="MsoBodyText3">&nbsp;</p>
+
+<p class="MsoBodyText3" style='text-indent:36.0pt'>protected Vector
+process(Vector profileVector)</p>
+
+<p class="MsoBodyText3" style='text-indent:36.0pt'>{</p>
+
+<p class="MsoBodyText3">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&hellip;</p>
+
+<p class="MsoBodyText3" style='text-indent:36.0pt'>}</p>
+
+<p class="MsoBodyText3">}</p>
+
+<p class="MsoBodyText3">&nbsp;</p>
+
+<h2>6.2<span style=
+'font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+ProfileAttribute</h2>
+
+<p class="MsoBodyText2">The <span style=
+'font-size:9.0pt; font-family:"Courier New"'>ProfileAttribute</span>
+class has a single abstract method <span style=
+'font-size:9.0pt;font-family:"Courier New"'>set(ProfileAttribute)</span>
+that performs resolution when an attribute has two values.
+Resolution rules are vocabulary dependent so this mechanism has
+been used so that it is easy to add vocabulary specific resolution.
+An outline for an implementation of this abstract class is shown
+below. For an example implementation, see</p>
+
+<p class="MsoBodyText2"><span style=
+'font-size:9.0pt; font-family:"Courier New"'>DELI_ROOT\src\com\hp\hpl\deli\UAProfProfileAttribute.java</span></p>
+
+<p class="MsoBodyText2">&nbsp;</p>
+
+<p class="MsoBodyText2">If you create a new implementation of <span
+style=
+'font-size:9.0pt;font-family:"Courier New"'>ProfileAttribute</span>
+you will also need to add some code to the <span style=
+'font-size:9.0pt;font-family:"Courier New"'>ProfileAttributeFactory</span>
+method in <span style=
+'font-size:9.0pt;font-family: "Courier New"'>Workspace</span>. This
+method uses the <span style=
+'font-size: 9.0pt;font-family:"Courier New"'>protocol</span>
+setting to determine which type of <span style=
+'font-size:9.0pt;font-family:"Courier New"'>ProfileAttribute</span>
+is returned.</p>
+
+<p class="MsoNormal">&nbsp;</p>
+
+<p class="MsoBodyText3">package com.hp.hpl.deli;</p>
+
+<p class="MsoBodyText3">&nbsp;</p>
+
+<p class="MsoBodyText3">class <i>Vocabulary</i>ProfileAttribute
+extends ProfileAttribute</p>
+
+<p class="MsoBodyText3">{</p>
+
+<p class="MsoBodyText3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+
+<p class="MsoBodyText3" style='text-indent:36.0pt'>
+<i>Vocabulary</i>ProfileAttribute()</p>
+
+<p class="MsoBodyText3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {</p>
+
+<p class="MsoBodyText3">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+super();</p>
+
+<p class="MsoBodyText3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</p>
+
+<p class="MsoBodyText3">&nbsp;</p>
+
+<p class="MsoBodyText3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+protected void set(ProfileAttribute a)</p>
+
+<p class="MsoBodyText3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {</p>
+
+<p class="MsoBodyText3">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&hellip;</p>
+
+<p class="MsoBodyText3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</p>
+
+<p class="MsoBodyText3">}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+
+<h1>7<span style=
+'font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+Conclusions</h1>
+
+<p class="MsoBodyText2">So in conclusion this report has described
+DELI, an open-source server implementation of profile resolution
+for CC/PP. DELI is currently alpha grade software provided to
+demonstrate how CC/PP may be implemented. It is designed to be
+easily extensible and configurable so it may be used as a test-bed
+for prototyping future developments with these specifications. DELI
+will be further developed to ensure compatibility with these
+standards.</p>
+
+<p class="MsoNormal">&nbsp;</p>
+</div>
+
+<div><br clear="all">
+ 
+<hr align="left" size="1" width="33%">
+<div id="edn1">
+<p class="MsoEndnoteText"><a href="#_ednref1" name="_edn1" title=
+""><span class="MsoEndnoteReference">[1]</span></a> Resource
+Description Framework, <a href=
+"http://www.w3.org/RDF/">http://www.w3.org/RDF/</a></p>
+</div>
+
+<div id="edn2">
+<p class="MsoEndnoteText"><a href="#_ednref2" name="_edn2" title=
+""><span class="MsoEndnoteReference">[2]</span></a> Composite
+Capabilities / Preferences Profile, <a href=
+"http://www.w3.org/Mobile/CCPP/">http://www.w3.org/Mobile/CCPP/</a></p>
+</div>
+
+<div id="edn3">
+<p class="MsoEndnoteText"><a href="#_ednref3" name="_edn3" title=
+""><span class="MsoEndnoteReference">[3]</span></a> Wireless
+Application Forum, <a href=
+"http://www.wapforum.org/">http://www.wapforum.org/</a></p>
+</div>
+
+<div id="edn4">
+<p class="MsoEndnoteText"><a href="#_ednref4" name="_edn4" title=
+""><span class="MsoEndnoteReference">[4]</span></a> DELI web-site,
+<a href=
+"http://www-uk.hpl.hp.com/people/marbut/deli/">http://www-uk.hpl.hp.com/people/marbut/deli/</a></p>
+</div>
+
+<div id="edn5">
+<p class="MsoEndnoteText"><a href="#_ednref5" name="_edn5" title=
+""><span class="MsoEndnoteReference">[5]</span></a> RDF Model and
+Syntax Specification, <a href=
+"http://www.w3.org/TR/1999/REC-rdf-syntax-19990222/">http://www.w3.org/TR/1999/REC-rdf-syntax-19990222/</a></p>
+</div>
+
+<div id="edn6">
+<p class="MsoEndnoteText"><a href="#_ednref6" name="_edn6" title=
+""><span class="MsoEndnoteReference">[6]</span></a> RDF Schema
+Specification 1.0, <a href=
+"http://www.w3.org/TR/2000/CR-rdf-schema-20000327/">http://www.w3.org/TR/2000/CR-rdf-schema-20000327/</a></p>
+</div>
+
+<div id="edn7">
+<p class="MsoEndnoteText"><a href="#_ednref7" name="_edn7" title=
+""><span class="MsoEndnoteReference">[7]</span></a> W3C RDF
+Validation service, <a href=
+"http://www.w3.org/RDF/Validator/">http://www.w3.org/RDF/Validator/</a></p>
+</div>
+
+<div id="edn8">
+<p class="MsoEndnoteText"><a href="#_ednref8" name="_edn8" title=
+""><span class="MsoEndnoteReference">[8]</span></a> Jena RDF
+Framework, <a href=
+"http://www.hpl.hp.com/semweb/jena-top.html">http://www.hpl.hp.com/semweb/jena-top.html</a></p>
+</div>
+
+<div id="edn9">
+<p class="MsoEndnoteText"><a href="#_ednref9" name="_edn9" title=
+""><span class="MsoEndnoteReference">[9]</span></a> Jena:
+Implementing the RDF Model and syntax specification, <a href=
+"http://www-uk.hpl.hp.com/people/bwm/papers/20001221-paper/">http://www-uk.hpl.hp.com/people/bwm/papers/20001221-paper/</a></p>
+</div>
+
+<div id="edn10">
+<p class="MsoEndnoteText"><a href="#_ednref10" name="_edn10" title=
+""><span class="MsoEndnoteReference">[10]</span></a> HP Labs
+Semantic Web Activity, <a href=
+"http://www.hpl.hp.com/semweb/">http://www.hpl.hp.com/semweb/</a></p>
+</div>
+
+<div id="edn11">
+<p class="MsoEndnoteText"><a href="#_ednref11" name="_edn11" title=
+""><span class="MsoEndnoteReference">[11]</span></a> CC/PP:
+Structure and Vocabularies, <a href=
+"http://www.w3.org/TR/CCPP-struct-vocab/">http://www.w3.org/TR/CCPP-struct-vocab/</a></p>
+</div>
+
+<div id="edn12">
+<p class="MsoEndnoteText"><a href="#_ednref12" name="_edn12" title=
+""><span class="MsoEndnoteReference">[12]</span></a> CC/PP:
+Requirements and Architecture, <a href=
+"http://www.w3.org/TR/2000/WD-CCPP-ra-20000721/">http://www.w3.org/TR/2000/WD-CCPP-ra-20000721/</a></p>
+</div>
+
+<div id="edn13">
+<p class="MsoEndnoteText"><a href="#_ednref13" name="_edn13" title=
+""><span class="MsoEndnoteReference">[13]</span></a> CC/PP:
+Terminology and Abbreviations, <a href=
+"http://www.w3.org/TR/2000/WD-CCPP-ta-20000721/">http://www.w3.org/TR/2000/WD-CCPP-ta-20000721/</a></p>
+</div>
+
+<div id="edn14">
+<p class="MsoEndnoteText"><a href="#_ednref14" name="_edn14" title=
+""><span class="MsoEndnoteReference">[14]</span></a> CC/PP exchange
+protocol using HTTP Extension Framework, <a href=
+"http://www.w3.org/TR/NOTE-CCPPexchange">http://www.w3.org/TR/NOTE-CCPPexchange</a></p>
+</div>
+
+<div id="edn15">
+<p class="MsoEndnoteText"><a href="#_ednref15" name="_edn15" title=
+""><span class="MsoEndnoteReference">[15]</span></a> Content
+Negotiation Header in HTTP Scenarios, <a href=
+"http://search.ietf.org/internet-drafts/drafts-hjelm-http-cnhttp-scenarios-00.txt">
+http://search.ietf.org/internet-drafts/drafts-hjelm-http-cnhttp-scenarios-00.txt</a></p>
+</div>
+
+<div id="edn16">
+<p class="MsoEndnoteText"><a href="#_ednref16" name="_edn16" title=
+""><span class="MsoEndnoteReference">[16]</span></a> WAG UAProf
+proposed version 30 May 2001, WAP-248-UAPROF-20010530-p, <a href=
+"http://www1.wapforum.org/tech/terms.asp?doc=WAP-248-UAProf-20010530-p.pdf">
+http://www1.wapforum.org/tech/terms.asp?doc=WAP-248-UAProf-20010530-p.pdf</a></p>
+</div>
+
+<div id="edn17">
+<p class="MsoEndnoteText"><a href="#_ednref17" name="_edn17" title=
+""><span class="MsoEndnoteReference">[17]</span></a> UAProf Schema,
+<a href=
+"http://www.wapforum.org/profiles/UAPROF/ccppschema-20010330">http://www.wapforum.org/profiles/UAPROF/ccppschema-20010330</a></p>
+</div>
+
+<div id="edn18">
+<p class="MsoEndnoteText"><a href="#_ednref18" name="_edn18" title=
+""><span class="MsoEndnoteReference">[18]</span></a> RFC1321: The
+MD5 Message-Digest Algorithm, <a href=
+"http://www.faqs.org/rfcs/rfc1321.html">http://www.faqs.org/rfcs/rfc1321.html</a></p>
+</div>
+
+<div id="edn19">
+<p class="MsoEndnoteText"><a href="#_ednref19" name="_edn19" title=
+""><span class="MsoEndnoteReference">[19]</span></a> Section 13.6
+and section 14.4 in RFC2045: Multipurpose Internet Mail Extensions,
+<a href=
+"http://www.faqs.org/rfcs/rfc2045.html">http://www.faqs.org/rfcs/rfc2045.html</a></p>
+</div>
+
+<div id="edn20">
+<p class="MsoEndnoteText"><a href="#_ednref20" name="_edn20" title=
+""><span class="MsoEndnoteReference">[20]</span></a> RFC 2616:
+Hypertext Transfer Protocol 1.1 <a href=
+"http://www.w3.org/Protocols/rfc2616/rfc2616.html">http://www.w3.org/Protocols/rfc2616/rfc2616.html</a></p>
+</div>
+
+<div id="edn21">
+<p class="MsoEndnoteText"><a href="#_ednref21" name="_edn21" title=
+""><span class="MsoEndnoteReference">[21]</span></a> HPL-2001-83:
+Current Techniques for Device Independence, <a href=
+"http://www.hpl.hp.com/techreports/2001/HPL-2001-83.html">http://www.hpl.hp.com/techreports/2001/HPL-2001-83.html</a></p>
+</div>
+
+<div id="edn22">
+<p class="MsoEndnoteText"><a href="#_ednref22" name="_edn22" title=
+""><span class="MsoEndnoteReference">[22]</span></a> HPL-2001-190:
+Implementing Content Negotiation with CC/PP and UAProf,</p>
+
+<p class="MsoEndnoteText"><a href=
+"http://www.hpl.hp.com/techreports/2001/HPL-2001-190.html">http://www.hpl.hp.com/techreports/2001/HPL-2001-190.html</a></p>
+</div>
+
+<div id="edn23">
+<p class="MsoEndnoteText"><a href="#_ednref23" name="_edn23" title=
+""><span class="MsoEndnoteReference">[23]</span></a> Apache Cocoon,
+<a href=
+"http://xml.apache.com/cocoon">http://xml.apache.org/cocoon</a></p>
+</div>
+
+<div id="edn24">
+<p class="MsoEndnoteText"><a href="#_ednref24" name="_edn24" title=
+""><span class="MsoEndnoteReference">[24]</span></a> Apache
+Jetspeed, <a href=
+"http://jakarta.apache.org/jetspeed/site/index.html">http://jakarta.apache.org/jetspeed/site/index.html</a></p>
+</div>
+
+<div id="edn25">
+<p class="MsoEndnoteText"><a href="#_ednref25" name="_edn25" title=
+""><span class="MsoEndnoteReference">[25]</span></a> Apache Struts,
+<a href=
+"http://jakarta.apache.org/struts/index.html">http://jakarta.apache.org/struts/index.html</a></p>
+</div>
+
+<div id="edn26">
+<p class="MsoEndnoteText"><a href="#_ednref26" name="_edn26" title=
+""><span class="MsoEndnoteReference">[26]</span></a> Apache Tomcat,
+<a href=
+"http://jakarta.apache.org/tomcat/index.html">http://jakarta.apache.org/tomcat/index.html</a></p>
+</div>
+
+<div id="edn27">
+<p class="MsoEndnoteText"><a href="#_ednref27" name="_edn27" title=
+""><span class="MsoEndnoteReference">[27]</span></a> Mortbay Jetty,
+<a href=
+"http://jetty.mortbay.com/">http://jetty.mortbay.com</a></p>
+</div>
+
+<div id="edn28">
+<p class="MsoEndnoteText"><a href="#_ednref28" name="_edn28" title=
+""><span class="MsoEndnoteReference">[28]</span></a> Apache ANT, <a
+href=
+"http://jakarta.apache.org/ant/index.html">http://jakarta.apache.org/ant/index.html</a></p>
+</div>
+</div>
+</body>
+</html>
+
