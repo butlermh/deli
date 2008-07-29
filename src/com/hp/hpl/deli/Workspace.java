@@ -45,7 +45,7 @@ public class Workspace implements Serializable {
 	/** Constant for converting milliseconds in to hours */
 	private static final long HOURINMILLISECONDS = 1000 * 60 * 60;
 
-	/** the path to the config file */
+	/** the path to the config files */
 	protected static String path = null;
 
 	/** datatype expressions of validation */
@@ -172,10 +172,9 @@ public class Workspace implements Serializable {
 			CreateWorkspace() {
 				log.debug("Workspace: loading configuration file");
 				configurationData = ModelFactory.createDefaultModel();
-				File input = new File(filename);
 
 				try {
-					configurationData.read(new FileInputStream(input), "", "N3");
+					configurationData.read(getResource(filename), "", "N3");
 					updateProperties();
 				} catch (Exception e) {
 					log.error("Workspace: Cannot load workspace configuration file from " + path + filename, e);
@@ -409,7 +408,6 @@ public class Workspace implements Serializable {
 			} else if (file.exists()) {
 				in = new FileInputStream(path + name);
 			} else if (servletContext != null) {
-				/* in = servletContext.getResourceAsStream(name); */
 
 				URL url = servletContext.getResource(path + name);
 				in = url.openStream();

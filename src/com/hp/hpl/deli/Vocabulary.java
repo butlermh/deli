@@ -60,7 +60,7 @@ class Vocabulary extends Utils implements Serializable {
 		Model configData = ModelFactory.createDefaultModel();
 
 		try {
-			configData.read(new FileInputStream(new File(configFile)), "", "N3");
+			configData.read(Workspace.getInstance().getResource(configFile), "", "N3");
 		} catch (Exception e) {
 			log.error("DELI Failed to load namespace/vocabulary configuration file from: " + configFile, e);
 		}

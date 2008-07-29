@@ -92,8 +92,8 @@ public class Utils {
 	public static Model loadModel(String filename) {
 		Model model = ModelFactory.createDefaultModel();
 		try {
-		model.read(new FileInputStream(new File(filename)), "", "N3");
-		} catch (FileNotFoundException fe) {
+			 model.read(Workspace.getInstance().getResource(filename), "", "N3");
+		} catch (Exception fe) {
 			log.error("Could not load " + filename);
 		}
 		return model;
