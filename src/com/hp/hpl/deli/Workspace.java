@@ -55,7 +55,7 @@ public class Workspace implements Serializable {
 	private transient ServletContext servletContext;
 
 	/** The current set of vocabularies */
-	protected Vocabulary vocabulary;
+	protected SchemaCollection vocabulary;
 
 	/** The profile cache object. */
 	protected transient ProfileCache profileCache;
@@ -181,7 +181,7 @@ public class Workspace implements Serializable {
 				}
 
 				log.debug("Workspace: loading vocabularies " + namespaceConfigFile);
-				vocabulary = new Vocabulary(namespaceConfigFile);
+				vocabulary = new SchemaCollection(namespaceConfigFile);
 
 				log.debug("Workspace: Creating the local profiles database");
 				localProfiles = new LocalProfiles(localProfilesFile); 

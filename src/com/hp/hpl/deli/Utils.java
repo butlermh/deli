@@ -1,8 +1,5 @@
 package com.hp.hpl.deli;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.security.MessageDigest;
 
 import org.apache.commons.logging.Log;
@@ -16,7 +13,7 @@ import com.hp.hpl.jena.rdf.model.Property;
 import com.hp.hpl.jena.rdf.model.Resource;
 
 public class Utils {
-	
+
 	public static String getPropertyUri(Resource resource, Property property) {
 		return (resource.hasProperty(property)) ? ((Resource) resource.getProperty(property).getObject()).getURI() : null;
 	}
@@ -24,7 +21,7 @@ public class Utils {
 	public static String getPropertyString(Resource resource, Property property) {
 		return (resource.hasProperty(property)) ? resource.getProperty(property).getLiteral().toString() : null;
 	}
-	
+
 	/** Logging support. */
 	private static Log log = LogFactory.getLog(Utils.class);
 
@@ -33,7 +30,7 @@ public class Utils {
 	 * profile-diff as a string and calculating the corresponding
 	 * profile-diff-digest by normalising any whitespace, applying the MD5
 	 * algorithm and then converting this to a string using BASE64 encoding.
-	 * 
+	 *
 	 * @param profileDiff
 	 *            The profile-diff.
 	 * @param normaliseWhitespace
@@ -63,7 +60,7 @@ public class Utils {
 	 * element character data, MUST be adhering to white space compression as
 	 * mandated in RFC 2616 section 2.2.</LI>
 	 * </UL>
-	 * 
+	 *
 	 * @param diff
 	 *            The profile-diff.
 	 * @return The normalised profile-diff.

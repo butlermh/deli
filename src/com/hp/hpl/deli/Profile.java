@@ -54,12 +54,12 @@ public class Profile implements Serializable {
 	/** Validate the profile? */
 	private boolean validateProfile = false;
 
-	Vocabulary vocabulary = Workspace.getInstance().vocabulary;
+	SchemaCollection vocabulary = Workspace.getInstance().vocabulary;
 
 	/**
 	 * Create a new profile from a resource. This method does not use the
 	 * profile cache.
-	 * 
+	 *
 	 * @param resource The resource representing a profile.
 	 */
 	public Profile(String resource) {
@@ -72,7 +72,7 @@ public class Profile implements Serializable {
 
 	/**
 	 * Used for validating profiles.
-	 * 
+	 *
 	 * @param model The profile model to validate.
 	 */
 	public Profile(Model model) {
@@ -87,7 +87,7 @@ public class Profile implements Serializable {
 	/**
 	 * Create a new profile from a HTTP Request. This method caches profile
 	 * references but not profile-diffs.
-	 * 
+	 *
 	 * @param request The HTTP request.
 	 */
 	public Profile(HttpServletRequest request) {
@@ -166,7 +166,7 @@ public class Profile implements Serializable {
 
 	/**
 	 * Retrieve a profile attribute with a specific name.
-	 * 
+	 *
 	 * @param attributeName The attribute qname.
 	 * @return The profile attribute.
 	 */
@@ -184,7 +184,7 @@ public class Profile implements Serializable {
 	 * Retrieve a profile attribute with a specific name. (assumes that the
 	 * attribute name is unique, regardless of URI: returns the first value
 	 * encountered with qname fragment equal to that passed in).
-	 * 
+	 *
 	 * @param attributeName the UNQUALIFIED attribute name (ie just the
 	 *            fragment)
 	 * @return The profile attribute
@@ -206,7 +206,7 @@ public class Profile implements Serializable {
 
 	/**
 	 * Converts the object to a String.
-	 * 
+	 *
 	 * @return The Profile as a String.
 	 */
 	public String toString() {
@@ -316,7 +316,7 @@ public class Profile implements Serializable {
 
 		/**
 		 * Converts the Jena data structure to a vector of attributes.
-		 * 
+		 *
 		 * @return The processed vector of attributes.
 		 */
 		protected Vector<ProfileAttribute> processModel(Model model) {
@@ -418,7 +418,7 @@ public class Profile implements Serializable {
 					} else {
 						if (!validateProfile
 								&& !predicate.getLocalName().equals(Workspace.getInstance().componentProperty)) {
-							if (((vocabulary.namespaceLookup.get(vocabularyURI) != null) || Workspace.getInstance().processUnconfiguredNamespaces)
+							if (((vocabulary.getNamespaceLookup(vocabularyURI) != null) || Workspace.getInstance().processUnconfiguredNamespaces)
 									&& vocabularyURI.equals(propertyNamespace)) {
 								if (currentComponent == null) {
 									log.error("Component is null for: " + property);
