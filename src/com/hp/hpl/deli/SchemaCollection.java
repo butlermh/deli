@@ -45,6 +45,8 @@ class SchemaCollection extends Utils implements Serializable {
 	/** Datatyping information. */
 	private Map<List<String>, String> datatypesLookup = new HashMap<List<String>, String>();
 
+	private List<String> datatypesDef = null;
+
 	/**
 	 * The constructor reads in a vocabulary definition file and then processess
 	 * the set of vocabularies it references.
@@ -77,7 +79,6 @@ class SchemaCollection extends Utils implements Serializable {
 	 */
 	private void processNamespaceDefinition(Resource defn) {
 		if (defn.hasProperty(DeliSchema.uri)) {
-			List<String> datatypesDef = null;
 			// add namespace
 			String URI = getPropertyUri(defn, DeliSchema.uri);
 			namespaceLookup.put(URI, URI);
@@ -106,13 +107,17 @@ class SchemaCollection extends Utils implements Serializable {
 			if (defn.hasProperty(DeliSchema.schemaVocabularyFile)) {
 
 				String file = getPropertyString(defn, DeliSchema.schemaVocabularyFile);
-				try {
-					log.debug("Vocabulary: Processing UAProf schema vocabulary file: " + file);
-					addSchema(new Schema(Workspace.getInstance().getResource(file), URI, URI, datatypesDef));
-				} catch (Exception e) {
-					log.error("Vocabulary: Cannot load and process vocabulary schema from " + file, e);
-				}
+				addSchema(file, URI);
 			}
+		}
+	}
+
+	void addSchema(String file, String URI) {
+		try {
+			log.debug("Vocabulary: Processing UAProf schema vocabulary file: " + file);
+			addSchema(new Schema(Workspace.getInstance().getResource(file), URI, URI, datatypesDef));
+		} catch (Exception e) {
+			log.error("Vocabulary: Cannot load and process vocabulary schema from " + file, e);
 		}
 	}
 
