@@ -3,11 +3,8 @@ package com.hp.hpl.deli.utils;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.URI;
-import java.net.URL;
-import java.net.URLConnection;
 import java.util.HashMap;
 import java.util.Vector;
 
@@ -66,37 +63,9 @@ public class ScrapeGoogle extends Utils {
 			"194.204.48.96", "attila.sdsu.edu", "www.it.lut.fi", "google.com", "youtube.com", "search?q=cache",
 			"search?hl=", "?q=filetype", "/intl/en/about.html", "reference.com" };
 
-	private final static String USER_AGENT = "User-Agent";
-
-	private final static String USER_AGENT_STRING = "Mozilla/5.0 (X11; U; Linux i686; rv:1.7.3) Gecko/20041020 Firefox/0.10.1";
-
-	/**
-	 * Get the contents of a particular URL as a String.
-	 * 
-	 * @param pageUri the URL.
-	 * @return the contents as a String.
-	 * @throws Exception
-	 */
-	private String getURL(String pageUri) throws Exception {
-		StringBuffer input = new StringBuffer();
-		URL u = new URL(pageUri);
-		URLConnection conn = u.openConnection();
-		// have to fake the user agent to get results back from google
-		conn.setRequestProperty(USER_AGENT, USER_AGENT_STRING);
-		conn.connect();
-
-		InputStream s = conn.getInputStream();
-		int ch;
-		while ((ch = s.read()) != -1) {
-			input.append((char) ch);
-		}
-		s.close();
-		return input.toString();
-	}
-
 	/**
 	 * Command line interface.
-	 * 
+	 *
 	 * @param args Does not take any arguments.
 	 */
 	public static void main(String[] args) {
@@ -207,7 +176,7 @@ public class ScrapeGoogle extends Utils {
 		ProcessPage(String pageUri) {
 			String search = "href=\"";
 			try {
-				String inputString = getURL(pageUri);
+				String inputString = Utils.getURL(pageUri);
 				int next = 0;
 
 				while ((next = inputString.indexOf(search, next)) != -1) {
@@ -224,7 +193,7 @@ public class ScrapeGoogle extends Utils {
 						vendor = "SPECIFY-VENDOR";
 
 						try {
-							String profile = getURL(newURI);
+							String profile = Utils.getURL(newURI);
 							claimedManufacturer = getTagSoup(profile, ":Vendor>", "<");
 
 							if (manufacturer.equals("Blackberry") && claimedManufacturer != null) {
@@ -257,7 +226,7 @@ public class ScrapeGoogle extends Utils {
 
 		/**
 		 * Tag soup approach to get data out of profile
-		 * 
+		 *
 		 * @param profile The profile as ASCII text
 		 * @param startTag the start tag to look for
 		 * @param endTag the end tag to look for

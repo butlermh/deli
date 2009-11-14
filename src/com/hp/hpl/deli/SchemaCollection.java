@@ -107,12 +107,16 @@ class SchemaCollection extends Utils implements Serializable {
 			if (defn.hasProperty(DeliSchema.schemaVocabularyFile)) {
 
 				String file = getPropertyString(defn, DeliSchema.schemaVocabularyFile);
-				addSchema(file, URI);
+				addSchemaFromFile(file, URI);
 			}
 		}
 	}
 
-	void addSchema(String file, String URI) {
+	void addSchema(String schema, String URI) {
+		// FIXME
+	}
+
+	void addSchemaFromFile(String file, String URI) {
 		try {
 			log.debug("Vocabulary: Processing UAProf schema vocabulary file: " + file);
 			addSchema(new Schema(Workspace.getInstance().getResource(file), URI, URI, datatypesDef));

@@ -340,6 +340,15 @@ public class Profile implements Serializable {
 						log.info("WARNING: The profile uses namespace aliasing");
 						log.info("Aliased namespace is:    " + theNamespace);
 						log.info("Real namespace is: " + vocabulary.getRealNamespace(theNamespace));
+					} else if (vocabulary.getRealNamespace(theNamespace) == null){
+						// profile uses unknown namespace
+						log.debug("Profile uses unknown namespace: " + theNamespace);
+						try {
+							String schema = Utils.getURL(theNamespace);
+							vocabulary.addSchema(schema, theNamespace);
+						} catch (Exception e) {
+							log.debug("Failed to load schema " + theNamespace);
+						}
 					} else {
 						log.debug("The profile uses " + theNamespace);
 					}

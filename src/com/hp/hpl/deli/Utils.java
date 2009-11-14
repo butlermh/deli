@@ -1,5 +1,8 @@
 package com.hp.hpl.deli;
 
+import java.io.InputStream;
+import java.net.URL;
+import java.net.URLConnection;
 import java.security.MessageDigest;
 
 import org.apache.commons.logging.Log;
@@ -13,6 +16,11 @@ import com.hp.hpl.jena.rdf.model.Property;
 import com.hp.hpl.jena.rdf.model.Resource;
 
 public class Utils {
+
+	private final static String USER_AGENT = "User-Agent";
+
+	private final static String USER_AGENT_STRING = "Mozilla/5.0 (X11; U; Linux i686; rv:1.7.3) Gecko/20041020 Firefox/0.10.1";
+
 
 	public static String getPropertyUri(Resource resource, Property property) {
 		return (resource.hasProperty(property)) ? ((Resource) resource.getProperty(property).getObject()).getURI() : null;
@@ -94,5 +102,29 @@ public class Utils {
 			log.error("Could not load " + filename);
 		}
 		return model;
+	}
+
+	/**
+	 * Get the contents of a particular URL as a String.
+	 *
+	 * @param pageUri the URL.
+	 * @return the contents as a String.
+	 * @throws Exception
+	 */
+	public static String getURL(String pageUri) throws Exception {
+		StringBuffer input = new StringBuffer();
+		URL u = new URL(pageUri);
+		URLConnection conn = u.openConnection();
+		// have to fake the user agent to get results back from google
+		conn.setRequestProperty(USER_AGENT, USER_AGENT_STRING);
+		conn.connect();
+
+		InputStream s = conn.getInputStream();
+		int ch;
+		while ((ch = s.read()) != -1) {
+			input.append((char) ch);
+		}
+		s.close();
+		return input.toString();
 	}
 }
