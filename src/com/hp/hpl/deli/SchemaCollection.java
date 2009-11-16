@@ -112,13 +112,9 @@ class SchemaCollection extends Utils implements Serializable {
 		}
 	}
 
-	void addSchema(String schema) {
-		try {
-			log.debug("Vocabulary: Processing UAProf schema vocabulary file: " + schema);
-			addSchema(new Schema(schema, datatypesDef));
-		} catch (Exception e) {
-			log.error("Vocabulary: Cannot load and process vocabulary schema from " + schema, e);
-		}
+	void addSchema(String schema) throws Exception {
+		log.debug("Vocabulary: Processing UAProf schema vocabulary file: " + schema);
+		addSchema(new Schema(schema, datatypesDef));
 	}
 
 	void addSchemaFromFile(String file, String URI) {
@@ -336,6 +332,10 @@ class SchemaCollection extends Utils implements Serializable {
 			}
 		}
 		return alias;
+	}
+
+	boolean knownNamespace(String namespace) {
+		return namespaceLookup.containsKey(namespace);
 	}
 
 	/**

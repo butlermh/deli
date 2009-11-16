@@ -151,7 +151,7 @@ public class Workspace implements Serializable {
 	/**
 	 * This method processes the configuration file and constructs the
 	 * vocabulary, profile cache and local profiles objects.
-	 * 
+	 *
 	 * @param sc
 	 *            The servlet context.
 	 * @param filename
@@ -184,7 +184,7 @@ public class Workspace implements Serializable {
 				vocabulary = new SchemaCollection(namespaceConfigFile);
 
 				log.debug("Workspace: Creating the local profiles database");
-				localProfiles = new LocalProfiles(localProfilesFile); 
+				localProfiles = new LocalProfiles(localProfilesFile);
 
 				try {
 					datatypeExpression(datatypeConfigFile);
@@ -230,10 +230,10 @@ public class Workspace implements Serializable {
 			/**
 			 * Adds a datatype definition using the given element from an XML
 			 * configuration document
-			 * 
+			 *
 			 * @param datatype
 			 *            The XML element containing the datatype information
-			 * 
+			 *
 			 * @param datatype
 			 *            the node with the datatype information
 			 * @throws IOException
@@ -363,7 +363,7 @@ public class Workspace implements Serializable {
 		log.debug("Workspace: Creating the profile cache");
 		profileCache = new ProfileCache(cacheReferenceProfiles, refreshStaleProfiles, maxCachedProfileLifetime,
 				maxCacheSize);
-		
+
 		// set proxy
 		if (Constants.PROXY_PORT_VALUE != null) {
 			System.setProperty(Constants.PROXY_PARAM, Constants.PROXY_VALUE);
@@ -390,7 +390,7 @@ public class Workspace implements Serializable {
 	 * This method returns a local or global resource. If it is a local
 	 * resource, DELI uses the appropriate method depending on whether DELI is
 	 * running within a servlet or not.
-	 * 
+	 *
 	 * @param name
 	 *            The name of the resource. If it is a URL then it is a global
 	 *            resource.

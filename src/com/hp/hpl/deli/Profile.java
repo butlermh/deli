@@ -340,18 +340,17 @@ public class Profile implements Serializable {
 						log.info("WARNING: The profile uses namespace aliasing");
 						log.info("Aliased namespace is:    " + theNamespace);
 						log.info("Real namespace is: " + vocabulary.getRealNamespace(theNamespace));
-					} else if (vocabulary.getRealNamespace(theNamespace) == null){
+					} else if (!vocabulary.knownNamespace(theNamespace)){
 						// profile uses unknown namespace
-						log.debug("Profile uses unknown namespace: " + theNamespace);
 						try {
-							log.debug("Attempting to load new schema");
+							log.info("Loading schema " + theNamespace);
 							vocabulary.addSchema(theNamespace);
-							log.debug("Loaded schema " + theNamespace + "succesfully");
 						} catch (Exception e) {
-							log.debug("Failed to load schema " + theNamespace);
+							e.printStackTrace();
+							log.info("Error: Schema " + theNamespace + " is unretrievable");
 						}
 					} else {
-						log.debug("The profile uses " + theNamespace);
+						log.info("The profile uses " + theNamespace);
 					}
 
 					NodeIterator componentList = model.listObjectsOfProperty(componentProperty);
