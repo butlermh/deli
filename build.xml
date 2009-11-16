@@ -62,8 +62,8 @@
 		<javadoc sourcepath="src;." destdir="javadoc/developer" private="true" packagenames="com.hp.hpl.deli" classpath="${classpath}"/>
 	</target>
 
-	<target name="UAProfValidatorProxy" depends="init"
-		description="Run the UAProf Validator via a http proxy">
+	<target name="UAProfValidator" depends="init"
+		description="Run the UAProf Validator">
 		<echo message="DELI Validator http://delicon.sourceforge.net/"/>
 		<echo message="Running automated test for all profiles specified in profiles.n3"/>
 		<echo message="For output see validprofiles.txt"/>

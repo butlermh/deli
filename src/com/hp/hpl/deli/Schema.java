@@ -25,7 +25,7 @@ class Schema {
 
 	private Property resolutionRuleProperty = null;
 
-	private Model vocabularySchema = null;
+	private Model vocabularySchema = ModelFactory.createDefaultModel();
 
 	private String prfUri = null;
 
@@ -36,6 +36,13 @@ class Schema {
 
 	/** A mapping of UAProf properties onto a vector describing each property. */
 	private Map<Resource, Map<String, Resource>> propertyDescription = new HashMap<Resource, Map<String, Resource>>();
+
+	Schema(String url, List<String> datatypesDef)
+	{
+		// read the document in from a URL
+		vocabularySchema.read(url);
+		init(url, url, datatypesDef);
+	}
 
 	/**
 	 * This method traverses a UAProf RDF schema vocabulary definition file
@@ -49,11 +56,13 @@ class Schema {
 	 */
 	Schema(InputStream in, String prfUri, String schemaName, List<String> datatypesDef)
 			throws Exception {
+		vocabularySchema.read(in, prfUri);
+		init(prfUri, schemaName, datatypesDef);
+	}
+
+	private void init(String prfUri, String schemaName, List<String> datatypesDef) {
 		this.prfUri = prfUri;
 		this.schemaName = schemaName;
-		vocabularySchema = ModelFactory.createDefaultModel();
-		vocabularySchema.read(in, prfUri);
-
 		// loop over all the schema URIs being used by this vocabulary
 
 		// are we processing a UAProf 2.0 vocabulary?

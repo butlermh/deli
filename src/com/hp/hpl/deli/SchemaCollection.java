@@ -112,8 +112,13 @@ class SchemaCollection extends Utils implements Serializable {
 		}
 	}
 
-	void addSchema(String schema, String URI) {
-		// FIXME
+	void addSchema(String schema) {
+		try {
+			log.debug("Vocabulary: Processing UAProf schema vocabulary file: " + schema);
+			addSchema(new Schema(schema, datatypesDef));
+		} catch (Exception e) {
+			log.error("Vocabulary: Cannot load and process vocabulary schema from " + schema, e);
+		}
 	}
 
 	void addSchemaFromFile(String file, String URI) {

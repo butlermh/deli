@@ -344,8 +344,9 @@ public class Profile implements Serializable {
 						// profile uses unknown namespace
 						log.debug("Profile uses unknown namespace: " + theNamespace);
 						try {
-							String schema = Utils.getURL(theNamespace);
-							vocabulary.addSchema(schema, theNamespace);
+							log.debug("Attempting to load new schema");
+							vocabulary.addSchema(theNamespace);
+							log.debug("Loaded schema " + theNamespace + "succesfully");
 						} catch (Exception e) {
 							log.debug("Failed to load schema " + theNamespace);
 						}
