@@ -185,13 +185,13 @@ class Schema {
 			String collectionTypeName) {
 		if (commentString.indexOf("(bag)") > 0) {
 			if (!collectionTypeName.equals(Constants.BAG)) {
-				log.error("Vocabulary inconsistency warning: " + attributeName + " only declares it is a "
+				log.warn("Vocabulary inconsistency warning: " + attributeName + " only declares it is a "
 						+ Constants.BAG + " in the comments field for schema " + schemaName);
 			}
 			collectionTypeName = Constants.BAG;
 		} else if (commentString.indexOf("(sequence)") > 0) {
 			if (!collectionTypeName.equals(Constants.SEQ)) {
-				log.error("Vocabulary inconsistency warning: " + attributeName + " only declares it is a "
+				log.warn("Vocabulary inconsistency warning: " + attributeName + " only declares it is a "
 						+ Constants.SEQ + " in the comments field for schema" + schemaName);
 			}
 			collectionTypeName = Constants.SEQ;

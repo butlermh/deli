@@ -537,7 +537,8 @@ public class Profile implements Serializable {
 						if (!(ccppComponent.getURI().equals(currentComponent)) && (currentComponent != null)
 								&& !(attributeName.equals("CcppAccept"))
 								&& !(attributeName.equals("CcppAccept-Language"))
-								&& !(attributeName.equals("CcppAccept-Charset"))) {
+								&& !(attributeName.equals("CcppAccept-Charset"))
+								&& !(attributeName.equals("CcppAccept-Encoding"))) {
 							validatorError(currentComponent, attributeName,
 									"Attribute is in wrong component should be " + ccppComponent.toString());
 						}

@@ -63,7 +63,7 @@ class SchemaCollection extends Utils implements Serializable {
 		}
 		ResIterator definitions = configData.listSubjectsWithProperty(RDF.type, DeliSchema.NamespaceDefinition);
 		if (!definitions.hasNext()) {
-			log.info("Vocabulary: No schemas defined.");
+			log.info("Vocabulary: No schemas defined. Loading schemas dynamically.");
 		} else {
 			// process namespace definitions
 			while (definitions.hasNext()) {
