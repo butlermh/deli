@@ -1,7 +1,7 @@
 @prefix deli: <http://delicon.sourceforge.net/schema#> .
 @prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema> .
-  
+
 # correct namespaces defined in UAProf specifications
 # current specifications
 # http://www.openmobilealliance.org/tech/profiles/UAPROF/ccppschema-20030226#
@@ -17,12 +17,12 @@ _:n11
     deli:uri <http://www.wapforum.org/profiles/UAPROF/ccppschema-20010430#> ;
     deli:aliasUri <http://www.wapforum.org/profiles/UAPROF/ccppschema-20010430#> ;
     deli:schemaVocabularyFile "config/vocab/ccppschema-20010430.rdfs" .
-    
+
 _:n1
 	rdf:type deli:NamespaceDefinition ;
    	deli:uri <http://www.openmobilealliance.org/tech/profiles/MMS/ccppschema-20050301-MMS1.2#> ;
    	deli:schemaVocabularyFile "config/vocab/ccppschema-20050301-MMS1.2.rdfs" .
-  
+
 _:n2
 	rdf:type deli:NamespaceDefinition ;
    	deli:uri <http://www.3gpp.org/profiles/PSS/ccppschema-PSS6#> ;
@@ -40,12 +40,12 @@ _:n4
     deli:schemaVocabularyFile "config/vocab/ccppschema-20030226.rdfs" ;
     deli:datatypeUri <http://www.openmobilealliance.org/tech/profiles/uaprof/xmlschema-20030226> ;
     deli:datatypeFile "config/vocab/xmlschema-20030226.xsd" .
-    
+
 _:n5
 	rdf:type deli:NamespaceDefinition ;
     deli:uri <http://www.openmobilealliance.org/tech/profiles/UAPROF/ccppschema-20021212#> ;
     deli:schemaVocabularyFile "config/vocab/ccppschema-20021212.rdfs" .
-    
+
 _:n6
 	rdf:type deli:NamespaceDefinition ;
     deli:uri <http://www.wapforum.org/UAPROF/ccppschema-20020710#> ;
@@ -61,7 +61,7 @@ _:n8
 _:n10
 	rdf:type deli:NamespaceDefinition ;
     deli:uri <http://www.wapforum.org/UAPROF/ccppschema-20010330#> ;
-    deli:aliasUri <http://www.wapforum.org/profiles/UAPROF/ccppschema-20010330#> ;   
+    deli:aliasUri <http://www.wapforum.org/profiles/UAPROF/ccppschema-20010330#> ;
     deli:aliasUri <http://www.wapforum.org/UAPROF/ccppschema-19991014#> ;
     deli:schemaVocabularyFile "config/vocab/ccppschema-20010330.rdfs" .
 
@@ -74,7 +74,7 @@ _:n9
 
 _:n12
 	rdf:type deli:NamespaceDefinition ;
-    deli:uri <http://www.openmobilealliance.org/tech/profiles/MMS/ccppschema_mms-v1_3> ;
+    deli:uri <http://www.openmobilealliance.org/tech/profiles/MMS/ccppschema_mms-v1_3#> ;
     deli:aliasUri <http://www.openmobilealliance.org/tech/profiles/MMS/ccppschema_mms-v1_3> ;
     deli:schemaVocabularyFile "config/vocab/ccppschema_mms-v1_3.rdfs" .
 
