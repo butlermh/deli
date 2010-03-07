@@ -8,24 +8,23 @@
 		<property name="profile" value="profiles/msie.rdf"/>
 		<property name="buildLibDir" value="lib/tools/lib"/>
 		<property name="path" value="com/hp/hpl/deli"/>
-		<property name="classpath" value="lib/antlr-2.7.5.jar;
-				lib/commons-logging-1.1.1.jar;
-				lib/concurrent.jar;
-				lib/httpunit-1.4/jar;
-				lib/icu4j_3_4.jar;
-				lib/jakarta-oro-2.0.5.jar;
-				lib/jena.jar;
-				lib/junit.jar;
-				lib/log4j-1.2.12.jar;
-				lib/rdf-api-2001-01-19.jar;
+		<property name="classpath" value="lib/commons-logging-1.1.1.jar;
+				lib/icu4j-3.4.4.jar;
+				lib/jena-2.6.2.jar;
+				lib/junit-4.5.jar;
+				lib/log4j-1.2.13.jar;
 				lib/servlet-api.jar;
-				lib/xercesImpl.jar;
-                lib/xml-apis.jar;
-				lib/xmlParserAPIs.jar;
+				lib/xercesImpl-2.7.1.jar;
 				lib/buildTools/httpunit-1.4.jar;
                 lib/buildTools/junit-3.7.jar;
                 lib/buildTools/Tidy.jar;
-				lib/iri.jar"/>
+				lib/iri-0.7.jar;
+				lib/arq-2.8.1.jar;
+				lib/jena-2.6.2.jar;
+				lib/slf4j-api-1.5.6.jar;
+				lib/slf4j-log4j12-1.5.6.jar
+				lib/stax-api-1.0.1.jar;
+				lib/wstx-asl-3.2.9.jar"/>
 	</target>
 
 	<target name="compile" depends="init"
@@ -36,6 +35,22 @@
 
 	<target name="jars" depends="init,compile"
 		description="Build the DELI jarfiles">
+		<jar jarfile="lib/deliAll.jar" basedir="build/">
+			<zipfileset src="lib/commons-logging-1.1.1.jar" includes="**/*.class"/>
+			<zipfileset src="lib/icu4j-3.4.4.jar" includes="**/*.*"/>
+			<zipfileset src="lib/jena-2.6.2.jar" includes="**/*.class"/>
+			<zipfileset src="lib/junit-4.5.jar" includes="**/*.class"/>
+			<zipfileset src="lib/log4j-1.2.13.jar" includes="**/*.class"/>
+			<zipfileset src="lib/servlet-api.jar" includes="**/*.class"/>
+			<zipfileset src="lib/xercesImpl-2.7.1.jar" includes="**/*.class"/>
+			<zipfileset src="lib/iri-0.7.jar" includes="**/*.class"/>
+			<zipfileset src="lib/arq-2.8.1.jar" includes="**/*.class"/>
+			<zipfileset src="lib/jena-2.6.2.jar" includes="**/*.class"/>
+			<zipfileset src="lib/slf4j-api-1.5.6.jar" includes="**/*.class"/>
+			<zipfileset src="lib/slf4j-log4j12-1.5.6.jar" includes="**/*.class"/>
+			<zipfileset src="lib/stax-api-1.0.1.jar" includes="**/*.class"/>
+			<zipfileset src="lib/wstx-asl-3.2.9.jar" includes="**/*.class"/>
+		</jar>
 		<jar jarfile="lib/deli.jar" basedir="build/" excludes="com/hp/hpl/deliTest/,com/hp/hpl/deliScratchpad/,com/hp/hpl/deliTestClient/"/>
 		<jar jarfile="lib/deliTest.jar" basedir="build/" excludes="com/hp/hpl/deli/,com/hp/hpl/deliScratchpad/,com/hp/hpl/deliTestClient/"/>
 		<jar jarfile="lib/deliTestClient.jar" basedir="build/" excludes="com/hp/hpl/deliTest/,com/hp/hpl/deli/,com/hp/hpl/deliScratchpad/"/>

@@ -99,6 +99,7 @@ public class Utils {
 		try {
 			 model.read(Workspace.getInstance().getResource(filename), "", "N3");
 		} catch (Exception fe) {
+			fe.printStackTrace();
 			log.error("Could not load " + filename);
 		}
 		return model;

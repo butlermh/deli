@@ -734,7 +734,7 @@
       deli:release "R201" ;
       deli:uaprofUri <http://wap.sonyericsson.com/UAprof/K310cR201.xml> .
 
-<http://purl.oclc.org/NET/butlermh/deli/devices#Sagem-myX-5/2.0 (823276)->
+<http://purl.oclc.org/NET/butlermh/deli/devices#Sagem-myX-5/2.0(823276)->
       a       deli:Profile ;
       deli:deviceName "myX-5/2.0 (823276)" ;
       deli:manufacturedBy <http://purl.oclc.org/NET/butlermh/deli/manufacturers#Sagem> ;
@@ -1641,7 +1641,7 @@
       deli:supportsUAProf "true" ;
       deli:uaprofUri <http://sharp-mobile.com/UAprof/GX10.xml> .
 
-<http://purl.oclc.org/NET/butlermh/deli/devices#Mitsubishi-Trium Eclipse->
+<http://purl.oclc.org/NET/butlermh/deli/devices#Mitsubishi-TriumEclipse->
       a       deli:Profile ;
       deli:deviceName "Trium Eclipse" ;
       deli:manufacturedBy <http://purl.oclc.org/NET/butlermh/deli/manufacturers#Mitsubishi> ;
@@ -2277,7 +2277,7 @@
       deli:release "R101" ;
       deli:uaprofUri <http://wap.sonyericsson.com/UAprof/K800cR101.xml> .
 
-<http://purl.oclc.org/NET/butlermh/deli/devices#Sagem-SAGEM-myX-5/2.0 (823404)->
+<http://purl.oclc.org/NET/butlermh/deli/devices#Sagem-SAGEM-myX-5/2.0(823404)->
       a       deli:Profile ;
       deli:deviceName "SAGEM-myX-5/2.0 (823404)" ;
       deli:manufacturedBy <http://purl.oclc.org/NET/butlermh/deli/manufacturers#Sagem> ;
@@ -3163,7 +3163,7 @@
       deli:uaprofUri <http://www.blackberry.net/go/mobile/profiles/uaprof/6230/3.3.0.rdf> , <http://www.blackberry.net/go/mobile/profiles/uaprof/6280/3.3.0.rdf> ;
       deli:useragent "RIM Browser" .
 
-<http://purl.oclc.org/NET/butlermh/deli/devices#Mitsubishi-Trium Eclipse (mserv)->
+<http://purl.oclc.org/NET/butlermh/deli/devices#Mitsubishi-TriumEclipse(mserv)->
       a       deli:Profile ;
       deli:deviceName "Trium Eclipse (mserv)" ;
       deli:manufacturedBy <http://purl.oclc.org/NET/butlermh/deli/manufacturers#Mitsubishi> ;
@@ -3209,7 +3209,7 @@
       deli:supportsUAProf "true" ;
       deli:uaprofUri <http://wap.samsungmobile.com/uaprof/Z110UAProf.rdf> .
 
-<http://purl.oclc.org/NET/butlermh/deli/devices#Panasonic-X60 R1-1>
+<http://purl.oclc.org/NET/butlermh/deli/devices#Panasonic-X60R1-1>
       a       deli:Profile ;
       deli:deviceName "X60 R1" ;
       deli:manufacturedBy <http://purl.oclc.org/NET/butlermh/deli/manufacturers#Panasonic> ;
@@ -4438,7 +4438,7 @@
       deli:supportsUAProf "true" ;
       deli:uaprofUri <http://wap.samsungmobile.com/uaprof/e810_00.xml> .
 
-<http://purl.oclc.org/NET/butlermh/deli/devices#Nokia-3520 3560-100>
+<http://purl.oclc.org/NET/butlermh/deli/devices#Nokia-35203560-100>
       a       deli:Profile ;
       deli:deviceName "3520 3560" ;
       deli:manufacturedBy <http://purl.oclc.org/NET/butlermh/deli/manufacturers#Nokia> ;
@@ -5360,7 +5360,7 @@
       deli:manufacturedBy <http://purl.oclc.org/NET/butlermh/deli/manufacturers#Siemens> ;
       deli:profileSuppliedByVendor
               "false" ;
-      deli:provider <http://purl.oclc.org/NET/butlermh/deli/providers/Anny Way (MATERNA)> ;
+      deli:provider <http://purl.oclc.org/NET/butlermh/deli/providers/AnnyWay(MATERNA)> ;
       deli:uaprofUri <http://wap.annyway.com/UAProf/cgi-bin/UAProf?AnnyWap1.2> ;
       deli:useragent "AnnyWAP 1.2 (Siemens SX45 Windows CE)" .
 
@@ -5560,7 +5560,7 @@
       deli:supportsUAProf "true" ;
       deli:uaprofUri <http://uaprof.bellmobilite.ca/BMC_LG_5550_L55BMV01.rdf> .
 
-<http://purl.oclc.org/NET/butlermh/deli/providers/Anny Way (MATERNA)>
+<http://purl.oclc.org/NET/butlermh/deli/providers/AnnyWay(MATERNA)>
       rdfs:label "Anny Way (MATERNA)" .
 
 <http://purl.oclc.org/NET/butlermh/deli/devices#Nokia-6650-100>
@@ -6601,7 +6601,7 @@
       deli:uaprofUri <http://www.w3development.de/rdf/uaprof_repository/Nokia_6210.rdf> ;
       deli:useragent "Nokia6210/1.0" .
 
-<http://purl.oclc.org/NET/butlermh/deli/providers/Sprint PCS>
+<http://purl.oclc.org/NET/butlermh/deli/providers/SprintPCS>
       rdfs:label "Sprint PCS" .
 
 <http://purl.oclc.org/NET/butlermh/deli/devices#Nokia-3610->
@@ -6665,7 +6665,7 @@
       deli:uaprofUri <http://www.blackberry.net/go/mobile/profiles/uaprof/6230/3.7.3.rdf> ;
       deli:useragent "RIM Browser" .
 
-<http://purl.oclc.org/NET/butlermh/deli/devices#Mitsubishi-Trium M320->
+<http://purl.oclc.org/NET/butlermh/deli/devices#Mitsubishi-TriumM320->
       a       deli:Profile ;
       deli:deviceName "Trium M320" ;
       deli:manufacturedBy <http://purl.oclc.org/NET/butlermh/deli/manufacturers#Mitsubishi> ;
@@ -6782,13 +6782,13 @@
       deli:uaprofUri <http://www.blackberry.net/go/mobile/profiles/uaprof/6710/3.7.0.rdf> ;
       deli:useragent "RIM Browser" .
 
-<http://purl.oclc.org/NET/butlermh/deli/devices#Samsung-SPH-A500 VE31->
+<http://purl.oclc.org/NET/butlermh/deli/devices#Samsung-SPH-A500VE31->
       a       deli:Profile ;
       deli:deviceName "SPH-A500 VE31" ;
       deli:manufacturedBy <http://purl.oclc.org/NET/butlermh/deli/manufacturers#Samsung> ;
       deli:profileSuppliedByVendor
               "false" ;
-      deli:provider <http://purl.oclc.org/NET/butlermh/deli/providers/sprint-pcs> , <http://purl.oclc.org/NET/butlermh/deli/providers/Sprint PCS> ;
+      deli:provider <http://purl.oclc.org/NET/butlermh/deli/providers/sprint-pcs> , <http://purl.oclc.org/NET/butlermh/deli/providers/SprintPCS> ;
       deli:supportsUAProf "false" ;
       deli:uaprofUri <http://device.sprintpcs.com/Samsung/SPH-A500/VE31.rdf> .
 
@@ -6832,7 +6832,7 @@
       deli:supportsUAProf "true" ;
       deli:uaprofUri <http://nds.nokia.com/uaprof/N3560r100.xml> .
 
-<http://purl.oclc.org/NET/butlermh/deli/devices#LG-LG LX5350_11->
+<http://purl.oclc.org/NET/butlermh/deli/devices#LG-LGLX5350_11->
       a       deli:Profile ;
       deli:deviceName "LG LX5350_11" ;
       deli:manufacturedBy <http://purl.oclc.org/NET/butlermh/deli/manufacturers#LG> ;
@@ -7538,7 +7538,7 @@
       deli:supportsUAProf "true" ;
       deli:uaprofUri <http://uaprof.bellmobilite.ca/BMC_LG_LG5400_LG540V05.rdf> .
 
-<http://purl.oclc.org/NET/butlermh/deli/devices#Sagem-myX-5/2.0 (823404)->
+<http://purl.oclc.org/NET/butlermh/deli/devices#Sagem-myX-5/2.0(823404)->
       a       deli:Profile ;
       deli:deviceName "myX-5/2.0 (823404)" ;
       deli:manufacturedBy <http://purl.oclc.org/NET/butlermh/deli/manufacturers#Sagem> ;
@@ -7930,7 +7930,7 @@
       deli:manufacturedBy <http://purl.oclc.org/NET/butlermh/deli/manufacturers#Handspring> ;
       deli:profileSuppliedByVendor
               "false" ;
-      deli:provider <http://purl.oclc.org/NET/butlermh/deli/providers/Sprint PCS> ;
+      deli:provider <http://purl.oclc.org/NET/butlermh/deli/providers/SprintPCS> ;
       deli:supportsUAProf "false" ;
       deli:uaprofUri <http://device.sprintpcs.com/Handspring/HSTR600HK/Blazer30010.rdf> .
 
@@ -7946,7 +7946,7 @@
       deli:supportsUAProf "true" ;
       deli:uaprofUri <http://www.blackberry.net/go/mobile/profiles/uaprof/8100/4.2.0.rdf> .
 
-<http://purl.oclc.org/NET/butlermh/deli/devices#Hitachi-SH-P300 S2A31->
+<http://purl.oclc.org/NET/butlermh/deli/devices#Hitachi-SH-P300S2A31->
       a       deli:Profile ;
       deli:deviceName "SH-P300 S2A31" ;
       deli:manufacturedBy <http://purl.oclc.org/NET/butlermh/deli/manufacturers#Hitachi> ;
@@ -8023,7 +8023,7 @@
       deli:supportsUAProf "true" ;
       deli:uaprofUri <http://nds1.nds.nokia.com/uaprof/NE60-1r100-VFKK2G.xml> .
 
-<http://purl.oclc.org/NET/butlermh/deli/devices#Handspring-Treo 600->
+<http://purl.oclc.org/NET/butlermh/deli/devices#Handspring-Treo600->
       a       deli:Profile ;
       deli:deviceName "Treo 600" ;
       deli:manufacturedBy <http://purl.oclc.org/NET/butlermh/deli/manufacturers#Handspring> ;
@@ -8313,7 +8313,7 @@
       deli:supportsUAProf "true" ;
       deli:uaprofUri <http://wap.samsungmobile.com/uaprof/x686_10.xml> .
 
-<http://purl.oclc.org/NET/butlermh/deli/devices#Research_In_Motion_Ltd./go/mobile/profiles/uaprof/Siemens SK65/3.8.0.rdf>
+<http://purl.oclc.org/NET/butlermh/deli/devices#Research_In_Motion_Ltd./go/mobile/profiles/uaprof/SiemensSK65/3.8.0.rdf>
       a       deli:Profile ;
       deli:deviceName "Siemens SK65" ;
       deli:manufacturedBy <http://purl.oclc.org/NET/butlermh/deli/manufacturers#Research_In_Motion_Ltd.> ;
@@ -9953,13 +9953,13 @@
 <http://purl.oclc.org/NET/butlermh/deli/providers/VirginMobile>
       rdfs:label "VirginMobile" .
 
-<http://purl.oclc.org/NET/butlermh/deli/devices#Samsung-SPH-N400 VH27->
+<http://purl.oclc.org/NET/butlermh/deli/devices#Samsung-SPH-N400VH27->
       a       deli:Profile ;
       deli:deviceName "SPH-N400 VH27" ;
       deli:manufacturedBy <http://purl.oclc.org/NET/butlermh/deli/manufacturers#Samsung> ;
       deli:profileSuppliedByVendor
               "false" ;
-      deli:provider <http://purl.oclc.org/NET/butlermh/deli/providers/sprint-pcs> , <http://purl.oclc.org/NET/butlermh/deli/providers/Sprint PCS> ;
+      deli:provider <http://purl.oclc.org/NET/butlermh/deli/providers/sprint-pcs> , <http://purl.oclc.org/NET/butlermh/deli/providers/SprintPCS> ;
       deli:supportsUAProf "false" ;
       deli:uaprofUri <http://device.sprintpcs.com/Samsung/SPH-N400/VH27.rdf> .
 
@@ -11809,7 +11809,7 @@
       deli:supportsUAProf "true" ;
       deli:uaprofUri <http://wap.sonyericsson.com/UAprof/Z200R101.xml> .
 
-<http://purl.oclc.org/NET/butlermh/deli/devices#Sagem-myX-5/2.0 (822962)->
+<http://purl.oclc.org/NET/butlermh/deli/devices#Sagem-myX-5/2.0(822962)->
       a       deli:Profile ;
       deli:deviceName "myX-5/2.0 (822962)" ;
       deli:manufacturedBy <http://purl.oclc.org/NET/butlermh/deli/manufacturers#Sagem> ;
