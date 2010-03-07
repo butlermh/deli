@@ -162,7 +162,7 @@ public class Workspace implements Serializable {
 
 		class CreateWorkspace {
 			/** File containing configuration information. */
-			String namespaceConfigFile = null;
+			String namespaceConfigFile = "config/namespaceConfig.n3";
 
 			/** File containing legacy profiles . */
 			String localProfilesFile = null;
@@ -184,7 +184,8 @@ public class Workspace implements Serializable {
 				vocabulary = new SchemaCollection(namespaceConfigFile);
 
 				log.debug("Workspace: Creating the local profiles database");
-				localProfiles = new LocalProfiles(localProfilesFile);
+				if (localProfilesFile != null)
+					localProfiles = new LocalProfiles(localProfilesFile);
 
 				try {
 					datatypeExpression(datatypeConfigFile);
