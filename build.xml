@@ -35,14 +35,16 @@
 
 	<target name="jars" depends="init,compile"
 		description="Build the DELI jarfiles">
-		<jar jarfile="lib/deliAll.jar" basedir="build/">
+		  <copydir src="config" dest="build/config"/>
+		<copy file="log4j.properties" todir="build"/>
+		<jar jarfile="lib/deliAll.jar" basedir="build/" includes="**/*.class,**/*.properties,**/*.xsd,**/*.rdfs,**/*.n3,**/*.xml">
 			<zipfileset src="lib/commons-logging-1.1.1.jar" includes="**/*.class"/>
 			<zipfileset src="lib/icu4j-3.4.4.jar" includes="**/*.*"/>
 			<zipfileset src="lib/jena-2.6.2.jar" includes="**/*.class"/>
 			<zipfileset src="lib/junit-4.5.jar" includes="**/*.class"/>
 			<zipfileset src="lib/log4j-1.2.13.jar" includes="**/*.class"/>
 			<zipfileset src="lib/servlet-api.jar" includes="**/*.class"/>
-			<zipfileset src="lib/xercesImpl-2.7.1.jar" includes="**/*.class"/>
+			<zipfileset src="lib/xercesImpl-2.7.1.jar" includes="**/*"/>
 			<zipfileset src="lib/iri-0.7.jar" includes="**/*.class"/>
 			<zipfileset src="lib/arq-2.8.1.jar" includes="**/*.class"/>
 			<zipfileset src="lib/jena-2.6.2.jar" includes="**/*.class"/>
