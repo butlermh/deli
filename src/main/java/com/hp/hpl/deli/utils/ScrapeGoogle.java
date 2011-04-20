@@ -34,7 +34,7 @@ import com.hp.hpl.jena.vocabulary.RDFS;
  * This class queries Google to see if it can identify any UAProf profiles that
  * are not listed in profiles.n3.
  */
-public class ScrapeGoogle extends ModelUtils {
+public class ScrapeGoogle {
 
 	private final static String BASE = "http://purl.oclc.org/NET/butlermh/deli/";
 
@@ -58,40 +58,38 @@ public class ScrapeGoogle extends ModelUtils {
 
 	private HashMap<String, String> manufacturers = new HashMap<String, String>();
 
+	private HashMap<String, String> manufacturerHostnames = new HashMap<String, String>();
+
 	private int count = 0;
 
 	final static String USER_AGENT = "User-Agent";
 
 	final static String USER_AGENT_STRING = "Mozilla/5.0 (X11; U; Linux i686; rv:1.7.3) Gecko/20041020 Firefox/0.10.1";
-	
-	String[] oldManufacturers = { "sonyericsson", "nokia", "toshiba", "samsung",
-			"panasonic", "Research_In_Motion_Ltd.", "motorola", "sharp", "LG",
-			"siemens", "alcatel", "High_Tech_Computer_Corporation", "amoi",
-			"Kyocera", "Kyocera_Wireless_Corporation", "Kyocera_Wireless_Corp",
-			"ZTE", "ZTE_Corporation", "Acer_Incorporated", "Acer", "Vodafone",
-			"Pantech", "Zonda", "Ericsson", "FLY", "Huawei", "INQ", "Modelabs",
-			"Openwave", "Palm", "Philips", "Haier", "ASUSTeK_COMPUTER_INC.", "NEC" };
 
-	String[] newManufacturers = { "http://www.sonyericsson.com",
-			"http://www.nokia.com", "http://www.toshiba.com",
-			"http://www.samsung.com", "http://www.panasonic.com",
-			"http://www.rim.com", "http://www.motorola.com", "http://www.sharp.com",
-			"http://www.lg.com", "http://www.siemens.com",
+	Map<String, String> fixManufacturers = new HashMap<String, String>();
+
+	final static String[] oldManufacturers = { "sonyericsson", "nokia", "toshiba",
+			"samsung", "panasonic", "Research_In_Motion_Ltd.", "motorola", "sharp", "LG",
+			"siemens", "alcatel", "High_Tech_Computer_Corporation", "amoi", "Kyocera",
+			"Kyocera_Wireless_Corporation", "Kyocera_Wireless_Corp", "ZTE",
+			"ZTE_Corporation", "Acer_Incorporated", "Acer", "Vodafone", "Pantech",
+			"Zonda", "Ericsson", "FLY", "Huawei", "INQ", "Modelabs", "Openwave", "Palm",
+			"Philips", "Haier", "ASUSTeK_COMPUTER_INC.", "NEC" };
+
+	final static String[] newManufacturers = { "http://www.sonyericsson.com",
+			"http://www.nokia.com", "http://www.toshiba.com", "http://www.samsung.com",
+			"http://www.panasonic.com", "http://www.rim.com", "http://www.motorola.com",
+			"http://www.sharp.com", "http://www.lg.com", "http://www.siemens.com",
 			"http://www.alcatel-mobilephones.com/", "http://www.htc.com/",
 			"http://www.amoi.com/", "http://www.kyocera-wireless.com/",
 			"http://www.kyocera-wireless.com/", "http://www.kyocera-wireless.com/",
-			"http://www.zte.com.cn/", "http://www.zte.com.cn/",
-			"http://www.acer.com/", "http://www.acer.com/",
-			"http://www.vodafone.com", "http://www.pantech.com/",
+			"http://www.zte.com.cn/", "http://www.zte.com.cn/", "http://www.acer.com/",
+			"http://www.acer.com/", "http://www.vodafone.com", "http://www.pantech.com/",
 			"http://www.zondatelecom.com/", "http://www.ericsson.com/",
 			"http://www.fly-phone.com/", "http://www.huawei.com/",
 			"http://www.inqmobile.com/", "http://www.modelabs.com/",
-			"http://www.openwave.com", "http://www.palm.com",
-			"http://www.philips.com/", "http://www.haier.com/",
-			"http://www.asus.com", "http://www.nec.com" };
-	
-	Map<String, String> fixManufacturers = new HashMap<String, String>();
-
+			"http://www.openwave.com", "http://www.palm.com", "http://www.philips.com/",
+			"http://www.haier.com/", "http://www.asus.com", "http://www.nec.com" };
 
 	/**
 	 * Get the contents of a particular URL as a String.
@@ -132,7 +130,7 @@ public class ScrapeGoogle extends ModelUtils {
 			"/intl/en/about.html", "reference.com", "www.cems.uwe.ac.uk/" };
 
 	/**
-	 * Command line interface.	
+	 * Command line interface.
 	 * 
 	 * @param args Does not take any arguments.
 	 */
@@ -150,7 +148,7 @@ public class ScrapeGoogle extends ModelUtils {
 					.toLowerCase();
 			fixManufacturers.put(oldManufacturer, newManufacturers[i]);
 		}
-		
+
 		Resource resource = null;
 		try {
 			profiles = ModelUtils.loadModel(Constants.ALL_KNOWN_UAPROF_PROFILES);
@@ -165,32 +163,17 @@ public class ScrapeGoogle extends ModelUtils {
 					.listSubjectsWithProperty(DeliSchema.manufacturedBy);
 			while (profilesIter.hasNext()) {
 				resource = profilesIter.nextResource();
-					Resource m = (Resource) resource.getProperty(
-							DeliSchema.manufacturedBy).getObject();
-					String manufacturer = getPropertyString(m, RDFS.label);
+				crawlDb.add(resource);
+				Resource m = (Resource) resource.getProperty(DeliSchema.manufacturedBy)
+						.getObject();
+				if (ModelUtils.getPropertyString(m, RDFS.label) != null) {
+					String manufacturer = ModelUtils.getPropertyString(m, RDFS.label);
 					URI theProfile = new URI(resource.getURI());
 					String profileHostname = theProfile.getHost();
-					URI theManufacturer = new URI(m.getURI());
-					if (m.getURI().startsWith(BASE)) {
-						System.out.println(m.getURI());
-					}
-					String manufacturerHostname = theManufacturer.getHost();
-					String strippedManufacturer = stripAuthorityPrefix(theManufacturer.getAuthority());
-					String strippedProfile = stripAuthorityPrefix(theProfile.getAuthority());
-//					if (!strippedProfile.equals(strippedManufacturer)) {
-//						System.out.println(m.getURI() + " " + manufacturerHostname + " " + profileHostname);
-//						System.out.println(theProfile.toString() + " " + theManufacturer.toString() );
-//					}
 					manufacturers.put(profileHostname, manufacturer);
-			}
-			
-			for (String hostname: manufacturers.keySet()) {
-				String manufacturer = manufacturers.get(hostname);
-				if (manufacturer == null) {
-					System.out.println(manufacturers.get(hostname) + " "+ hostname);
+					manufacturerHostnames.put(manufacturer, m.getURI());
 				}
 			}
-			System.exit(0);
 
 			// query google for files of type xml and rdf that mention the term
 			// UAProf
@@ -203,7 +186,7 @@ public class ScrapeGoogle extends ModelUtils {
 			for (int i = 1; i < 16; i++) {
 				processPage(XML_STRING + "start=" + i + "00" + QUERY_SEP + FILTER);
 			}
-			
+
 			Class<ScrapeGoogle.Worker> clazz = ScrapeGoogle.Worker.class;
 			Constructor<ScrapeGoogle.Worker> ctor = null;
 			try {
@@ -238,12 +221,9 @@ public class ScrapeGoogle extends ModelUtils {
 			e.printStackTrace();
 		}
 	}
-	
-	private String stripAuthorityPrefix(String authority) {
-		return authority.substring(authority.indexOf(".") + 1);
-	}
 
-	private List<Resource> crawlDb = Collections.synchronizedList(new LinkedList<Resource>());
+	private List<Resource> crawlDb = Collections
+			.synchronizedList(new LinkedList<Resource>());
 
 	// do we already know about this profile or is it on an excluded host?
 
@@ -301,8 +281,6 @@ public class ScrapeGoogle extends ModelUtils {
 
 		private String model = null;
 
-		private String vendor = null;
-
 		private String newURI = null;
 
 		public Worker() {
@@ -312,26 +290,19 @@ public class ScrapeGoogle extends ModelUtils {
 			try {
 				this.newURI = newURI.getURI();
 				device = new URI(this.newURI);
-				manufacturer = (String) manufacturers.get(device.getHost());
-				System.out.println(device.toString());
+				manufacturer = manufacturers.get(device.getHost());
 				if (manufacturer == null) {
 					manufacturer = "SPECIFY-MANUFACTURER";
 				}
-				String claimedManufacturer = null;
-				vendor = "SPECIFY-VENDOR";
 
 				String profile = getURL(this.newURI);
-				claimedManufacturer = getTagSoup(profile, ":Vendor>", "<");
+				String claimedManufacturer = getTagSoup(profile, ":Vendor>", "<");
 
 				if (manufacturer.equals("Blackberry") && claimedManufacturer != null) {
 					manufacturer = claimedManufacturer;
 				} else if (manufacturer.equals("SPECIFY-MANUFACTURER")
 						&& claimedManufacturer != null) {
 					manufacturer = claimedManufacturer;
-					vendor = "false";
-				} else {
-					vendor = claimedManufacturer.toLowerCase().equals(
-							manufacturer.toLowerCase()) ? "true" : "false";
 				}
 
 				model = getTagSoup(profile, ":Model>", "<");
@@ -358,34 +329,55 @@ public class ScrapeGoogle extends ModelUtils {
 			}
 			return value;
 		}
-		
+
 		/**
 		 * Print out N3 information about a device
 		 */
 		private synchronized void printDeviceData() {
+			Resource rProfile = profiles.createResource(newURI);
 			String nospaceManufacturer = manufacturer.replace(" ", "_");
-			Resource manufacturerResource;
-			if (fixManufacturers.containsKey(nospaceManufacturer)) {
-				manufacturerResource = profiles.createResource(fixManufacturers.get(nospaceManufacturer));
-			} else { 
-				String manufacturerURL = BASE + "manufacturers#" + nospaceManufacturer;
-				manufacturerResource = profiles.createResource(manufacturerURL);
+			Resource manufacturerResource = null;
+			String cManufacturer = manufacturer.toLowerCase().trim();
+			if (fixManufacturers.containsKey(cManufacturer)) {
+				manufacturerResource = profiles.createResource(fixManufacturers
+						.get(cManufacturer));
+			} else if (manufacturerHostnames.containsKey(manufacturer)) {
+				manufacturerResource = profiles.createResource(manufacturerHostnames
+						.get(manufacturer));
+			} else {
+				if (!rProfile.hasProperty(DeliSchema.manufacturedBy)) {
+					String manufacturerURL = BASE + "manufacturers#"
+							+ nospaceManufacturer;
+					manufacturerResource = profiles.createResource(manufacturerURL);
+				}
 			}
 
-			Resource rProfile = profiles.createResource(newURI);
-			profiles.add(profiles.createStatement(rProfile, DeliSchema.deviceName, model));
+			if (rProfile.hasProperty(DeliSchema.deviceName)) {
+				String currentModel = rProfile.getProperty(DeliSchema.deviceName)
+						.getLiteral().getLexicalForm();
+				if (currentModel.length() < model.length()) {
+					profiles.add(profiles.createStatement(rProfile,
+							DeliSchema.deviceName, profiles.createTypedLiteral(model)));
+				}
+			} else {
+				profiles.add(profiles.createStatement(rProfile, DeliSchema.deviceName,
+						profiles.createTypedLiteral(model)));
+			}
+
+			profiles.add(profiles.createStatement(rProfile, DeliSchema.deviceName,
+					profiles.createTypedLiteral(model)));
 			profiles.add(profiles.createStatement(rProfile, RDF.type, DeliSchema.Profile));
-			profiles.add(profiles.createStatement(rProfile, DeliSchema.manufacturedBy,
-					manufacturerResource));
-			
+
 			System.out.println("<" + rProfile.getURI() + ">");
 			System.out.println("  a deli:Profile ;");
 			System.out.println("  deli:deviceName \"" + model + "\" ;");
-			System.out.println("  deli:manufacturedBy <" + manufacturerResource.getURI() + "> ;");
-			System.out.println("  deli:profileSuppliedByVendor \"" + vendor + "\" ;");
-			System.out.println("  deli:supportsUAProf \"true\" ;");
-
+			if (manufacturerResource != null) {
+				profiles.add(profiles.createStatement(rProfile,
+						DeliSchema.manufacturedBy, manufacturerResource));
+				System.out.println("  deli:manufacturedBy <"
+						+ manufacturerResource.getURI() + "> .");
 				profiles.add(manufacturerResource, RDFS.label, manufacturer);
+			}
 		}
 
 	}

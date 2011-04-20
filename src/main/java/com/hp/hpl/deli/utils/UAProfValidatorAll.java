@@ -10,7 +10,6 @@ import java.net.URL;
 import java.util.List;
 
 import com.hp.hpl.deli.Constants;
-import com.hp.hpl.deli.CreateCrawlDb;
 import com.hp.hpl.deli.DeliSchema;
 import com.hp.hpl.deli.ModelUtils;
 import com.hp.hpl.deli.ProfileProcessor;
@@ -26,7 +25,7 @@ import com.hp.hpl.jena.vocabulary.RDFS;
 /**
  * Read in a file of all known UAProf profiles and validate them.
  */
-public class UAProfValidatorAll extends ModelUtils {
+public class UAProfValidatorAll {
 	int validProfiles = 0;
 
 	int invalidProfiles = 0;

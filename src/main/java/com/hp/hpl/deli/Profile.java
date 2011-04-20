@@ -11,16 +11,16 @@ import com.hp.hpl.jena.rdf.model.Resource;
  */
 public class Profile {
 	/** The profile data. */
-	Vector<Attribute> data = new Vector<Attribute>();
+	Vector<ProfileAttribute> data = new Vector<ProfileAttribute>();
 
 	/** Attribute order. */
 	HashMap<Resource, Vector<Integer>> attributePosition;
 
-	public Vector<Attribute> get() {
+	public Vector<ProfileAttribute> get() {
 		return data;
 	}
 
-	public Attribute get(int i) {
+	public ProfileAttribute get(int i) {
 		return data.get(i);
 	}
 
@@ -28,19 +28,19 @@ public class Profile {
 		return data.size();
 	}
 
-	public Profile(SchemaCollection vocabulary, Vector<Attribute> attributes) {
+	public Profile(SchemaCollection vocabulary, Vector<ProfileAttribute> attributes) {
 		// MERGE DUPLICATE ENTRIES APPROPRIATELY
 		if (attributePosition == null) {
 			attributePosition = new HashMap<Resource, Vector<Integer>>();
 		}
 
-		for (Attribute pa : attributes) {
+		for (ProfileAttribute pa : attributes) {
 			Resource pName = pa.getName();
 			if (attributePosition.containsKey(pName)) {
 				Vector<Integer> list = attributePosition.get(pName);
 				boolean resolved = false;
 				for (int currentIntRef : list) {
-					Attribute currentPa = (Attribute) data.get(currentIntRef);
+					ProfileAttribute currentPa = (ProfileAttribute) data.get(currentIntRef);
 
 					try {
 						Resource paURI = vocabulary.getAttributeProperty(pName,
@@ -48,7 +48,7 @@ public class Profile {
 						Resource currentPaURI = vocabulary.getAttributeProperty(
 							currentPa.getName(), Constants.COMPONENT);
 						if (paURI.equals(currentPaURI)) {
-							((Attribute) data.get(currentIntRef)).mergeAttribute(pa);
+							((ProfileAttribute) data.get(currentIntRef)).mergeAttribute(pa);
 							resolved = true;
 						}
 					} catch (VocabularyException ve) {//
@@ -76,10 +76,10 @@ public class Profile {
 	 */
 
 	// note this returns the _first_ attribute with that qname!! (if it exists).
-	public Attribute getAttribute(Resource attributeName) {
+	public ProfileAttribute getAttribute(Resource attributeName) {
 		if (attributePosition.get(attributeName) != null) {
 			Integer i = (attributePosition.get(attributeName)).firstElement();
-			return (Attribute) data.get(i.intValue());
+			return (ProfileAttribute) data.get(i.intValue());
 		}
 		return null;
 	}
@@ -93,7 +93,7 @@ public class Profile {
 	 *            fragment)
 	 * @return The profile attribute. Returns null if no such attribute. 
 	 */
-	public Attribute getAttribute(String attributeName) {
+	public ProfileAttribute getAttribute(String attributeName) {
 		if (attributePosition == null) {
 			attributePosition = new HashMap<Resource, Vector<Integer>>();
 		}
@@ -116,7 +116,7 @@ public class Profile {
 	 */
 	public String toString() {
 		StringBuffer result = new StringBuffer();
-		for (Attribute p : data) {
+		for (ProfileAttribute p : data) {
 			result.append(p.toString());
 		}
 		return result.toString();

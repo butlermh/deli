@@ -19,50 +19,24 @@ import com.hp.hpl.jena.rdf.model.Resource;
 import com.hp.hpl.jena.vocabulary.RDF;
 import com.hp.hpl.jena.vocabulary.RDFS;
 
-public class TransformAllProfiles {
+public class ImproveProfileMetadata {
 
 	Model profiles;
 
 	Model transformed;
+		
+	String manufacturerString = "http://purl.oclc.org/NET/butlermh/deli/manufacturers#";
 
-	TransformAllProfiles() throws IOException {
+	ImproveProfileMetadata() throws IOException {
 		profiles = ModelUtils.loadModel(Constants.ALL_KNOWN_UAPROF_PROFILES);
 
 		transformed = ModelFactory.createDefaultModel();
 
-		String manufacturerString = "http://purl.oclc.org/NET/butlermh/deli/manufacturers#";
-
-		String[] oldManufacturers = { "sonyericsson", "nokia", "toshiba", "samsung",
-				"panasonic", "Research_In_Motion_Ltd.", "motorola", "sharp", "LG",
-				"siemens", "alcatel", "High_Tech_Computer_Corporation", "amoi",
-				"Kyocera", "Kyocera_Wireless_Corporation", "Kyocera_Wireless_Corp",
-				"ZTE", "ZTE_Corporation", "Acer_Incorporated", "Acer", "Vodafone",
-				"Pantech", "Zonda", "Ericsson", "FLY", "Huawei", "INQ", "Modelabs",
-				"Openwave", "Palm", "Philips", "Haier", "ASUSTeK_COMPUTER_INC.", "NEC" };
-
-		String[] newManufacturers = { "http://www.sonyericsson.com",
-				"http://www.nokia.com", "http://www.toshiba.com",
-				"http://www.samsung.com", "http://www.panasonic.com",
-				"http://www.rim.com", "http://www.motorola.com", "http://www.sharp.com",
-				"http://www.lg.com", "http://www.siemens.com",
-				"http://www.alcatel-mobilephones.com/", "http://www.htc.com/",
-				"http://www.amoi.com/", "http://www.kyocera-wireless.com/",
-				"http://www.kyocera-wireless.com/", "http://www.kyocera-wireless.com/",
-				"http://www.zte.com.cn/", "http://www.zte.com.cn/",
-				"http://www.acer.com/", "http://www.acer.com/",
-				"http://www.vodafone.com", "http://www.pantech.com/",
-				"http://www.zondatelecom.com/", "http://www.ericsson.com/",
-				"http://www.fly-phone.com/", "http://www.huawei.com/",
-				"http://www.inqmobile.com/", "http://www.modelabs.com/",
-				"http://www.openwave.com", "http://www.palm.com",
-				"http://www.philips.com/", "http://www.haier.com/",
-				"http://www.asus.com", "http://www.nec.com" };
-
 		Map<String, String> fixManufacturers = new HashMap<String, String>();
-		for (int i = 0; i < oldManufacturers.length; i++) {
-			String oldManufacturer = (manufacturerString + oldManufacturers[i])
+		for (int i = 0; i < ScrapeGoogle.oldManufacturers.length; i++) {
+			String oldManufacturer = (manufacturerString + ScrapeGoogle.oldManufacturers[i])
 					.toLowerCase();
-			fixManufacturers.put(oldManufacturer, newManufacturers[i]);
+			fixManufacturers.put(oldManufacturer, ScrapeGoogle.newManufacturers[i]);
 		}
 
 		ResIterator profilesIter = profiles
@@ -170,7 +144,7 @@ public class TransformAllProfiles {
 
 	public static void main(String[] args) {
 		try {
-			new TransformAllProfiles();
+			new ImproveProfileMetadata();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

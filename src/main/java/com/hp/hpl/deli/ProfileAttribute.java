@@ -15,8 +15,8 @@ import com.hp.hpl.jena.rdf.model.Statement;
 /**
  * A profile attribute.
  */
-public class Attribute extends AbstractProcessAttribute {
-	private static Log log = LogFactory.getLog(Attribute.class);
+public class ProfileAttribute extends AbstractProcessAttribute {
+	private static Log log = LogFactory.getLog(ProfileAttribute.class);
 	
 	private SchemaCollection vocabulary;
 	
@@ -28,7 +28,7 @@ public class Attribute extends AbstractProcessAttribute {
 
 	private Vector<String> defaultAttributeValue = new Vector<String>();
 	
-	Attribute(ProfileProcessor configuration, Statement attributeStatement,
+	ProfileAttribute(ProfileProcessor configuration, Statement attributeStatement,
 			Resource currentComponent, boolean isDefault) {
 		boolean processUndefinedAttributes = configuration.getWorkspace().get(
 				DeliSchema.processUndefinedAttributes, false);
@@ -193,7 +193,7 @@ public class Attribute extends AbstractProcessAttribute {
 	 * 
 	 * @param b The profile attribute.
 	 */
-	void mergeAttribute(Attribute b) {
+	void mergeAttribute(ProfileAttribute b) {
 		String resolutionRule = Constants.OVERRIDE;
 		try {
 			resolutionRule = getResolution().toLowerCase();

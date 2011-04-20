@@ -7,7 +7,7 @@ import java.util.List;
 
 import com.hp.hpl.jena.rdf.model.Resource;
 
-public class Crawler {
+class Crawler {
 
 	Crawler(List<Resource> crawlDb, int maxThread, Constructor theWorker, Object parent) {
 		LinkedList<CrawlerWorker> threads = new LinkedList<CrawlerWorker>();

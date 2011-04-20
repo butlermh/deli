@@ -56,7 +56,7 @@ public class Constants {
 
 	final static String DATATYPE_CONFIG_FILE = CONFIG_PATH + "uaprofValidatorConfig.xml";
 	
-	final static String BUILD_DIR ="build";
+	final static String BUILD_DIR ="target";
 	
 	final static String BUILD_PATH = BUILD_DIR + FS;
 	

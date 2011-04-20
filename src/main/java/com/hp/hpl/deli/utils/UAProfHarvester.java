@@ -9,7 +9,6 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 import com.hp.hpl.deli.Constants;
-import com.hp.hpl.deli.CreateCrawlDb;
 import com.hp.hpl.deli.DeliSchema;
 import com.hp.hpl.deli.ModelUtils;
 import com.hp.hpl.jena.rdf.arp.JenaReader;

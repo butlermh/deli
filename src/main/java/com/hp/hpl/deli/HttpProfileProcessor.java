@@ -46,7 +46,7 @@ public class HttpProfileProcessor {
 	 */
 	Profile processProfile(ProcessedRequest request) throws IOException {
 		Vector<String> profileReferences = request.getReferenceVector();
-		Vector<Attribute> unresolved = new Vector<Attribute>();
+		Vector<ProfileAttribute> unresolved = new Vector<ProfileAttribute>();
 		for (String s : profileReferences) {
 			log.info("Retrieving profile " + s);
 			unresolved.addAll(profileCache.get(this, s).get());

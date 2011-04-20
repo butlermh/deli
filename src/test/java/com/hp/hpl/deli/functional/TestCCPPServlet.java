@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.hp.hpl.deli.Attribute;
+import com.hp.hpl.deli.ProfileAttribute;
 import com.hp.hpl.deli.Constants;
 import com.hp.hpl.deli.HttpProfileProcessor;
 import com.hp.hpl.deli.Profile;
@@ -73,7 +73,7 @@ public class TestCCPPServlet extends HttpServlet {
 		out.println();
 
 		for (int i = 0; i < theProfile.size(); i++) {
-			Attribute p = (Attribute) theProfile.get(i);
+			ProfileAttribute p = (ProfileAttribute) theProfile.get(i);
 			out.println("<TR><TD>" + p.getComponent() + "</TD>");
 			out.println("<TD>" + p.getName().getNameSpace() + " "
 					+ p.getName().getLocalName() + "</TD>");
@@ -104,7 +104,7 @@ public class TestCCPPServlet extends HttpServlet {
 		outstr.write("<card id=\"init\" newcontext=\"true\">\n");
 
 		for (int i = 0; i < theProfile.size(); i++) {
-			Attribute p = (Attribute) theProfile.get(i);
+			ProfileAttribute p = (ProfileAttribute) theProfile.get(i);
 			outstr.write("<p>" + p.getComponent() + "<br/>" + "\n");
 			outstr.write(p.getName().getLocalName() + "<br/>" + "\n");
 			outstr.write(p.get() + "</p>" + "\n");

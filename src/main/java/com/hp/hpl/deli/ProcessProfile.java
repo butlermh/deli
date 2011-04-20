@@ -13,7 +13,7 @@ import com.hp.hpl.jena.rdf.model.Statement;
  */
 class ProcessProfile extends AbstractProcessProfile {
 	/** The resulting profile attributes. */
-	private Vector<Attribute> profileAttributes = new Vector<Attribute>();
+	private Vector<ProfileAttribute> profileAttributes = new Vector<ProfileAttribute>();
 
 	ProcessProfile(ProfileProcessor configuration,
 			boolean currentlyProcessingDefaults, StringReader reader) {
@@ -45,7 +45,7 @@ class ProcessProfile extends AbstractProcessProfile {
 	}
 
 	void processProperties(Statement statement) {
-		profileAttributes.add(new Attribute(configuration, statement,
+		profileAttributes.add(new ProfileAttribute(configuration, statement,
 				currentComponent, currentlyProcessingDefaults));
 	}
 
@@ -61,7 +61,7 @@ class ProcessProfile extends AbstractProcessProfile {
 	/**
 	 * @return the profileAttributes
 	 */
-	Vector<Attribute> getProfileAttributes() {
+	Vector<ProfileAttribute> getProfileAttributes() {
 		return profileAttributes;
 	}
 
