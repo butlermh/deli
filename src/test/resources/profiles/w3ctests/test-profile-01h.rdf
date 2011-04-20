@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:ccpp="http://www.w3.org/2002/11/08-ccpp-schema#" xmlns:ex="http://www.example.com/schema#" xml:base="http://www.example.com/profile">
+	<rdf:Description rdf:ID="MyProfile">
+		<ccpp:component>
+			<ex:HardwarePlatform rdf:ID="TerminalHardware">
+				<ex:displayWidth>320</ex:displayWidth>
+				<ex:displayHeight>200</ex:displayHeight>
+			</ex:HardwarePlatform>
+		</ccpp:component>
+	</rdf:Description>
+</rdf:RDF>

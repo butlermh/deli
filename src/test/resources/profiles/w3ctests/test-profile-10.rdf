@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:ccpp="http://www.w3.org/2002/11/08-ccpp-schema#" xmlns:ex="http://www.example.com/schema#" xmlns:prf="http://www.wapforum.org/profiles/UAPROF/ccppschema-20010430#">
+	<rdf:Description rdf:about="http://www.example.com/profile#MyProfile">
+		<ccpp:component>
+			<rdf:Description rdf:about="http://www.example.com/profile#TerminalHardware">
+				<rdf:type rdf:resource="http://www.example.com/schema#HardwarePlatform"/>
+				<ex:BitsPerPixel>2</ex:BitsPerPixel>
+			</rdf:Description>
+		</ccpp:component>
+		<ccpp:component>
+			<rdf:Description rdf:about="http://www.wapforum.org/profiles/UAPROF/ccppschema-20010430#TerminalHardware">
+				<rdf:type rdf:resource="http://www.wapforum.org/profiles/UAPROF/ccppschema-20010430#HardwarePlatform"/>
+				<prf:BitsPerPixel>8</prf:BitsPerPixel>
+			</rdf:Description>
+		</ccpp:component>
+	</rdf:Description>
+</rdf:RDF>

@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE rdf:RDF [
+ <!ENTITY ns-rdf 'http://www.w3.org/1999/02/22-rdf-syntax-ns#'>
+ <!ENTITY ns-rdfs 'http://www.w3.org/2000/01/rdf-schema#'>
+ <!ENTITY ns-prfext 'http://www.myexample.org/profile-ext#'>
+ <!ENTITY ns-prf 'http://www.wapforum.org/UAPROF/ccppschema-20010330#'>
+]>
+
+<rdf:RDF xmlns:rdf="&ns-rdf;"
+	 xmlns:rdfs="&ns-rdfs;"
+	 xmlns:prfext="&ns-prfext;">
+
+  <rdf:Description rdf:about="&ns-prfext;Vendor">
+    <rdf:type rdf:resource="&ns-rdf;Property"/>
+    <rdfs:domain rdf:resource="&ns-prf;SoftwarePlatform"/>
+    <rdfs:comment xml:lang="en">
+      Description:  Name of the vendor manufacturing the software platform.
+      Type:         Literal
+      Resolution:   Locked
+      Examples:     "Microsoft", "HP"
+    </rdfs:comment>
+  </rdf:Description>
+
+</rdf:RDF>

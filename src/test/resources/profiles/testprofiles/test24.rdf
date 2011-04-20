@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:prf="http://www.wapforum.org/UAPROF/ccppschema-19991014#">
+	<!-- browser vendor site: Default description of properties -->
+	<rdf:Description>
+		<prf:CcppAccept>
+			<rdf:Bag>
+				<rdf:li>application/vnd.wap.wmlc</rdf:li>
+				<rdf:li>application/vnd.wap.wbxml</rdf:li>
+				<rdf:li>application/vnd.wap.wmlscriptc</rdf:li>
+				<rdf:li>*/*</rdf:li>
+				<rdf:li>text/vnd.wap.wml</rdf:li>
+				<rdf:li>application/xml</rdf:li>
+				<rdf:li>text/xml</rdf:li>
+				<rdf:li>text/vnd.wap.wmlscript</rdf:li>
+			</rdf:Bag>
+		</prf:CcppAccept>
+		<!-- browser vendor site: Default description of properties -->
+		<prf:CcppAccept-Charset>
+			<rdf:Bag>
+				<rdf:li>*</rdf:li>
+			</rdf:Bag>
+		</prf:CcppAccept-Charset>
+		<!-- browser vendor site: Default description of properties -->
+		<prf:CcppAccept-Language>
+			<rdf:Seq>
+				<rdf:li>en</rdf:li>
+			</rdf:Seq>
+		</prf:CcppAccept-Language>
+	</rdf:Description>
+</rdf:RDF>
