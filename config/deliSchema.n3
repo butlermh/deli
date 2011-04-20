@@ -50,6 +50,10 @@ deli:supportsUAProf
 deli:Profile
 	rdf:type	rdfs:Class;
 	rdfs:label	"A profile"@en .
+	
+deli:Manufacturer
+	rdf:type	rdfs:Class;
+	rdfs:label "A manufacturer"@en .
 
 deli:localProfilesFile 
 	rdf:type	rdf:Property;
@@ -61,40 +65,25 @@ deli:localProfilesPath
 	rdfs:label	"localProfilesPath";
 	rdfs:comment "the path to the local profiles"@en .
 	
-deli:debug 
-	rdf:type	rdf:Property;
-	rdfs:label	"debug";
-	rdfs:comment "Whether to print debugging information or not"@en .
-	
-deli:printDefaults
-	rdf:type	rdf:Property;
-	rdfs:label	"printDefaults";
-	rdfs:comment "Whether to print default values or not"@en .
-	
-deli:printProfileBeforeMerge
-	rdf:type	rdf:Property;
-	rdfs:label	"printProfileBeforeMerge";
-	rdfs:comment "print the profile before performing a merge"@en .
+#deli:printProfileBeforeMerge
+#	rdf:type	rdf:Property;
+#	rdfs:label	"printProfileBeforeMerge";
+#	rdfs:comment "print the profile before performing a merge"@en .
 	
 deli:processUndefinedAttributes
 	rdf:type	rdf:Property;
 	rdfs:label	"processUnderfinedAttributes";
 	rdfs:comment "whether to process properties that have not been defined in a schema"@en .
-	
-deli:namespaceConfigFile 
-	rdf:type	rdf:Property;
-	rdfs:label	"nameSpaceConfigFile";
-	rdfs:comment "the namespace configuration file"@en .
-	
+		
 deli:datatypeValidationOn 
 	rdf:type	rdf:Property;
 	rdfs:label	"datatypeValidationOn";
 	rdfs:comment "whether to use datatype validation or not"@en .
 	
-deli:enforceUAProfTwoDatatypes
-	rdf:type	rdf:Property;
-	rdfs:label	"enforceUAProfTwoDatatypes";
-	rdfs:comment "whether to check datatypes in accordance with the UAProf 2 specification"@en .
+#deli:enforceUAProfTwoDatatypes
+#	rdf:type	rdf:Property;
+#	rdfs:label	"enforceUAProfTwoDatatypes";
+#	rdfs:comment "whether to check datatypes in accordance with the UAProf 2 specification"@en .
 	
 deli:rdfsUri
 	rdf:type	rdf:Property;
