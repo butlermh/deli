@@ -1,0 +1,418 @@
+ ------
+ DELI: A DElivery context LIbrary for CC/PP and UAProf
+ ------
+ Mark H. Butler, markhenrybutler@gmail.com
+ ------
+ 2008-04-16
+ ------
+
+DELI: A DElivery context LIbrary for CC/PP and UAProf
+
+  Mark H. Butler, markhenrybutler@gmail.com\
+  2008-04-16
+
+Abstract
+
+ Different web-enabled devices have different input, output, hardware, software, network and browser capabilities. In order for a web server or web-based application to provide optimized content to different clients it requires a description of the capabilities of the client known as the delivery context. Two compatible standards have been created for describing delivery context: Composite Capabilities / Preferences Profile (CC/PP) created by the W3C and User Agent Profile (UAProf) created by the Open Mobile Alliance, formerly known as the WAP Forum. DELI is an open-source library developed at HP Labs that allows Java servlets to resolve HTTP requests containing delivery context information from CC/PP or UAProf capable devices and query the resolved profile. It provides support for legacy devices so that the proprietary delivery context descriptions currently used by applications can be replaced by standardised CC/PP descriptions. DELI also includes a validator to check UAProf profiles, and tools to locate newly published profiles using Google, validate those profiles, and do large scale analysis on them. The DELI work at HP Labs finished in 2002. 
+
+Keywords
+
+  Device Independence, Composite Capabilities / Preferences Profile (CC/PP), Resource Description Framework (RDF), Wireless Access Protocol (WAP), User Agent Profile (UAProf)
+
+Introduction
+
+  Different web-enabled devices have different input, output, hardware, software, network and browser capabilities. In order for a web server or web-based application to provide optimized content to different clients it requires a description of the client capabilities. Recently compatible standards have been created for describing delivery context based on the Resource Description Framework (RDF) {{{http://www.w3.org/RDF/}[RDF]}}: Composite Capabilities / Preferences Profile (CC/PP) {{{http://www.w3.org/Mobile/CCPP/}[CCPP]}} created by the W3C and User Agent Profile (UAProf) created by the Open Mobile Alliance, formerly known as the WAP Forum {{{http://www.openmobilealliance.org/}[OMA]}}. At the time of writing, CC/PP has not been used particularly widely, but there are approximately 1200 published UAProf profiles. 
+
+  One of the design aims of these standards was the efficient delivery of delivery context to the server even via low bandwidth wireless networks. This is achieved by the use of <profile references> and <profile differences> that work as follows: instead of sending an entire profile with every request a client only sends a reference to a profile, stored on a third device known as a <profile repository>, along with a list of overrides specific to this particular client. The process of interpreting the profile references and differences is known as <profile resolution>.
+
+  DELI is an open-source library developed at HP Labs that allows Java servlets to resolve HTTP requests containing CC/PP or UAProf information and query the resolved profile. Development on DELI officially finished in 2002, but there has been some further unofficial development since then. This report describes how programmers can create delivery context-aware servlets using DELI. It also details some observations made during implemention and discusses their implications for CC/PP. The DELI library and accompanying test-harnesses discussed here are available open-source. To obtain a copy of the DELI source code, please refer to the DELI web-site {{{http://delicon.sourceforge.net/}[DELI]}}.
+
+RDF, CC/PP and UAProf
+
+* RDF
+
+  The Resource Description Framework (RDF) is the W3C foundation for processing metadata i.e. information about information. It aims to provide interoperability between applications that exchange machine-understandable information on the Web. RDF is currently described in two documents: the RDF Model and Syntax Specification {{{http://www.w3.org/TR/REC-rdf-syntax/}[RDF-MODEL]}} and RDF Schema Specification 1.0 {{{http://www.w3.org/TR/rdf-schema/}[RDFS]}}.
+
+  Essentially RDF <models> consist of a collection of <statements> about <resources>. A resource is anything named by a <URI> plus an optional <anchor> ID e.g. in
+
+---
+http://www.wapforum.org/profiles/UAPROF/ccppschema-20010430#HardwarePlatform
+---
+
+  the URI is everying before the hash and the anchor ID is everying after the hash. An RDF statement comprises of a specific resource together with a named <property> plus the value of that property for that resource. These three individual parts of a statement are called, respectively, the <subject>, the <predicate>, and the <object>. The object of a statement can be another resource or it can be a <literal> i.e. a simple string or other primitive datatype defined by XML. An RDF statement is shown in Figure 1.
+
+[images/image001.gif] Figure 1.
+
+  RDF can be serialized using XML and CC/PP and UAProf profiles are normally written in this form. However viewing profiles in serialized form is deceptive as the underlying RDF model has a graph structure. In order to better understand this, it is suggested that the reader investigates the W3C RDF Validation Service {{{{http://www.w3.org/RDF/Validator/}[RDF-VALID]}}. 
+
+  It is important to note there are many possible serialisations of a single RDF model. This means that parsing RDF models written in the XML serialisation requires additional processing beyond that provided by an XML parser. Fortunately there are a number of RDF frameworks now available that automatically take XML serialisations of RDF and construct an RDF model. DELI currently uses Jena {{{http://www.hpl.hp.com/semweb/jena-top.html}[JENA]}}, an RDF Framework developed at HP Labs. For more details of using Jena to process RDF see Brian McBride’s paper on Jena {{{http://www-uk.hpl.hp.com/people/bwm/papers/20001221-paper/}[JENA-BWM]}} and the HP Labs Semantic Web activity homepage {{{http://www.hpl.hp.com/semweb/}[HP-SW]}}.
+
+* CC/PP
+
+  A CC/PP profile is a description of device capabilities and user preferences that can be used to guide the adaptation of content presented to that device. CC/PP is described in three documents: CC/PP Structure and Vocabularies {{{http://www.w3.org/TR/CCPP-struct-vocab/}[CCPPSTRUCT]}}, CC/PP Requirements and Architecture {{{http://www.w3.org/TR/CCPP-ra/}[CCPP-REQ]}} and CC/PP Terminology and Abbreviations {{{http://www.w3.org/TR/CCPP-ta/}[CCPP-TERM]}}. A proposed (and largely deprecated) protocol for CC/PP is described in two documents: CC/PP exchange protocol using HTTP extension framework {{{http://www.w3.org/TR/NOTE-CCPPexchange}[CCPP-EX]}} and Content Negotiation Header in HTTP Scenarios {{{http://search.ietf.org/internet-drafts/drafts-hjelm-http-cnhttp-scenarios-00.txt}[CONNEG]}}. The protocol work has been deprecated because the CC/PP Working Group was not chartered by the W3C to do protocol work. However these documents formed the basis for the UAProf protocol work to be discussed in the next section.
+
+  A CC/PP profile is broadly constructed as a two level hierarchy: a profile has a number of <components> and each component has a number of <attributes>. The attributes of a component may be included directly in a profile document, or may be specified by reference to a default profile that may be stored separately and accessed via a URL. CC/PP distinguishes between default and non-default values attributes such that non-default values always takes precedence.
+
+  Although a CC/PP profile is a two level hierarchy, it is commonly represented using an XML serialisation of an RDF model. Crucially the underlying RDF model describing a profile is more complicated than a two level hierarchy. This can be demonstrated by processing a profile using the W3C RDF validation service referenced in the previous section. Some examples of these complexities are as follows: First, simply giving a component a standard name (e.g. <<<HardwarePlatform>>>) is not sufficient to distinguish it as a particular component. In addition it must have an <<<rdf:type>>> property that indicates it is an instance of a particular component type in a particular namespace as shown in Figure 2.
+
+[images/image002.gif] Figure 2.
+
+  Second, default values are represented by a component containing a second component referenced via a <<<ccpp:Defaults>>> property as shown in Figure 3. Note this Figure shows a profile with multiple values for the same attribute. Using the resolution rules, <<<SoundOutputCapable>>> will be resolved to No.
+
+[images/image003.gif] Figure 3.
+
+  Third, complex (multiple-value) attributes are represented by an RDF construct known as an anonymous node. The anonymous node has an associated <<<rdf:type>>> property that indicates whether it is an unordered (<<<Bag>>>) list or an ordered (<<<Seq>>>) list. It also possesses several numbered properties that point to the multiple attribute values as shown in Figure 4.
+
+[images/image004.gif] Figure 4.
+
+  []
+
+  As an approved protocol does not yet exist for CC/PP, it has not been possible to implement a CC/PP protocol in DELI. However the DELI architecture has been designed so that it will be easy to add such a protocol in the future. In addition DELI was designed specifically so it can process many different CC/PP vocabularies. This is essential as CC/PP does not propose any vocabularies for describing device capabilities instead only providing an underlying structure for such vocabularies.
+
+* UAProf
+
+  The UAProf specification {{{http://www1.wapforum.org/tech/terms.asp?doc=WAP-248-UAProf-20010530-p.pdf}[UAPROF2001]}} is based on the CC/PP specification. Like CC/PP, a UAProf profile is a two level hierarchy composed of components and attributes. Unlike CC/PP, the UAProf specification also proposes a vocabulary – a specific set of components and attributes – to describe the next generation of WAP phones.
+
+  The specification also describes two protocols for transmitting the profile from the client to the server. Currently DELI only supports one of the UAProf protocols. This is because the other UAProf protocol, based on HTTPex and WSP, is intended to be used for client to gateway communication rather than client to server communication. DELI attempts to provide server rather than gateway support so this protocol is beyond the scope of the current implementation. In addition UAProf can also be used when documents are “pushed” from the server to the client without the client issuing a request. DELI does not support the push environment at present. Finally the UAProf specification describes a binary encoding of UAProf profiles. Binary encoding and decoding of profiles is typically performed by the gateway so this is also beyond the scope of DELI.
+
+
+** UAProf Profiles
+
+  Currently profiles using the UAProf vocabulary consist of six components: <<<HardwarePlatform>>>, <<<SoftwarePlatform>>>, <<<NetworkCharacteristics>>>, <<<BrowserUA>>>, <<<WapCharacteristics>>> and <<<PushCharacteristics>>>. These components contain attributes. In DELI each attribute has a distinct name and has an associated collection type, attribute type and resolution rule. In UAProf there are three collection types:
+
+  * <<<Simple>>> contains a single value e.g. <<<ColorCapable>>> in <<<HardwarePlatform>>>. Note the UAProf specification does not give a name to single value attributes so the term Simple has been adopted from the CC/PP specification.
+
+  * <<<Bag>>> contains multiple unordered values e.g. <<<BluetoothProfile>>> in the <<<HardwarePlatform>>> component. 
+
+  * <<<Seq>>> contains multiple ordered values e.g. <<<Ccpp-AcceptLanguage>>> in the <<<SoftwarePlatform>>> component. 
+
+  []
+
+  In addition attributes can have one of four attribute types:
+
+  * <<<String>>> e.g. <<<BrowserName>>> in <<<BrowserUA>>>.
+
+  * <<<Boolean>>> e.g. <<<ColorCapable>>> in <<<HardwarePlatform>>>. 
+
+  * <<<Number>>> is a positive integer e.g. <<<BitsPerPixel>>> in <<<HardwarePlatform>>>. 
+
+  * Dimension is a pair of positive integers e.g. ScreenSize in HardwarePlatform. 
+
+  []
+
+  Finally attributes are associated with a resolution rule:
+
+  * <<<Locked>>> indicates the final value of an attribute is the first occurrence of the attribute outside the default description block. 
+
+  * <<<Override>>> indicates the final value of an attribute is the last occurrence of the attribute outside the default description block. 
+
+  * <<<Append>>> indicates the final value of the attribute is the list of all occurrences of the attribute outside the default description block. 
+DELI can read UAProf schema files such as <<<ccppschema-20010330.rdfs>>> found in the <<<config/vocab>>> directory. Note these files are derived from schemas obtained from the OMA website but have been corrected for a number of RDF errors {{{http://www.wapforum.org/profiles/UAPROF/ccppschema-20010330}[UAPROF-S]}}. 
+
+  []
+
+** UAProf W-HTTP Protocol
+
+  As mentioned previously DELI only implements one of the UAProf protocols: transport via W-HTTP (Wireless profiled HTTP). An example W-HTTP request using this protocol is shown below:
+
+---
+GET /ccpp/html/ HTTP/1.1
+Host: localhost
+x-wap-profile:"http://localhost:8080/ccpp/profiles/test09defaults.rdf",
+"1-Rb0sq/nuUFQU75vAjKyiHw=="
+x-wap-profile-diff:1;<?xml version="1.0"?>
+ <rdf:RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:prf="http://www.wapforum.org/profiles/UAPROF/ccppschema-20010430#">
+  <rdf:Description rdf:ID="MyDeviceProfile">
+     <prf:component>
+       <rdf:Description rdf:ID="HardwarePlatform">
+          <rdf:type
+  rdf:resource="http://www.wapforum.org/profiles/UAPROF/ccppschema-
+    20010426#HardwarePlatform"/>
+              <prf:BitsPerPixel>16</prf:BitsPerPixel>
+</rdf:Description>
+     </prf:component>
+  </rdf:Description>
+ </rdf:RDF>
+---
+  The first two lines of this request are standard HTTP and describe the resource that is being requested by the client, <http://localhost/ccpp/html>, and the method being used to make the request, GET, and the protocol being used HTTP/1.1. The remaining lines of the request describe the device delivery context. This is specified using a profile reference and a profile-diff. The profile is referenced via the <x-wap-profile> line and has the URI
+
+---
+http://localhost:8080/ccpp/profiles/test09defaults.rdf
+---
+
+  After the profile reference, there is a value <1-Rb0sq/nuUFQU75vAjKyiHw==> known as a <profile-diff digest>. The first part of the profile-diff-digest, 1-, is the <profile-diff sequence number>. This is used to indicate the order of the profile-diffs and to indicate which profile-diff the profile-diff digest refers to. The remainder of the profile-diff digest is generated by applying the MD5 message digest algorithm {{{http://www.faqs.org/rfcs/rfc1321.html}[MD5]}} and Base64 algorithm {{{http://www.faqs.org/rfcs/rfc2045.html}[BASE64]}} to the corresponding profile-diff. The MD5 algorithm takes as input a message of arbitary length and produces as output a 128-bit “fingerprint” or “message-digest” of the input. The Base64 algorithm takes as input arbitary binary data and produces as output printable encoding data.
+
+  After the profile-diff digest, the next line contains the <x-wap-profile-diff>. This request header field also has a profile-diff sequence number which indicates the processing order and that this profile-diff corresponds to the previous profile-diff-digest. The profile-diff itself consists of the XML fragment which spans the remainder of the request. Multi-line request header fields are permitted by the HTTP/1.1 specification {{{http://www.w3.org/Protocols/rfc2616/rfc2616.html}[HTTP]}} as long as each subsequent line starts with either a tab character or a whitespace. Note not all servlet engines, for example early versions of Tomcat, fully support the HTTP/1.1 specification so may not allow multi-line request header fields. 
+
+  In addition to <x-wap-profile> and <x-wap-profile-diff> W-HTTP protocol adds a third extension header primarily used in responses. This header, <x-wap-profile-warning> indicates whether the server has used the UAProf information when generating the response. This can take five possible values: not applied, content selection applied, content generation applied, transformation applied and not supported.
+
+** Profile Resolution
+
+  When the server receives a HTTP request with UAProf request headers, it has to perform profile resolution i.e. retrieve the referenced profile(s) and any further profiles referenced via default blocks. It then has to merge these profiles and the profile-diffs while applying the UAProf resolution rules.
+
+  DELI performs profile resolution by processing all profiles and profile-diffs in the following order: firstly it processes all referenced profiles in the order they are present in the <x-wap-profile> request header. If a referenced profile references an external default profile then that is included where it is referenced. It then processes all the profile-diffs. This profile processing operation involves building an RDF model for each profile or profile-diff and then extracting a list of attributes from the model. Each attribute is associated with an attribute name, an attribute type, a collection type, a resolution rule and either one or more default values or one or more non-default values. These attributes are then appended together in the order indicated.
+
+  After DELI has produced the vector of profile attributes, profile merging is performed which involves taking each attribute in order from the list and placing it at a specific position in an array determined by the attribute name. If a collision occurs i.e. an attribute is already present in the array then the two attribute values are merged using the following rules:
+
+  * If the colliding attribute contains one or more default values it is ignored, as non-defaults always override defaults and a default takes the value of the first default value (or set of default values) encountered. 
+
+  * If the colliding attribute contains one or more non-default values and the original attribute only contains one or more default values, then the colliding attribute overrides the original attribute. 
+
+  * If the colliding attribute and the original attribute both contain non-default values, then the resolution rules are used. If the attribute resolution rule is <Locked> then non-default values cannot be subsequently overridden. If the attribute resolution rule is <Override> then non-default values can be subsequently overridden. If the attribute resolution rule is <Append> then all the non-default values are appended together. 
+
+  []
+
+  Note that this algorithm does not perform merging in the RDF domain, rather it performs merging after the attributes have been retrieved from the RDF domain.
+
+** Content Selection, Generation and Transformation
+
+  Neither the UAProf nor the CC/PP specifications consider how the profile should select, generate or transform content based on the resolved profile. An extensive discussion of this topic is beyond the scope of this report so the reader is instead referred to previous technical reports by the author discussing content transformation by XML / XSLT publishing frameworks {{{http://www.hpl.hp.com/techreports/2001/HPL-2001-83.htm}[HPL-2001-83]}}, content generation using constraint optimisation and content negotiation {{{{http://www.hpl.hp.com/techreports/2001/HPL-2001-190.html}[HPL-2001-190]}}.
+
+  DELI also currently provides no support for content selection, generation or transformation. Instead it is proposed that DELI should be integrated with existing applications that transform content for clients based on the user agent string. From version 2.0.2, Apache Cocoon {{{http://xml.apache.org/cocoon}[COCOON]}} provides support for CC/PP using DELI. With DELI support enabled it is currently possible for XSLT stylesheets to query profile attributes. For more information on this, download the latest version of Cocoon from the Cocoon CVS and look at the static samples to see the DELI documentation. Future work will investigate other ways of using CC/PP information in Cocoon. Other frameworks such as Apache Jetspeed {{{http://jakarta.apache.org/jetspeed/site/index.html}[JETSPEED]}} or Apache Struts {{{http://jakarta.apache.org/struts/index.html}[STRUTS]}} could be adapted in a similar way. 
+
+Installing DELI
+
+  In order to install DELI and run the test servlets, you will need a Java installation along with a Java Servlet engine that can accept WAR files such as Apache Tomcat 4 {{{http://jakarta.apache.org/tomcat/index.html}[TOMCAT]}} or Mortbay Jetty {{{http://jetty.mortbay.com}[JETTY]}}. In addition if you wish to do any development or customising of DELI you will need Apache Ant {{{http://jakarta.apache.org/ant/index.html}[ANT]}}. By default DELI supports Microsoft Internet Explorer as legacy devices.
+
+  Installation of the DELI test servlet is easy. Once you have confirmed your Java Servlet engine is working correctly, unzip the DELI distribution file to the directory DELI_ROOT. Copy the file <<<DELI_ROOT\warfiles\ccpp.war>>> into the <<<webapps>>> directory of the Servlet engine. For example if you installed Tomcat in <<<c:\apps32\tomcat>>> then you need to copy ccpp.war to <<<c:\apps32\tomcat\webapps\ccpp.war>>>. Start the servlet engine and use Internet Explorer to check the DELI installation is working. If you type the following address into MSIE
+
+---
+http://localhost:8080/ccpp/html/
+---
+
+  then the browser should display the contents of the profile <<<profiles\msie.rdf>>> in the DELI distribution. In addition by default DELI will output debugging information to the Servlet engine console. 
+
+  Alternatively you can try sending some real UAProf requests to the server. To do this, you need to add various files to your classpath. Open a Dos/Unix shell and cd to DELI_ROOT. Then set the environment variables <<<DELI_HOME>>> and <<<CATALINA_HOME>>> to point to the DELI root directory and tomcat root directory respectively. For example, in Windows you would execute <<<‘set DELI_HOME=c:\deli’>>> and <<<‘set CATALINA_HOME=c:\jakarta-tomcat-4.0.4‘>>>. Then run <<<winsetpath.bat>>> at the command line (note winsetpath.bat is Microsoft specific – for UNIX machines you will have to adapt this file). Then type
+
+---
+java com.hp.hpl.deliTest.TestCCPPClient normal http://localhost:8080/ccpp/profiles/testprofiles/test09defaults.rdf profiles\testprofiles\test09.rdf output.html 
+---
+
+  which sends a HTTP request to the server with a profile reference <<<http://localhost:8080/ccpp/profiles/testprofiles/test09defaults.rdf>>> and uses the file <<<profiles\testprofiles\test09.rdf>>> as a profile-diff. When it receives a response from the server it stores it in <<<output.html>>>. To view the server response open <<<output.html>>> in a web browser. For more details of running and testing DELI, see the Section 9.
+
+* Configuring Legacy Devices
+
+  It is easy to configure DELI to recognise legacy devices via user-agent strings. User-agent strings are used by web clients to identify themselves when they send requests to web servers. This is done primarily for statistical purposes and the tracing of protocol violations but does support the automated recognition of user agents. For example early Netscape products generate user-agent strings that look like this:
+
+---
+User-agent: Mozilla/4.04 (X11; I; SunOS 5.4 sun4m)
+---
+
+  Where the user agent string has the following syntax:
+
+---
+Browser / version( platform ; security-level; OS-or-CPU description)
+---
+
+  The legacy device configuration file maps user-agent strings on to profile references on a profile repository. In the test applications this is done by the <<<DELI_ROOT\config\legacyDevice.xml>>> file, although it is possible to select a different file via the DELI configuration. The legacy device configuration file has the following format:
+
+---
+@prefix :        <file:///home/butlerma/workspace/deli2/#> . 
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> . 
+@prefix deli:    <http://delicon.sourceforge.net/schema#> . 
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+<http://purl.oclc.org/NET/butlermh/deli/devices#DELI-MSIE-> 
+   a       deli:Profile ; 
+   deli:deviceName "Internet Explorer" , "MSIE" ; 
+   deli:file "msie.rdf" ; 
+   deli:manufacturedBy <http://purl.oclc.org/NET/butlermh/deli/manufacturers#DELI> ; 
+   deli:profileSuppliedByVendor "false" ; 
+   deli:useragent "Mozilla" .
+---
+
+  Where <<<useragent>>> is a device unique string found in the user-agent string of the device and <<<file>>> is a local file URL for the appropriate profile Note typically part of the user-agent string is used rather than the entire string. This is done to avoid problems due to cloaking and browser customisation.
+
+  <Cloaking> is when a device or browser (e.g. Microsoft Internet Explorer) claims to be another browser (e.g. Mozilla) in order to ensure web servers will send it the correct content. <Browser customisation> is when the device manufacturer or the owner can change the user-agent string to add the company name. This means identical browsers may not have the same user agent string. In order to avoid confusion caused by cloaking and customisation it is necessary to think carefully about how much of the user-agent string to use and the order of legacy devices in the legacy device file. For example when creating a legacy device file it is a good idea to have an Internet Explorer legacy device before a Netscape legacy device as they both contain the user agent string Mozilla, but Internet Explorer will also contain the user agent string MSIE so it is possible to identify IE first.
+
+* Rebuilding DELI
+
+  If you change any of the files e.g. configuration files or need to alter any of the source files it is necessary to rebuild the DELI web archive (WAR) file. In order to do this, just change to the DELI_ROOT directory and type ant at the command line. This takes the file <<<build.xml>>> which builds the WAR file. Then to redeploy DELI you need to stop your Servlet engine, delete the ccpp directory in the webapps directory then copy the new <<<ccpp.war>>> file to the webapps directory. Now restart the Servlet engine.
+
+Workspaces
+
+  DELI uses the concept of a workspace configured to interpret profiles that use certain vocabularies, a set of certain resolution rules and requests that use a certain variant of HTTP. In addition the workspace contains a cache of referenced profiles, information about the vocabularies in use and the legacy device database. A workspace is configured using a configuration file such as <<<DELI_ROOT\config\deliConfig.n3>>>. The file is written in N3:
+
+---
+@prefix deli: <http://delicon.sourceforge.net/schema#> . 
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> . 
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> . 
+
+_:config 
+	deli:localProfilesFile "config/profiles.n3" ; 
+	deli:localProfilesPath "profiles" ; 
+	deli:debug "true" ; 
+ 	deli:printDefaults "true" ; 
+ 	deli:printProfileBeforeMerge "false" ; 
+ 	deli:processUndefinedAttributes "true" ; 
+ 	deli:namespaceConfigFile "config/namespaceConfig.n3" .
+---
+
+  This file can contain caching, debugging, legacy device, protocol and vocabulary configuration directives as detailed in the subsequent sections.
+
+* Caching options
+
+  The caching options control the way the workspace caches referenced profiles. DELI caches referenced profiles but not profile-diffs. This is because referenced profiles are associated with a unique identifier (the referenced profile URL) but profile-diffs are not. DELI can either cache profiles indefinitely or update stale profiles after a set interval. It is also possible to configure the maximum size of the profile cache.
+
+*--+--+--+
+|Element Name|Default Value|Description|
+*--+--+--+
+|maxCachedProfileLifetime|24 hours|The maximum lifetime of a cached profile in hours.|
+*--+--+--+
+|maxCacheSize|100|The maximum number of profiles in the profile cache.|
+*--+--+--+
+|refreshStaleProfiles|false|Do we refresh cached profiles after the maximum lifetime has expired?|
+*--+--+--+
+
+* Debugging options
+
+  The debugging options are used to control the information that DELI prints to the Servlet engine console.
+
+*--+--+--+
+|Element NameDefault Value|Description|
+*--+--+--+
+|debug|true|Is the automatic debug log information turned on?|
+*--+--+--+
+|printDefaults|true|Print both default and override values of attributes for debugging purposes?|
+*--+--+--+
+|printProfileBeforeMerge|false|Print the profile before merging for debugging purposes?|
+*--+--+--+
+
+* Legacy device options
+
+  As already mentioned DELI can support legacy devices by recognising the user-agent string supplied by a client and mapping it on to a profile. In order to use this facility it is necessary to supply an XML file that contains information about legacy device user-agent strings and the corresponding profile URLs.
+
+*--+--+--+
+|Element Name|Default Value|Description|
+*--+--+--+
+|supportLegacyDevices|true|Is the legacy device database turned on?|
+*--+--+--+
+
+* Protocol options
+
+  DELI has a number of protocol options. First, it is possible to switch on whitespace normalisation in profile-diffs prior to calculating the profile-diff-digest in order to accommodate a modification to the UAProf protocol that has been proposed by IBM. When a server receives the request, it recalculates the profile-diff-digest. If additional whitespaces have been added to the request header by a proxy then there is a danger the two profile-diff digests will differ so the profile-diff will be rejected. Therefore IBM have proposed the following normalisation procedure prior to profile-diff digest calculation: all leading and trailing white spaces are eliminated (white space as defined in RFC 2616 section 2.2). Then all non-trailing or non-leading linear white space contained in the profile description, including line folding of multiple HTTP header lines, is replaced with one single space (SP) character. This implies that property values, represented as XML attributes or XML element character data, MUST be adhering to white space compression as mandated in RFC 2616 section 2.2.
+
+*--+--+--+
+|Element Name|Default Value|Description|
+*--+--+--+
+|normaliseWhitespaceInProfileDiff|true|Is whitespace normalisation of the profile-diff prior to calculating the profile-diff-digest turned on?|
+*--+--+--+
+
+* Vocabulary options
+
+  DELI has a number of vocabulary options. First, it is possible to configure the vocabularies using an N3 file (by default namespaceConfig.n3). This file contains information about specific CC/PP vocabulary configuration i.e. references to vocabulary namespace URIs and their associated XML or RDF schema file containing the attribute names, the components they belong to, the collection type, the attribute type and the resolution rule used by a specific vocabulary.
+
+  Second, it is possible to specify the URI to be used for the RDF namespace and the CC/PP or UAProf namespace. This is important because as the specifications are revised they adopt new namespaces. Thirdly it is possible to set the string used to represent components in the vocabulary.
+
+*--+--+--+
+|Element Name|Default Value|Description|
+*--+--+--+
+|namespaceConfigFile|config/namespaceConfig.n3|The file containing the mapping of vocabulary namespace URIs to RDF/XML schema vocabulary specifications.|
+*--+--+--+
+
+ 
+  The namespaceConfigFile referenced by <<<deliConfig.n3>>> above takes the following format:
+
+---
+@prefix deli: <http://delicon.sourceforge.net/schema#> . 
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> . 
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema> . 
+  
+_:n1 
+  rdf:type deli:NamespaceDefinition ; 
+  deli:uri <http://www.wapforum.org/profiles/UAPROF/ccppschema-20010430#> ; 
+  deli:aliasUri <http://www.wapforum.org/profiles/UAPROF/ccppschema-20010430#> ; 
+  deli:schemaVocabularyFile "config/vocab/ccppschema-20010430.rdfs" . 
+    
+_:n2
+  rdf:type deli:NamespaceDefinition ; 
+  deli:uri <http://www.openmobilealliance.org/tech/profiles/MMS/ccppschema-20050301-MMS1.2#> ; 
+  deli:schemaVocabularyFile "config/vocab/ccppschema-20050301-MMS1.2.rdfs" .
+---
+
+  Each namespace defines a specific vocabulary definition and associates it with a URI specified by <<<uri>>>. Due to the misuse of namespaces, a regular problem is the use of multiple namespace URIs to refer to the same vocabulary. To overcome this an <<<aliasUri>>> property has been introduced for specifying alternative URIs that should also map to this vocabulary definition. A <<<schemaVocabularyFile>>>, the file containing the vocabulary specification as an UAProf RDF Schema, must also be specified.
+
+Creating a DELI servlet
+
+  In order to understand how to construct servlets with DELI, the reader is encouraged to examine the example servlet in the DELI distribution:
+
+---
+DELI_ROOT\src\com\hp\hpl\deliTest\TestCCPPServlet.java
+---
+
+  In order to create a Java servlet that uses the DELI library it is necessary to include the DELI package, e.g.
+
+---
+import com.hp.hpl.deli.*;
+---
+
+  and to include a servletContext as a class data member e.g.
+
+---
+ServletContext servletContext;
+---
+
+  Then when the servlet is initialized query the servletContext to determine the path to the servlet and use this information to create the workspace e.g.
+
+---
+public void init(ServletConfig config) throws ServletException
+{
+ super.init(config);
+ 
+ try
+ {
+ 
+  servletContext = config.getServletContext();
+  Workspace.getInstance().configure(servletContext,"config/deliConfig.xml");
+ 
+ } catch (Exception e) {
+ 
+  try
+  {
+Workspace.getInstance().configure((ServletContext) null,  "config/deliConfig.xml");
+  } catch (Exception f) {
+   System.out.println(f.toString());
+  }
+ 
+ }
+ 
+}
+---
+
+  Once the workspace is initialised (note that the Workspace class is a Singleton, and should not be directly instantiated, but rather accessed by use of the static method getInstance()), profile resolution is achieved by creating a new profile using a HttpServletRequest e.g.
+
+---
+public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException
+{
+       Profile myProfile = new Profile(req);
+---
+
+  Then the addWarningHeader() can be used to add an x-wap-profile-warning to the response header e.g.
+
+--- 
+res = UAProfCreateHttpResponse.addWarningHeader(res, UAProfCreateHttpResponse.CONTENT_GENERATION_APPLIED);
+}
+---
+
+  The profile can be manipulated by using the standard Vector methods which will retrieve profile attributes e.g.
+
+---
+for (int i = 0; i < myProfile.size(); i++)
+{
+       ProfileAttribute p = (ProfileAttribute)myProfile.get(i);
+       out.println("<TD>"+p.get()+"</TD>");
+}
+---
+
+  Or by directly retrieving a profile attribute e.g.
+---
+System.out.println(myProfile.getAttribute("BrowserName").toString());
+---
+
+  In addition it is possible to query profile attributes using the <<<get()>>>, <<<getAttribute()>>>, <<<getCollectionType()>>>, <<<getComponent()>>>, <<<getDefaultValue()>>>, <<<getResolution()>>>, <<<getType()>>> and <<<getValue()>>> methods. Full details of the DELI API are contained in the Javadoc in the <<<DELI_ROOT\javadoc\user>>> directory which describes the classes and methods exported by the DELI package.
+
+Conclusions
+
+  So in conclusion this report has described DELI, an open-source server implementation of profile resolution for CC/PP. DELI is currently alpha grade software provided to demonstrate how CC/PP may be implemented. It is designed to be easily extensible and configurable so it may be used as a test-bed for prototyping future developments with these specifications. DELI will be further developed to ensure compatibility with these standards.
