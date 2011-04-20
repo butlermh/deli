@@ -1,10 +1,6 @@
 <project name="Deli" default="build" basedir=".">
 	<target name="init">
 		<property environment="env"/>
-		<!--
-			<property name="http.proxyPort" value="8088"/>
-			<property name="http.proxyHost" value="garlic.hpl.hp.com"/>
-		-->
 		<property name="profile" value="profiles/msie.rdf"/>
 		<property name="buildLibDir" value="lib/tools/lib"/>
 		<property name="path" value="com/hp/hpl/deli"/>
@@ -36,8 +32,9 @@
 	<target name="jars" depends="init,compile"
 		description="Build the DELI jarfiles">
 		  <copydir src="config" dest="build/config"/>
-		<copy file="log4j.properties" todir="build"/>
-		<jar jarfile="lib/deliAll.jar" basedir="build/" includes="**/*.class,**/*.properties,**/*.xsd,**/*.rdfs,**/*.n3,**/*.xml">
+		<!-- <copy file="log4j.properties" todir="build"/> 
+		<jar jarfile="lib/deliAll.jar" basedir="build/" includes="**/*.class,**/*.properties,**/*.xsd,**/*.rdfs,**/*.n3,**/*.xml"> -->
+		<jar jarfile="lib/deliAll.jar" basedir="build/" includes="**/*.class,**/*.xsd,**/*.rdfs,**/*.n3,**/*.xml">
 			<zipfileset src="lib/commons-logging-1.1.1.jar" includes="**/*.class"/>
 			<zipfileset src="lib/icu4j-3.4.4.jar" includes="**/*.*"/>
 			<zipfileset src="lib/jena-2.6.2.jar" includes="**/*.class"/>
