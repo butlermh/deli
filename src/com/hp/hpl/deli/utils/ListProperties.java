@@ -1,14 +1,3 @@
-/*
- * File:		ListProperties.java
- * Package:		com.hp.hpl.deli
- * 
- * Author:		Mark H. Butler, HP Labs Bristol
- * Created:		17-Oct-2005
- * Project:		Content Services Framework
- * Status:		Experimental (Do Not Distribute)
- *
- * (c) Copyright 2004, Hewlett-Packard Company, all rights reserved.
- */
 package com.hp.hpl.deli.utils;
 
 import java.io.File;
@@ -38,7 +27,7 @@ public class ListProperties {
 	
 	private StringBuffer result = new StringBuffer();
 
-	public Vector<PropertyValueEntry> sortPropertyValuesHashMap(HashMap<String, Integer> entries) {
+	Vector<PropertyValueEntry> sortPropertyValuesHashMap(HashMap<String, Integer> entries) {
 		Vector<PropertyValueEntry> vector = new Vector<PropertyValueEntry>();
 		for (String entryName : entries.keySet()) {
 			int frequency = entries.get(entryName).intValue();
@@ -49,7 +38,7 @@ public class ListProperties {
 		return vector;
 	}
 
-	public Vector<PropertyEntry> sortPropertiesHashMap(HashMap<String, HashMap<String, Integer>> entries) {
+	Vector<PropertyEntry> sortPropertiesHashMap(HashMap<String, HashMap<String, Integer>> entries) {
 		Vector<PropertyEntry> vector = new Vector<PropertyEntry>();
 		for (String entryName : entries.keySet()) {
 			HashMap<String, Integer> propertyValues = entries.get(entryName);
@@ -157,10 +146,10 @@ public class ListProperties {
 		}
 
 		public int compareTo(PropertyValueEntry other) {
-			int result = other.frequency - frequency;
-			if (result == 0)
+			int r = other.frequency - frequency;
+			if (r == 0)
 				return other.name.compareTo(name);
-			return result;
+			return r;
 		}
 	}
 

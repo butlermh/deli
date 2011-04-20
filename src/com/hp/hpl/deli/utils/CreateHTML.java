@@ -11,19 +11,16 @@ import java.util.HashSet;
 
 import com.hp.hpl.deli.Constants;
 import com.hp.hpl.deli.DeliSchema;
-import com.hp.hpl.deli.Utils;
-import com.hp.hpl.deli.Workspace;
+import com.hp.hpl.deli.ModelUtils;
 import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.ResIterator;
 import com.hp.hpl.jena.rdf.model.Resource;
 import com.hp.hpl.jena.vocabulary.RDFS;
 
-// REVIEWED 10/04/08
-
 /**
  * Generate a HTML page from the list of all known UAProf profiles.
  */
-public class CreateHTML extends Utils {
+public class CreateHTML extends ModelUtils {
 
 	/** Map of manufacturers onto URIs */
 	private HashMap<String, HashSet<String>> manufacturers = new HashMap<String, HashSet<String>>();
@@ -34,15 +31,18 @@ public class CreateHTML extends Utils {
 	private StringBuffer result = new StringBuffer();
 
 	public static void main(String[] args) {
-		new CreateHTML();
+		try {
+			new CreateHTML();
+		} catch (IOException ie) {
+			ie.printStackTrace();
+		}
 	}
 
 	/**
 	 * Constructor.
 	 */
-	public CreateHTML() {
-		Workspace.getInstance().configure(null, Constants.VALIDATOR_CONFIG_FILE);
-		profiles = Utils.loadModel(Constants.ALL_KNOWN_UAPROF_PROFILES);
+	CreateHTML() throws IOException {
+		profiles = ModelUtils.loadModel(Constants.ALL_KNOWN_UAPROF_PROFILES);
 
 		String datenewformat = new SimpleDateFormat("dd MMMMM yyyy").format(new Date());
 		result.append("<html>\n<head>\n<title>List of UAProfile profiles " + datenewformat + "</title>\n</head>\n");
