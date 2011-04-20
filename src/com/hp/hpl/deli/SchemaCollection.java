@@ -1,21 +1,25 @@
 package com.hp.hpl.deli;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.Serializable;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.Reader;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Vector;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.w3c.dom.Document;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+import org.xml.sax.InputSource;
 
 import com.hp.hpl.jena.datatypes.DatatypeFormatException;
 import com.hp.hpl.jena.datatypes.TypeMapper;
 import com.hp.hpl.jena.datatypes.xsd.XSDDatatype;
-import com.hp.hpl.jena.rdf.model.Model;
-import com.hp.hpl.jena.rdf.model.ModelFactory;
 import com.hp.hpl.jena.rdf.model.ResIterator;
 import com.hp.hpl.jena.rdf.model.Resource;
 import com.hp.hpl.jena.rdf.model.ResourceFactory;
@@ -25,16 +29,12 @@ import com.hp.hpl.jena.vocabulary.RDF;
 /**
  * This class processes the CC/PP vocabulary definition file.
  */
-/**
- * @author butlermh
- *
- */
-class SchemaCollection extends Utils implements Serializable {
+class SchemaCollection extends ModelUtils {
 	/** Logging. */
 	private static Log log = LogFactory.getLog(SchemaCollection.class);
 
-	/** Comment for <code>serialVersionUID</code> */
-	private static final long serialVersionUID = 1L;
+	/** datatype expressions of validation */
+	protected HashMap<String, String> datatypeExpressions = new HashMap<String, String>();
 
 	/** A mapping of aliased schema namespaces on to real schema namespaces. */
 	private Map<String, String> namespaceLookup = new HashMap<String, String>();
@@ -47,21 +47,18 @@ class SchemaCollection extends Utils implements Serializable {
 
 	private List<String> datatypesDef = null;
 
+	/** Datatype config file */
+	protected String datatypeConfigFile = Constants.DATATYPE_CONFIG_FILE;
+
 	/**
 	 * The constructor reads in a vocabulary definition file and then processess
 	 * the set of vocabularies it references.
-	 *
+	 * 
 	 * @param configFile The filename of the configuration file.
 	 */
-	protected SchemaCollection(String configFile) {
-		Model configData = ModelFactory.createDefaultModel();
-
-		try {
-			configData.read(Workspace.getInstance().getResource(configFile), "", "N3");
-		} catch (Exception e) {
-			log.error("DELI Failed to load namespace/vocabulary configuration file from: " + configFile, e);
-		}
-		ResIterator definitions = configData.listSubjectsWithProperty(RDF.type, DeliSchema.NamespaceDefinition);
+	SchemaCollection(DeliConfiguration configData) {
+		ResIterator definitions = configData.getModel().listSubjectsWithProperty(
+				RDF.type, DeliSchema.NamespaceDefinition);
 		if (!definitions.hasNext()) {
 			log.info("Vocabulary: No schemas defined. Loading schemas dynamically.");
 		} else {
@@ -70,11 +67,19 @@ class SchemaCollection extends Utils implements Serializable {
 				processNamespaceDefinition(definitions.nextResource());
 			}
 		}
+		datatypeConfigFile = configData.get(DeliSchema.datatypeConfigFile,
+				datatypeConfigFile);
+		try {
+			datatypeExpression(datatypeConfigFile);
+		} catch (Exception e) {
+			log.error("Failed to load validator datatypes", e);
+			log.info("Using defaults");
+		}
 	}
 
 	/**
 	 * Process a namespace definition.
-	 *
+	 * 
 	 * @param defn The resource for the namespace definition.
 	 */
 	private void processNamespaceDefinition(Resource defn) {
@@ -86,7 +91,8 @@ class SchemaCollection extends Utils implements Serializable {
 			if (defn.hasProperty(DeliSchema.aliasUri)) {
 				StmtIterator stmts = defn.listProperties(DeliSchema.aliasUri);
 				while (stmts.hasNext()) {
-					String aliasUri = ((Resource) stmts.nextStatement().getObject()).getURI();
+					String aliasUri = ((Resource) stmts.nextStatement().getObject())
+							.getURI();
 					namespaceLookup.put(aliasUri, URI);
 				}
 			}
@@ -112,23 +118,19 @@ class SchemaCollection extends Utils implements Serializable {
 		}
 	}
 
-	void addSchema(String schema) throws Exception {
-		log.debug("Vocabulary: Processing UAProf schema vocabulary file: " + schema);
-		addSchema(new Schema(schema, datatypesDef));
-	}
-
 	void addSchemaFromFile(String file, String URI) {
 		try {
 			log.debug("Vocabulary: Processing UAProf schema vocabulary file: " + file);
-			addSchema(new Schema(Workspace.getInstance().getResource(file), URI, URI, datatypesDef));
+			addSchema(new Schema(ModelUtils.getResource(file), URI, URI, datatypesDef));
 		} catch (Exception e) {
-			log.error("Vocabulary: Cannot load and process vocabulary schema from " + file, e);
+			log.error("Vocabulary: Cannot load and process vocabulary schema from "
+					+ file, e);
 		}
 	}
 
 	/**
 	 * Add a schema to the set of schemas
-	 *
+	 * 
 	 * @param sp
 	 */
 	void addSchema(Schema sp) {
@@ -138,7 +140,7 @@ class SchemaCollection extends Utils implements Serializable {
 
 	/**
 	 * Get a datatype definition
-	 *
+	 * 
 	 * @param defn the resource corresponding to the namespace definition.
 	 * @param datatypeUri the datatype URI.
 	 * @return the datatype definition
@@ -150,12 +152,14 @@ class SchemaCollection extends Utils implements Serializable {
 		// definitions
 		try {
 			TypeMapper tm = TypeMapper.getInstance();
-			FileReader fr = new FileReader(Workspace.getPath() + datatypeFile);
+			Reader fr = new InputStreamReader(ModelUtils.getResource(datatypeFile));
 			result = XSDDatatype.loadUserDefined(datatypeUri, fr, null, tm);
 		} catch (DatatypeFormatException e) {
-			log.error("DELI could not process datatype configuration file: " + datatypeFile, e);
-		} catch (FileNotFoundException e) {
-			log.error("DELI Failed to load datatype configuration file: " + datatypeFile, e);
+			log.error("DELI could not process datatype configuration file: "
+					+ datatypeFile, e);
+		} catch (IOException ie) {
+			log.error("DELI could not process datatype configuration file: "
+					+ datatypeFile, ie);
 		}
 		return result;
 	}
@@ -163,22 +167,22 @@ class SchemaCollection extends Utils implements Serializable {
 	/**
 	 * This method returns a given value for an attribute property where the
 	 * attribute is specified by the attribute qname and its component qname.
-	 *
+	 * 
 	 * @param attributeQName The QName of the attribute.
 	 * @param paramName The required Parameter
 	 */
-	protected Resource getAttributeProperty(Resource attributeQName, String paramName) {
+	public Resource getAttributeProperty(Resource attributeQName, String paramName) throws VocabularyException {
 		Resource alias = getRealQName(attributeQName);
 		if (propertyDescription.containsKey(alias)) {
 			return getRealQName(propertyDescription.get(alias).get(paramName));
 		}
 
-		return null;
+		throw new VocabularyException(attributeQName.getURI() + " is unknown in the vocabulary");
 	}
 
 	/**
 	 * Does this namespace use RDF datatyping?
-	 *
+	 * 
 	 * @param prfUri schema namespace
 	 * @return does this schema use RDF datatyping?
 	 */
@@ -189,7 +193,7 @@ class SchemaCollection extends Utils implements Serializable {
 	/*
 	 * This method takes a URI representing a QName and returns the
 	 * namespace-resolved URI based on DELI's namespace lookup table.
-	 *
+	 * 
 	 * @param theUri The unresolved URI
 	 */
 	private Resource getRealQName(Resource theUri) {
@@ -214,70 +218,76 @@ class SchemaCollection extends Utils implements Serializable {
 	 * Vocabulary Attributes with a given Attribute Name. The attribute name can
 	 * either be qualified (in which case it will contain a hash character) or
 	 * unqualified.
-	 *
+	 * 
 	 * @param name The attribute name as a string (eg 'ColorCapable').
 	 */
-	protected Vector<Map<String, Resource>> getAttPropertiesWithAttName(String name) {
-		Vector<Map<String, Resource>> v = new Vector<Map<String, Resource>>();
-
-		if (name.lastIndexOf("#") > 0) {
-			// Qualified attribute name
-			Resource aliasQName = null;
-
-			String namespace = getRealNamespace(name);
-
-			if (namespace != null) {
-				aliasQName = ResourceFactory.createResource(namespace);
-			}
-
-			if (aliasQName != null) {
-				v.add(propertyDescription.get(aliasQName));
-			} else {
-				return null;
-			}
-		}
-		// Unqualified attribute name
-
-		for (Resource qn : propertyDescription.keySet()) {
-			if (qn.getLocalName().equals(name)) {
-				v.add(propertyDescription.get(qn));
-			}
-		}
-
-		return v;
-	}
+//	Vector<Map<String, Resource>> getAttPropertiesWithAttName(String name) throws VocabularyException {
+//		Vector<Map<String, Resource>> v = new Vector<Map<String, Resource>>();
+//
+//		if (name.lastIndexOf("#") > 0) {
+//			// Qualified attribute name
+//			Resource aliasQName = null;
+//
+//			String namespace = getRealNamespace(name);
+//
+//			if (namespace != null) {
+//				aliasQName = ResourceFactory.createResource(namespace);
+//			}
+//
+//			if (aliasQName != null) {
+//				v.add(propertyDescription.get(aliasQName));
+//			} else {
+//				throw new VocabularyException(name + " is not known");
+//			}
+//		}
+//		// Unqualified attribute name
+//
+//		for (Resource qn : propertyDescription.keySet()) {
+//			if (qn.getLocalName().equals(name)) {
+//				v.add(propertyDescription.get(qn));
+//			}
+//		}
+//		if (v.isEmpty()) {
+//			throw new VocabularyException(name + " is not known");
+//		}
+//
+//		return v;
+//	}
 
 	/*
 	 * This method attempts to get an attributes property set, given only a
 	 * QName. It therefore assumes that there is only one set of properties for
 	 * the attribute name specified. If there are infact more, the first set
 	 * encountered is all that is returned anyway.
-	 *
+	 * 
 	 * @param attributeQName The attribute QName as a URI
 	 */
-	protected Map<String, Resource> getAttribute(Resource attributeQName) {
+	Map<String, Resource> getAttribute(Resource attributeQName) throws VocabularyException {
 		Resource aliasAttributeQName = getRealQName(attributeQName);
-		return propertyDescription.get(aliasAttributeQName);
+		if (propertyDescription.containsKey(aliasAttributeQName)) {
+			return propertyDescription.get(aliasAttributeQName);
+		} 
+		throw new VocabularyException(attributeQName + " is not known.");
 	}
 
 	/**
 	 * This method allows the processor to add a new attribute to the
 	 * vocabulary, when it encounters attributes that are not defined in the
 	 * vocabulary definition.
-	 *
+	 * 
 	 * @param qualifiedAttribute
 	 * @param currentComponent The qualified name of the component, if known.
 	 * @param collectionType The collection type, if known.
 	 */
-	protected void addAttributeToVocabulary(String qualifiedAttribute, String currentComponent, String collectionType) {
+	protected void addAttributeToVocabulary(Resource qualifiedAttribute,
+			String currentComponent, String collectionType) {
 		// NOTE: since we cannot add a null-valued entry to a hashmap, we simply
 		// do not add
 		// the component if it has a null value. otherwise, when .get(key) is
 		// called, it returns
 		// null. which is the same as adding the entry with the null value.
-		qualifiedAttribute = getRealNamespace(qualifiedAttribute);
+		Resource temp = getRealNamespace(qualifiedAttribute);
 
-		Resource temp = ResourceFactory.createResource(qualifiedAttribute);
 		String theURI = temp.getNameSpace();
 
 		if (theURI == null) {
@@ -285,18 +295,27 @@ class SchemaCollection extends Utils implements Serializable {
 		}
 
 		if (theURI != null) {
-			currentComponent = (currentComponent == null) ? (theURI + "Unknown") : getRealNamespace(currentComponent);
+			currentComponent = (currentComponent == null) ? (theURI + "Unknown")
+					: getRealNamespace(currentComponent);
 			collectionType = (collectionType == null) ? Constants.SIMPLE : collectionType;
 
 			HashMap<String, Resource> properties = new HashMap<String, Resource>();
 
-			properties.put(Constants.ATTRIBUTE, ResourceFactory.createResource(qualifiedAttribute));
-			properties.put(Constants.COMPONENT, getRealQName(ResourceFactory.createResource(currentComponent)));
-			properties.put(Constants.type, getRealQName(ResourceFactory.createResource(theURI + Constants.LITERAL)));
-			properties.put(Constants.RESOLUTION, getRealQName(ResourceFactory.createResource(theURI
-					+ Constants.OVERRIDE)));
-			properties.put(Constants.COLLECTIONTYPE, getRealQName(ResourceFactory.createResource(theURI
-					+ collectionType)));
+			properties.put(Constants.ATTRIBUTE, temp);
+			properties.put(Constants.COMPONENT,
+					getRealQName(ResourceFactory.createResource(currentComponent)));
+			properties.put(
+					Constants.TYPE,
+					getRealQName(ResourceFactory.createResource(theURI
+							+ Constants.LITERAL)));
+			properties.put(
+					Constants.RESOLUTION,
+					getRealQName(ResourceFactory.createResource(theURI
+							+ Constants.OVERRIDE)));
+			properties
+					.put(Constants.COLLECTIONTYPE,
+							getRealQName(ResourceFactory.createResource(theURI
+									+ collectionType)));
 
 			propertyDescription.put(properties.get(Constants.ATTRIBUTE), properties);
 		} else {
@@ -304,15 +323,19 @@ class SchemaCollection extends Utils implements Serializable {
 		}
 	}
 
+	protected Resource getRealNamespace(Resource alias) {
+		return ResourceFactory.createResource(getRealNamespace(alias.getURI()));
+	}
+
 	/**
 	 * Get the actual namespace from a given alias.
-	 *
+	 * 
 	 * @param alias the aliased namespace
 	 * @return The _actual_ namespace being used for the vocabulary.
 	 */
-	protected String getRealNamespace(String alias) {
+	String getRealNamespace(String alias) {
 		if (alias == null) {
-			return null;
+			throw new NullPointerException();
 		}
 
 		Resource temp = ResourceFactory.createResource(alias);
@@ -320,7 +343,8 @@ class SchemaCollection extends Utils implements Serializable {
 		String aliasNamespace = temp.getNameSpace();
 
 		if (aliasNamespace != null) {
-			aliasNamespace = aliasNamespace.endsWith("#") ? aliasNamespace : (aliasNamespace + "#");
+			aliasNamespace = aliasNamespace.endsWith("#") ? aliasNamespace
+					: (aliasNamespace + "#");
 
 			if (namespaceLookup.containsKey(aliasNamespace)) {
 				String namespace = (String) namespaceLookup.get(aliasNamespace);
@@ -343,5 +367,69 @@ class SchemaCollection extends Utils implements Serializable {
 	 */
 	String getNamespaceLookup(String s) {
 		return namespaceLookup.get(s);
+	}
+
+	void datatypeExpression(String configFile) throws Exception {
+		Document document = null;
+
+		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+		DocumentBuilder parser = dbf.newDocumentBuilder();
+		InputSource inputSource = ModelUtils.getInputSource(configFile);
+		document = parser.parse(inputSource);
+		Node config = document;
+
+		NodeList children = document.getChildNodes();
+		for (int i = 0; i < children.getLength(); i++) {
+			if (children.item(i).getNodeName().equals("validator")) {
+				config = children.item(i);
+				break;
+			}
+		}
+
+		if (config != null) {
+			// Find all <datatype> elements
+			children = config.getChildNodes();
+			for (int i = 0; i < children.getLength(); i++) {
+				if (children.item(i).getNodeName().equals("datatype")) {
+					setDatatypeFromConfig(children.item(i));
+				}
+			}
+		} else {
+			for (String[] dt : Constants.DATATYPES) {
+				datatypeExpressions.put(dt[0], dt[1]);
+			}
+		}
+
+	}
+
+	/**
+	 * Adds a datatype definition using the given element from an XML
+	 * configuration document
+	 * 
+	 * @param datatype The XML element containing the datatype information
+	 * 
+	 * @param datatype the node with the datatype information
+	 * @throws IOException thrown if there is a problem with the config file
+	 */
+	void setDatatypeFromConfig(Node datatype) throws IOException {
+		String name = null;
+		String expression = null;
+
+		NodeList children = datatype.getChildNodes();
+		for (int i = 0; i < children.getLength(); i++) {
+			Node currentChild = children.item(i);
+
+			if (currentChild.getNodeName().equals("name")) {
+				name = currentChild.getFirstChild().getNodeValue();
+			} else if (currentChild.getNodeName().equals("expression")) {
+				expression = currentChild.getFirstChild().getNodeValue();
+			}
+		}
+
+		if ((name != null) && (expression != null)) {
+			datatypeExpressions.put(name, expression);
+		} else {
+			throw new IOException("Datatype config file is invalid");
+		}
 	}
 }

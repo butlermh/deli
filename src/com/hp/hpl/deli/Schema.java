@@ -1,5 +1,6 @@
 package com.hp.hpl.deli;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -40,8 +41,9 @@ class Schema {
 	Schema(String url, List<String> datatypesDef)
 	{
 		// read the document in from a URL
+		this(url, url);
 		vocabularySchema.read(url);
-		init(url, url, datatypesDef);
+		init(datatypesDef);
 	}
 
 	/**
@@ -55,14 +57,18 @@ class Schema {
 	 * @throws Exception
 	 */
 	Schema(InputStream in, String prfUri, String schemaName, List<String> datatypesDef)
-			throws Exception {
+			throws IOException {
+		this(prfUri, schemaName);
 		vocabularySchema.read(in, prfUri);
-		init(prfUri, schemaName, datatypesDef);
+		init(datatypesDef);
 	}
-
-	private void init(String prfUri, String schemaName, List<String> datatypesDef) {
+	
+	private Schema(String prfUri, String schemaName) {
 		this.prfUri = prfUri;
 		this.schemaName = schemaName;
+	}
+
+	private void init(List<String> datatypesDef) {
 		// loop over all the schema URIs being used by this vocabulary
 
 		// are we processing a UAProf 2.0 vocabulary?
@@ -93,7 +99,6 @@ class Schema {
 			String attributeType = Constants.DEFAULT_ATTRIBUTE_TYPE;
 			boolean ccppTypeFound = false;
 
-			String componentName = getComponentName(attribute);
 			NodeIterator rangeList = vocabularySchema.listObjectsOfProperty(attribute, RDFS.range);
 			while (rangeList.hasNext()) {
 				Resource rangeEntry = (Resource) rangeList.next();
@@ -105,51 +110,68 @@ class Schema {
 
 				if (sRangeEntry.endsWith(Constants.BOOLEAN) || sRangeEntry.endsWith(Constants.DIMENSION)
 						|| sRangeEntry.endsWith(Constants.NUMBER) || sRangeEntry.endsWith(Constants.LITERAL)) {
-					properties.put(Constants.type, ResourceFactory.createResource(sRangeEntry));
+					properties.put(Constants.TYPE, ResourceFactory.createResource(sRangeEntry));
 					ccppTypeFound = true;
 				}
 			}
 
-			if (datatypesLookup.containsValue(prfUri)) {
-				resolutionRule = getUAProf2ResolutionRule(attribute);
-			} else {
-				// UAProf 1.0 - get the comment field
-				String commentString = getCommentString(attribute);
-				collectionTypeName = getCollectionTypeFromComments(commentString, attributeName, collectionTypeName);
-				StringTokenizer str = new StringTokenizer(commentString, " \t|\n");
 
-				while (str.hasMoreTokens()) {
-					String current = str.nextToken();
-
-					if (current.equals("Type:")) {
-						if (attributeType.equals(Constants.DEFAULT_ATTRIBUTE_TYPE)) {
-							attributeType = str.nextToken().trim();
-							if (!attributeType.equals(Constants.BOOLEAN)
-									&& !attributeType.equals(Constants.LITERAL)
-									&& !attributeType.equals(Constants.NUMBER)
-									&& !attributeType.equals("Dimension")) {
-								log.error("FATAL ERROR LOADING VOCABULARY: " + attributeName
-										+ " does not have a valid type " + attributeType);
-							}
-						}
-
-						properties.put(Constants.type, ResourceFactory.createResource(prfUri + attributeType));
-						ccppTypeFound = true;
-					}
-
-					if (current.equals("Resolution:")) {
-						resolutionRule = str.nextToken().trim();
-					}
-				}
-			}
 
 			if (!ccppTypeFound) {
-				properties.put(Constants.type, ResourceFactory.createResource(prfUri + attributeType));
+				properties.put(Constants.TYPE, ResourceFactory.createResource(prfUri + attributeType));
 			}
 			Resource attName = ResourceFactory.createResource(prfUri + attributeName);
 			properties.put(Constants.ATTRIBUTE, attName);
-			properties.put(Constants.COMPONENT, ResourceFactory.createResource(componentName));
-			properties.put(Constants.RESOLUTION, ResourceFactory.createResource(prfUri + resolutionRule));
+			
+			try {
+				String componentName = getComponentName(attribute);
+				properties.put(Constants.COMPONENT, ResourceFactory.createResource(componentName));
+			} catch (VocabularyException ve) {
+				ve.printStackTrace();
+			}
+			
+			try {
+				if (datatypesLookup.containsValue(prfUri)) {
+					resolutionRule = getUAProf2ResolutionRule(attribute);
+				} else {
+					// UAProf 1.0 - get the comment field
+					String commentString = getCommentString(attribute);
+					collectionTypeName = getCollectionTypeFromComments(commentString,
+							attributeName, collectionTypeName);
+					StringTokenizer str = new StringTokenizer(commentString, " \t|\n");
+
+					while (str.hasMoreTokens()) {
+						String current = str.nextToken();
+
+						if (current.equals("Type:")) {
+							if (attributeType.equals(Constants.DEFAULT_ATTRIBUTE_TYPE)) {
+								attributeType = str.nextToken().trim();
+								if (!attributeType.equals(Constants.BOOLEAN)
+										&& !attributeType.equals(Constants.LITERAL)
+										&& !attributeType.equals(Constants.NUMBER)
+										&& !attributeType.equals("Dimension")) {
+									log.error("FATAL ERROR LOADING VOCABULARY: "
+											+ attributeName
+											+ " does not have a valid type "
+											+ attributeType);
+								}
+							}
+
+							properties.put(Constants.TYPE, ResourceFactory
+									.createResource(prfUri + attributeType));
+							ccppTypeFound = true;
+						}
+
+						if (current.equals("Resolution:")) {
+							resolutionRule = str.nextToken().trim();
+						}
+					}
+				}
+				properties.put(Constants.RESOLUTION,
+						ResourceFactory.createResource(prfUri + resolutionRule));
+			} catch (VocabularyException ve) {
+				ve.printStackTrace();
+			}
 			properties.put(Constants.COLLECTIONTYPE, ResourceFactory.createResource(prfUri + collectionTypeName));
 			if (propertyDescription.containsKey(attName)) {
 				log.error(attName.getURI() + " is already defined");
@@ -159,26 +181,28 @@ class Schema {
 		}
 	}
 
-	private String getUAProf2ResolutionRule(Resource attribute) {
-		// UAProf 2.0 - get the resolution Rule
-		NodeIterator resolutionRuleList = vocabularySchema.listObjectsOfProperty(attribute,
-				resolutionRuleProperty);
-
-		if (resolutionRuleList.hasNext()) {
-			Literal resolution = (Literal) resolutionRuleList.next();
-			return resolution.getValue().toString();
+	private NodeIterator nodeIterator(Resource attribute, Property property)
+			throws VocabularyException {
+		NodeIterator nodeIterator = vocabularySchema.listObjectsOfProperty(attribute,
+				property);
+		if (nodeIterator.hasNext()) {
+			return nodeIterator;
 		}
-		return null;
+		throw new VocabularyException(attribute + " is not known");
 	}
 
-	private String getComponentName(Resource attribute) {
-		// Get the component name
-		NodeIterator componentList = vocabularySchema.listObjectsOfProperty(attribute, RDFS.domain);
-		if (componentList.hasNext()) {
-			return ((Resource) componentList.nextNode()).getURI();
-		}
+	private String getUAProf2ResolutionRule(Resource attribute)
+			throws VocabularyException {
+		// UAProf 2.0 - get the resolution Rule
+		NodeIterator resolutionRuleList = nodeIterator(attribute, resolutionRuleProperty);
+		Literal resolution = resolutionRuleList.next().asLiteral();
+		return resolution.getValue().toString();
+	}
 
-		return null;
+	private String getComponentName(Resource attribute) throws VocabularyException {
+		// Get the component name
+		NodeIterator componentList = nodeIterator(attribute, RDFS.domain);
+		return componentList.nextNode().asResource().getURI();
 	}
 
 	private String getCollectionTypeFromComments(String commentString, String attributeName,

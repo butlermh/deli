@@ -1,27 +1,25 @@
 package com.hp.hpl.deli;
 
-//REVIEWED 10/04/08
-
 /**
- * This class contains constants used in DELI
+ * Constants used in DELI
  */
 public class Constants {
 		
-	public final static String prefix = "ccpp";
+	private final static String PREFIX = "ccpp";
 	
-	public final static String COMPONENT = prefix + "Component";
+	public final static String COMPONENT = PREFIX + "Component";
 	
-	public final static String ATTRIBUTE = prefix + "Attribute";
+	final static String ATTRIBUTE = PREFIX + "Attribute";
 	
-	public final static String type = prefix + "Type";
+	public final static String TYPE = PREFIX + "Type";
 	
-	public final static String COLLECTIONTYPE = prefix + "CollectionType";
+	public final static String COLLECTIONTYPE = PREFIX + "CollectionType";
 	
-	public final static String RESOLUTION = prefix + "Resolution";
+	final static String RESOLUTION = PREFIX + "Resolution";
 
-	public final static String PROXY_PARAM = "http.proxyHost";
+	final static String PROXY_PARAM = "http.proxyHost";
 
-	public final static String PROXY_PORT_PARAM = "http.proxyPort";
+	final static String PROXY_PORT_PARAM = "http.proxyPort";
 	
 	public final static String LOCKED = "Locked";
 	
@@ -43,31 +41,36 @@ public class Constants {
 	
 	public final static String NUMBER = "Number";
 	
-	public final static String[][] DATATYPES = { { "Literal", "[A-Za-z0-9/.\\-;:_ ()=*+]+" }, 
+	final static String[][] DATATYPES = { { "Literal", "[A-Za-z0-9/.\\-;:_ ()=*+]+" }, 
 			{ "Number", "[0-9]+" },
 			{ "Boolean", "(Yes)|(No)" }, 
 			{ "Dimension", "[0-9,.]+x[0-9,.]+" } };
+	
+	final static String FS = System.getProperty("file.separator"); 
+	
+	final static String CONFIG_DIR = "config"; 
+	
+	final static String CONFIG_PATH = CONFIG_DIR + FS;
 
-	public final static String ALL_KNOWN_UAPROF_PROFILES = "config/profiles.n3";
-	
-	public final static String CONFIG_FILE = "config/deliConfig.n3";
-	
-	public final static String VALIDATOR_CONFIG_FILE = "config/deliValidatorConfig.n3";
-	
-	public final static String DATATYPE_CONFIG_FILE = "config/uaprofValidatorConfig.xml";
-	
-	public final static String PROPERTIES_OUTPUT_FILE = "build/properties.html";
-	
-	public final static String ALL_PROFILES_RDF = "build/uaprofData.rdf";
-	
-	public final static String PROFILE_LIST_OUTPUT = "build/uaprofData.rdf";
-	
-	public final static String DEFAULT_ATTRIBUTE_TYPE = "Any";
-	
-	// HP Labs specific
+	public final static String CONFIG_FILE = CONFIG_PATH + "deliConfig.n3";
 
-	public final static String PROXY_VALUE = "web-proxy.hpl.hp.com";
-
-	public final static String PROXY_PORT_VALUE = "8088";
+	final static String DATATYPE_CONFIG_FILE = CONFIG_PATH + "uaprofValidatorConfig.xml";
 	
+	final static String BUILD_DIR ="build";
+	
+	final static String BUILD_PATH = BUILD_DIR + FS;
+	
+	final static String DEFAULT_ATTRIBUTE_TYPE = "Any";
+	
+	public final static String ALL_KNOWN_UAPROF_PROFILES = CONFIG_PATH + "profiles.n3";
+	
+	public final static String VALIDATOR_CONFIG_FILE = CONFIG_PATH + "deliValidatorConfig.n3";
+	
+    public final static String PROPERTIES_OUTPUT_FILE = BUILD_PATH + "properties.html";
+	
+	public final static String ALL_PROFILES_RDF = BUILD_PATH + "uaprofData.rdf";
+	
+	public final static String PROFILE_LIST_OUTPUT = BUILD_PATH + "uaprofData.rdf";
+	
+	public final static String LOCAL_PROFILES_FILE = BUILD_PATH + "profiles.n3";
 }

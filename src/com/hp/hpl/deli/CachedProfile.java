@@ -1,40 +1,46 @@
 package com.hp.hpl.deli;
 
+import java.io.IOException;
 import java.util.Date;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+
 /**
- * This class wraps the profile class so it can be cached. It does this by
- * including information about the time and date the profile was retrieved from
- * the repository, along with the URL of the profile.
+ * A cached profile, including the date acquired and the URL of the profile. 
  */
 class CachedProfile {
 	private static Log log = LogFactory.getLog(CachedProfile.class);
 
 	/** The cached profile. */
-	private Profile theProfile;
+	private Profile cachedProfile;
 
 	/** The date and time the profile was cached. */
-	private Date dateAccquired;
+	private Date dateTimeAcquired;
 
 	/** The resource associated with the profile. */
-	private String profileResource;
+	private String profileURI;
+	
+	private ProfileProcessor configuration;
+	
+	CachedProfile(ProfileProcessor configuration) {
+		this.configuration = configuration;
+	}
 	
 	/**
 	 * Retrieve a profile from a resource such as a URL or a file, convert it
 	 * from RDF to the profile data structure and cache it making a note of the
 	 * time and date.
 	 * 
-	 * @param profileResource The resource of the profile.
+	 * @param profileUri The resource of the profile.
 	 * @return Whether the retrieval was successful or not.
 	 */
-	protected boolean set(String profileResource) {
-		this.profileResource = profileResource;
-		this.theProfile = new Profile(profileResource);
-		log.info("CachedProfile: Putting profile " + profileResource + " in cache");
-		dateAccquired = new Date();
+	boolean set(final String profileUri) throws IOException {
+		this.profileURI = profileUri;
+		this.cachedProfile = configuration.processProfile(profileUri);
+		this.dateTimeAcquired = new Date();
+		log.info("CachedProfile: Putting profile " + profileUri + " in cache");
 		return true;
 	}
 
@@ -43,20 +49,20 @@ class CachedProfile {
 	 * 
 	 * return The cached profile.
 	 */
-	protected Profile get() {
+	Profile get(boolean refreshStaleProfiles, long maxCachedProfileLifetime) throws IOException {
 		Date currentTime = new Date();
-		long diffTime = currentTime.getTime() - dateAccquired.getTime();
-		if ((Workspace.getInstance().isRefreshStaleProfiles())
-				&& (diffTime >= Workspace.getInstance().getMaxCachedProfileLifetime())) {
-			Profile keepOldProfile = theProfile;
+		long diffTime = currentTime.getTime() - dateTimeAcquired.getTime();
+		if ((refreshStaleProfiles)
+				&& (diffTime >= maxCachedProfileLifetime)) {
+			Profile oldProfile = cachedProfile;
 			log.info("CachedProfile: Updating profile");
-			if (!set(profileResource)) {
+			if (!set(profileURI)) {
 				// Retrieval failed, keep old profile and reset time
 				log.warn("CachedProfile: Profile update failed");
-				theProfile = keepOldProfile;
-				dateAccquired = currentTime;
+				cachedProfile = oldProfile;
+				dateTimeAcquired = currentTime;
 			}
 		}
-		return theProfile;
+		return cachedProfile;
 	}
 }

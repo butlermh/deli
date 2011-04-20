@@ -1,5 +1,6 @@
 package com.hp.hpl.deli;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Vector;
 
@@ -7,16 +8,16 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 import com.hp.hpl.jena.rdf.model.Model;
+import com.hp.hpl.jena.rdf.model.RDFNode;
 import com.hp.hpl.jena.rdf.model.ResIterator;
 import com.hp.hpl.jena.rdf.model.Resource;
+import com.hp.hpl.jena.rdf.model.StmtIterator;
 import com.hp.hpl.jena.vocabulary.RDF;
-
-//REVIEWED 10/04/08
 
 /**
  * This class lets you override incoming UAProf profiles
  */
-class LocalProfiles extends Utils {
+class LocalProfiles extends ModelUtils {
 	private static Log log = LogFactory.getLog(LocalProfiles.class);
 
 	/*
@@ -40,28 +41,46 @@ class LocalProfiles extends Utils {
 	/** The corresponding profile references for each local profile. */
 	private HashMap<String, String> profileRefs = new HashMap<String, String>();
 
+	LocalProfiles(ProfileProcessor configuration) throws IOException {
+		String localProfilesFile = configuration.getWorkspace().get(DeliSchema.localProfilesFile, "");
+		Model model = ModelUtils.loadModel(localProfilesFile);
+		finishConstruction(model);
+	}
+
 	/**
 	 * The constructor reads in a local profile file.
 	 * 
 	 * @param localProfile The local profile file.
 	 */
-	protected LocalProfiles(String localProfile) {
-		Model profiles = Utils.loadModel(localProfile);
-		ResIterator profilesIter = profiles.listSubjectsWithProperty(RDF.type, DeliSchema.Profile);
+	LocalProfiles(String localProfilesFile) throws IOException {
+		Model model = ModelUtils.loadModel(localProfilesFile);
+		finishConstruction(model);
+	}
+
+	private void finishConstruction(Model model) {
+		/** Local profile path. */
+		String localProfilesPath = null;
+		StmtIterator si = model.listStatements(null, DeliSchema.localProfilesPath,
+				(RDFNode) null);
+		localProfilesPath = si.hasNext() ? si.nextStatement().getString()
+				: localProfilesPath;
+		ResIterator profilesIter = model.listSubjectsWithProperty(RDF.type,
+				DeliSchema.Profile);
 		while (profilesIter.hasNext()) {
 			Resource p = profilesIter.nextResource();
-			
-			if (p.hasProperty(DeliSchema.useragent) && 
-				p.hasProperty(DeliSchema.uaprofUri)) {
+
+			if (p.hasProperty(DeliSchema.useragent)
+					&& p.hasProperty(DeliSchema.uaprofUri)) {
 				// Real profile
-				profileRefs.put(getPropertyString(p, DeliSchema.useragent), getPropertyUri(p, DeliSchema.uaprofUri));
+				profileRefs.put(getPropertyString(p, DeliSchema.useragent),
+						getPropertyUri(p, DeliSchema.uaprofUri));
 				useragents.add(getPropertyString(p, DeliSchema.useragent));
 			}
-			
-			if (p.hasProperty(DeliSchema.file) && 
-				p.hasProperty(DeliSchema.useragent)) {
+
+			if (p.hasProperty(DeliSchema.file) && p.hasProperty(DeliSchema.useragent)) {
 				// Local Profile
-				String path = Workspace.getInstance().localProfilesPath + "/" + getPropertyString(p, DeliSchema.file);
+				String path = localProfilesPath + "/"
+						+ getPropertyString(p, DeliSchema.file);
 				profileRefs.put(getPropertyString(p, DeliSchema.useragent), path);
 				useragents.add(getPropertyString(p, DeliSchema.useragent));
 			}
@@ -75,13 +94,13 @@ class LocalProfiles extends Utils {
 	 * @param s The user-agent string.
 	 * @return The profile URL.
 	 */
-	protected String getReference(String s) {
+	String getReference(String s) throws UnknownUserAgentException {
 		for (String u : useragents) {
 			if (s.toLowerCase().lastIndexOf(u.toLowerCase()) != -1) {
 				log.info("Useragent string " + s + " maps on to " + profileRefs.get(u));
 				return profileRefs.get(u);
 			}
 		}
-		return null;
+		throw new UnknownUserAgentException("No such mapping in LocalProfiles");
 	}
 }
