@@ -9,6 +9,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.TreeSet;
 
 import com.hp.hpl.deli.Constants;
 import com.hp.hpl.deli.DeliSchema;
@@ -47,7 +48,8 @@ public class CreateHTML {
 
 		String datenewformat = new SimpleDateFormat("dd MMMMM yyyy").format(new Date());
 		result.append("<html>\n<head>\n<title>List of UAProfile profiles "
-				+ datenewformat + "</title>\n<style TYPE=\"text/css\"><!--tr.odd {\nbackground-color: #fbe7ef;\n}\n--></style></head>\n");
+				+ datenewformat
+				+ "</title>\n<style TYPE=\"text/css\"><!--tr.odd {\nbackground-color: #fbe7ef;\n}\n--></style></head>\n");
 		result.append("<body>\n<h1>List of UAProfile profiles " + datenewformat
 				+ "</h1>\n");
 
@@ -55,7 +57,8 @@ public class CreateHTML {
 		printManufacturers();
 
 		result.append("</body>\n</html>");
-		String path = Constants.PROPERTIES_OUTPUT_FILE.substring(0, Constants.PROPERTIES_OUTPUT_FILE.lastIndexOf('/'));
+		String path = Constants.PROPERTIES_OUTPUT_FILE.substring(0,
+				Constants.PROPERTIES_OUTPUT_FILE.lastIndexOf('/'));
 		new File(path).mkdirs();
 		OutputStream out = null;
 		try {
@@ -73,7 +76,7 @@ public class CreateHTML {
 		}
 
 	}
-	
+
 	/**
 	 * Extract all the manufacturer names from the profile data.
 	 */
@@ -112,13 +115,18 @@ public class CreateHTML {
 				ResIterator profilesIterBy = profiles.listSubjectsWithProperty(
 						DeliSchema.manufacturedBy, profiles.getResource(manufacturerURL));
 				boolean odd = false;
+				TreeSet<String> sortedList = new TreeSet<String>();
 				while (profilesIterBy.hasNext()) {
 					Resource resource = profilesIterBy.nextResource();
-					String deviceName = ModelUtils.getPropertyString(resource,
-							DeliSchema.deviceName);
+					sortedList.add(resource.getURI());
+				}
+
+				for (String s : sortedList) {
+					Resource resource = profiles.createResource(s);
 					String release = ModelUtils.getPropertyString(resource,
 							DeliSchema.release);
 					String profileUri = resource.getURI();
+					String deviceName = ModelUtils.getPropertyString(resource, DeliSchema.deviceName);
 
 					if (odd) {
 						result.append("<tr class=\"odd\">\n");

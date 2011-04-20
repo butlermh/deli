@@ -356,6 +356,7 @@ public class ScrapeGoogle {
 				String currentModel = rProfile.getProperty(DeliSchema.deviceName)
 						.getLiteral().getLexicalForm();
 				if (currentModel.length() < model.length()) {
+					rProfile.removeAll(DeliSchema.deviceName);
 					profiles.add(profiles.createStatement(rProfile,
 							DeliSchema.deviceName, profiles.createTypedLiteral(model)));
 				}
@@ -364,8 +365,6 @@ public class ScrapeGoogle {
 						profiles.createTypedLiteral(model)));
 			}
 
-			profiles.add(profiles.createStatement(rProfile, DeliSchema.deviceName,
-					profiles.createTypedLiteral(model)));
 			profiles.add(profiles.createStatement(rProfile, RDF.type, DeliSchema.Profile));
 
 			System.out.println("<" + rProfile.getURI() + ">");
