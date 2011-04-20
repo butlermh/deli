@@ -1,0 +1,101 @@
+A
+{
+    COLOR: #000000;
+    FONT-FAMILY: "Arial", Verdana, Helvetica, Sans-serif
+}
+A:active
+{
+    COLOR: #0000ff;
+    FONT-FAMILY: "Arial", Verdana, Helvetica, Sans-serif
+}
+A:link
+{
+    COLOR: #000000;
+    FONT-FAMILY: "Arial", Verdana, Helvetica, Sans-serif
+}
+A:visited
+{
+    COLOR: #000000;
+    FONT-FAMILY: "Arial", Verdana, Helvetica, Sans-serif
+}
+.MEDIUMTEXT
+{
+    FONT-SIZE: 75%;
+    FONT-FAMILY: "Arial", Verdana, Helvetica, Sans-serif
+}
+A:hover
+{
+    COLOR: #ff0000;
+    FONT-FAMILY: "Arial", Verdana, Helvetica, Sans-serif
+}
+LI
+{
+    MARGIN-BOTTOM: 1px;
+    TEXT-ALIGN: justify
+}
+.title1
+{
+    font-weight: bold;
+    TEXT-ALIGN: left
+}
+.title1white
+{
+    font-color: #FFFFFF;
+    font-weight: bold;
+    TEXT-ALIGN: center;
+    color: #FFFFFF
+}
+.title1 
+{
+    font-weight: bold;
+    TEXT-ALIGN: left
+}
+.title2
+{ 
+    font-weight: bold;
+    TEXT-ALIGN: left;
+    font-size: 75%
+; font-family: Arial, Helvetica, sans-serif
+}
+.head2 
+{
+    TEXT-ALIGN: center;
+    font-size: 75% ; color: #009999
+}
+.title1green
+{
+    font-weight: bold;
+    TEXT-ALIGN: left;
+    background-color: #A5CEC6
+}
+.title1white
+{   
+    font-weight: bold;
+    TEXT-ALIGN: left;
+    color: #FFFFFF; 
+    font-size: 75%
+}
+.title2center
+{   
+    font-weight: bold;
+    TEXT-ALIGN: center;
+    font-size: 75%
+}
+.head2blue
+{   
+    background-color: #E9EDF8
+}
+.smalltext
+{
+    FONT-SIZE: 60%;
+    
+}
+.head1blue { font-weight: bold; TEXT-ALIGN: center; background-color: #B7C5E8; vertical-align: middle }
+.tableblue {  padding-top: 3px; padding-right: 3px; padding-bottom: 3px; padding-left: 3px; border: 1px #9AABDE}
+.text { FONT-FAMILY: "Arial", Verdana, Helvetica, Sans-serif ; font-size: larger}
+.titleblue { font-weight: bold; TEXT-ALIGN: left; background-color: #B7C5E8; vertical-align: middle ; font-family: Arial, Helvetica, sans-serif}
+.head2green { background-color: #EBF3F1}
+.head1red { font-weight: bold; TEXT-ALIGN: center; background-color: #DDAAA6; vertical-align: middle }
+.head2red { font-weight: normal; TEXT-ALIGN: left; background-color: #EFD6D3; vertical-align: middle }
+.head1brown { font-weight: bold; TEXT-ALIGN: center; background-color: #DEC492; vertical-align: middle }
+.head2brown { background-color: #EEE0C8}
