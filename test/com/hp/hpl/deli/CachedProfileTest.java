@@ -1,28 +1,50 @@
 package com.hp.hpl.deli;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
+
+import java.io.IOException;
 import java.util.Vector;
 
-import javax.servlet.ServletContext;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
 
-import junit.framework.TestCase;
+public class CachedProfileTest {
 
-public class CachedProfileTest extends TestCase {
-
-	public CachedProfileTest(String name) {
-		super(name);
+	@BeforeClass
+	public static void setUpBeforeClass() throws Exception {
 	}
 
-	protected void setUp() throws Exception {
-		super.setUp();
-		Workspace.getInstance().configure((ServletContext) null, Constants.CONFIG_FILE);
+	@Before
+	public void setUp() throws Exception {
 	}
-
-	public void test() {
-		CachedProfile cp = new CachedProfile();
+	
+	@Test
+	public void test() throws IOException {
+		ProfileProcessor configuration = new ProfileProcessor(Constants.CONFIG_FILE);
+		CachedProfile cp = new CachedProfile(configuration);
 		cp.set(TestConstants.WEB_PROFILE_URI);
-		Profile profile = cp.get();
+		Profile profile = cp.get(true, 1000);
 		Vector<String> result = new Vector<String>();
 		result.add("1");
 		assertEquals(profile.getAttribute("BitsPerPixel").getValue(), result);
+		fail("Need to use mocks for workspace and vocabulary");
 	}
+
+	@Test
+	public void testCachedProfile() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testSet() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testGet() {
+		fail("Not yet implemented");
+	}
+
 }
