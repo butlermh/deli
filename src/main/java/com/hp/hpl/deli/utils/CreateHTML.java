@@ -18,7 +18,7 @@ import com.hp.hpl.jena.vocabulary.RDFS;
 /**
  * Generate a HTML page from the list of all known UAProf profiles.
  */
-public class CreateHTML {
+class CreateHTML {
 
 	/** Map of manufacturers onto URIs */
 	private HashMap<String, HashSet<String>> manufacturers = new HashMap<String, HashSet<String>>();
@@ -28,20 +28,11 @@ public class CreateHTML {
 
 	private StringBuffer result = new StringBuffer();
 
-	public static void main(String[] args) {
-		try {
-			new CreateHTML();
-		} catch (IOException ie) {
-			ie.printStackTrace();
-		}
-	}
-
 	/**
 	 * Constructor.
 	 */
-	CreateHTML() throws IOException {
-		profiles = ModelUtils.loadModel(Constants.ALL_KNOWN_UAPROF_PROFILES);
-
+	CreateHTML(Model profiles) throws IOException {
+		this.profiles = profiles;
 		String datenewformat = new SimpleDateFormat("dd MMMMM yyyy").format(new Date());
 		result.append("<html>\n<head>\n<title>List of UAProfile profiles "
 				+ datenewformat

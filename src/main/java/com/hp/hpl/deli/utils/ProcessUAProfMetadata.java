@@ -20,8 +20,7 @@ import com.hp.hpl.jena.vocabulary.RDFS;
 
 /**
  * Creates a list of all the UAProf properties that are used in all known
- * profiles. This file is called after UAProfHarverster, and will fail if
- * UAProfHarverster is not called first.
+ * profiles. 
  */
 public class ProcessUAProfMetadata {
 
@@ -43,8 +42,8 @@ public class ProcessUAProfMetadata {
 
 	private SynchronizedModel allProfileData = new SynchronizedModel();
 
-	private Model createModelOfAllProfiles() throws IOException {
-		CreateCrawlDb createDb = new CreateCrawlDb(Constants.ALL_KNOWN_UAPROF_PROFILES);
+	private Model createModelOfAllProfiles(Model model) throws IOException {
+		CreateCrawlDb createDb = new CreateCrawlDb(model);
 		crawlDb = createDb.getCrawlDb();
 		Class<ProcessUAProfMetadata.Worker> clazz = ProcessUAProfMetadata.Worker.class;
 		Constructor<ProcessUAProfMetadata.Worker> ctor = null;
@@ -62,10 +61,9 @@ public class ProcessUAProfMetadata {
 		return allProfileData.getModel();
 	}
 
-	private ProcessUAProfMetadata() throws IOException {
+	private ProcessUAProfMetadata(Model prfs) throws IOException {
 		log.info("This program retrieves all known profiles, builds a single RDF model from that data, and then creates a dendrogram of the properties used.");
-
-		Model model = createModelOfAllProfiles();
+		Model model = createModelOfAllProfiles(prfs);
 		ProcessProperties p = new ProcessProperties();
 		HashMap<String, HashMap<String, Integer>> properties = p
 				.createPropertyStructure(model);
@@ -120,7 +118,9 @@ public class ProcessUAProfMetadata {
 
 	public static void main(String[] args) {
 		try {
-			new ProcessUAProfMetadata();
+			Model model = ModelUtils.loadModel(Constants.ALL_KNOWN_UAPROF_PROFILES);
+			new ProcessUAProfMetadata(model);
+			new CreateHTML(model);
 		} catch (Exception e) {
 			//
 		}

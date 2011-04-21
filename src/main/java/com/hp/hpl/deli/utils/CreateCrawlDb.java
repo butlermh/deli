@@ -16,13 +16,15 @@ import com.hp.hpl.jena.vocabulary.RDF;
  * Create a Crawl database from an RDF model that contains UAProf profiles.
  */
 class CreateCrawlDb {
-	
+
 	private List<Resource> crawlDb = Collections
-	.synchronizedList(new LinkedList<Resource>());
+			.synchronizedList(new LinkedList<Resource>());
 
 	CreateCrawlDb(String configFile) throws IOException {
-		Model profiles = ModelUtils.loadModel(configFile);
-		// retrieve all the profiles
+		this(ModelUtils.loadModel(configFile));
+	}
+
+	CreateCrawlDb(Model profiles) {
 		ResIterator profilesIter = profiles.listSubjectsWithProperty(RDF.type,
 				DeliSchema.Profile);
 		while (profilesIter.hasNext()) {

@@ -211,7 +211,7 @@ public class ScrapeGoogle {
 		System.out.println("Writing out profile data");
 		RDFWriter writer = profiles.getWriter("N3");
 		writer.setProperty("allowBadURIs", "true");
-		String filepath = Constants.ALL_KNOWN_UAPROF_PROFILES + ".updated";
+		String filepath = Constants.ALL_KNOWN_UAPROF_PROFILES_OUTPUT ;
 		String path = filepath.substring(0, filepath.lastIndexOf('/'));
 		new File(path).mkdirs();
 		OutputStream out = null;

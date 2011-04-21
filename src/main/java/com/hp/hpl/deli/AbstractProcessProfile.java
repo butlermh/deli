@@ -1,8 +1,5 @@
 package com.hp.hpl.deli;
 
-import java.util.Map;
-import java.util.Vector;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 

@@ -64,6 +64,8 @@ public class Constants {
 	
 	public final static String ALL_KNOWN_UAPROF_PROFILES = CONFIG_PATH + "profiles.n3";
 	
+	public final static String ALL_KNOWN_UAPROF_PROFILES_OUTPUT = BUILD_PATH + "profiles.n3";
+	
 	public final static String VALIDATOR_CONFIG_FILE = CONFIG_PATH + "deliValidatorConfig.n3";
 	
     public final static String PROFILES_OUTPUT_FILE = BUILD_PATH + "profiles.html";

@@ -1,7 +1,5 @@
 package com.hp.hpl.deli;
 
-import java.util.Map;
-
 import com.hp.hpl.jena.rdf.model.Literal;
 import com.hp.hpl.jena.rdf.model.NodeIterator;
 import com.hp.hpl.jena.rdf.model.RDFNode;
