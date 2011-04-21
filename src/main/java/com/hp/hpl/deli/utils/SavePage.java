@@ -7,7 +7,7 @@ import java.io.OutputStream;
 
 import com.hp.hpl.deli.Constants;
 
-public class SavePage {
+class SavePage {
 
 	static void savePage(String filename, StringBuffer data) throws IOException {
 		String path = Constants.PROFILES_OUTPUT_FILE.substring(0,
