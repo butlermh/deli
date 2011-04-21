@@ -1,7 +1,6 @@
 package com.hp.hpl.deli.utils;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
@@ -57,24 +56,7 @@ public class CreateHTML {
 		printManufacturers();
 
 		result.append("</body>\n</html>");
-		String path = Constants.PROPERTIES_OUTPUT_FILE.substring(0,
-				Constants.PROPERTIES_OUTPUT_FILE.lastIndexOf('/'));
-		new File(path).mkdirs();
-		OutputStream out = null;
-		try {
-			out = new FileOutputStream(Constants.PROPERTIES_OUTPUT_FILE);
-		} catch (FileNotFoundException e1) {
-			e1.printStackTrace();
-		}
-		// out.
-		byte[] bytes = result.toString().getBytes();
-		try {
-			out.write(bytes);
-			out.close();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-
+		SavePage.savePage(Constants.PROFILES_OUTPUT_FILE, result);
 	}
 
 	/**

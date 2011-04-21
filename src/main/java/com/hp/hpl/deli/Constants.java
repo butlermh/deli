@@ -66,6 +66,8 @@ public class Constants {
 	
 	public final static String VALIDATOR_CONFIG_FILE = CONFIG_PATH + "deliValidatorConfig.n3";
 	
+    public final static String PROFILES_OUTPUT_FILE = BUILD_PATH + "profiles.html";
+    
     public final static String PROPERTIES_OUTPUT_FILE = BUILD_PATH + "properties.html";
 	
 	public final static String ALL_PROFILES_RDF = BUILD_PATH + "uaprofData.rdf";

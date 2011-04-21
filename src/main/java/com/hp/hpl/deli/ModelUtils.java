@@ -92,7 +92,7 @@ public class ModelUtils {
 			log.error("Cannot retrieve resource: " + name, e);
 		}
 
-		throw new IOException("Could not load" + name); 
+		throw new IOException("Could not load" + name);
 	}
 
 	static InputSource getInputSource(String name) throws IOException {
@@ -126,7 +126,7 @@ public class ModelUtils {
 		arpReader.setProperty("WARN_RESOLVING_URI_AGAINST_EMPTY_BASE", "EM_IGNORE");
 		return arpReader;
 	}
-	
+
 	public static void writeModel(Model model, String filename, String language) {
 		RDFWriter writer = model.getWriter(language);
 		writer.setProperty("allowBadURIs", "true");
@@ -136,17 +136,15 @@ public class ModelUtils {
 			writer.write(model, out, null);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
-		}
-		if (out != null) {
-			try {
-				out.close();
-			} catch (IOException e) {
-				e.printStackTrace();
+		} finally {
+			if (out != null) {
+				try {
+					out.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
 			}
 		}
 	}
-	
-
-
 
 }

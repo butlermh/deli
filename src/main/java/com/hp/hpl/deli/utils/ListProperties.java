@@ -2,7 +2,6 @@ package com.hp.hpl.deli.utils;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
@@ -21,6 +20,10 @@ import com.hp.hpl.jena.rdf.model.Seq;
 import com.hp.hpl.jena.rdf.model.Statement;
 import com.hp.hpl.jena.rdf.model.StmtIterator;
 
+/**
+ * Creates a list of all the UAProf properties that are used in all known profiles.
+ * This file is called after UAProfHarverster, and will fail if UAProfHarverster is not called first.
+ */
 public class ListProperties {
 
 	private static boolean useQnamesOnly = true;
@@ -68,7 +71,7 @@ public class ListProperties {
 		}
 	}
 
-	private ListProperties() throws FileNotFoundException {
+	private ListProperties() throws IOException {
 		Model profiles = ModelFactory.createDefaultModel();
 		File input = new File(Constants.ALL_PROFILES_RDF);
 		profiles.read(new FileInputStream(input), "");
@@ -124,15 +127,7 @@ public class ListProperties {
 			}
 		}
 		result.append("</table></body></html>\n");
-		OutputStream out = new FileOutputStream(Constants.PROPERTIES_OUTPUT_FILE);
-		// out.
-		byte[] bytes = result.toString().getBytes();
-		try {
-			out.write(bytes);
-			out.close();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		SavePage.savePage(Constants.PROPERTIES_OUTPUT_FILE, result);
 	}
 
 	private class PropertyValueEntry implements Comparable<PropertyValueEntry> {

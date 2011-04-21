@@ -41,8 +41,7 @@ class ValidateAttribute extends AbstractProcessAttribute {
 		datatypeValidationOn = workspace.get(DeliSchema.datatypeValidationOn,
 				datatypeValidationOn);
 		try {
-			Map<String, Resource> attributeProperties = vocabulary
-					.getAttribute(vocabulary.getRealNamespace(attribute));
+			vocabulary.getAttribute(vocabulary.getRealNamespace(attribute));
 		} catch (VocabularyException ve) {
 			validatorError("Attribute not defined in vocabulary");
 		}
@@ -151,7 +150,8 @@ class ValidateAttribute extends AbstractProcessAttribute {
 						// no datatyping information - error!
 						String prfURI = normalizedAttribute.getNameSpace();
 						if (vocabulary.usesRDFDatatyping(prfURI)) {
-							validatorError("UAProf 2 profile omits RDF datatyping information");
+							outputMsg("Warning: UAProf 2 profile omits RDF datatyping information");
+							isProfileValid = false;
 						}
 					}
 					// check the value matches the XML Schema datatype

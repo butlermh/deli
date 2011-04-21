@@ -12,6 +12,9 @@ import com.hp.hpl.jena.rdf.model.ResIterator;
 import com.hp.hpl.jena.rdf.model.Resource;
 import com.hp.hpl.jena.vocabulary.RDF;
 
+/**
+ * Create a Crawl database from an RDF model that contains UAProf profiles.
+ */
 class CreateCrawlDb {
 	
 	private List<Resource> crawlDb = Collections
@@ -19,7 +22,6 @@ class CreateCrawlDb {
 
 	CreateCrawlDb(String configFile) throws IOException {
 		Model profiles = ModelUtils.loadModel(configFile);
-		
 		// retrieve all the profiles
 		ResIterator profilesIter = profiles.listSubjectsWithProperty(RDF.type,
 				DeliSchema.Profile);

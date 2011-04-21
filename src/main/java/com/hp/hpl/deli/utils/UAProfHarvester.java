@@ -17,6 +17,8 @@ import com.hp.hpl.jena.rdf.model.ModelFactory;
 import com.hp.hpl.jena.rdf.model.Resource;
 import com.hp.hpl.jena.vocabulary.RDFS;
 
+// Is this class really needed? It could be combined with UAProfValidatorAll?
+
 /**
  * This class loads all the profiles listed in profiles.n3 and creates a single
  * RDF file from them.
@@ -47,14 +49,13 @@ public class UAProfHarvester {
 	 */
 	public static void main(String[] args) {
 		try {
-			UAProfHarvester ha = new UAProfHarvester();
-			ha.runHarvester();
+			new UAProfHarvester();
 		} catch (IOException f) {
 			log.error("DELI error:" + f.toString());
 		}
 	}
 
-	private void runHarvester() throws IOException {
+	private UAProfHarvester() throws IOException {
 		log.info("DELI UAProf Harvester");
 
 		CreateCrawlDb createDb = new CreateCrawlDb(Constants.ALL_KNOWN_UAPROF_PROFILES);

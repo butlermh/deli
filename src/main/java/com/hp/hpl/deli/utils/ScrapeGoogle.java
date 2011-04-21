@@ -8,6 +8,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.lang.reflect.Constructor;
 import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.Collections;
@@ -38,18 +39,6 @@ public class ScrapeGoogle {
 
 	private final static String BASE = "http://purl.oclc.org/NET/butlermh/deli/";
 
-	private final static String QUERY_SEP = "&";
-
-	private final static String FILTER = "filter=0";
-
-	private final static String START = "http://www.google.com/search?q=filetype:";
-
-	private final static String END = "+uaprof&num=100&";
-
-	private final static String RDF_STRING = START + "rdf" + END;
-
-	private final static String XML_STRING = START + "xml" + END;
-
 	private static Log log = LogFactory.getLog(ScrapeGoogle.class);
 
 	private Model profiles;
@@ -62,21 +51,21 @@ public class ScrapeGoogle {
 
 	private int count = 0;
 
-	final static String USER_AGENT = "User-Agent";
+	private final static String USER_AGENT = "User-Agent";
 
-	final static String USER_AGENT_STRING = "Mozilla/5.0 (X11; U; Linux i686; rv:1.7.3) Gecko/20041020 Firefox/0.10.1";
+	private final static String USER_AGENT_STRING = "Mozilla/5.0 (X11; U; Linux i686; rv:1.7.3) Gecko/20041020 Firefox/0.10.1";
 
-	Map<String, String> fixManufacturers = new HashMap<String, String>();
+	private Map<String, String> fixManufacturers = new HashMap<String, String>();
 
-	final static String[] oldManufacturers = { "sonyericsson", "nokia", "toshiba",
-			"samsung", "panasonic", "Research_In_Motion_Ltd.", "motorola", "sharp", "LG",
-			"siemens", "alcatel", "High_Tech_Computer_Corporation", "amoi", "Kyocera",
-			"Kyocera_Wireless_Corporation", "Kyocera_Wireless_Corp", "ZTE",
-			"ZTE_Corporation", "Acer_Incorporated", "Acer", "Vodafone", "Pantech",
+	private final static String[] oldManufacturers = { "sonyericsson", "nokia",
+			"toshiba", "samsung", "panasonic", "Research_In_Motion_Ltd.", "motorola",
+			"sharp", "LG", "siemens", "alcatel", "High_Tech_Computer_Corporation",
+			"amoi", "Kyocera", "Kyocera_Wireless_Corporation", "Kyocera_Wireless_Corp",
+			"ZTE", "ZTE_Corporation", "Acer_Incorporated", "Acer", "Vodafone", "Pantech",
 			"Zonda", "Ericsson", "FLY", "Huawei", "INQ", "Modelabs", "Openwave", "Palm",
 			"Philips", "Haier", "ASUSTeK_COMPUTER_INC.", "NEC" };
 
-	final static String[] newManufacturers = { "http://www.sonyericsson.com",
+	private final static String[] newManufacturers = { "http://www.sonyericsson.com",
 			"http://www.nokia.com", "http://www.toshiba.com", "http://www.samsung.com",
 			"http://www.panasonic.com", "http://www.rim.com", "http://www.motorola.com",
 			"http://www.sharp.com", "http://www.lg.com", "http://www.siemens.com",
@@ -98,25 +87,31 @@ public class ScrapeGoogle {
 	 * @return the contents as a String.
 	 * @throws Exception
 	 */
-	static String getURL(String pageUri) throws Exception {
+	static String getURL(String pageUri) throws IOException {
 		StringBuffer input = new StringBuffer();
-		URL u = new URL(pageUri);
-		URLConnection conn = u.openConnection();
-		// have to fake the user agent to get results back from Google
-		conn.setRequestProperty(USER_AGENT, USER_AGENT_STRING);
-		conn.connect();
-
-		InputStream s = conn.getInputStream();
-		int ch;
-		while ((ch = s.read()) != -1) {
-			input.append((char) ch);
+		InputStream s = null;
+		try {
+			URL u = new URL(pageUri);
+			URLConnection conn = u.openConnection();
+			// have to fake the user agent to get results back from Google
+			conn.setRequestProperty(USER_AGENT, USER_AGENT_STRING);
+			conn.connect();
+			s = conn.getInputStream();
+			int ch;
+			while ((ch = s.read()) != -1) {
+				input.append((char) ch);
+			}
+		} catch (IOException io) {
+			throw new IOException(io.getMessage());
+		} finally {
+			if (s != null)
+				s.close();
 		}
-		s.close();
 		return input.toString();
 	}
 
 	// We ignore these hosts as they are not valid sources of UAProf
-	// profiles or they are numeric versions of known profile providers
+	// profiles
 	private final static String[] EXCLUDE_LIST = { "www.cs.umbc.edu", "crschmidt.net",
 			"burningdoor.com", "start.cefriel.it", "www.xxxwap.com", "139.91.183.30",
 			"www2.cs.uh.edu", "www.thauvin.net", "213.249.206.60", "www.sun.com",
@@ -135,13 +130,17 @@ public class ScrapeGoogle {
 	 * @param args Does not take any arguments.
 	 */
 	public static void main(String[] args) {
-		new ScrapeGoogle();
+		try {
+			new ScrapeGoogle();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	/**
 	 * Constructor.
 	 */
-	ScrapeGoogle() {
+	ScrapeGoogle() throws IOException {
 		String manufacturerString = BASE + "manufacturers#";
 		for (int i = 0; i < oldManufacturers.length; i++) {
 			String oldManufacturer = (manufacturerString + oldManufacturers[i])
@@ -149,59 +148,66 @@ public class ScrapeGoogle {
 			fixManufacturers.put(oldManufacturer, newManufacturers[i]);
 		}
 
-		Resource resource = null;
-		try {
-			profiles = ModelUtils.loadModel(Constants.ALL_KNOWN_UAPROF_PROFILES);
+		for (String s : EXCLUDE_LIST) {
+			exclude.add(s);
+		}
 
-			for (String s : EXCLUDE_LIST) {
-				exclude.add(s);
-			}
-
-			// build a hashmap for hosts on to manufacturers names from the data
-			// in profiles.rdf
-			ResIterator profilesIter = profiles
-					.listSubjectsWithProperty(DeliSchema.manufacturedBy);
-			while (profilesIter.hasNext()) {
-				resource = profilesIter.nextResource();
-				crawlDb.add(resource);
-				Resource m = (Resource) resource.getProperty(DeliSchema.manufacturedBy)
-						.getObject();
-				if (ModelUtils.getPropertyString(m, RDFS.label) != null) {
-					String manufacturer = ModelUtils.getPropertyString(m, RDFS.label);
+		// build a hashmap for hosts on to manufacturers names from the data
+		// in profiles.n3
+		profiles = ModelUtils.loadModel(Constants.ALL_KNOWN_UAPROF_PROFILES);
+		ResIterator profilesIter = profiles
+				.listSubjectsWithProperty(DeliSchema.manufacturedBy);
+		while (profilesIter.hasNext()) {
+			Resource resource = profilesIter.nextResource();
+			crawlDb.add(resource);
+			Resource m = (Resource) resource.getProperty(DeliSchema.manufacturedBy)
+					.getObject();
+			if (ModelUtils.getPropertyString(m, RDFS.label) != null) {
+				String manufacturer = ModelUtils.getPropertyString(m, RDFS.label);
+				try {
 					URI theProfile = new URI(resource.getURI());
 					String profileHostname = theProfile.getHost();
 					manufacturers.put(profileHostname, manufacturer);
 					manufacturerHostnames.put(manufacturer, m.getURI());
+				} catch (URISyntaxException use) {
+					use.printStackTrace();
 				}
 			}
-
-			// query google for files of type xml and rdf that mention the term
-			// UAProf
-
-			processPage(RDF_STRING + FILTER);
-			for (int j = 1; j < 43; j++) {
-				processPage(RDF_STRING + "start=" + j + "00" + QUERY_SEP + FILTER);
-			}
-			processPage(XML_STRING + FILTER);
-			for (int i = 1; i < 16; i++) {
-				processPage(XML_STRING + "start=" + i + "00" + QUERY_SEP + FILTER);
-			}
-
-			Class<ScrapeGoogle.Worker> clazz = ScrapeGoogle.Worker.class;
-			Constructor<ScrapeGoogle.Worker> ctor = null;
-			try {
-				ctor = clazz.getConstructor(ScrapeGoogle.class);
-			} catch (NoSuchMethodException e) {
-				e.printStackTrace();
-			}
-			new Crawler(crawlDb, 100, ctor, this);
-
-			// print a summary statistic of how many UAProf profiles were found
-
-			System.out.println("\nFound " + count + " new profiles.");
-		} catch (Exception e) {
-			log.error(resource.toString(), e);
 		}
+
+		// query google for files of type xml and rdf that mention the term
+		// UAProf
+
+		final String QUERY_SEP = "&";
+		final String FILTER = "filter=0";
+		final String START = "http://www.google.com/search?q=filetype:";
+		final String END = "+uaprof&num=100&";
+
+		final String RDF_STRING = START + "rdf" + END;
+		processPage(RDF_STRING + FILTER);
+		for (int j = 1; j < 43; j++) {
+			processPage(RDF_STRING + "start=" + j + "00" + QUERY_SEP + FILTER);
+		}
+		final String XML_STRING = START + "xml" + END;
+		processPage(XML_STRING + FILTER);
+		for (int i = 1; i < 16; i++) {
+			processPage(XML_STRING + "start=" + i + "00" + QUERY_SEP + FILTER);
+		}
+
+		// create a threaded web crawler to retrieve all the profiles
+
+		Class<ScrapeGoogle.Worker> clazz = ScrapeGoogle.Worker.class;
+		Constructor<ScrapeGoogle.Worker> ctor = null;
+		try {
+			ctor = clazz.getConstructor(ScrapeGoogle.class);
+		} catch (NoSuchMethodException e) {
+			e.printStackTrace();
+		}
+		new Crawler(crawlDb, 100, ctor, this);
+
+		// print a summary statistic of how many UAProf profiles were found
+
+		System.out.println("\nFound " + count + " new profiles.");
 		System.out.println("Writing out profile data");
 		RDFWriter writer = profiles.getWriter("N3");
 		writer.setProperty("allowBadURIs", "true");
@@ -211,14 +217,12 @@ public class ScrapeGoogle {
 		OutputStream out = null;
 		try {
 			out = new FileOutputStream(filepath);
+			writer.write(profiles, out, null);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
-		}
-		writer.write(profiles, out, null);
-		try {
-			out.close();
-		} catch (IOException e) {
-			e.printStackTrace();
+		} finally {
+			if (out != null)
+				out.close();
 		}
 	}
 

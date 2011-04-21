@@ -7,8 +7,17 @@ import java.util.List;
 
 import com.hp.hpl.jena.rdf.model.Resource;
 
+/**
+ * A class that creates several threads for web crawling tasks. 
+ */
 class Crawler {
 
+	/**
+	 * @param crawlDb	The crawl database.
+	 * @param maxThread	The number of threads.
+	 * @param theWorker The inner class that implements a worker that does the crawling.
+	 * @param parent	The parent class of the worker.
+	 */
 	Crawler(List<Resource> crawlDb, int maxThread, Constructor theWorker, Object parent) {
 		LinkedList<CrawlerWorker> threads = new LinkedList<CrawlerWorker>();
 		for (int i = 0; i < maxThread; i++) {

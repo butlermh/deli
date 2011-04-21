@@ -26,13 +26,13 @@ import com.hp.hpl.jena.vocabulary.RDFS;
  * Read in a file of all known UAProf profiles and validate them.
  */
 public class UAProfValidatorAll {
-	int validProfiles = 0;
+	private int validProfiles = 0;
 
-	int invalidProfiles = 0;
+	private int invalidProfiles = 0;
 
-	int unreachableProfiles = 0;
+	private int unreachableProfiles = 0;
 
-	int invalidRDF = 0;
+	private int invalidRDF = 0;
 
 	private ProfileProcessor configuration;
 
@@ -42,25 +42,16 @@ public class UAProfValidatorAll {
 	 * @param args a list of profiles to validate separated by whitespace
 	 */
 	public static void main(String[] args) {
-		UAProfValidatorAll v = null;
 		try {
-			v = new UAProfValidatorAll();
-			v.processAllProfiles();
+			new UAProfValidatorAll();
 		} catch (Exception f) {
 			f.printStackTrace();
 			outputMsg("DELI error:" + f.toString());
 		}
 	}
 
-	public UAProfValidatorAll() throws IOException {
+	UAProfValidatorAll() throws IOException {
 		configuration = new ProfileProcessor(Constants.VALIDATOR_CONFIG_FILE);
-	}
-
-	static void outputMsg(String s) {
-		System.out.println(s);
-	}
-
-	private void processAllProfiles() throws IOException {
 		String welcomeMsg = "DELI Validator http://delicon.sourceforge.net/ \n"
 				+ "Running automated test for all profiles specified in profiles.n3 \n"
 				+ "IMPORTANT If you run this behind a firewall you must configure proxy e.g. \n"
@@ -86,22 +77,24 @@ public class UAProfValidatorAll {
 		outputMsg(invalidRDF + " profiles which were invalid RDF/XML");
 	}
 
+	static void outputMsg(String s) {
+		System.out.println(s);
+	}
+
 	class Worker extends CrawlerWorker {
 
 		class ProcessProfile {
-			String profileUrl;
+			private String profileUrl;
 
-			StringBuffer messages = new StringBuffer();
+			private StringBuffer messages = new StringBuffer();
 
-			boolean validRDF = true;
+			private boolean profileValidFlag = true;
 
-			boolean profileValidFlag = true;
+			private boolean unreachable = false;
 
-			boolean unreachable = false;
+			private Model model = ModelFactory.createDefaultModel();
 
-			JenaReader myARPReader = new JenaReader();
-
-			Model model = ModelFactory.createDefaultModel();
+			private JenaReader myARPReader = new JenaReader();
 
 			ProcessProfile() {
 				myARPReader.setProperty("WARN_RESOLVING_URI_AGAINST_EMPTY_BASE",
@@ -114,9 +107,6 @@ public class UAProfValidatorAll {
 
 					public void error(Exception e) {
 						outputMsg("RDF parser error:" + e.getMessage());
-						if (validRDF) {
-							validRDF = false;
-						}
 						profileValidFlag = false;
 					}
 
@@ -128,7 +118,6 @@ public class UAProfValidatorAll {
 			}
 
 			public boolean process(Resource profileData) {
-				StringReader profile;
 				String manufacturer = "";
 				if (profileData.hasProperty(DeliSchema.manufacturedBy)) {
 					Resource manufacturerURI = profileData
@@ -152,6 +141,7 @@ public class UAProfValidatorAll {
 				outputMsg("MANUFACTURER: " + manufacturer + "     DEVICE NAME:  "
 						+ deviceName);
 				String profileUri = profileData.getURI();
+				StringReader profile;
 				if (profileUri.startsWith("http:")) {
 					try {
 						profile = new StringReader(downloadFileToLocalDir(profileUri));
@@ -215,31 +205,38 @@ public class UAProfValidatorAll {
 
 			String downloadFileToLocalDir(String uri) throws IOException {
 				InputStream streamToURL = null;
+				FileOutputStream theFileStream = null;
 				StringBuffer result = new StringBuffer();
 
-				// open InputStream to URL
-				URL theURL = new URL(uri);
-				streamToURL = theURL.openStream();
+				try {
+					// open InputStream to URL
+					URL theURL = new URL(uri);
+					streamToURL = theURL.openStream();
 
-				// open OutputStream to local file
-				String filepath = "build/manufacturerProfiles/" + theURL.getHost()
-						+ theURL.getFile();
-				String path = filepath.substring(0, filepath.lastIndexOf('/'));
-				new File(path).mkdirs();
-				File localFile = new File(filepath);
-				localFile.createNewFile();
-				FileOutputStream theFileStream = new FileOutputStream(localFile);
+					// open OutputStream to local file
+					String filepath = "build/manufacturerProfiles/" + theURL.getHost()
+							+ theURL.getFile();
+					String path = filepath.substring(0, filepath.lastIndexOf('/'));
+					new File(path).mkdirs();
+					File localFile = new File(filepath);
+					localFile.createNewFile();
+					theFileStream = new FileOutputStream(localFile);
 
-				int ch;
-				while ((ch = streamToURL.read()) != -1) {
-					result.append((char) ch);
-					theFileStream.write(ch);
+					int ch;
+					while ((ch = streamToURL.read()) != -1) {
+						result.append((char) ch);
+						theFileStream.write(ch);
+					}
+				} catch (IOException ioe) {
+					throw new IOException(ioe.getMessage());
+				} finally {
+					if (streamToURL != null)
+						streamToURL.close();
+					if (theFileStream != null)
+						theFileStream.close();
 				}
-				streamToURL.close();
-				theFileStream.close();
 				return result.toString();
 			}
-
 		}
 
 		public Worker() {
@@ -250,5 +247,4 @@ public class UAProfValidatorAll {
 		}
 
 	}
-
 }

@@ -6,12 +6,27 @@ import com.hp.hpl.deli.Constants;
 import com.hp.hpl.deli.ModelUtils;
 import com.hp.hpl.deli.ProfileProcessor;
 import com.hp.hpl.deli.ValidateProfile;
+import com.hp.hpl.jena.rdf.arp.JenaReader;
+import com.hp.hpl.jena.rdf.model.Model;
+import com.hp.hpl.jena.rdf.model.ModelFactory;
+import com.hp.hpl.jena.rdf.model.RDFErrorHandler;
 import com.hp.hpl.jena.shared.JenaException;
 
 /**
  * Check that a UAProf profile is valid.
  */
 public class UAProfValidator {
+
+	private boolean profileValidFlag = true;
+
+	private boolean unreachable = false;
+
+	private JenaReader myARPReader = new JenaReader();
+
+	private Model model = ModelFactory.createDefaultModel();
+
+	private ProfileProcessor configuration;
+
 	/**
 	 * Provides a command line interface to the validator.
 	 * 
@@ -22,65 +37,66 @@ public class UAProfValidator {
 			if (args.length == 1) {
 				new UAProfValidator(args[0]);
 			} else {
-				System.out.println("Must supply one argument: UAProfValidator <uaprofilefile>");
+				System.out
+						.println("Must supply one argument: UAProfValidator <uaprofilefile>");
 			}
-			
+
 		} catch (Exception f) {
 			f.printStackTrace();
-			outputMsg("DELI error:" + f.toString());
 		}
 	}
 
-	public UAProfValidator(String s) throws IOException {
-		new ProcessProfile().process(s);
-	}
+	public UAProfValidator(String profileUrl) throws IOException {
+		outputMsg("Loading profile " + profileUrl);
+		configuration = new ProfileProcessor(Constants.VALIDATOR_CONFIG_FILE);
+		myARPReader.setProperty("WARN_RESOLVING_URI_AGAINST_EMPTY_BASE", "EM_IGNORE");
+		myARPReader.setErrorHandler(new RDFErrorHandler() {
+			// ARP parser error handling routines
+			public void warning(Exception e) {
+				outputMsg("RDF parser warning:" + e.getMessage());
+			}
 
-	class ProcessProfile extends ValidatorProcessProfile {
-		
-		private ProfileProcessor configuration;
-		
-		ProcessProfile() throws IOException {
-			configuration = new ProfileProcessor(Constants.VALIDATOR_CONFIG_FILE);
+			public void error(Exception e) {
+				outputMsg("RDF parser error:" + e.getMessage());
+				profileValidFlag = false;
+			}
+
+			public void fatalError(Exception e) {
+				e.printStackTrace();
+				error(e);
+			}
+		});
+
+		try {
+			myARPReader.read(model, ModelUtils.getResource(profileUrl), "");
+		} catch (JenaException e) {
+			outputMsg("Could not parse profile " + profileUrl);
+			profileValidFlag = false;
+		} catch (Exception e) {
+			outputMsg("Could not load profile " + profileUrl);
+			unreachable = true;
+			profileValidFlag = false;
+			outputMsg("PROFILE IS UNREACHABLE");
 		}
-
-		public boolean process(String profileUrl) {
+		if (!unreachable && profileValidFlag) {
 			try {
-				myARPReader.read(model, ModelUtils.getResource(profileUrl), "");
-			} catch (JenaException e) {
-				outputMsg("Could not parse profile " + profileUrl);
-				profileValidFlag = false;
+				profileValidFlag = new ValidateProfile(configuration, model)
+						.isProfileValid();
 			} catch (Exception e) {
-				outputMsg("Could not load profile " + profileUrl);
-				unreachable = true;
+				e.printStackTrace();
 				profileValidFlag = false;
-				outputMsg("PROFILE IS UNREACHABLE");
+				outputMsg(e.toString());
 			}
-			if (!unreachable) {
-				try {
-					profileValidFlag = new ValidateProfile(configuration, model)
-							.isProfileValid();
-				} catch (Exception e) {
-					e.printStackTrace();
-					profileValidFlag = false;
-					outputMsg(e.toString());
-				}
 
-				if (profileValidFlag) {
-					outputMsg("PROFILE IS VALID");
-				} else {
-					outputMsg("PROFILE IS NOT VALID");
-				}
+			if (profileValidFlag) {
+				outputMsg("PROFILE IS VALID");
+			} else {
+				outputMsg("PROFILE IS NOT VALID");
 			}
-			return profileValidFlag;
 		}
-
-		void outputMsg(String s) {
-			System.out.println(s);
-		}
-
 	}
 
-	static void outputMsg(String s) {
+	void outputMsg(String s) {
 		System.out.println(s);
 	}
 }
