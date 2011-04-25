@@ -27,18 +27,6 @@ public class ModelUtils {
 	private static Log log = LogFactory.getLog(ModelUtils.class);
 
 	/**
-	 * Convenience method to get a URI property attached to a resource.
-	 * 
-	 * @param resource
-	 * @param property
-	 * @return
-	 */
-	public static String getPropertyUri(Resource resource, Property property) {
-		return resource.hasProperty(property) ? resource.getProperty(property)
-				.getObject().asResource().getURI() : null;
-	}
-
-	/**
 	 * Convenience method to get a String property attached to a resource.
 	 * 
 	 * @param resource

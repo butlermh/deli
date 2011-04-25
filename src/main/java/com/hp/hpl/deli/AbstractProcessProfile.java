@@ -85,8 +85,7 @@ abstract class AbstractProcessProfile {
 			Resource component = componentList.next().asResource();
 
 			if (component.hasProperty(RDF.type)) {
-				currentComponent = component.getProperty(RDF.type).getObject()
-						.asResource();
+				currentComponent = component.getProperty(RDF.type).getResource();
 			} else {
 				currentComponent = null;
 				if (profileOmitsTypeInformationFromComponents == false) {
@@ -169,16 +168,16 @@ abstract class AbstractProcessProfile {
 
 	void processDefaultBlock(Statement statement) {
 		// Found a default block, process it recursively.
-		StmtIterator iter = statement.getObject().asResource().listProperties();
+		StmtIterator iter = statement.getResource().listProperties();
 		if (!iter.hasNext()) {
-			String url = statement.getObject().asResource().getURI();
+			String url = statement.getResource().getURI();
 			outputMsg("Default block references another profile - retrieving profile "
 					+ url);
 			retrieveDefaultProfile(url);
 		} else {
 			// Process the default subtree
 			currentlyProcessingDefaults = true;
-			new ProcessComponent(statement.getObject().asResource());
+			new ProcessComponent(statement.getResource());
 			currentlyProcessingDefaults = false;
 		}
 	}

@@ -85,20 +85,19 @@ class SchemaCollection extends ModelUtils {
 	private void processNamespaceDefinition(Resource defn) {
 		if (defn.hasProperty(DeliSchema.uri)) {
 			// add namespace
-			String URI = getPropertyUri(defn, DeliSchema.uri);
+			String URI = defn.getProperty(DeliSchema.uri).getResource().getURI(); 
 			namespaceLookup.put(URI, URI);
 			// add alias namespaces
 			if (defn.hasProperty(DeliSchema.aliasUri)) {
 				StmtIterator stmts = defn.listProperties(DeliSchema.aliasUri);
 				while (stmts.hasNext()) {
-					String aliasUri = ((Resource) stmts.nextStatement().getObject())
-							.getURI();
+					String aliasUri = stmts.nextStatement().getResource().getURI();
 					namespaceLookup.put(aliasUri, URI);
 				}
 			}
 			// process datatype definitions for UAProf 2.0 schemas
 			if (defn.hasProperty(DeliSchema.datatypeUri)) {
-				String datatypeUri = getPropertyUri(defn, DeliSchema.datatypeUri);
+				String datatypeUri = defn.getProperty(DeliSchema.datatypeUri).getResource().getURI();
 				if (defn.hasProperty(DeliSchema.datatypeFile)) {
 					datatypesDef = loadDatatypeDef(defn, datatypeUri);
 					datatypesLookup.put(datatypesDef, URI);

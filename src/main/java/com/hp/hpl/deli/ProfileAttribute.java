@@ -1,6 +1,5 @@
 package com.hp.hpl.deli;
 
-import java.util.Map;
 import java.util.Vector;
 
 import org.apache.commons.logging.Log;
@@ -39,7 +38,7 @@ public class ProfileAttribute extends AbstractProcessAttribute {
 		RDFNode value = attributeStatement.getObject();
 		// this property in the vocabulary?
 		try {
-			Map<String, Resource> attributeProperties = vocabulary.getAttribute(name);
+			vocabulary.getAttribute(name);
 		} catch (VocabularyException ve) {
 			if (processUndefinedAttributes) {
 				String collectionType = determineContainerType(value);

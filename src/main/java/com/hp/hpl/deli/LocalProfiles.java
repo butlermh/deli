@@ -73,7 +73,7 @@ class LocalProfiles extends ModelUtils {
 					&& p.hasProperty(DeliSchema.uaprofUri)) {
 				// Real profile
 				profileRefs.put(getPropertyString(p, DeliSchema.useragent),
-						getPropertyUri(p, DeliSchema.uaprofUri));
+						p.getProperty(DeliSchema.uaprofUri).getResource().getURI());
 				useragents.add(getPropertyString(p, DeliSchema.useragent));
 			}
 
