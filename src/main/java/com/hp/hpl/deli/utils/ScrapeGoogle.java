@@ -4,13 +4,10 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.OutputStream;
 import java.lang.reflect.Constructor;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.net.URL;
-import java.net.URLConnection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -51,10 +48,6 @@ public class ScrapeGoogle {
 
 	private int count = 0;
 
-	private final static String USER_AGENT = "User-Agent";
-
-	private final static String USER_AGENT_STRING = "Mozilla/5.0 (X11; U; Linux i686; rv:1.7.3) Gecko/20041020 Firefox/0.10.1";
-
 	private Map<String, String> fixManufacturers = new HashMap<String, String>();
 
 	private final static String[] oldManufacturers = { "sonyericsson", "nokia",
@@ -79,36 +72,6 @@ public class ScrapeGoogle {
 			"http://www.inqmobile.com/", "http://www.modelabs.com/",
 			"http://www.openwave.com", "http://www.palm.com", "http://www.philips.com/",
 			"http://www.haier.com/", "http://www.asus.com", "http://www.nec.com" };
-
-	/**
-	 * Get the contents of a particular URL as a String.
-	 * 
-	 * @param pageUri the URL.
-	 * @return the contents as a String.
-	 * @throws Exception
-	 */
-	static String getURL(String pageUri) throws IOException {
-		StringBuffer input = new StringBuffer();
-		InputStream s = null;
-		try {
-			URL u = new URL(pageUri);
-			URLConnection conn = u.openConnection();
-			// have to fake the user agent to get results back from Google
-			conn.setRequestProperty(USER_AGENT, USER_AGENT_STRING);
-			conn.connect();
-			s = conn.getInputStream();
-			int ch;
-			while ((ch = s.read()) != -1) {
-				input.append((char) ch);
-			}
-		} catch (IOException io) {
-			throw new IOException(io.getMessage());
-		} finally {
-			if (s != null)
-				s.close();
-		}
-		return input.toString();
-	}
 
 	// We ignore these hosts as they are not valid sources of UAProf
 	// profiles
@@ -211,7 +174,7 @@ public class ScrapeGoogle {
 		System.out.println("Writing out profile data");
 		RDFWriter writer = profiles.getWriter("N3");
 		writer.setProperty("allowBadURIs", "true");
-		String filepath = Constants.ALL_KNOWN_UAPROF_PROFILES_OUTPUT ;
+		String filepath = Constants.ALL_KNOWN_UAPROF_PROFILES_OUTPUT;
 		String path = filepath.substring(0, filepath.lastIndexOf('/'));
 		new File(path).mkdirs();
 		OutputStream out = null;
@@ -257,7 +220,7 @@ public class ScrapeGoogle {
 	void processPage(String pageUri) {
 		String search = "href=\"";
 		try {
-			String inputString = getURL(pageUri);
+			String inputString = UrlUtils.getURL(pageUri);
 			int next = 0;
 
 			while ((next = inputString.indexOf(search, next)) != -1) {
@@ -290,16 +253,16 @@ public class ScrapeGoogle {
 		public Worker() {
 		}
 
-		void processURI(Resource newURI) {
+		void processURI(Resource sURI) {
 			try {
-				this.newURI = newURI.getURI();
+				this.newURI = sURI.getURI();
 				device = new URI(this.newURI);
 				manufacturer = manufacturers.get(device.getHost());
 				if (manufacturer == null) {
 					manufacturer = "SPECIFY-MANUFACTURER";
 				}
 
-				String profile = getURL(this.newURI);
+				String profile = UrlUtils.getURL(this.newURI);
 				String claimedManufacturer = getTagSoup(profile, ":Vendor>", "<");
 
 				if (manufacturer.equals("Blackberry") && claimedManufacturer != null) {
@@ -310,7 +273,7 @@ public class ScrapeGoogle {
 				}
 
 				model = getTagSoup(profile, ":Model>", "<");
-				printDeviceData();
+				getDeviceData();
 			} catch (Exception e) {
 				// don't do anything
 			}
@@ -337,8 +300,9 @@ public class ScrapeGoogle {
 		/**
 		 * Print out N3 information about a device
 		 */
-		private synchronized void printDeviceData() {
+		private synchronized void getDeviceData() {
 			Resource rProfile = profiles.createResource(newURI);
+			DeviceData deviceData = new DeviceData(rProfile);
 			String nospaceManufacturer = manufacturer.replace(" ", "_");
 			Resource manufacturerResource = null;
 			String cManufacturer = manufacturer.toLowerCase().trim();
@@ -349,40 +313,32 @@ public class ScrapeGoogle {
 				manufacturerResource = profiles.createResource(manufacturerHostnames
 						.get(manufacturer));
 			} else {
-				if (!rProfile.hasProperty(DeliSchema.manufacturedBy)) {
+				if (!deviceData.hasManufacturer()) {
 					String manufacturerURL = BASE + "manufacturers#"
 							+ nospaceManufacturer;
 					manufacturerResource = profiles.createResource(manufacturerURL);
 				}
 			}
 
-			if (rProfile.hasProperty(DeliSchema.deviceName)) {
-				String currentModel = rProfile.getProperty(DeliSchema.deviceName)
-						.getLiteral().getLexicalForm();
+			if (deviceData.hasDeviceName()) {
+				String currentModel = deviceData.getDeviceName();
 				if (currentModel.length() < model.length()) {
 					rProfile.removeAll(DeliSchema.deviceName);
-					profiles.add(profiles.createStatement(rProfile,
-							DeliSchema.deviceName, profiles.createTypedLiteral(model)));
+					profiles.add(rProfile, DeliSchema.deviceName,
+							profiles.createTypedLiteral(model));
 				}
 			} else {
-				profiles.add(profiles.createStatement(rProfile, DeliSchema.deviceName,
-						profiles.createTypedLiteral(model)));
+				profiles.add(rProfile, DeliSchema.deviceName,
+						profiles.createLiteral(model));
 			}
 
-			profiles.add(profiles.createStatement(rProfile, RDF.type, DeliSchema.Profile));
+			profiles.add(rProfile, RDF.type, DeliSchema.Profile);
 
-			System.out.println("<" + rProfile.getURI() + ">");
-			System.out.println("  a deli:Profile ;");
-			System.out.println("  deli:deviceName \"" + model + "\" ;");
 			if (manufacturerResource != null) {
-				profiles.add(profiles.createStatement(rProfile,
-						DeliSchema.manufacturedBy, manufacturerResource));
-				System.out.println("  deli:manufacturedBy <"
-						+ manufacturerResource.getURI() + "> .");
+				profiles.add(rProfile, DeliSchema.manufacturedBy, manufacturerResource);
 				profiles.add(manufacturerResource, RDFS.label, manufacturer);
 			}
 		}
-
 	}
 
 }

@@ -44,7 +44,7 @@ class CreateHTML {
 		printManufacturers();
 
 		result.append("</body>\n</html>");
-		SavePage.savePage(Constants.PROFILES_OUTPUT_FILE, result);
+		UrlUtils.savePage(Constants.PROFILES_OUTPUT_FILE, result);
 	}
 
 	/**
@@ -91,12 +91,10 @@ class CreateHTML {
 					sortedList.add(resource.getURI());
 				}
 
-				for (String s : sortedList) {
-					Resource resource = profiles.createResource(s);
-					String release = ModelUtils.getPropertyString(resource,
-							DeliSchema.release);
-					String profileUri = resource.getURI();
-					String deviceName = ModelUtils.getPropertyString(resource, DeliSchema.deviceName);
+				for (String profileUri : sortedList) {
+					Resource resource = profiles.createResource(profileUri);
+					DeviceData device = new DeviceData(resource);
+					String deviceName = device.getDeviceName();
 
 					if (odd) {
 						result.append("<tr class=\"odd\">\n");
@@ -105,7 +103,8 @@ class CreateHTML {
 						odd = true;
 					}
 					result.append("<td>" + deviceName + "</td>\n");
-					if (resource.hasProperty(DeliSchema.release)) {
+					if (device.hasRelease()) {
+						String release = device.getRelease();
 						result.append("<td>" + release + "</td><td>\n");
 					} else {
 						result.append("<td></td><td>\n");

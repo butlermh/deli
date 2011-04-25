@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Constructor;
 import java.util.HashMap;
-import java.util.List;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -16,7 +15,6 @@ import com.hp.hpl.jena.rdf.arp.JenaReader;
 import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
 import com.hp.hpl.jena.rdf.model.Resource;
-import com.hp.hpl.jena.vocabulary.RDFS;
 
 /**
  * Creates a list of all the UAProf properties that are used in all known
@@ -25,8 +23,6 @@ import com.hp.hpl.jena.vocabulary.RDFS;
 public class ProcessUAProfMetadata {
 
 	private static Log log = LogFactory.getLog(ProcessUAProfMetadata.class);
-
-	private List<Resource> crawlDb;
 
 	class SynchronizedModel {
 		private Model model = ModelFactory.createDefaultModel();
@@ -43,8 +39,6 @@ public class ProcessUAProfMetadata {
 	private SynchronizedModel allProfileData = new SynchronizedModel();
 
 	private Model createModelOfAllProfiles(Model model) throws IOException {
-		CreateCrawlDb createDb = new CreateCrawlDb(model);
-		crawlDb = createDb.getCrawlDb();
 		Class<ProcessUAProfMetadata.Worker> clazz = ProcessUAProfMetadata.Worker.class;
 		Constructor<ProcessUAProfMetadata.Worker> ctor = null;
 		try {
@@ -52,7 +46,7 @@ public class ProcessUAProfMetadata {
 		} catch (NoSuchMethodException e) {
 			e.printStackTrace();
 		}
-		new Crawler(crawlDb, 10, ctor, this);
+		new Crawler(model, 10, ctor, this);
 
 		// write out the profile data
 		log.info("Writing out profile data");
@@ -68,7 +62,7 @@ public class ProcessUAProfMetadata {
 		HashMap<String, HashMap<String, Integer>> properties = p
 				.createPropertyStructure(model);
 		StringBuffer result = p.printResults(properties);
-		SavePage.savePage(Constants.PROPERTIES_OUTPUT_FILE, result);
+		UrlUtils.savePage(Constants.PROPERTIES_OUTPUT_FILE, result);
 	}
 
 	class Worker extends CrawlerWorker {
@@ -91,26 +85,16 @@ public class ProcessUAProfMetadata {
 				ie.printStackTrace();
 			}
 		}
-
+		
 		public String processProfileDatabase(Resource profileData) {
-			String manufacturer = "";
-			if (profileData.hasProperty(DeliSchema.manufacturedBy)) {
-				Resource manufacturerURI = profileData
-						.getProperty(DeliSchema.manufacturedBy).getObject().asResource();
-				manufacturer = ModelUtils.getPropertyString(manufacturerURI, RDFS.label);
+			DeviceData device = new DeviceData(profileData);
+			String manufacturer = device.hasManufacturer() ? device.getManufacturer() : "";
+			String deviceName = device.hasDeviceName() ? device.getDeviceName() : "";
+
+			if (device.hasProvider()) {
+				log.info("PROFILE NOT CREATED BY VENDOR - PROVIDER: " + device.getProvider());
 			}
 
-			if (profileData.hasProperty(DeliSchema.provider)) {
-				String provider = ModelUtils.getPropertyUri(profileData,
-						DeliSchema.provider);
-				log.info("PROFILE NOT CREATED BY VENDOR - PROVIDER: " + provider);
-			}
-
-			String deviceName = "";
-			if (profileData.hasProperty(DeliSchema.deviceName)) {
-				deviceName = ModelUtils.getPropertyString(profileData,
-						DeliSchema.deviceName);
-			}
 			log.info("MANUFACTURER: " + manufacturer + "     DEVICE NAME:  " + deviceName);
 			return profileData.getURI();
 		}
