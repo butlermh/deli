@@ -222,6 +222,8 @@ public class ProcessUAProfMetadata {
 			private String deviceName;
 
 			private String manufacturerName;
+			
+			private Model model;
 
 			ProcessProfile() {
 				myARPReader.setProperty("WARN_RESOLVING_URI_AGAINST_EMPTY_BASE",
@@ -245,7 +247,7 @@ public class ProcessUAProfMetadata {
 			}
 
 			private void validate() {
-				Model model = ModelFactory.createDefaultModel();
+				model = ModelFactory.createDefaultModel();
 				try {
 					myARPReader.read(model, new StringReader(profile), device.getURI());
 					if (!unreachable) {
@@ -287,25 +289,38 @@ public class ProcessUAProfMetadata {
 			}
 
 			private void printDeviceInfo() {
-				outputMsg("MANUFACTURER: " + manufacturerName + "     DEVICE NAME:  "
-						+ deviceName);
-				if (deviceData.hasProvider()) {
-					outputMsg("PROFILE NOT CREATED BY VENDOR - PROVIDER: "
-							+ deviceData.getProvider());
-				}
+//				outputMsg("MANUFACTURER: " + manufacturerName + "     DEVICE NAME:  "
+//						+ deviceName);
+//				if (deviceData.hasProvider()) {
+//					outputMsg("PROFILE NOT CREATED BY VENDOR - PROVIDER: "
+//							+ deviceData.getProvider());
+//				}
 			}
 
 			private void fixMetadata() {
+				// FIXME - should do this by getting property from profile, not by screenscraping
+				
 				String manufacturerNameFromProfile = getTagSoup(profile, ":Vendor>", "<");
+				if (manufacturerNameFromProfile == null) {
+					 manufacturerNameFromProfile = getTagSoup(profile, ":Vendor rdf:datatype=\"http://www.openmobilealliance.org/tech/profiles/UAPROF/xmlschema-20030226#Literal\">", "<");
+				} 
+				if (manufacturerNameFromProfile == null) {
+					manufacturerNameFromProfile = getTagSoup(profile, ":Vendor rdf:datatype=\"&prf-dt;Literal\">", "<");
+				}
 				String deviceNameFromProfile = getTagSoup(profile, ":Model>", "<");
+				if (deviceNameFromProfile == null) {
+					deviceNameFromProfile = getTagSoup(profile, ":Model rdf:datatype=\"http://www.openmobilealliance.org/tech/profiles/UAPROF/xmlschema-20030226#Literal\">", "<");
+				}
+				if (deviceNameFromProfile == null) {
+					deviceNameFromProfile = getTagSoup(profile, ":Model rdf:datatype=\"&prf-dt;Literal\">", "<");
+				}
 
 				if (deviceNameFromProfile != null) {
 					profiles.removeAll(device, DeliSchema.deviceName, (RDFNode) null);
 					profiles.add(device, DeliSchema.deviceName, deviceNameFromProfile);
 				}
 
-				manufacturerName = deviceData.hasManufacturer() ? deviceData
-						.getDeviceName() : manufacturerNameFromProfile;
+				manufacturerName = deviceData.hasManufacturerLabel() ? deviceData.getManufacturer() : manufacturerNameFromProfile;
 				deviceName = deviceData.hasDeviceName() ? deviceData.getDeviceName()
 						: deviceNameFromProfile;
 
@@ -320,6 +335,7 @@ public class ProcessUAProfMetadata {
 						outputMsg("ManufacturerName : " + manufacturerName + " "
 								+ manufacturerNameFromProfile);
 						synchronized (this) {
+							manufacturerName = manufacturerNameFromProfile;
 							addManufacturer();
 						}
 					}
@@ -337,6 +353,9 @@ public class ProcessUAProfMetadata {
 							manufacturerName);
 					profiles.add(device, DeliSchema.deviceName, deviceName);
 					profiles.add(device, RDF.type, DeliSchema.Profile);
+				} else
+				{
+					System.out.println("ERROR: Could not find manufacturer URI for " + manufacturerName);
 				}
 			}
 
@@ -363,6 +382,7 @@ public class ProcessUAProfMetadata {
 
 				} catch (IOException io) {
 					outputMsg("Could not retrieve " + device.getURI());
+					device.removeProperties();
 					unreachableProfiles++;
 				}
 
