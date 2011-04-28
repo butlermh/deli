@@ -27,6 +27,10 @@ class DeviceData {
 		return device.getProperty(DeliSchema.provider).getResource().getURI();
 	}
 	
+	boolean hasManufacturerLabel() {
+		return device.getProperty(DeliSchema.manufacturedBy).getResource().hasProperty(RDFS.label);
+	}
+	
 	boolean hasManufacturer() {
 		return device.hasProperty(DeliSchema.manufacturedBy);
 	}

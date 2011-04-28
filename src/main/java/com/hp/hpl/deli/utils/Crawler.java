@@ -39,13 +39,6 @@ class Crawler {
 	}
 
 	/**
-	 * @return the crawlDb
-	 */
-	// List<Resource> getCrawlDb() {
-	// return crawlDb;
-	// }
-
-	/**
 	 * @param crawlDb The crawl database.
 	 * @param maxThread The number of threads.
 	 * @param theWorker The inner class that implements a worker that does the

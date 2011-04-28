@@ -116,6 +116,11 @@ public class ModelUtils {
 	}
 
 	public static void writeModel(Model model, String filename, String language) {
+		String path = filename.substring(0, filename.lastIndexOf('/'));
+		File directory = new File(path);
+		if (!directory.exists()) {
+			directory.mkdirs();
+		}
 		RDFWriter writer = model.getWriter(language);
 		writer.setProperty("allowBadURIs", "true");
 		OutputStream out = null;

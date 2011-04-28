@@ -94,7 +94,7 @@ class CreateHTML {
 				for (String profileUri : sortedList) {
 					Resource resource = profiles.createResource(profileUri);
 					DeviceData device = new DeviceData(resource);
-					String deviceName = device.getDeviceName();
+					String deviceName = device.hasDeviceName() ? device.getDeviceName() : "";
 
 					if (odd) {
 						result.append("<tr class=\"odd\">\n");
