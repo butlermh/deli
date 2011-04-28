@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.io.StringReader;
 import java.lang.reflect.Constructor;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -21,7 +22,9 @@ import org.apache.commons.logging.LogFactory;
 import com.hp.hpl.deli.Constants;
 import com.hp.hpl.deli.DeliSchema;
 import com.hp.hpl.deli.ModelUtils;
+import com.hp.hpl.jena.rdf.arp.JenaReader;
 import com.hp.hpl.jena.rdf.model.Model;
+import com.hp.hpl.jena.rdf.model.ModelFactory;
 import com.hp.hpl.jena.rdf.model.RDFWriter;
 import com.hp.hpl.jena.rdf.model.ResIterator;
 import com.hp.hpl.jena.rdf.model.Resource;
@@ -94,16 +97,39 @@ public class ScrapeGoogle {
 	 */
 	public static void main(String[] args) {
 		try {
-			new ScrapeGoogle();
+			Model model = ModelUtils.loadModel(Constants.ALL_KNOWN_UAPROF_PROFILES);
+			new CreateHTML(model);
+			new ScrapeGoogle(model);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 
+	class SynchronizedModel {
+		private Model model = ModelFactory.createDefaultModel();
+
+		public synchronized void add(Model m) {
+			model.add(m);
+		}
+
+		public synchronized Model getModel() {
+			return model;
+		}
+	}
+
+	private SynchronizedModel allProfileData = new SynchronizedModel();
+
 	/**
 	 * Constructor.
 	 */
-	ScrapeGoogle() throws IOException {
+	ScrapeGoogle(Model prfs) throws IOException {
+		log.info("This program retrieves all known profiles, builds a single RDF model from that data, and then creates a dendrogram of the properties used.");
+
+		ProcessProperties p = new ProcessProperties();
+		HashMap<String, HashMap<String, Integer>> properties = p
+				.createPropertyStructure(prfs);
+		StringBuffer result = p.printResults(properties);
+		UrlUtils.savePage(Constants.PROPERTIES_OUTPUT_FILE, result);
 		String manufacturerString = BASE + "manufacturers#";
 		for (int i = 0; i < oldManufacturers.length; i++) {
 			String oldManufacturer = (manufacturerString + oldManufacturers[i])
@@ -138,7 +164,7 @@ public class ScrapeGoogle {
 			}
 		}
 
-		// query google for files of type xml and rdf that mention the term
+		// query google for files of type XML and RDF that mention the term
 		// UAProf
 
 		final String QUERY_SEP = "&";
@@ -167,6 +193,11 @@ public class ScrapeGoogle {
 			e.printStackTrace();
 		}
 		new Crawler(crawlDb, 100, ctor, this);
+
+		// write out the profile data
+		log.info("Writing out profile data");
+		ModelUtils.writeModel(allProfileData.getModel(), Constants.ALL_PROFILES_RDF,
+				"RDF/XML");
 
 		// print a summary statistic of how many UAProf profiles were found
 
@@ -242,42 +273,71 @@ public class ScrapeGoogle {
 
 	class Worker extends CrawlerWorker {
 
-		private String manufacturer = null;
-
-		private URI device = null;
-
-		private String model = null;
-
-		private String newURI = null;
+		JenaReader arpReader = ModelUtils.configureArp();
 
 		public Worker() {
+			super();
 		}
 
-		void processURI(Resource sURI) {
+		void processURI(Resource device) {
+			StringBuffer messages = new StringBuffer();
 			try {
-				this.newURI = sURI.getURI();
-				device = new URI(this.newURI);
-				manufacturer = manufacturers.get(device.getHost());
-				if (manufacturer == null) {
-					manufacturer = "SPECIFY-MANUFACTURER";
+				URI deviceURI = new URI(device.getURI());
+				DeviceData deviceData = new DeviceData(device);
+
+				String profileUri = device.getURI();
+				String profile = UrlUtils.getURL(device.getURI());
+				Model pModel = ModelFactory.createDefaultModel();
+				arpReader.read(pModel, new StringReader(profile), profileUri);
+				allProfileData.add(pModel);
+
+				String manufacturerName = null;
+				String host = deviceURI.getHost();
+				if (deviceData.hasManufacturer()) {
+					manufacturerName = deviceData.getManufacturer();
+				} else if (manufacturers.containsKey(host)) {
+					manufacturerName = manufacturers.get(host);
+				} else {
+					manufacturerName = getTagSoup(profile, ":Vendor>", "<");
 				}
 
-				String profile = UrlUtils.getURL(this.newURI);
-				String claimedManufacturer = getTagSoup(profile, ":Vendor>", "<");
+				String deviceName = deviceData.hasDeviceName() ? deviceData.getDeviceName()
+						: getTagSoup(profile, ":Model>", "<");
 
-				if (manufacturer.equals("Blackberry") && claimedManufacturer != null) {
-					manufacturer = claimedManufacturer;
-				} else if (manufacturer.equals("SPECIFY-MANUFACTURER")
-						&& claimedManufacturer != null) {
-					manufacturer = claimedManufacturer;
+				if (!deviceData.hasManufacturer()) {
+					Resource manufacturerResource = null;
+					String manufacturerLowerCase = manufacturerName.toLowerCase().trim();
+					String manufacturer = null;
+					synchronized (this) {
+						if (fixManufacturers.containsKey(manufacturerLowerCase)) {
+							manufacturer = fixManufacturers.get(manufacturerLowerCase);
+						} else if (manufacturerHostnames.containsKey(manufacturerName)) {
+							manufacturer = manufacturerHostnames.get(manufacturerName);
+						} else {
+							manufacturer = BASE + "manufacturers#"
+									+  manufacturerName.replace(" ", "_");
+						}
+						manufacturerResource = profiles.createResource(manufacturer);
+						profiles.add(device, DeliSchema.manufacturedBy,
+								manufacturerResource);
+						profiles.add(manufacturerResource, RDFS.label, manufacturerName);
+						profiles.add(device, DeliSchema.deviceName,
+								profiles.createLiteral(deviceName));
+						profiles.add(device, RDF.type, DeliSchema.Profile);
+					}
 				}
 
-				model = getTagSoup(profile, ":Model>", "<");
-				getDeviceData();
-			} catch (Exception e) {
-				// don't do anything
+				messages.append("MANUFACTURER: " + manufacturerName + "     DEVICE NAME:  "
+						+ deviceName);
+				if (deviceData.hasProvider()) {
+					messages.append("PROFILE NOT CREATED BY VENDOR - PROVIDER: "
+							+ deviceData.getProvider());
+				}
+
+			} catch (Exception ie) {
+				ie.printStackTrace();
 			}
-		}
+		} 
 
 		/**
 		 * Tag soup approach to get data out of profile
@@ -288,56 +348,12 @@ public class ScrapeGoogle {
 		 * @return the value
 		 */
 		private String getTagSoup(String profile, String startTag, String endTag) {
-			String value = null;
 			int begin = profile.indexOf(startTag);
 			int end = profile.indexOf(endTag, begin + startTag.length());
 			if (begin >= 0 && end >= 0) {
-				value = profile.substring(begin + startTag.length(), end).trim();
+				return profile.substring(begin + startTag.length(), end).trim();
 			}
-			return value;
-		}
-
-		/**
-		 * Print out N3 information about a device
-		 */
-		private synchronized void getDeviceData() {
-			Resource rProfile = profiles.createResource(newURI);
-			DeviceData deviceData = new DeviceData(rProfile);
-			String nospaceManufacturer = manufacturer.replace(" ", "_");
-			Resource manufacturerResource = null;
-			String cManufacturer = manufacturer.toLowerCase().trim();
-			if (fixManufacturers.containsKey(cManufacturer)) {
-				manufacturerResource = profiles.createResource(fixManufacturers
-						.get(cManufacturer));
-			} else if (manufacturerHostnames.containsKey(manufacturer)) {
-				manufacturerResource = profiles.createResource(manufacturerHostnames
-						.get(manufacturer));
-			} else {
-				if (!deviceData.hasManufacturer()) {
-					String manufacturerURL = BASE + "manufacturers#"
-							+ nospaceManufacturer;
-					manufacturerResource = profiles.createResource(manufacturerURL);
-				}
-			}
-
-			if (deviceData.hasDeviceName()) {
-				String currentModel = deviceData.getDeviceName();
-				if (currentModel.length() < model.length()) {
-					rProfile.removeAll(DeliSchema.deviceName);
-					profiles.add(rProfile, DeliSchema.deviceName,
-							profiles.createTypedLiteral(model));
-				}
-			} else {
-				profiles.add(rProfile, DeliSchema.deviceName,
-						profiles.createLiteral(model));
-			}
-
-			profiles.add(rProfile, RDF.type, DeliSchema.Profile);
-
-			if (manufacturerResource != null) {
-				profiles.add(rProfile, DeliSchema.manufacturedBy, manufacturerResource);
-				profiles.add(manufacturerResource, RDFS.label, manufacturer);
-			}
+			return null;
 		}
 	}
 

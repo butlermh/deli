@@ -30,8 +30,6 @@ public class UAProfValidatorAll {
 
 	/**
 	 * Provides a command line interface to the validator.
-	 * 
-	 * @param args a list of profiles to validate separated by whitespace
 	 */
 	public static void main(String[] args) {
 		try {
@@ -116,14 +114,38 @@ public class UAProfValidatorAll {
 				outputMsg("MANUFACTURER: " + manufacturer + "     DEVICE NAME:  "
 						+ deviceName);
 				String profileUri = device.getURI();
-				StringReader profile;
 				if (profileUri.startsWith("http:")) {
 					try {
-						profile = new StringReader(UrlUtils.downloadFileToLocalDir(profileUri));
+						StringReader profile = new StringReader(UrlUtils.downloadFileToLocalDir(profileUri));
 						outputMsg(profileUrl);
 						try {
 							myARPReader.read(model, profile, profileUrl);
-							return validate();
+							if (!unreachable) {
+								ValidateProfile validated = null;
+								try {
+									validated = new ValidateProfile(configuration, model);
+									profileValidFlag = validated.isProfileValid();
+								} catch (Exception e) {
+									profileValidFlag = false;
+									outputMsg(e.toString());
+									e.printStackTrace();
+								}
+								if (validated != null) {
+									if (validated.getValidationMessages() != null) {
+										messages.append(validated.getValidationMessages());
+									}
+								}
+								if (profileValidFlag) {
+									outputMsg("PROFILE IS VALID");
+									validProfiles++;
+								} else {
+									outputMsg("PROFILE IS NOT VALID");
+									invalidProfiles++;
+								}
+							}
+
+							System.out.println(messages.toString());
+							return profileValidFlag;
 						} catch (JenaException e) {
 							outputMsg("Could not parse profile " + profileUrl);
 							profileValidFlag = false;
@@ -143,37 +165,6 @@ public class UAProfValidatorAll {
 				return false;
 			}
 
-			boolean validate() {
-				ValidateProfile validated = null;
-				if (!unreachable) {
-					try {
-						validated = new ValidateProfile(configuration, model);
-						profileValidFlag = validated.isProfileValid();
-					} catch (Exception e) {
-						profileValidFlag = false;
-						outputMsg(e.toString());
-						e.printStackTrace();
-					}
-
-					if (validated != null) {
-						if (validated.getValidationMessages() != null) {
-							messages.append(validated.getValidationMessages());
-						}
-					}
-
-					if (profileValidFlag) {
-						outputMsg("PROFILE IS VALID");
-						validProfiles++;
-					} else {
-						outputMsg("PROFILE IS NOT VALID");
-						invalidProfiles++;
-					}
-				}
-
-				System.out.println(messages.toString());
-				return profileValidFlag;
-			}
-
 			void outputMsg(String s) {
 				messages.append(s + "\n");
 			}
@@ -187,4 +178,5 @@ public class UAProfValidatorAll {
 		}
 
 	}
+
 }
