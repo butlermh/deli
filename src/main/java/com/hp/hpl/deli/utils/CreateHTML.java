@@ -120,8 +120,6 @@ class CreateHTML {
 				for (String profileUri : sortedList) {
 					Resource resource = profiles.createResource(profileUri);
 					DeviceData device = new DeviceData(resource);
-					String deviceName = device.hasDeviceName() ? device.getDeviceName()
-							: "";
 
 					boolean profileValid = false;
 					if (resource.hasProperty(DeliSchema.validatorResult)) {
@@ -138,7 +136,7 @@ class CreateHTML {
 						result.append("<tr>\n");
 					}
 
-					result.append("<td>" + deviceName + "</td>\n");
+					result.append("<td>" + device.getDeviceName() + "</td>\n");
 					if (device.hasRelease()) {
 						String release = device.getRelease();
 						result.append("<td>" + release + "</td>");

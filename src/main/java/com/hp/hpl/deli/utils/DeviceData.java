@@ -1,4 +1,4 @@
-package com.hp.hpl.deli.utils;
+package com.hp.hpl.deli.utils;	
 
 import com.hp.hpl.deli.DeliSchema;
 import com.hp.hpl.jena.rdf.model.Resource;
@@ -7,42 +7,55 @@ import com.hp.hpl.jena.vocabulary.RDFS;
 class DeviceData {
 	private Resource device;
 	
+	private String deviceName = null;
+	
+	private String manufacturerName = null;
+	
+	DeviceData(Resource device, String profile) {
+		this(device);
+		String manufacturerNameFromProfile = TagSoupProcessor.getTag(profile,
+		"Vendor");
+		String deviceNameFromProfile = TagSoupProcessor.getTag(profile, "Model");
+		if (manufacturerNameFromProfile != null) {
+			manufacturerName = manufacturerNameFromProfile;
+		}
+		if (deviceNameFromProfile != null) {
+			deviceName = deviceNameFromProfile;
+		}
+	}
+	
 	DeviceData(Resource device) {
 		this.device = device;
+		if (device.hasProperty(DeliSchema.manufacturedBy)) {
+			if (device.getProperty(DeliSchema.manufacturedBy).getResource().hasProperty(RDFS.label)) {
+		this.manufacturerName = device.getProperty(DeliSchema.manufacturedBy).getResource().getProperty(RDFS.label).getString();
+			}
+		}
+		if (device.hasProperty(DeliSchema.deviceName)) {
+			this.deviceName = device.getProperty(DeliSchema.deviceName).getString();
+		}
 	}
-	
-	Resource getManufacturerURI() {
-		return device.getProperty(DeliSchema.manufacturedBy).getResource();
-	}
-	
+		
 	String getManufacturer() {
-		return device.getProperty(DeliSchema.manufacturedBy).getResource().getProperty(RDFS.label).getString();
+		return manufacturerName;
 	}
 	
 	String getDeviceName() {
-		return device.getProperty(DeliSchema.deviceName).getString();
+		return deviceName;
 	}
 	
 	String getProvider() {
 		return device.getProperty(DeliSchema.provider).getResource().getURI();
 	}
 	
-	boolean hasManufacturerLabel() {
-		return device.getProperty(DeliSchema.manufacturedBy).getResource().hasProperty(RDFS.label);
-	}
-	
-	boolean hasManufacturer() {
-		return device.hasProperty(DeliSchema.manufacturedBy);
-	}
-
 	boolean hasProvider() {
 		return device.hasProperty(DeliSchema.provider);
 	}
 	
-	boolean hasDeviceName() {
-		return device.hasProperty(DeliSchema.deviceName);
+	Resource getDevice() {
+		return device;
 	}
-	
+
 	boolean hasRelease() {
 		return device.hasProperty(DeliSchema.release);
 	}

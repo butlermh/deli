@@ -27,12 +27,9 @@ import com.hp.hpl.jena.rdf.arp.JenaReader;
 import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
 import com.hp.hpl.jena.rdf.model.RDFErrorHandler;
-import com.hp.hpl.jena.rdf.model.RDFNode;
 import com.hp.hpl.jena.rdf.model.ResIterator;
 import com.hp.hpl.jena.rdf.model.Resource;
 import com.hp.hpl.jena.shared.JenaException;
-import com.hp.hpl.jena.vocabulary.RDF;
-import com.hp.hpl.jena.vocabulary.RDFS;
 
 /**
  * This class queries Google to see if it can identify any UAProf profiles that
@@ -53,12 +50,12 @@ public class ProcessUAProfMetadata {
 	private int invalidRDF = 0;
 
 	private ProfileProcessor configuration;
-
-	private Model profiles;
+	
+	private AllProfiles profiles ;
 
 	private SynchronizedModel allProfileData = new SynchronizedModel();
 
-	private Manufacturers manufacturers;
+ 	private Manufacturers manufacturers;
 
 	private List<Resource> crawlDb = Collections
 			.synchronizedList(new LinkedList<Resource>());
@@ -80,13 +77,11 @@ public class ProcessUAProfMetadata {
 		}
 	}
 
-	private boolean validate = false;
-
 	/**
 	 * Constructor.
 	 */
 	ProcessUAProfMetadata(Model prfs) throws IOException {
-		this.profiles = prfs;
+		this.profiles = new AllProfiles(prfs);
 		createPropertiesFile(prfs);
 		manufacturers = new Manufacturers(prfs);
 
@@ -106,11 +101,11 @@ public class ProcessUAProfMetadata {
 		ModelUtils.writeModel(prfs, Constants.ALL_KNOWN_UAPROF_PROFILES_OUTPUT, "N3");
 
 		// print a summary statistic of how many UAProf profiles were found
-		outputMsg("Processing statistics:");
-		outputMsg(validProfiles + " valid profiles");
-		outputMsg(invalidProfiles + " invalid profiles");
-		outputMsg(unreachableProfiles + " unreachable profiles");
-		outputMsg(invalidRDF + " profiles which were invalid RDF/XML");
+		log.info("Processing statistics:");
+		log.info(validProfiles + " valid profiles");
+		log.info(invalidProfiles + " invalid profiles");
+		log.info(unreachableProfiles + " unreachable profiles");
+		log.info(invalidRDF + " profiles which were invalid RDF/XML");
 	}
 
 	private void createPropertiesFile(Model prfs) throws IOException {
@@ -155,10 +150,6 @@ public class ProcessUAProfMetadata {
 		new Crawler(crawlDb, 100, ctor, this);
 	}
 
-	static void outputMsg(String s) {
-		System.out.println(s);
-	}
-
 	// do we already know about this profile or is it on an excluded host?
 
 	private boolean isDeviceAlreadyKnown(String deviceURI) {
@@ -168,18 +159,7 @@ public class ProcessUAProfMetadata {
 		if (!deviceURI.startsWith("http")) {
 			return true;
 		}
-		Resource p = profiles.createResource(deviceURI);
-		ResIterator profilesIter = profiles.listSubjectsWithProperty(
-				DeliSchema.uaprofUri, p);
-		if (profilesIter.hasNext()) {
-			return true;
-		}
-		p = profiles.createResource(deviceURI.toLowerCase());
-		profilesIter = profiles.listSubjectsWithProperty(DeliSchema.uaprofUri, p);
-		if (profilesIter.hasNext()) {
-			return true;
-		}
-		return false;
+		return profiles.isDeviceAlreadyKnown(deviceURI);
 	}
 
 	void processPage(String pageUri) {
@@ -194,9 +174,7 @@ public class ProcessUAProfMetadata {
 						: end;
 				String newURI = inputString.substring((next + search.length()), end);
 				if (!isDeviceAlreadyKnown(newURI)) {
-					Resource resource = profiles.createResource(newURI);
-					profiles.add(resource, RDF.type, DeliSchema.Profile);
-					crawlDb.add(resource);
+					crawlDb.add(profiles.addProfile(newURI));
 				}
 				next = end;
 			}
@@ -210,8 +188,6 @@ public class ProcessUAProfMetadata {
 
 		class ProcessProfile {
 
-			private String profileUrl;
-
 			private StringBuffer messages = new StringBuffer();
 
 			private boolean profileValidFlag = true;
@@ -222,13 +198,7 @@ public class ProcessUAProfMetadata {
 
 			private Resource device;
 
-			private DeviceData deviceData;
-
 			private String profile;
-
-			private String deviceName;
-
-			private String manufacturerName;
 
 			private Model model;
 
@@ -276,36 +246,34 @@ public class ProcessUAProfMetadata {
 						}
 						if (profileValidFlag) {
 							validProfiles++;
-							device.removeAll(DeliSchema.validatorResult);
-							device.addProperty(DeliSchema.validatorResult,
-									DeliSchema.Valid);
+							setValidatorResult(DeliSchema.Valid);
 						} else {
 							outputMsg("PROFILE IS NOT VALID");
 							invalidProfiles++;
-							device.removeAll(DeliSchema.validatorResult);
-							device.addProperty(DeliSchema.validatorResult,
-									DeliSchema.Invalid);
+							setValidatorResult(DeliSchema.Invalid);
 							makeValidatorReport();
 						}
 					}
 				} catch (JenaException e) {
-					outputMsg("Could not parse profile " + profileUrl);
+					outputMsg("Could not parse profile " + device.getURI());
 					profileValidFlag = false;
 					invalidRDF++;
-					device.removeAll(DeliSchema.validatorResult);
-					device.addProperty(DeliSchema.validatorResult, DeliSchema.Invalid);
+					setValidatorResult(DeliSchema.Invalid);
 					makeValidatorReport();
 				} catch (Exception e) {
-					outputMsg("Could not load profile " + profileUrl);
+					outputMsg("Could not load profile " + device.getURI());
 					unreachable = true;
 					profileValidFlag = false;
 					unreachableProfiles++;
-					device.removeAll(DeliSchema.validatorResult);
-					device.addProperty(DeliSchema.validatorResult,
-							DeliSchema.Unretrievable);
+					setValidatorResult(DeliSchema.Unretrievable);
 					makeValidatorReport();
 					outputMsg("PROFILE IS UNREACHABLE");
 				}
+			}
+
+			void setValidatorResult(Resource result) {
+				device.removeAll(DeliSchema.validatorResult);
+				device.addProperty(DeliSchema.validatorResult, result);
 			}
 
 			void makeValidatorReport() {
@@ -313,9 +281,9 @@ public class ProcessUAProfMetadata {
 					FileOutputStream theFileStream = null;
 					Writer out = null;
 					try {
-						URL theURL = new URL(profileUrl);
-						String filepath = CreateHTML.VALIDATOR_REPORTS
-								+ theURL.getHost() + theURL.getFile() +".html";
+						URL theURL = new URL(device.getURI());
+						String filepath = CreateHTML.VALIDATOR_REPORTS + theURL.getHost()
+								+ theURL.getFile() + ".html";
 						String path = filepath.substring(0, filepath.lastIndexOf('/'));
 						File directory = new File(path);
 						if (!directory.exists()) {
@@ -323,10 +291,11 @@ public class ProcessUAProfMetadata {
 						}
 						StringBuffer result = new StringBuffer();
 						result.append("<html>\n");
-						result.append("<head><title>Validator report for " + profileUrl
-								+ "</title></head>\n");
+						result.append("<head><title>Validator report for "
+								+ device.getURI() + "</title></head>\n");
 						result.append("<body>\n");
-						result.append("<h1>Validator output for " + profileUrl +"</h1>\n");
+						result.append("<h1>Validator output for " + device.getURI()
+								+ "</h1>\n");
 						result.append("<pre>\n");
 						result.append(EscapeChars.forXML(messages.toString()));
 						result.append("</pre>\n");
@@ -356,54 +325,14 @@ public class ProcessUAProfMetadata {
 			}
 
 			private void fixMetadata() {
-				String manufacturerNameFromProfile = TagSoupProcessor.getTagSoup(profile,
-						":Vendor>", "<");
-				if (manufacturerNameFromProfile == null
-						|| manufacturerNameFromProfile.length() == 0) {
-					manufacturerNameFromProfile = TagSoupProcessor.getBackwardTagSoup(
-							profile, ">", "</prf:Vendor");
-				}
-				String deviceNameFromProfile = TagSoupProcessor.getTagSoup(profile,
-						":Model>", "<");
-				if (deviceNameFromProfile == null || deviceNameFromProfile.length() == 0) {
-					deviceNameFromProfile = TagSoupProcessor.getBackwardTagSoup(profile,
-							">", "</prf:Model");
-				}
-
-				if (deviceNameFromProfile != null) {
-					profiles.removeAll(device, DeliSchema.deviceName, (RDFNode) null);
-					profiles.add(device, DeliSchema.deviceName, deviceNameFromProfile);
-				}
-
-				if (manufacturerNameFromProfile != null
-						&& manufacturerNameFromProfile.length() > 0) {
-					manufacturerName = manufacturerNameFromProfile;
-				} else if (deviceData.hasManufacturer()) {
-					if (deviceData.hasManufacturerLabel()) {
-						manufacturerName = deviceData.getManufacturer();
-					}
-				}
-
-				if (deviceNameFromProfile != null && deviceNameFromProfile.length() > 0) {
-					deviceName = deviceNameFromProfile;
-				} else {
-					deviceName = deviceData.getDeviceName();
-				}
-				if (manufacturerName != null) {
-					String manufacturer = manufacturers.get(manufacturerName);
+				DeviceData deviceData = new DeviceData(device, profile);
+				if (deviceData.getManufacturer() != null) {
+					String manufacturer = manufacturers.get(deviceData.getManufacturer());
 					if (manufacturer != null) {
-						Resource manufacturerResource = profiles
-								.createResource(manufacturer);
-						profiles.removeAll(device, DeliSchema.manufacturedBy,
-								(RDFNode) null);
-						profiles.add(device, DeliSchema.manufacturedBy,
-								manufacturerResource);
-						profiles.add(manufacturerResource, RDFS.label, manufacturerName);
-						profiles.add(device, DeliSchema.deviceName, deviceName);
-						profiles.add(device, RDF.type, DeliSchema.Profile);
+						profiles.fixMetadata(deviceData, manufacturer);
 					} else {
 						outputMsg("ERROR: Could not find manufacturer URI for ["
-								+ manufacturerName + "] for " + device);
+								+ deviceData.getManufacturer() + "] for " + device);
 					}
 				}
 			}
@@ -411,23 +340,19 @@ public class ProcessUAProfMetadata {
 			public void process(Resource device) {
 				this.device = device;
 				try {
-					deviceData = new DeviceData(device);
-					profileUrl = device.getURI();
 					profile = UrlUtils.getURL(device.getURI()).trim();
 					if (profile.contains("<html") && profile.contains("<head>")) {
 						// we picked up some HTML by mistake
 						device.removeProperties();
 					} else {
 						validate();
+						fixMetadata();
 					}
-					fixMetadata();
-
 				} catch (IOException io) {
 					outputMsg("Could not retrieve " + device.getURI());
 					device.removeProperties();
 					unreachableProfiles++;
 				}
-
 				System.out.println(messages.toString());
 			}
 

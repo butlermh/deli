@@ -17,7 +17,7 @@ public class TagSoupProcessor {
 		}
 		return null;
 	}
-	
+
 	static String getBackwardTagSoup(String profile, String startTag, String endTag) {
 		int end = profile.indexOf(endTag);
 		int begin = profile.lastIndexOf(startTag, end);
@@ -25,5 +25,16 @@ public class TagSoupProcessor {
 			return profile.substring(begin + startTag.length(), end).trim();
 		}
 		return null;
+	}
+
+	static String getTag(String profile, String property) {
+		String result = TagSoupProcessor.getTagSoup(profile, ":" + property + ">", "<");
+		if (result == null || result.length() == 0) {
+			result = TagSoupProcessor.getBackwardTagSoup(profile, ">", "</prf:"
+					+ property);
+		}
+		if (result.length() == 0)
+			return null;
+		return result;
 	}
 }
