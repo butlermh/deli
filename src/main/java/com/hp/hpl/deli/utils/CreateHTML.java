@@ -9,7 +9,6 @@ import java.util.TreeSet;
 
 import com.hp.hpl.deli.Constants;
 import com.hp.hpl.deli.DeliSchema;
-import com.hp.hpl.deli.ModelUtils;
 import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.ResIterator;
 import com.hp.hpl.jena.rdf.model.Resource;
@@ -22,20 +21,6 @@ import com.hp.hpl.jena.vocabulary.RDFS;
  */
 class CreateHTML {
 
-	/**
-	 * Command line interface.
-	 * 
-	 * @param args Does not take any arguments.
-	 */
-	public static void main(String[] args) {
-		try {
-			Model model = ModelUtils.loadModel(Constants.ALL_KNOWN_UAPROF_PROFILES);
-			new CreateHTML(model);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-
 	/** Map of manufacturers onto URIs */
 	private HashMap<String, TreeSet<String>> manufacturers = new HashMap<String, TreeSet<String>>();
 
@@ -43,12 +28,15 @@ class CreateHTML {
 	private Model profiles = null;
 
 	private StringBuffer result = new StringBuffer();
+	
+	private HashMap<Resource, Resource> results;
 
 	/**
 	 * Constructor.
 	 */
-	CreateHTML(Model profiles) throws IOException {
+	CreateHTML(Model profiles, HashMap<Resource, Resource> results) throws IOException {
 		this.profiles = profiles;
+		this.results = results;
 		String datenewformat = new SimpleDateFormat("dd MMMMM yyyy").format(new Date());
 		result.append("<html>\n<head>\n<title>List of UAProfile profiles "
 				+ datenewformat
@@ -148,9 +136,9 @@ class CreateHTML {
 					result.append("<a href=\"" + profileUri + "\">" + profileUri
 							+ "</a>\n");
 					result.append("</td>");
-					if (resource.hasProperty(DeliSchema.validatorResult)) {
-						Resource valid = resource.getProperty(DeliSchema.validatorResult)
-								.getObject().asResource();
+					
+					if (results.containsKey(resource)) {
+						Resource valid = results.get(resource);
 						if (valid.equals(DeliSchema.Valid)) {
 							result.append("<td>VALID</td>");
 						} else if (valid.equals(DeliSchema.Invalid)) {
