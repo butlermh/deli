@@ -33,6 +33,7 @@ _:n1
 _:n2
 	rdf:type deli:NamespaceDefinition ;
    	deli:uri <http://www.3gpp.org/profiles/PSS/ccppschema-PSS6#> ;
+   	deli:aliasUri <http://www.3gpp.org/profiles/PSS/ccppschema-pss6#> ;
    	deli:schemaVocabularyFile  "config/vocab/ccppschema-PSS6.rdfs" .
 
 _:n3
@@ -92,3 +93,9 @@ _:n13
     deli:schemaVocabularyFile "config/vocab/ccppschema-20070511.rdfs" ;
     deli:datatypeUri <http://www.openmobilealliance.org/tech/profiles/uaprof/xmlschema-20030226> ;
     deli:datatypeFile "config/vocab/xmlschema-20030226.xsd" .
+    
+_:n14
+   rdf:type deli:NamespaceDefinition ;
+    deli:uri <http://www.openmobilealliance.org/tech/profiles/UAPROF/ccppschema-20021113#> ;
+    deli:aliasUri <http://www.openmobilealliance.org/tech/profiles/UAPROF/ccppschema-20021112#> ;
+    deli:schemaVocabularyFile "config/vocab/ccppschema-20021113.rdfs" .

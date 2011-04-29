@@ -47,7 +47,9 @@ class ValidateAttribute extends AbstractProcessAttribute {
 		} catch (VocabularyException ve) {
 			if (attribute.getURI().startsWith("http://device.sprintpcs.com/namespace/xpcs")) {
 				// sprint have defined their own namespace but not published a schema
-			} else {
+			} else if (attribute.getURI().startsWith("http://uaprof.vodafone.jp/uaprof/ccppschema-20041001")) {
+				// ditto for vodafone japan
+			} else{
 				validatorError("Attribute not defined in vocabulary");
 			}
 		}
@@ -158,7 +160,7 @@ class ValidateAttribute extends AbstractProcessAttribute {
 								outputMsg("Warning: UAProf 2 profile omits RDF datatyping information");
 							}
 							printedWarningAboutDatatyping = true;
-							isProfileValid = false;
+							// isProfileValid = false;
 						}
 					}
 					// check the value matches the XML Schema datatype
