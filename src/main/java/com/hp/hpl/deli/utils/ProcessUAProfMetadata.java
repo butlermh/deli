@@ -330,6 +330,7 @@ public class ProcessUAProfMetadata {
 						result.append("<pre>\n");
 						result.append(EscapeChars.forXML(messages.toString()));
 						result.append("</pre>\n");
+						result.append("<p><a href=\"mailto:markhenrybutler@gmail.com\">Problems with this report?</a></p>");
 						result.append("<h1>Original profile</h1>\n");
 						result.append("<pre>\n");
 						result.append(EscapeChars.forXML(profile));
@@ -361,7 +362,6 @@ public class ProcessUAProfMetadata {
 						|| manufacturerNameFromProfile.length() == 0) {
 					manufacturerNameFromProfile = TagSoupProcessor.getBackwardTagSoup(
 							profile, ">", "</prf:Vendor");
-					outputMsg(manufacturerNameFromProfile);
 				}
 				String deviceNameFromProfile = TagSoupProcessor.getTagSoup(profile,
 						":Model>", "<");
@@ -413,8 +413,13 @@ public class ProcessUAProfMetadata {
 				try {
 					deviceData = new DeviceData(device);
 					profileUrl = device.getURI();
-					profile = UrlUtils.getURL(device.getURI());
-					validate();
+					profile = UrlUtils.getURL(device.getURI()).trim();
+					if (profile.contains("<html") && profile.contains("<head>")) {
+						// we picked up some HTML by mistake
+						device.removeProperties();
+					} else {
+						validate();
+					}
 					fixMetadata();
 
 				} catch (IOException io) {

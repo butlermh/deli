@@ -8,7 +8,7 @@ _:config
  	deli:printDefaults "true" ;
  	deli:printProfileBeforeMerge "false" ;
  	deli:processUndefinedAttributes "false" ;
-	deli:datatypeValidationOn "true" ;
+	deli:datatypeValidationOn "false" ;
 	deli:enforceUAProfTwoDatatypes "true" .
 
 # correct namespaces defined in UAProf specifications

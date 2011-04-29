@@ -45,7 +45,11 @@ class ValidateAttribute extends AbstractProcessAttribute {
 			vocabulary.getAttribute(vocabulary.getRealNamespace(attribute));
 			validateAttribute();
 		} catch (VocabularyException ve) {
-			validatorError("Attribute not defined in vocabulary");
+			if (attribute.getURI().startsWith("http://device.sprintpcs.com/namespace/xpcs")) {
+				// sprint have defined their own namespace but not published a schema
+			} else {
+				validatorError("Attribute not defined in vocabulary");
+			}
 		}
 	}
 
