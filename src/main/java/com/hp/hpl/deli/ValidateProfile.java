@@ -64,8 +64,8 @@ public class ValidateProfile extends AbstractProcessProfile {
 		SchemaCollection vocabulary = configuration.getVocabulary();
 		String correctNamespace = vocabulary.getRealNamespace(theNamespace);
 		if (!correctNamespace.equals(theNamespace)) {
-			outputMsg("WARNING: The profile uses a commonly used but incorrect namespace");
-			outputMsg("Incorrect namespace is:    " + theNamespace);
+			outputMsg("WARNING: The profile uses a commonly used namespace alias");
+			outputMsg("Aliased namespace is:    " + theNamespace);
 			outputMsg("Real namespace is: " + correctNamespace);
 		} else if (!vocabulary.knownNamespace(theNamespace)) {
 			outputMsg("The profile uses an unknown namespace: " + theNamespace);
