@@ -1,10 +1,10 @@
 package com.hp.hpl.deli.utils;
 
 import java.io.IOException;
+import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.TreeSet;
 
 import com.hp.hpl.deli.Constants;
@@ -13,6 +13,8 @@ import com.hp.hpl.deli.ModelUtils;
 import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.ResIterator;
 import com.hp.hpl.jena.rdf.model.Resource;
+import com.hp.hpl.jena.rdf.model.Statement;
+import com.hp.hpl.jena.rdf.model.StmtIterator;
 import com.hp.hpl.jena.vocabulary.RDFS;
 
 /**
@@ -20,8 +22,22 @@ import com.hp.hpl.jena.vocabulary.RDFS;
  */
 class CreateHTML {
 
+	/**
+	 * Command line interface.
+	 * 
+	 * @param args Does not take any arguments.
+	 */
+	public static void main(String[] args) {
+		try {
+			Model model = ModelUtils.loadModel(Constants.ALL_KNOWN_UAPROF_PROFILES);
+			new CreateHTML(model);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
 	/** Map of manufacturers onto URIs */
-	private HashMap<String, HashSet<String>> manufacturers = new HashMap<String, HashSet<String>>();
+	private HashMap<String, TreeSet<String>> manufacturers = new HashMap<String, TreeSet<String>>();
 
 	/** The RDF model containing the data on all profiles. */
 	private Model profiles = null;
@@ -36,7 +52,9 @@ class CreateHTML {
 		String datenewformat = new SimpleDateFormat("dd MMMMM yyyy").format(new Date());
 		result.append("<html>\n<head>\n<title>List of UAProfile profiles "
 				+ datenewformat
-				+ "</title>\n<style TYPE=\"text/css\"><!--tr.odd {\nbackground-color: #fbe7ef;\n}\n--></style></head>\n");
+				+ "</title>\n<style TYPE=\"text/css\"><!--tr.odd {\nbackground-color: #fbe7ef;\n}\n"
+				+ "--></style>");
+		result.append("</head>\n");
 		result.append("<body>\n<h1>List of UAProfile profiles " + datenewformat
 				+ "</h1>\n");
 
@@ -58,18 +76,17 @@ class CreateHTML {
 			resource = profilesIter.nextResource();
 			Resource m = (Resource) resource.getProperty(DeliSchema.manufacturedBy)
 					.getObject();
-			String manufacturer = ModelUtils.getPropertyString(m, RDFS.label);
-			if (manufacturer != null && m.getURI() != null) {
-				if (manufacturer.trim().length() > 0) {
-					HashSet<String> uris = null;
-					if (manufacturers.containsKey(manufacturer)) {
-						uris = manufacturers.get(manufacturer);
-					} else {
-						uris = new HashSet<String>();
-					}
-					uris.add(m.getURI());
-					manufacturers.put(manufacturer, uris);
+
+			if (m.getURI() != null) {
+				String manufacturer = m.getURI();
+				TreeSet<String> uris = null;
+				if (manufacturers.containsKey(manufacturer)) {
+					uris = manufacturers.get(manufacturer);
+				} else {
+					uris = new TreeSet<String>();
 				}
+				uris.add(m.getURI());
+				manufacturers.put(manufacturer, uris);
 			}
 		}
 	}
@@ -79,12 +96,21 @@ class CreateHTML {
 	 */
 	private void printManufacturers() {
 		for (String manufacturer : manufacturers.keySet()) {
-			result.append("<h2>" + manufacturer + "</h2>\n");
-			result.append("<p>\n<table width=\"100%\" border=\"1\"><tbody><tr><td width=\"25%\">Device</td><td width=\"25%\">Release</td><td width=\"50%\">URI</td></tr>\n");
+			result.append("<h2>");
+			Resource manufacturerResource = profiles.createResource(manufacturer);
+			StmtIterator si = manufacturerResource.listProperties(RDFS.label);
+			while (si.hasNext()) {
+				Statement s = si.nextStatement();
+				result.append(s.getLiteral());
+				if (si.hasNext()) {
+					result.append(" / ");
+				}
+			}
+			result.append("</h2>\n");
+			result.append("<p>\n<table width=\"100%\" border=\"1\"><tbody><tr><td width=\"20%\">Device</td><td width=\"20%\">Release</td><td width=\"40%\">URI</td><td width=\"20%\">Valid?</td></tr>\n");
 			for (String manufacturerURL : manufacturers.get(manufacturer)) {
 				ResIterator profilesIterBy = profiles.listSubjectsWithProperty(
 						DeliSchema.manufacturedBy, profiles.getResource(manufacturerURL));
-				boolean odd = false;
 				TreeSet<String> sortedList = new TreeSet<String>();
 				while (profilesIterBy.hasNext()) {
 					Resource resource = profilesIterBy.nextResource();
@@ -94,27 +120,68 @@ class CreateHTML {
 				for (String profileUri : sortedList) {
 					Resource resource = profiles.createResource(profileUri);
 					DeviceData device = new DeviceData(resource);
-					String deviceName = device.hasDeviceName() ? device.getDeviceName() : "";
+					String deviceName = device.hasDeviceName() ? device.getDeviceName()
+							: "";
 
-					if (odd) {
-						result.append("<tr class=\"odd\">\n");
-						odd = false;
-					} else {
-						odd = true;
+					boolean profileValid = false;
+					if (resource.hasProperty(DeliSchema.validatorResult)) {
+						Resource valid = resource.getProperty(DeliSchema.validatorResult)
+								.getObject().asResource();
+						if (valid.equals(DeliSchema.Valid)) {
+							profileValid = true;
+						}
 					}
+
+					if (!profileValid) {
+						result.append("<tr class=\"odd\">\n");
+					} else {
+						result.append("<tr>\n");
+					}
+
 					result.append("<td>" + deviceName + "</td>\n");
 					if (device.hasRelease()) {
 						String release = device.getRelease();
-						result.append("<td>" + release + "</td><td>\n");
+						result.append("<td>" + release + "</td>");
 					} else {
-						result.append("<td></td><td>\n");
+						result.append("<td></td>");
 					}
+
+					result.append("<td>\n");
 					result.append("<a href=\"" + profileUri + "\">" + profileUri
 							+ "</a>\n");
-					result.append("</td></tr>\n");
+					result.append("</td>");
+					if (resource.hasProperty(DeliSchema.validatorResult)) {
+						Resource valid = resource.getProperty(DeliSchema.validatorResult)
+								.getObject().asResource();
+						if (valid.equals(DeliSchema.Valid)) {
+							result.append("<td>VALID</td>");
+						} else if (valid.equals(DeliSchema.Invalid)) {
+							linkToValidatorReport(profileUri, "INVALID");
+						} else if (valid.equals(DeliSchema.Unretrievable)) {
+							linkToValidatorReport(profileUri, "UNRETRIEVABLE");
+						}
+					} else {
+						result.append("<td></td>");
+					}
+					result.append("</tr>\n");
 				}
 			}
 			result.append("</table>\n");
 		}
 	}
+	
+	private void linkToValidatorReport(String profileUri, String comment) {
+		try {
+			URL theURL = new URL(profileUri);
+			String filepath = "validator/"
+					+ theURL.getHost() + theURL.getFile() +".html";
+			result.append("<td><a href=\"" + filepath + "\">");
+			result.append(comment);
+			result.append("</a></td>");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	final static String VALIDATOR_REPORTS =  "target/validator/";
 }

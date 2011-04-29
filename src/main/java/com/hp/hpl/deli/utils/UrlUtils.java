@@ -9,8 +9,6 @@ import java.io.OutputStream;
 import java.net.URL;
 import java.net.URLConnection;
 
-import com.hp.hpl.deli.Constants;
-
 class UrlUtils {
 
 	static void savePage(String filename, StringBuffer data) throws IOException {

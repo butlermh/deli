@@ -20,6 +20,8 @@ class ValidateAttribute extends AbstractProcessAttribute {
 	/** Is datatype validation on? */
 	private boolean datatypeValidationOn = true;
 
+	private boolean printedWarningAboutDatatyping = false;
+
 	StringBuffer validationMessages = new StringBuffer();
 
 	void outputMsg(String s) {
@@ -28,25 +30,26 @@ class ValidateAttribute extends AbstractProcessAttribute {
 
 	ValidateAttribute(ProfileProcessor configuration, Statement attributeStatement,
 			Resource currentComponent, boolean currentlyProcessingDefaults,
-			boolean isProfileValid) {
+			boolean isProfileValid, boolean printedWarningAboutDatatyping) {
 		this.attribute = attributeStatement.getPredicate();
 		this.vocabulary = configuration.getVocabulary();
 		this.isProfileValid = isProfileValid;
 		this.object = attributeStatement.getObject();
 		this.currentComponent = currentComponent;
+		this.printedWarningAboutDatatyping = printedWarningAboutDatatyping;
 
 		DeliConfiguration workspace = configuration.getWorkspace();
 		datatypeValidationOn = workspace.get(DeliSchema.datatypeValidationOn,
 				datatypeValidationOn);
 		try {
 			vocabulary.getAttribute(vocabulary.getRealNamespace(attribute));
+			validateAttribute();
 		} catch (VocabularyException ve) {
 			validatorError("Attribute not defined in vocabulary");
 		}
-		validateProfile();
 	}
 
-	void validateProfile() {
+	void validateAttribute() {
 		try {
 			String vocabularyCollectionType = vocabulary.getAttributeProperty(attribute,
 					Constants.COLLECTIONTYPE).getLocalName();
@@ -101,8 +104,7 @@ class ValidateAttribute extends AbstractProcessAttribute {
 	}
 
 	void validatorError(String message) {
-		outputMsg("Error [C: " + currentComponent + ", A: " + attribute.getLocalName()
-				+ "] " + message);
+		outputMsg("Error [C: " + currentComponent + ", A: " + attribute + "] " + message);
 		isProfileValid = false;
 	}
 
@@ -148,7 +150,10 @@ class ValidateAttribute extends AbstractProcessAttribute {
 						// no datatyping information - error!
 						String prfURI = normalizedAttribute.getNameSpace();
 						if (vocabulary.usesRDFDatatyping(prfURI)) {
-							outputMsg("Warning: UAProf 2 profile omits RDF datatyping information");
+							if (!printedWarningAboutDatatyping) {
+								outputMsg("Warning: UAProf 2 profile omits RDF datatyping information");
+							}
+							printedWarningAboutDatatyping = true;
 							isProfileValid = false;
 						}
 					}
@@ -168,5 +173,9 @@ class ValidateAttribute extends AbstractProcessAttribute {
 			}
 		} catch (VocabularyException ve) {
 		}
+	}
+
+	public boolean printedWarningAboutDatatyping() {
+		return printedWarningAboutDatatyping;
 	}
 }

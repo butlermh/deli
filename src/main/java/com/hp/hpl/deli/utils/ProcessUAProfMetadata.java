@@ -1,8 +1,15 @@
 package com.hp.hpl.deli.utils;
 
+import hirondelle.web4j.util.EscapeChars;
+
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.io.StringReader;
+import java.io.Writer;
 import java.lang.reflect.Constructor;
+import java.net.URL;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -222,7 +229,7 @@ public class ProcessUAProfMetadata {
 			private String deviceName;
 
 			private String manufacturerName;
-			
+
 			private Model model;
 
 			ProcessProfile() {
@@ -268,51 +275,99 @@ public class ProcessUAProfMetadata {
 							}
 						}
 						if (profileValidFlag) {
-							outputMsg("PROFILE IS VALID");
 							validProfiles++;
+							device.removeAll(DeliSchema.validatorResult);
+							device.addProperty(DeliSchema.validatorResult,
+									DeliSchema.Valid);
 						} else {
 							outputMsg("PROFILE IS NOT VALID");
 							invalidProfiles++;
+							device.removeAll(DeliSchema.validatorResult);
+							device.addProperty(DeliSchema.validatorResult,
+									DeliSchema.Invalid);
+							makeValidatorReport();
 						}
 					}
 				} catch (JenaException e) {
 					outputMsg("Could not parse profile " + profileUrl);
 					profileValidFlag = false;
 					invalidRDF++;
+					device.removeAll(DeliSchema.validatorResult);
+					device.addProperty(DeliSchema.validatorResult, DeliSchema.Invalid);
+					makeValidatorReport();
 				} catch (Exception e) {
 					outputMsg("Could not load profile " + profileUrl);
 					unreachable = true;
 					profileValidFlag = false;
 					unreachableProfiles++;
+					device.removeAll(DeliSchema.validatorResult);
+					device.addProperty(DeliSchema.validatorResult,
+							DeliSchema.Unretrievable);
+					makeValidatorReport();
 					outputMsg("PROFILE IS UNREACHABLE");
 				}
 			}
 
-			private void printDeviceInfo() {
-//				outputMsg("MANUFACTURER: " + manufacturerName + "     DEVICE NAME:  "
-//						+ deviceName);
-//				if (deviceData.hasProvider()) {
-//					outputMsg("PROFILE NOT CREATED BY VENDOR - PROVIDER: "
-//							+ deviceData.getProvider());
-//				}
+			void makeValidatorReport() {
+				try {
+					FileOutputStream theFileStream = null;
+					Writer out = null;
+					try {
+						URL theURL = new URL(profileUrl);
+						String filepath = CreateHTML.VALIDATOR_REPORTS
+								+ theURL.getHost() + theURL.getFile() +".html";
+						String path = filepath.substring(0, filepath.lastIndexOf('/'));
+						File directory = new File(path);
+						if (!directory.exists()) {
+							directory.mkdirs();
+						}
+						StringBuffer result = new StringBuffer();
+						result.append("<html>\n");
+						result.append("<head><title>Validator report for " + profileUrl
+								+ "</title></head>\n");
+						result.append("<body>\n");
+						result.append("<h1>Validator output for " + profileUrl +"</h1>\n");
+						result.append("<pre>\n");
+						result.append(EscapeChars.forXML(messages.toString()));
+						result.append("</pre>\n");
+						result.append("<h1>Original profile</h1>\n");
+						result.append("<pre>\n");
+						result.append(EscapeChars.forXML(profile));
+						result.append("</pre>\n");
+						result.append("</body>\n");
+						result.append("</html>\n");
+						File localFile = new File(filepath);
+						localFile.createNewFile();
+						theFileStream = new FileOutputStream(localFile);
+						out = new OutputStreamWriter(theFileStream);
+						out.write(result.toString());
+					} catch (Exception e) {
+						e.printStackTrace();
+					} finally {
+						if (out != null)
+							out.close();
+						if (theFileStream != null)
+							theFileStream.close();
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 			}
 
 			private void fixMetadata() {
-				// FIXME - should do this by getting property from profile, not by screenscraping
-				
-				String manufacturerNameFromProfile = getTagSoup(profile, ":Vendor>", "<");
-				if (manufacturerNameFromProfile == null) {
-					 manufacturerNameFromProfile = getTagSoup(profile, ":Vendor rdf:datatype=\"http://www.openmobilealliance.org/tech/profiles/UAPROF/xmlschema-20030226#Literal\">", "<");
-				} 
-				if (manufacturerNameFromProfile == null) {
-					manufacturerNameFromProfile = getTagSoup(profile, ":Vendor rdf:datatype=\"&prf-dt;Literal\">", "<");
+				String manufacturerNameFromProfile = TagSoupProcessor.getTagSoup(profile,
+						":Vendor>", "<");
+				if (manufacturerNameFromProfile == null
+						|| manufacturerNameFromProfile.length() == 0) {
+					manufacturerNameFromProfile = TagSoupProcessor.getBackwardTagSoup(
+							profile, ">", "</prf:Vendor");
+					outputMsg(manufacturerNameFromProfile);
 				}
-				String deviceNameFromProfile = getTagSoup(profile, ":Model>", "<");
-				if (deviceNameFromProfile == null) {
-					deviceNameFromProfile = getTagSoup(profile, ":Model rdf:datatype=\"http://www.openmobilealliance.org/tech/profiles/UAPROF/xmlschema-20030226#Literal\">", "<");
-				}
-				if (deviceNameFromProfile == null) {
-					deviceNameFromProfile = getTagSoup(profile, ":Model rdf:datatype=\"&prf-dt;Literal\">", "<");
+				String deviceNameFromProfile = TagSoupProcessor.getTagSoup(profile,
+						":Model>", "<");
+				if (deviceNameFromProfile == null || deviceNameFromProfile.length() == 0) {
+					deviceNameFromProfile = TagSoupProcessor.getBackwardTagSoup(profile,
+							">", "</prf:Model");
 				}
 
 				if (deviceNameFromProfile != null) {
@@ -320,42 +375,36 @@ public class ProcessUAProfMetadata {
 					profiles.add(device, DeliSchema.deviceName, deviceNameFromProfile);
 				}
 
-				manufacturerName = deviceData.hasManufacturerLabel() ? deviceData.getManufacturer() : manufacturerNameFromProfile;
-				deviceName = deviceData.hasDeviceName() ? deviceData.getDeviceName()
-						: deviceNameFromProfile;
-
-				if (!deviceData.hasManufacturer()) {
-					synchronized (this) {
-						addManufacturer();
+				if (manufacturerNameFromProfile != null
+						&& manufacturerNameFromProfile.length() > 0) {
+					manufacturerName = manufacturerNameFromProfile;
+				} else if (deviceData.hasManufacturer()) {
+					if (deviceData.hasManufacturerLabel()) {
+						manufacturerName = deviceData.getManufacturer();
 					}
 				}
 
-				if (manufacturerName != null && manufacturerNameFromProfile != null)
-					if (!manufacturerName.equals(manufacturerNameFromProfile)) {
-						outputMsg("ManufacturerName : " + manufacturerName + " "
-								+ manufacturerNameFromProfile);
-						synchronized (this) {
-							manufacturerName = manufacturerNameFromProfile;
-							addManufacturer();
-						}
+				if (deviceNameFromProfile != null && deviceNameFromProfile.length() > 0) {
+					deviceName = deviceNameFromProfile;
+				} else {
+					deviceName = deviceData.getDeviceName();
+				}
+				if (manufacturerName != null) {
+					String manufacturer = manufacturers.get(manufacturerName);
+					if (manufacturer != null) {
+						Resource manufacturerResource = profiles
+								.createResource(manufacturer);
+						profiles.removeAll(device, DeliSchema.manufacturedBy,
+								(RDFNode) null);
+						profiles.add(device, DeliSchema.manufacturedBy,
+								manufacturerResource);
+						profiles.add(manufacturerResource, RDFS.label, manufacturerName);
+						profiles.add(device, DeliSchema.deviceName, deviceName);
+						profiles.add(device, RDF.type, DeliSchema.Profile);
+					} else {
+						outputMsg("ERROR: Could not find manufacturer URI for ["
+								+ manufacturerName + "] for " + device);
 					}
-			}
-			
-			void addManufacturer() {
-				String manufacturer = manufacturers.get(manufacturerName);
-				if (manufacturer != null) {
-					Resource manufacturerResource = profiles.createResource(manufacturer);
-					profiles.removeAll(device, DeliSchema.manufacturedBy,
-							(RDFNode) null);
-					profiles.add(device, DeliSchema.manufacturedBy,
-							manufacturerResource);
-					profiles.add(manufacturerResource, RDFS.label,
-							manufacturerName);
-					profiles.add(device, DeliSchema.deviceName, deviceName);
-					profiles.add(device, RDF.type, DeliSchema.Profile);
-				} else
-				{
-					System.out.println("ERROR: Could not find manufacturer URI for " + manufacturerName);
 				}
 			}
 
@@ -363,21 +412,9 @@ public class ProcessUAProfMetadata {
 				this.device = device;
 				try {
 					deviceData = new DeviceData(device);
-
-					outputMsg(device.getURI());
-					if (deviceData.hasManufacturer()) {
-						if (deviceData.hasManufacturerLabel()) {
-							deviceName = deviceData.hasDeviceName() ? deviceData
-									.getDeviceName()
-									: getTagSoup(profile, ":Model>", "<");
-							manufacturerName = deviceData.getManufacturer();
-							printDeviceInfo();
-						}
-					}
+					profileUrl = device.getURI();
 					profile = UrlUtils.getURL(device.getURI());
-					if (validate) {
-						validate();
-					}
+					validate();
 					fixMetadata();
 
 				} catch (IOException io) {
@@ -401,23 +438,5 @@ public class ProcessUAProfMetadata {
 		void processURI(Resource device) {
 			new ProcessProfile().process(device);
 		}
-
-		/**
-		 * Tag soup approach to get data out of profile
-		 * 
-		 * @param profile The profile as ASCII text
-		 * @param startTag the start tag to look for
-		 * @param endTag the end tag to look for
-		 * @return the value
-		 */
-		private String getTagSoup(String profile, String startTag, String endTag) {
-			int begin = profile.indexOf(startTag);
-			int end = profile.indexOf(endTag, begin + startTag.length());
-			if (begin >= 0 && end >= 0) {
-				return profile.substring(begin + startTag.length(), end).trim();
-			}
-			return null;
-		}
 	}
-
 }

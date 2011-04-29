@@ -28,7 +28,12 @@ class Manufacturers {
 			"IXI_Mobile_Inc.", "modu_LTD", "LAVA", "LGE", "Handspring", "PALM", "SHARP",
 			"LG Electronics", "SANYO", "Sony Ericsson Mobile Communications", "MOTOROLA",
 			"Nec", "Sony Ericsson Mobile Communications AB", "VODAFONE",
-			"Ericsson Mobile Communications AB", "HTC" };
+			"Ericsson Mobile Communications AB", "HTC", "HUAWEI", "SONYERICSSON",
+			"ZONDA", "Kyocera Wireless Corp", "Sony Ericsson", "Global High Tech",
+			"Gigabyte Communications Corporation", "PANTECH", "Vertu", "Philips",
+			"Acer Incorporated", "MOT", "Hewlett-Packard", "IXI Mobile Inc.",
+			"Sagem Wireless", "palm", "modu LTD", "ASUS", "ZTE Corporation", "MODELABS",
+			"T-Mobile", "PHILIPS", "Vibo", "Samsung", "TOSHIBA", "Onda Communication S.P.A.", "Motorola Inc" };
 
 	private final static String[] newManufacturers = { "http://www.sonyericsson.com/",
 			"http://www.nokia.com/", "http://www.toshiba.com/",
@@ -63,7 +68,19 @@ class Manufacturers {
 			"http://www.sanyo-mobile.com/", "http://www.sonyericsson.com/",
 			"http://www.motorola.com/", "http://www.nec.com/",
 			"http://www.sonyericsson.com/", "http://www.vodafone.com/",
-			"http://www.ericsson.com/", "http://www.htc.com/" };
+			"http://www.ericsson.com/", "http://www.htc.com/", "http://www.huawei.com/",
+			"http://www.sonyericsson.com/", "http://www.zondatelecom.com/",
+			"http://www.kyocera-wireless.com/", "http://www.sonyericsson.com/",
+			"http://www.globalhightech.fr/", "http://www.gigabytecm.com/",
+			"http://www.pantech.com/", "http://www.vertu.com/",
+			"http://www.philips.com/", "http://www.acer.com/",
+			"http://www.motorola.com/", "http://www.hp.com/", "http://www.ixi.com",
+			"http://www.sagem.com/", "http://www.palm.com/",
+			"http://www.modumobile.com/", "http://www.asus.com/",
+			"http://www.zte.com.cn/", "http://asmobile.ehosting.com.tw/",
+			"http://www.t-mobile.com", "http://www.mimiria.net/",
+			"http://www.philips.com/", "http://www.samsungmobile.com/",
+			"http://gphone.toshiba.co.jp/", "http://www.ondacommunication.com/", "http://www.motorola.com/" };
 
 	private HashMap<String, String> manufacturers = new HashMap<String, String>();
 

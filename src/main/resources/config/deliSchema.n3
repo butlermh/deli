@@ -2,6 +2,28 @@
 @prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
 
+deli:validatorOutput
+	rdf:type rdf:Property;
+	rdfs:label "validatorOutput"@en;
+	rdfs:comment "Why the profile was invalid"@en.
+
+deli:validatorResult
+	rdf:type rdf:Property;
+	rdfs:label "validatorResult"@en;
+	rdfs:comment "The result of the validator"@en.
+	
+deli:Valid
+	rdf:type rdfs:Class;
+	rdfs:comment "Valid profile"@en.
+
+deli:Unretrievable
+	rdf:type rdfs:Class;
+	rdfs:comment "Unretrievable"@en.
+	
+deli:Invalid
+	rdf:type rdfs:Class;
+	rdfs:comment "Invalid"@en.
+
 deli:profileSuppliedByVendor
 	rdf:type	rdf:Property;
 	rdfs:label  "profileSuppliedByVendor"@en ;

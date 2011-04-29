@@ -17,6 +17,8 @@ import com.hp.hpl.jena.rdf.model.impl.SelectorImpl;
  */
 public class ValidateProfile extends AbstractProcessProfile {
 	private boolean isProfileValid = true;
+	
+	private boolean printedWarningAboutDatatyping = false;
 
 	/**
 	 * @return the validationMessages
@@ -39,9 +41,7 @@ public class ValidateProfile extends AbstractProcessProfile {
 
 		// check root
 		Resource root = findRoot(model);
-		if (root == null) {
-			outputMsg("Could not find root of model");
-		} else {
+		if (root != null) {
 			StmtIterator rootProperties = findRoot(model).listProperties();
 			while (rootProperties.hasNext()) {
 				Statement s = rootProperties.nextStatement();
@@ -69,17 +69,16 @@ public class ValidateProfile extends AbstractProcessProfile {
 			outputMsg("Real namespace is: " + correctNamespace);
 		} else if (!vocabulary.knownNamespace(theNamespace)) {
 			outputMsg("The profile uses an unknown namespace: " + theNamespace);
-		} else {
-			outputMsg("The profile uses " + theNamespace);
-		}
+		} 
 		processComponents(theNamespace);
 	}
 
 	void processProperties(Statement statement) {
 		ValidateAttribute pa = new ValidateAttribute(configuration, statement,
-				currentComponent, currentlyProcessingDefaults, isProfileValid);
+				currentComponent, currentlyProcessingDefaults, isProfileValid, printedWarningAboutDatatyping);
 		validationMessages.append(pa.getValidationMessages());
 		isProfileValid = pa.isProfileValid();
+		printedWarningAboutDatatyping = pa.printedWarningAboutDatatyping();
 	}
 
 	void retrieveDefaultProfile(String url) {

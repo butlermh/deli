@@ -17,7 +17,7 @@ class ExcludeHosts {
 			"google.com", "youtube.com", "search?q=cache", "search?hl=", "?q=filetype",
 			"/intl/en/about.html", "reference.com", "www.cems.uwe.ac.uk/",
 			"support.t-mobile.com/", "www.lac.inf.puc-rio.br", "aiti.mit.edu",
-			"mobile.allblogs.it", "bundesarchiv.de", "www.eurobuch.com" };
+			"mobile.allblogs.it", "bundesarchiv.de", "www.eurobuch.com", "www.mixx.com", "cfs-ash1.facebook.com" };
 
 	private Vector<String> excludeHosts = new Vector<String>();
 
