@@ -50,7 +50,7 @@ class ValidateAttribute extends AbstractProcessAttribute {
 			} else if (attribute.getURI().startsWith("http://uaprof.vodafone.jp/uaprof/ccppschema-20041001")) {
 				// ditto for vodafone japan
 			} else{
-				validatorError("Attribute not defined in vocabulary");
+				outputMsg("Warning [A: " + attribute + "] " + "Attribute not defined in vocabulary");
 			}
 		}
 	}
@@ -160,7 +160,6 @@ class ValidateAttribute extends AbstractProcessAttribute {
 								outputMsg("Warning: UAProf 2 profile omits RDF datatyping information");
 							}
 							printedWarningAboutDatatyping = true;
-							// isProfileValid = false;
 						}
 					}
 					// check the value matches the XML Schema datatype

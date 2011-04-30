@@ -118,7 +118,7 @@ public class ProcessUAProfMetadata {
 			processPage(XML_STRING + "start=" + i + "00" + QUERY_SEP + FILTER);
 		}
 	}
-
+	
 	void processPage(String pageUri) {
 		String search = "href=\"";
 		try {
@@ -190,8 +190,14 @@ public class ProcessUAProfMetadata {
 				this.deviceURI = device.getURI();
 				try {
 					profile = UrlUtils.getURL(deviceURI).trim();
-					if (profile.contains("<html") && profile.contains("<head>")) {
+					if (profile.contains("<html") || profile.contains("<head>")) {
 						// this is HTML not a UAProf profile
+						device.removeProperties();
+					} else if (!profile.contains("rdf") && !profile.contains("RDF")) {
+						device.removeProperties();
+					} else if (!profile.contains("uaprof") && !profile.contains("UAPROF")) {
+						device.removeProperties();
+					} else if (!profile.contains("openmobilealliance") && !profile.contains("wapforum")) {
 						device.removeProperties();
 					} else {
 						validate(device);

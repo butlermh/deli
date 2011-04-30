@@ -9,6 +9,7 @@ import com.hp.hpl.jena.rdf.model.ModelFactory;
 import com.hp.hpl.jena.rdf.model.NodeIterator;
 import com.hp.hpl.jena.rdf.model.NsIterator;
 import com.hp.hpl.jena.rdf.model.Property;
+import com.hp.hpl.jena.rdf.model.RDFErrorHandler;
 import com.hp.hpl.jena.rdf.model.Resource;
 import com.hp.hpl.jena.rdf.model.Statement;
 import com.hp.hpl.jena.rdf.model.StmtIterator;
@@ -26,7 +27,7 @@ abstract class AbstractProcessProfile {
 
 	Model model = ModelFactory.createDefaultModel();
 
-	JenaReader arpReader = ModelUtils.configureArp();
+	JenaReader arpReader = configureArp();
 
 	ProfileProcessor configuration;
 
@@ -40,6 +41,23 @@ abstract class AbstractProcessProfile {
 	boolean profileOmitsTypeInformationFromComponents = false;
 	
 	StringBuffer validationMessages = new StringBuffer();
+	
+	public static JenaReader configureArp() {
+		JenaReader arpReader = new JenaReader();
+		arpReader.setErrorHandler(new RDFErrorHandler() {
+			// ARP parser error handling routines
+			public void warning(Exception e) {//
+			}
+
+			public void error(Exception e) {//
+			}
+
+			public void fatalError(Exception e) {//
+			}
+		});
+		arpReader.setProperty("WARN_RESOLVING_URI_AGAINST_EMPTY_BASE", "EM_IGNORE");
+		return arpReader;
+	}
 	
 	void outputMsg(String s) {
 		validationMessages.append(s + "\n");

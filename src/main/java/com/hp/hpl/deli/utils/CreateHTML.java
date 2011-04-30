@@ -110,9 +110,8 @@ class CreateHTML {
 					DeviceData device = new DeviceData(resource);
 
 					boolean profileValid = false;
-					if (resource.hasProperty(DeliSchema.validatorResult)) {
-						Resource valid = resource.getProperty(DeliSchema.validatorResult)
-								.getObject().asResource();
+					if (results.containsKey(resource)) {
+						Resource valid = results.get(resource);
 						if (valid.equals(DeliSchema.Valid)) {
 							profileValid = true;
 						}

@@ -14,15 +14,7 @@ import com.hp.hpl.jena.shared.JenaException;
 public class UAProfValidator {
 
 	private boolean profileValidFlag = true;
-
-	private boolean unreachable = false;
-
-	private JenaReader myARPReader = new JenaReader();
-
-	private Model model = ModelFactory.createDefaultModel();
-
-	private ProfileProcessor configuration;
-
+	
 	/**
 	 * Provides a command line interface to the validator.
 	 * 
@@ -43,8 +35,11 @@ public class UAProfValidator {
 	}
 
 	public UAProfValidator(String profileUrl) throws IOException {
+		boolean unreachable = false;
+		Model model = ModelFactory.createDefaultModel();
 		outputMsg("Loading profile " + profileUrl);
-		configuration = new ProfileProcessor(Constants.VALIDATOR_CONFIG_FILE);
+		ProfileProcessor configuration = new ProfileProcessor(Constants.VALIDATOR_CONFIG_FILE);
+		JenaReader myARPReader = new JenaReader();
 		myARPReader.setProperty("WARN_RESOLVING_URI_AGAINST_EMPTY_BASE", "EM_IGNORE");
 		myARPReader.setErrorHandler(new RDFErrorHandler() {
 			// ARP parser error handling routines
@@ -74,14 +69,21 @@ public class UAProfValidator {
 			profileValidFlag = false;
 			outputMsg("PROFILE IS UNREACHABLE");
 		}
+		ValidateProfile validated = null;
 		if (!unreachable && profileValidFlag) {
 			try {
-				profileValidFlag = new ValidateProfile(configuration, model)
-						.isProfileValid();
+				validated = new ValidateProfile(configuration, model);
+				profileValidFlag = validated.isProfileValid();
 			} catch (Exception e) {
 				e.printStackTrace();
 				profileValidFlag = false;
 				outputMsg(e.toString());
+			}
+			
+			if (validated != null) {
+				if (validated.getValidationMessages() != null) {
+					outputMsg(validated.getValidationMessages().toString());
+				}
 			}
 
 			if (profileValidFlag) {

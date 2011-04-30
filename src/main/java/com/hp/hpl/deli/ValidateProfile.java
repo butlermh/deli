@@ -68,7 +68,7 @@ public class ValidateProfile extends AbstractProcessProfile {
 			outputMsg("Aliased namespace is:    " + theNamespace);
 			outputMsg("Real namespace is: " + correctNamespace);
 		} else if (!vocabulary.knownNamespace(theNamespace)) {
-			outputMsg("The profile uses an unknown namespace: " + theNamespace);
+			outputMsg("The profile uses an unknown namespace: [" + theNamespace+"]");
 		} 
 		processComponents(theNamespace);
 	}

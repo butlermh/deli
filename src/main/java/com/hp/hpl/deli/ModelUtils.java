@@ -15,11 +15,9 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.xml.sax.InputSource;
 
-import com.hp.hpl.jena.rdf.arp.JenaReader;
 import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
 import com.hp.hpl.jena.rdf.model.Property;
-import com.hp.hpl.jena.rdf.model.RDFErrorHandler;
 import com.hp.hpl.jena.rdf.model.RDFWriter;
 import com.hp.hpl.jena.rdf.model.Resource;
 
@@ -55,16 +53,16 @@ public class ModelUtils {
 			File fallbackFile = new File(fallback);
 			if (name.startsWith("http") || name.startsWith("file")
 					|| name.startsWith("jndi")) {
-				log.debug("Via stream");
+				log.info("Via stream");
 				return new URL(name).openStream();
 			} else if (file.exists()) {
-				log.debug("Via file input stream" + file);
+				log.info("Via file input stream" + file);
 				return new FileInputStream(name);
 			} else if (fallbackFile.exists()) {
-				log.debug("Via file input stream " + fallback);
+				log.info("Via file input stream " + fallback);
 				return new FileInputStream(fallbackFile);
 			} else {
-				log.debug("Via classloader");
+				log.info("Via classloader");
 				InputStream in = ClassLoader.getSystemClassLoader().getResourceAsStream(
 						name);
 				if (in == null) {
@@ -96,23 +94,6 @@ public class ModelUtils {
 		Model newModel = ModelFactory.createDefaultModel();
 		newModel.read(getResource(filename), "", "N3");
 		return newModel;
-	}
-
-	public static JenaReader configureArp() {
-		JenaReader arpReader = new JenaReader();
-		arpReader.setErrorHandler(new RDFErrorHandler() {
-			// ARP parser error handling routines
-			public void warning(Exception e) {//
-			}
-
-			public void error(Exception e) {//
-			}
-
-			public void fatalError(Exception e) {//
-			}
-		});
-		arpReader.setProperty("WARN_RESOLVING_URI_AGAINST_EMPTY_BASE", "EM_IGNORE");
-		return arpReader;
 	}
 
 	public static void writeModel(Model model, String filename, String language) {

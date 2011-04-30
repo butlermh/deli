@@ -33,8 +33,9 @@ public class TagSoupProcessor {
 			result = TagSoupProcessor.getBackwardTagSoup(profile, ">", "</prf:"
 					+ property);
 		}
-		if (result.length() == 0)
-			return null;
+		if (result != null)
+			if (result.length() == 0)
+				return null;
 		return result;
 	}
 }

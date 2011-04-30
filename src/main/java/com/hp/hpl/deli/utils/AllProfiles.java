@@ -1,6 +1,9 @@
 package com.hp.hpl.deli.utils;
 
+import java.io.IOException;
+import java.net.URI;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -12,6 +15,7 @@ import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.RDFNode;
 import com.hp.hpl.jena.rdf.model.ResIterator;
 import com.hp.hpl.jena.rdf.model.Resource;
+import com.hp.hpl.jena.rdf.model.StmtIterator;
 import com.hp.hpl.jena.vocabulary.RDF;
 import com.hp.hpl.jena.vocabulary.RDFS;
 
@@ -28,6 +32,8 @@ public class AllProfiles {
 	private List<Resource> crawlDb = Collections
 			.synchronizedList(new LinkedList<Resource>());
 
+	HashSet<String> unretrievableProfiles = new HashSet<String>();
+
 	AllProfiles(Model profiles) {
 		this.profiles = profiles;
 		this.manufacturers = new Manufacturers(profiles);
@@ -35,7 +41,21 @@ public class AllProfiles {
 				.listSubjectsWithProperty(DeliSchema.manufacturedBy);
 		while (profilesIter.hasNext()) {
 			Resource resource = profilesIter.nextResource();
-			crawlDb.add(resource);
+			if (!excludedHost.excludedHost(resource.getURI())) {
+				crawlDb.add(resource);
+			} else {
+				resource.removeProperties();
+			}
+		}
+		try {
+			String profilesTxt = UrlUtils.loadLocalFile(
+					"config/unretrievableProfiles.txt").toString();
+			String[] values = profilesTxt.split("\n");
+			for (String url : values) {
+				unretrievableProfiles.add(url.trim());
+			}
+		} catch (IOException ie) {
+			ie.printStackTrace();
 		}
 	}
 
@@ -46,18 +66,27 @@ public class AllProfiles {
 	void addDeviceIfNotAlreadyKnown(String deviceURI) {
 		if (!excludedHost.excludedHost(deviceURI)) {
 			if (deviceURI.startsWith("http")) {
-				Resource p = profiles.createResource(deviceURI);
-				ResIterator profilesIter = profiles.listSubjectsWithProperty(RDF.type,
-						DeliSchema.Profile);
-				if (!profilesIter.hasNext()) {
-					p = profiles.createResource(deviceURI.toLowerCase());
-					profilesIter = profiles.listSubjectsWithProperty(
-							DeliSchema.uaprofUri, p);
+				try {
+					new URI(deviceURI);
+					Resource p = profiles.createResource(deviceURI);
+					StmtIterator profilesIter = p.listProperties(RDF.type);
 					if (!profilesIter.hasNext()) {
-						Resource resource = profiles.createResource(deviceURI);
-						profiles.add(resource, RDF.type, DeliSchema.Profile);
-						crawlDb.add(resource);
+						p = profiles.createResource(deviceURI.toLowerCase());
+						profilesIter = p.listProperties(RDF.type);
+						if (!profilesIter.hasNext()) {
+							if (!unretrievableProfiles.contains(deviceURI.trim())) {
+								Resource resource = profiles.createResource(deviceURI);
+								profiles.add(resource, RDF.type, DeliSchema.Profile);
+								System.out.println("Adding new profile "
+										+ resource.getURI());
+								crawlDb.add(resource);
+							} else {
+								System.out.println("Excluding " + deviceURI + " because it is unretrievable");
+							}
+						}
 					}
+				} catch (Exception invalidURI) {
+					//
 				}
 			}
 		}

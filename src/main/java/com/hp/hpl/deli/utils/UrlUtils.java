@@ -28,6 +28,28 @@ class UrlUtils {
 		}
 	}
 	
+	static StringBuffer loadLocalFile(String filepath) throws IOException {
+		InputStream streamToURL = null;
+		StringBuffer result = new StringBuffer();
+
+		try {
+			File localFile = new File(filepath);
+			if (localFile.exists()) {
+				streamToURL = new FileInputStream(filepath);
+				int ch;
+				while ((ch = streamToURL.read()) != -1) {
+					result.append((char) ch);
+				}
+			}
+		} catch (IOException ioe) {
+			throw new IOException(ioe.getMessage());
+		} finally {
+			if (streamToURL != null)
+				streamToURL.close();
+		}
+		return result;
+	}
+	
 	/**
 	 * Get the contents of a particular URL as a String.
 	 * 
@@ -56,11 +78,7 @@ class UrlUtils {
 			
 			File localFile = new File(filepath);
 			if (localFile.exists()) {
-				streamToURL = new FileInputStream(filepath);
-				int ch;
-				while ((ch = streamToURL.read()) != -1) {
-					result.append((char) ch);
-				}
+				result = loadLocalFile(filepath);
 			} else {
 
 				// open InputStream to URL

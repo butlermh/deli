@@ -33,7 +33,10 @@ class Manufacturers {
 			"Gigabyte Communications Corporation", "PANTECH", "Vertu", "Philips",
 			"Acer Incorporated", "MOT", "Hewlett-Packard", "IXI Mobile Inc.",
 			"Sagem Wireless", "palm", "modu LTD", "ASUS", "ZTE Corporation", "MODELABS",
-			"T-Mobile", "PHILIPS", "Vibo", "Samsung", "TOSHIBA", "Onda Communication S.P.A.", "Motorola Inc" };
+			"T-Mobile", "PHILIPS", "Vibo", "Samsung", "TOSHIBA",
+			"Onda Communication S.P.A.", "Motorola Inc",
+			"High Tech Computer Corporation", "Kyocera Communication Inc",
+			"Kyocera Communications Inc", "PCD", "SonyEricsson", "Sagem" };
 
 	private final static String[] newManufacturers = { "http://www.sonyericsson.com/",
 			"http://www.nokia.com/", "http://www.toshiba.com/",
@@ -80,7 +83,10 @@ class Manufacturers {
 			"http://www.zte.com.cn/", "http://asmobile.ehosting.com.tw/",
 			"http://www.t-mobile.com", "http://www.mimiria.net/",
 			"http://www.philips.com/", "http://www.samsungmobile.com/",
-			"http://gphone.toshiba.co.jp/", "http://www.ondacommunication.com/", "http://www.motorola.com/" };
+			"http://gphone.toshiba.co.jp/", "http://www.ondacommunication.com/",
+			"http://www.motorola.com/", "http://www.htc.com/",
+			"http://www.kyocera-wireless.com/", "http://www.kyocera-wireless.com/",
+			"http://www.pcdgsmlab.com/", "http://www.sonyericsson.com/", "http://www.sagem.com/" };
 
 	private HashMap<String, String> manufacturers = new HashMap<String, String>();
 
