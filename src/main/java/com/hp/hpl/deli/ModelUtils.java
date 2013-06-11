@@ -21,15 +21,19 @@ import com.hp.hpl.jena.rdf.model.Property;
 import com.hp.hpl.jena.rdf.model.RDFWriter;
 import com.hp.hpl.jena.rdf.model.Resource;
 
+/**
+ * Utility class.
+ */
 public class ModelUtils {
+	
 	private static Log log = LogFactory.getLog(ModelUtils.class);
 
 	/**
 	 * Convenience method to get a String property attached to a resource.
 	 * 
-	 * @param resource
-	 * @param property
-	 * @return
+	 * @param resource Subject
+	 * @param property Predicate
+	 * @return Get a String values Object.
 	 */
 	public static String getPropertyString(Resource resource, Property property) {
 		return resource.hasProperty(property) ? resource.getProperty(property)
@@ -44,6 +48,7 @@ public class ModelUtils {
 	 * @param name The name of the resource. If it is a URL then it is a global
 	 *            resource.
 	 * @return A InputStream for the resource.
+	 * @throws IOException Thrown if there is a problem getting the resource.
 	 */
 	public static InputStream getResource(String name) throws IOException {
 		try {
@@ -81,6 +86,11 @@ public class ModelUtils {
 		throw new IOException("Could not load" + name);
 	}
 
+	/**
+	 * @param name The name of the input source.
+	 * @return The input source.
+	 * @throws IOException Thrown if there is a problem reading the input source.
+	 */
 	static InputSource getInputSource(String name) throws IOException {
 		InputStream in = getResource(name);
 		Reader resource = new InputStreamReader(in);
@@ -89,6 +99,13 @@ public class ModelUtils {
 		return inputSource;
 	}
 
+	/**
+	 * Load an RDF model.
+	 * 
+	 * @param filename The filename.
+	 * @return The RDF model.
+	 * @throws IOException Thrown if there is a problem reading the model.
+	 */
 	public static Model loadModel(String filename) throws IOException {
 		log.debug("Loading " + filename);
 		Model newModel = ModelFactory.createDefaultModel();
@@ -96,6 +113,13 @@ public class ModelUtils {
 		return newModel;
 	}
 
+	/**
+	 * Write the model.
+	 * 
+	 * @param model The model.
+	 * @param filename The filename.
+	 * @param language The language e.g. RDF/XML, N3 etc
+	 */
 	public static void writeModel(Model model, String filename, String language) {
 		String path = filename.substring(0, filename.lastIndexOf('/'));
 		File directory = new File(path);
@@ -104,20 +128,10 @@ public class ModelUtils {
 		}
 		RDFWriter writer = model.getWriter(language);
 		writer.setProperty("allowBadURIs", "true");
-		OutputStream out = null;
-		try {
-			out = new FileOutputStream(filename);
+		try (OutputStream out = new FileOutputStream(filename);) {
 			writer.write(model, out, null);
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} finally {
-			if (out != null) {
-				try {
-					out.close();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-			}
+		} catch (IOException e) {
+			log.error(e, e);
 		}
 	}
 

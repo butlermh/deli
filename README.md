@@ -1,12 +1,9 @@
-deli
-====
-
-Java library for processing / validating UAProf profiles
+(Sorry folks, this code is old and rusty - in the process of updating, please be patient ...)
 
 DELI Delivery Context Library
+====
 
-Send all support requests to
-markhenrybutler@gmail.com
+Send all support requests to markhenrybutler@gmail.com
 
 For additional information see 
 http://delicon.sourceforge.net/
@@ -15,7 +12,7 @@ http://delicon.sourceforge.net/
 
 PRE-REQUISITES
 
-To use DELI, you need a Java JDK and Apache Maven.
+To use DELI, you need a Java JDK, Apache Maven and Apache Ant. 
 
 =============================
 
@@ -161,32 +158,3 @@ DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
 THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
 THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-
-
-This distribution includes Jena, RDFFilter, Sax2, Xerces and JUnit.
-
-DELI is released under the Hewlett Packard License above.
-For more details on DELI see
-http://www-uk.hpl.hp.com/people/marbut/
-
-Jena is released under the Hewlett Packard License above.
-For more information on Jena see 
-http://www.hpl.hp.com/semweb
-
-For details of the Xerces license see xerces_license.txt in the distribution.
-Further information on Xerces is available at 
-http://xml.apache.org/xerces-j/index.html
-
-RDF-Filter is Public Domain.
-Further information on RDF Filter is available at
-http://rdf-filter.sourceforge.net/
-
-Sax2 is Public Domain. 
-Further information on Sax2 is available at
-http://sax.sourceforge.net/
-
-Junit is IBM Public License Version 1.0
-For more details of Junit, See lib/licenses/junit_license.txt
-http://www.junit.org/
-
-==========================================================================

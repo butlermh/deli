@@ -1,6 +1,7 @@
 package com.hp.hpl.deli;
 
 import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.StringTokenizer;
@@ -11,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import sun.misc.BASE64Encoder;
+import org.apache.commons.codec.binary.Base64;
 
 
 /**
@@ -21,37 +22,25 @@ import sun.misc.BASE64Encoder;
  * variation on W-HTTP.
  */
 class ProcessedRequest {
-	/** The list of profile references. */
+	/**
+	 * The list of profile references.
+	 */
 	private Vector<String> referenceVector = new Vector<String>();
 	
-	/** The ordered list of profile-diffs. */
+	/**
+	 * The ordered list of profile-diffs. 
+	 */
 	private Vector<String> diffVector = new Vector<String>();
 	
-	/* (non-Javadoc)
-	 * @see com.hp.hpl.deli.http.ProcessedRequest#getReferenceVector()
-	 */
-	public Vector<String> getReferenceVector() {
-		return referenceVector;
-	}
-
-	/* (non-Javadoc)
-	 * @see com.hp.hpl.deli.http.ProcessedRequest#getDiffVector()
-	 */
-	public Vector<String> getDiffVector() {
-		return diffVector;
-	}
-	
 	private static Log log = LogFactory.getLog(ProcessedRequest.class);
-
 	private String httpexNumericalNamespace = null;
-
 	private int maxNumberProfileDiffs = 0;
-
 	private HashMap<Integer, String> profileDiffMap = new HashMap<Integer, String>();
-
 	private HashMap<Integer, String> profileDiffDigestMap = new HashMap<Integer, String>();
 
-	/** Debug request headers? */
+	/**
+	 * Debug request headers? 
+	 */
 	private boolean debugRequestHeaders = false;
 
 	/**
@@ -73,7 +62,7 @@ class ProcessedRequest {
 	private boolean useLocalProfilesIfNoCCPP = true;
 
 	private LocalProfiles localProfiles;
-
+	
 	/**
 	 * This method processes the HTTP request to retrieve the profile
 	 * references, profile-diff-digests and profile-diffs. It is UAProf
@@ -353,15 +342,16 @@ class ProcessedRequest {
 	 * @param profileDiff The profile-diff.
 	 * @param normaliseWhitespace Turn whitespace normalising on or off.
 	 * @return The profile-diff-digest.
+	 * @throws NoSuchAlgorithmException 
 	 */
 	static String calculateProfileDiffDigest(String profileDiff,
-			boolean normaliseWhitespace) throws Exception {
+			boolean normaliseWhitespace) throws NoSuchAlgorithmException {
 		if (normaliseWhitespace) {
 			profileDiff = removeWhitespaces(profileDiff);
 		}
 		MessageDigest md = MessageDigest.getInstance("MD5");
 		md.update(profileDiff.getBytes());
-		return new BASE64Encoder().encode(md.digest());
+		return new String(Base64.encodeBase64(md.digest()));
 	}
 
 	/**
@@ -392,5 +382,16 @@ class ProcessedRequest {
 				.replaceAll(" *$", "");
 
 		return diff;
+	}
+	
+	/**
+	 * @return
+	 */
+	public Vector<String> getReferenceVector() {
+		return referenceVector;
+	}
+
+	public Vector<String> getDiffVector() {
+		return diffVector;
 	}
 }
