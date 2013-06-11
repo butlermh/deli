@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE rdf:RDF [
+	<!ENTITY ns-rdf 'http://www.w3.org/1999/02/22-rdf-syntax-ns#'>
+	<!ENTITY ns-prf 'http://www.openmobilealliance.org/tech/profiles/UAPROF/ccppschema-20030226#'>
+	<!ENTITY prf-dt 'http://www.openmobilealliance.org/tech/profiles/uaprof/xmlschema-20030226#'>
+]>
+<rdf:RDF xmlns:rdf="&ns-rdf;" xmlns:prf="&ns-prf;">
+	<rdf:Description rdf:ID="MyDeviceProfile">
+		<prf:component>
+			<rdf:Description rdf:ID="HardwarePlatform">
+				<rdf:type rdf:resource="&ns-prf;HardwarePlatform"/>
+				<prf:ScreenSizeChar>15x6</prf:ScreenSizeChar>
+				<prf:BitsPerPixel>2</prf:BitsPerPixel>
+				<prf:ColorCapable>No</prf:ColorCapable>
+				<prf:TextInputCapable>Yes</prf:TextInputCapable>
+				<prf:ImageCapable>Yes</prf:ImageCapable>
+				<prf:Keyboard>PhoneKeypad</prf:Keyboard>
+				<prf:NumberOfSoftKeys>0</prf:NumberOfSoftKeys>
+			</rdf:Description>
+		</prf:component>
+		<prf:component>
+			<rdf:Description rdf:ID="SoftwarePlatform">
+				<rdf:type rdf:resource="&ns-prf;SoftwarePlatform"/>
+				<prf:AcceptDownloadableSoftware>No</prf:AcceptDownloadableSoftware>
+				<prf:CcppAccept-Charset>
+					<rdf:Bag>
+						<rdf:li>US-ASCII</rdf:li>
+						<rdf:li>ISO-8859-1</rdf:li>
+						<rdf:li>UTF-8</rdf:li>
+						<rdf:li>ISO-10646-UCS-2</rdf:li>
+					</rdf:Bag>
+				</prf:CcppAccept-Charset>
+			</rdf:Description>
+		</prf:component>
+	</rdf:Description>
+</rdf:RDF>

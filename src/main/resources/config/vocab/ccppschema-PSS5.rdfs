@@ -1,0 +1,290 @@
+<?xml version="1.0"?>
+
+<!--
+     This document is the RDF Schema for streaming-specific vocabulary
+     as defined in 3GPP TS 26.234 Rel.5 (in the following "the
+     specification").
+
+     The URI for unique identification of this RDF Schema is 
+       http://www.3gpp.org/profiles/PSS/ccppschema-PSS5#
+
+     This RDF Schema includes the same information as the respective
+     chapter of the specification. Greates care has been taken to keep
+     the two documents consistence. However, in case of any divergence
+     the specification takes presidence.
+
+     All reference in this RDF Schmea are to be interpreted relative to
+     the specification. This means all references using the form
+     [ref] are defined in chapter 2 "References of the specification. 
+     All other references refer to parts within that document.
+
+     Note: This Schemas has been aligned in structure and base
+     vocabulary to the RDF Schema used by UAProf [40].
+
+-->
+
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" >
+
+
+<!-- ****************************************************************** -->
+<!-- ***** Properties shared among the components***** -->
+ 
+  <rdf:Description rdf:ID="defaults">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:domain rdf:resource="#Streaming"/>
+    <rdfs:comment>
+      An attribute used to identify the default capabilities.
+    </rdfs:comment>
+  </rdf:Description>
+
+<!-- ****************************************************************** -->
+<!-- ***** Component Definitions ***** -->
+
+  <rdf:Description rdf:ID="Streaming">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+    <rdfs:subClassOf rdf:resource="http://www.wapforum.org/UAPROF/ccppschema-20010330#Component"/>
+    <rdfs:label>Component: Streaming</rdfs:label>
+    <rdfs:comment>
+      The Streaming component specifies the base vocabulary for
+      PSS. PSS servers supporting capability exchange should
+      understand the attributes in this component as explained in
+      detail in 3GPP TS 26.234 rel. 5.
+    </rdfs:comment>
+  </rdf:Description>
+
+<!-- **
+     ** In the following property definitions, the defined types
+     ** are as follows:
+     **
+     ** Number: A positive integer
+     ** [0-9]+
+     ** Boolean: A yes or no value
+     ** Yes|No
+     ** Literal: An alphanumeric string
+     ** [A-Za-z0-9/.\-_]+
+     ** Dimension: A pair of numbers
+     ** [0-9]+x[0-9]+
+     **
+-->
+
+<!-- ****************************************************************** -->
+<!-- ***** Component: Streaming ***** -->
+
+  <rdf:Description rdf:ID="AudioChannels">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:domain rdf:resource="#Streaming"/>
+    <rdfs:comment>
+      Description: This attribute describes the stereophonic capability of the
+      natural audio device. The only legal values are "Mono" and "Stereo".
+
+      Type: Literal
+      Resolution: Locked
+      Examples: "Mono", "Stereo"
+    </rdfs:comment>
+  </rdf:Description>
+
+  <rdf:Description rdf:ID="MaxPolyphony">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:domain rdf:resource="#Streaming"/>
+    <rdfs:comment>
+      Description: The MaxPolyphony attribute refers to the maximal polyphony
+      that the synthetic audio device supports as defined in [44]. Legal values
+      are integer between 5 to 24.
+      NOTE: MaxPolyphony attribute can be used to signal the maximum polyphony
+            capabilities supported by the PSS client. This is a complementary
+            mechanism for the delivery of compatible SP-MIDI content and thus
+            the PSS client is required to support Scalable Polyphony MIDI i.e.
+            Channel Masking defined in [44].
+ 
+      Type: Number
+      Resolution: Locked
+      Examples: 8
+    </rdfs:comment>
+  </rdf:Description>
+
+  <rdf:Description rdf:ID="VideoPreDecoderBufferSize">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:domain rdf:resource="#Streaming"/>
+    <rdfs:comment>
+      Description: This attribute signals if the optional video
+      buffering requirements defined in Annex G are supported. It also
+      defines the size of the hypothetical pre-decoder buffer defined in
+      Annex G. A value equal to zero means that Annex G is not
+      supported. A value equal to one means that Annex G is
+      supported. In this case the size of the buffer is the default size
+      defined in Annex G.  A value equal to or greater than the default
+      buffer size defined in Annex G means that Annex G is supported and
+      sets the buffer size to the given number of octets. Legal values are all
+      integer values equal to or greater than zero. Values greater than
+      one but less than the default buffer size defined in Annex G are
+      not allowed.
+
+      Type: Number
+      Resolution: Locked
+      Examples: "0", "4096"
+    </rdfs:comment>
+  </rdf:Description>
+
+  <rdf:Description rdf:ID="VideoInitialPostDecoderBufferingPeriod">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:domain rdf:resource="#Streaming"/>
+    <rdfs:comment>
+      Description: If Annex G is not supported, the attribute has no
+      meaning. If Annex G is supported, this attribute defines the
+      maximum initial post-decoder buffering period of video. Values are
+      interpreted as clock ticks of a 90-kHz clock. In other words, the
+      value is incremented by one for each 1/90 000 seconds. For
+      example, the value 9000 corresponds to 1/10 of a second initial
+      post-decodder buffering. Legal valaues are all integer value equal
+      to or greater than zero.
+
+      Type: Number
+      Resolution: Locked
+      Examples: "9000"
+    </rdfs:comment>
+  </rdf:Description>
+
+  <rdf:Description rdf:ID="VideoDecodingByteRate">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:domain rdf:resource="#Streaming"/>
+    <rdfs:comment>
+   Description: If Annex G is not supported, the attribute has no meaning.
+   If Annex G is supported, this attribute defines the peak decoding byte
+   rate the PSS client is able to support. In other words, the PSS client
+   fulfils the requirements given in Annex G with the signalled peak decoding
+   byte rate. The values are given in bytes per second and shall be greater
+   than or equal to 8000. According to Annex G, 8000 is the default peak 
+   decoding byte rate for the mandatory video codec profile and level 
+   (H.263 Profile 0 Level 10).Legal values are integer value greater than
+   or equal to 8000.
+
+      Type: Number
+      Resolution: Locked
+      Examples: "16000"
+    </rdfs:comment>
+  </rdf:Description>
+
+  <rdf:Description rdf:ID="PssAccept">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:range rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Bag"/>
+    <rdfs:domain rdf:resource="#Streaming"/>
+    <rdfs:comment>
+      Description: List of content types (MIME types) the PSS
+      application supports. Both CcppAccept (SoftwarePlatform, UAProf)
+      and PssAccept can be used but if PssAccept is defined it has
+      precedence over CcppAccept and a PSS application shall then use
+      PssAccept.
+
+      Type: Literal (bag)
+      Resolution: Append
+      Examples: "audio/AMR-WB;octet-alignment=1,application/smil"
+    </rdfs:comment>
+  </rdf:Description>
+
+  <rdf:Description rdf:ID="PssAccept-Subset">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:range rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Bag"/>
+    <rdfs:domain rdf:resource="#Streaming"/>
+    <rdfs:comment>
+      Description: List of content types for which the PSS application supports
+      a subset. MIME-types can in most cases effectively be used to express
+      variations in support for different media types. Many MIME-types, e.g.
+      AMR-NB has several parameters that can be used for this purpose. There
+      may exist content types for which the PSS application only supports a
+      subset and this subset can not be expressed with MIME-type parameters.
+      In these cases the attribute PssAccept-Subset is used to describe
+      support for a subset of a specific content type. If a subset of a specific
+      content type is declared in PssAccept-Subset, this means that
+      PssAccept-Subset has precedence over both PssAccept and CcppAccept. 
+      PssAccept and/or CcppAccept shall always include the corresponding 
+      content types for which PSSAccept-Subset specifies subsets of.  
+      This is to ensure compatibility with those content servers that 
+      do not understand the PssAccept-Subset attribute but do understand e.g.
+      CcppAccept.    
+
+  This is illustrated with an example. If PssAccept="audio/AMR", 
+  "image/jpeg" and PssAccept-Subset="JPEG-PSS" then "audio/AMR" 
+  and JPEG Base line is supported. "image/jpeg" in PssAccept is of no 
+  importance since it is related to "JPEG-PSS" in PssAccept-Subset. 
+  Subset identifiers and corresponding semantics shall only be defined by 
+  the TSG responsible for the present document. The following values are defined:
+      - "JPEG-PSS": Only the two JPEG modes described in clause 7.5 of the present 
+        document are supported.
+- "SVG-Tiny"
+- "SVG-Basic"
+      Legal values are subset identifiers defined by the specification.
+
+      Type: Literal (bag)
+      Resolution: Locked
+      Examples: "JPEG-PSS","SVG-Tiny","SVG-Basic"
+    </rdfs:comment>
+  </rdf:Description>
+
+  <rdf:Description rdf:ID="PssVersion">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:domain rdf:resource="#Streaming"/>
+    <rdfs:comment>
+      Description: Latest PSS version supported by the client. Legal
+      values are "3GPP-R4", "3GPP-R5" and so forth.
+
+      Type: Literal
+      Resolution: Locked
+      Examples: "3GPP-R4", "3GPP-R5" 
+    </rdfs:comment>
+  </rdf:Description>
+
+  <rdf:Description rdf:ID="RenderingScreenSize">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:domain rdf:resource="#Streaming"/>
+    <rdfs:comment>
+      Description: The rendering size of the device's screen in unit of
+      pixels. The horizontal size is given followed by the vertical
+      size. Legal values are pairs of integer values equal or greater
+      than zero. A value equal "0x0"means that there exist no display or
+      just textual output is supported.
+
+      Type: Dimension
+      Resolution: Locked
+      Examples: "160x120"
+    </rdfs:comment>
+  </rdf:Description>
+
+  <rdf:Description rdf:ID="SmilBaseSet">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:domain rdf:resource="#Streaming"/>
+    <rdfs:comment>
+      Description: Indicates a base set of SMIL 2.0 modules that the
+      client supports. Leagal values are the following pre-defined
+      identifiers: "SMIL-3GPP-R4" indicates all SMIL 2.0
+      modules required for scene description support according to clause
+      8 of Release 4 of TS 26.234. "SMIL-3GPP-R5" indicates all SMIL 2.0
+      modules required for scene description support according to clause
+      8 of the specification.
+
+      Type: Literal
+      Resolution: Locked
+      Examples: "SMIL-3GPP-R4", "SMIL-3GPP-R5"
+    </rdfs:comment>
+  </rdf:Description>
+
+  <rdf:Description rdf:ID="SmilModules">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:range rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Bag"/>
+    <rdfs:domain rdf:resource="#Streaming"/>
+    <rdfs:comment>
+      Description: This attribute defines a list of SMIL 2.0 modules
+      supported by the client. If the SmilBaseSet is used those modules
+      do not need to be explicitly listed here. In that case only
+      additional module support needs to be listed. Legal values are all
+      SMIL 2.0 module names defined in the SMIL 2.0 recommendation [31],
+      section 2.3.3, table 2.
+
+      Type: Literal (bag)
+      Resolution: Locked
+      Examples: "BasicTransitions,MulitArcTiming"
+    </rdfs:comment>
+  </rdf:Description>
+
+</rdf:RDF>
+
