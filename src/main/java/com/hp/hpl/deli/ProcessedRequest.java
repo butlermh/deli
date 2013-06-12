@@ -391,17 +391,14 @@ class ProcessedRequest {
 	 * @param diff The profile-diff.
 	 * @return The normalised profile-diff.
 	 */
-	static String removeWhitespaces(String diff) {
+	static String removeWhitespaces(final String diff) {
 		if (diff == null) {
 			return null;
 		}
 
 		// replace multiple whitespace chars with a single space
 		// and remove leading or trailing whitespaces
-		diff.replaceAll("[ \n\r\t]", " ").replaceAll(" *", " ")
-				.replaceAll("^ *", "").replaceAll(" *$", "");
-
-		return diff;
+		return diff.replaceAll("[ \\n\\r\\t]+", " ").trim();
 	}
 
 	/**

@@ -1,11 +1,13 @@
 package com.hp.hpl.deli;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.fail;
 
 import org.junit.Before;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 
+@SuppressWarnings("javadoc")
 public class HttpProfileProcessorTest {
 
 	@BeforeClass
@@ -16,17 +18,17 @@ public class HttpProfileProcessorTest {
 	public void setUp() throws Exception {
 	}
 
-	@Test
+	@Test @Ignore
 	public void testHttpProfileProcessor() {
 		fail("Not yet implemented");
 	}
 
-	@Test
+	@Test @Ignore
 	public void testProcessRequest() {
 		fail("Not yet implemented");
 	}
 
-	@Test
+	@Test @Ignore
 	public void testProcessProfile() {
 		fail("Not yet implemented");
 	}

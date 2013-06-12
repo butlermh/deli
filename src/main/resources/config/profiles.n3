@@ -319,7 +319,7 @@
       deli:deviceName "HTC T9296" ;
       deli:manufacturedBy <http://www.htc.com/> .
 
-<http:///nds1.nds.nokia.com/uaprof/Nokia5230-1br100-3G.xml>
+<http://nds1.nds.nokia.com/uaprof/Nokia5230-1br100-3G.xml>
       a       deli:Profile .
 
 <http://uaprof.motorola.com/phoneconfig/motomb520/Profile/motomb520.rdf>
@@ -514,7 +514,7 @@
       deli:deviceName "T7-00" ;
       deli:manufacturedBy <http://www.nokia.com/> .
 
-<http:///nds1.nds.nokia.com/uaprof/N3806r100.xml>
+<http://nds1.nds.nokia.com/uaprof/N3806r100.xml>
       a       deli:Profile .
 
 <http://nec-uap.com/prof/e238V01.xml>
@@ -701,7 +701,7 @@
       deli:manufacturedBy <http://www.nokia.com/> ;
       deli:release "100" .
 
-<http:///nmsc.ctvap.cn/uaprof/TLT/XQ110/1/20100806.XML>
+<http://nmsc.ctvap.cn/uaprof/TLT/XQ110/1/20100806.XML>
       a       deli:Profile .
 
 <http://www.sonyericsson.com/5761/UAProf/W20iR101.xml>
@@ -709,7 +709,7 @@
       deli:deviceName "W20i" ;
       deli:manufacturedBy <http://www.sonyericsson.com/> .
 
-<http:///www.verykool.net/Profiles/i117/IFS/i117.xml>
+<http://www.verykool.net/Profiles/i117/IFS/i117.xml>
       a       deli:Profile .
 
 <http://www.blackberry.net/go/mobile/profiles/uaprof/6510/3.3.0.rdf>
@@ -730,7 +730,7 @@
       deli:deviceName "TQ-GX30i" ;
       deli:manufacturedBy <http://www.sharp-mobile.com/> .
 
-<http:////www.ua-profile.com:808/IBU/UAP/Avvio209.xml>
+<http://www.ua-profile.com:808/IBU/UAP/Avvio209.xml>
       a       deli:Profile .
 
 <http://wap.sonyericsson.com/UAProf/M610iR100.xml>
@@ -891,7 +891,7 @@
       deli:deviceName "HTC Desire S" ;
       deli:manufacturedBy <http://www.htc.com/> .
 
-<http:///wap1.huawei.com/uaprof/HuaweiU8160GPRS-Vodafone.xml>
+<http://wap1.huawei.com/uaprof/HuaweiU8160GPRS-Vodafone.xml>
       a       deli:Profile ;
       deli:deviceName "Vodafone 858" ;
       deli:manufacturedBy <http://www.vodafone.com/> .
@@ -1344,7 +1344,7 @@
       deli:deviceName "LG-KP275" ;
       deli:manufacturedBy <http://www.lg.com/> .
 
-<http://://wap.samsungmobile.com/uaprof/SGH-J638.rdf>
+<http://wap.samsungmobile.com/uaprof/SGH-J638.rdf>
       a       deli:Profile ;
       deli:deviceName "SGH-J638" ;
       deli:manufacturedBy <http://www.samsungmobile.com/> .
@@ -1391,9 +1391,6 @@
       deli:deviceName "SGH-F480V" ;
       deli:manufacturedBy <http://www.samsungmobile.com/> .
 
-<http:///home/UAProf/deli-20100202/uploads/0618110075415/uaprof/upload.xml>
-      a       deli:Profile .
-
 <http://mobileinternet.panasonicbox.com/UAprof/GD87/R1.xml>
       a       deli:Profile ;
       deli:deviceName "GD87" ;
@@ -1414,7 +1411,7 @@
       deli:deviceName "HUAWEI U9120" ;
       deli:manufacturedBy <http://www.huawei.com/> .
 
-<http:///nds1.nds.nokia.com/uaprof/NE70-1r100.xml+>
+<http://nds1.nds.nokia.com/uaprof/NE70-1r100.xml+>
       a       deli:Profile .
 
 <http://www.zte.com.cn/mobile/uaprof/ZTE-R225.xml>
@@ -1643,7 +1640,7 @@
       deli:deviceName "S3110" ;
       deli:manufacturedBy <http://www.samsungmobile.com/> .
 
-<http:///nds1.nds.nokia.com/uaprof/N3200r100.xml+>
+<http://nds1.nds.nokia.com/uaprof/N3200r100.xml+>
       a       deli:Profile .
 
 <http://wap.samsungmobile.com/uaprof/e318.xml>
@@ -2834,7 +2831,7 @@
 <http://uaprof.metropcs.net/UAProf/Huawei-M860.xml>
       a       deli:Profile .
 
-<http:///testers.flnet.org/str/rdf/MB710.rdf>
+<http://testers.flnet.org/str/rdf/MB710.rdf>
       a       deli:Profile .
 
 <http://www.sonyericsson.com/5761/UAProf/W800cR101.xml>
@@ -4633,7 +4630,7 @@
       deli:deviceName "HUAWEI U1280" ;
       deli:manufacturedBy <http://www.vodafone.com/> .
 
-<http:///wap.samsungmobile.com/uaprof/GT-E2550L.xml>
+<http://wap.samsungmobile.com/uaprof/GT-E2550L.xml>
       a       deli:Profile ;
       deli:deviceName "GT-E2550L" ;
       deli:manufacturedBy <http://www.samsungmobile.com/> .
@@ -4923,7 +4920,7 @@
       deli:deviceName "SGH-A677" ;
       deli:manufacturedBy <http://www.samsungmobile.com/> .
 
-<http:///www.olivetelecom.in/downloads/UA/PROFILE/V-E80/V-E80/20100708.xml>
+<http://www.olivetelecom.in/downloads/UA/PROFILE/V-E80/V-E80/20100708.xml>
       a       deli:Profile .
 
 <http://www.blackberry.net/go/mobile/profiles/uaprof/7280/4.0.0.rdf>
@@ -5519,7 +5516,7 @@
       deli:deviceName "SGH-T749-MKB" ;
       deli:manufacturedBy <http://www.samsungmobile.com/> .
 
-<http:///wap1.huawei.com/uaprof/HuaweiU8820WCDMA-NII.xml>
+<http://wap1.huawei.com/uaprof/HuaweiU8820WCDMA-NII.xml>
       a       deli:Profile ;
       deli:deviceName "U8820" ;
       deli:manufacturedBy <http://www.huawei.com/> .
@@ -7615,7 +7612,7 @@
       deli:deviceName "BlackBerry 8100" ;
       deli:manufacturedBy <http://www.blackberry.net/> .
 
-<http:///wap1.huawei.com/uaprof/HuaweiU8820GPRS-NII.xml>
+<http://wap1.huawei.com/uaprof/HuaweiU8820GPRS-NII.xml>
       a       deli:Profile ;
       deli:deviceName "U8820" ;
       deli:manufacturedBy <http://www.huawei.com/> .
@@ -7725,7 +7722,7 @@
       deli:deviceName "V3c" ;
       deli:manufacturedBy <http://www.motorola.com/> .
 
-<http:///home/wangkun/A8iR101.xml>
+<http://home/wangkun/A8iR101.xml>
       a       deli:Profile .
 
 <http://uaprof.motorola.com/phoneconfig/a1200e/Profile/a1200e.rdf>
@@ -8000,7 +7997,7 @@
       deli:deviceName "BlackBerry 6720" ;
       deli:manufacturedBy <http://www.blackberry.net/> .
 
-<http:///gsm.lge.com/html/gsm/LG-GC900-600K.xml>
+<http://gsm.lge.com/html/gsm/LG-GC900-600K.xml>
       a       deli:Profile .
 
 <http://wap.samsungmobile.com/uaprof/SGH-L708_2G.rdf>
@@ -8157,7 +8154,7 @@
 <http://www.vertu.com/>
       rdfs:label "Vertu" .
 
-<http:///nds1.nds.nokia.com/uaprof/N7250ir100.xml+>
+<http://nds1.nds.nokia.com/uaprof/N7250ir100.xml+>
       a       deli:Profile .
 
 <http://extranet.sagem.com/UAProfile/835402.xml>
@@ -8549,7 +8546,7 @@
       deli:deviceName "V3" ;
       deli:manufacturedBy <http://www.motorola.com/> .
 
-<http:///gsm.lge.com/html/gsm/LG-GR500.xml>
+<http://gsm.lge.com/html/gsm/LG-GR500.xml>
       a       deli:Profile .
 
 <http://sharp-mobile.com/UAprof/GX30.xml>
@@ -10499,7 +10496,7 @@
       deli:deviceName "OT-505" ;
       deli:manufacturedBy <http://www.alcatel-mobilephones.com/> .
 
-<http:///home/UAProf/deli-20100202/uploads/0824110075610/uaprof/upload.xml>
+<http://home/UAProf/deli-20100202/uploads/0824110075610/uaprof/upload.xml>
       a       deli:Profile .
 
 <http://gsm.lge.com/html/gsm/P920h-M3-D2.xml>
@@ -10579,7 +10576,7 @@
       deli:manufacturedBy <http://www.sonyericsson.com/> ;
       deli:release "401" .
 
-<http:///wap.samsungmobile.com/uaprof/SGH-I927.xml>
+<http://wap.samsungmobile.com/uaprof/SGH-I927.xml>
       a       deli:Profile ;
       deli:deviceName "SGH-I927" ;
       deli:manufacturedBy <http://www.samsungmobile.com/> .
@@ -10983,9 +10980,6 @@
       deli:deviceName "LT15i" ;
       deli:manufacturedBy <http://www.sonyericsson.com/> .
 
-<http:///home/UAProf/deli-20100202/uploads/0416110061840/uaprof/upload.xml>
-      a       deli:Profile .
-
 <http://nds1.nds.nokia.com/uaprof/NX2-00r100.xml>
       a       deli:Profile ;
       deli:deviceName "NX2-00" ;
@@ -11238,12 +11232,12 @@
       deli:deviceName "6233" ;
       deli:manufacturedBy <http://www.nokia.com/> .
 
-<http:///wap1.huawei.com/uaprof/HuaweiU8650GPRS-Turkcell.xml>
+<http://wap1.huawei.com/uaprof/HuaweiU8650GPRS-Turkcell.xml>
       a       deli:Profile ;
       deli:deviceName "Turkcell T20" ;
       deli:manufacturedBy <http://www.huawei.com/> .
 
-<http:///wap1.huawei.com/uaprof/HuaweiU8160WCDMA-Vodafone.xml>
+<http://wap1.huawei.com/uaprof/HuaweiU8160WCDMA-Vodafone.xml>
       a       deli:Profile ;
       deli:deviceName "Vodafone 858" ;
       deli:manufacturedBy <http://www.vodafone.com/> .
@@ -11404,7 +11398,7 @@
       deli:deviceName "MotoMB300" ;
       deli:manufacturedBy <http://www.motorola.com/> .
 
-<http:///nds1.nds.nokia.com/uaprof/NC7-00r100.xml>
+<http://nds1.nds.nokia.com/uaprof/NC7-00r100.xml>
       a       deli:Profile ;
       deli:deviceName "C7-00" ;
       deli:manufacturedBy <http://www.nokia.com/> .
@@ -11583,7 +11577,7 @@
       deli:deviceName "HTC_S510b" ;
       deli:manufacturedBy <http://www.htc.com/> .
 
-<http:///gsm.lge.com/html/gsm/LG-GR501.xml>
+<http://gsm.lge.com/html/gsm/LG-GR501.xml>
       a       deli:Profile .
 
 <http://www.blackberry.net/go/mobile/profiles/uaprof/6230/3.3.0.rdf>
@@ -12453,7 +12447,7 @@
       deli:deviceName "SCH-A600" ;
       deli:manufacturedBy <http://www.samsungmobile.com/> .
 
-<http:///home/UAProf/deli-20100202/uploads/0730110053320/uaprof/upload.xml>
+<http://home/UAProf/deli-20100202/uploads/0730110053320/uaprof/upload.xml>
       a       deli:Profile .
 
 <http://uaprof.bellmobilite.ca/BMN_Audiovox_CDM-8615_T111BW1M01_1176.rdf>
@@ -12477,7 +12471,7 @@
       deli:deviceName "W980i" ;
       deli:manufacturedBy <http://www.sonyericsson.com/> .
 
-<http:///nds1.nds.nokia.com/uaprof/N6220r100.xml+>
+<http://nds1.nds.nokia.com/uaprof/N6220r100.xml+>
       a       deli:Profile .
 
 <http://uaprof.motorola.com/phoneconfig/ex122/Profile/EX122/b31d5b81720ac5bf833bcce2cdc2c044.rdf>
@@ -12642,7 +12636,7 @@
       deli:deviceName "U8180" ;
       deli:manufacturedBy <http://www.huawei.com/> .
 
-<http:////gsm.lge.com/html/gsm/P970-M10-D2.xml>
+<http://gsm.lge.com/html/gsm/P970-M10-D2.xml>
       a       deli:Profile ;
       deli:deviceName "LG/P970/V1.0" ;
       deli:manufacturedBy <http://www.lg.com/> .
@@ -12984,7 +12978,7 @@
       deli:manufacturedBy <http://www.panasonic.com/> ;
       deli:release "R1" .
 
-<http:///nds.nokia.com/uaprof/N5100r200.xml>
+<http://nds.nokia.com/uaprof/N5100r200.xml>
       a       deli:Profile ;
       deli:deviceName "5100" ;
       deli:manufacturedBy <http://www.nokia.com/> .
@@ -13163,7 +13157,7 @@
       deli:manufacturedBy <http://www.samsungmobile.com/> ;
       deli:release "10" .
 
-<http:///uaprof.motorola.com/phoneconfig/MotoA953/profile/MotoA953.rdf>
+<http://uaprof.motorola.com/phoneconfig/MotoA953/profile/MotoA953.rdf>
       a       deli:Profile ;
       deli:deviceName "MotoA953" ;
       deli:manufacturedBy <http://www.motorola.com/> .
@@ -13173,7 +13167,7 @@
       deli:deviceName "CDM-8912SP" ;
       deli:manufacturedBy <http://www.audiovox.com/> .
 
-<http:///support.cipherlab.com/uaprof/CP30.xml>
+<http://support.cipherlab.com/uaprof/CP30.xml>
       a       deli:Profile .
 
 <http://www.htcmms.com.tw/gen/Trinity-1.0.xml>
@@ -13681,7 +13675,7 @@
       deli:deviceName "BlackBerry 8900" ;
       deli:manufacturedBy <http://www.blackberry.net/> .
 
-<http:///wap1.huawei.com/uaprof/HUAWEIC5600UAProfile.xml>
+<http://wap1.huawei.com/uaprof/HUAWEIC5600UAProfile.xml>
       a       deli:Profile ;
       deli:deviceName "HuaweiC5600" ;
       deli:manufacturedBy <http://www.huawei.com/> .
@@ -14593,7 +14587,7 @@
       deli:deviceName "SGH-X800" ;
       deli:manufacturedBy <http://www.samsungmobile.com/> .
 
-<http:///www.bankofamerica.com/Control.do?page/msg=signoff&body=signoff>
+<http://www.bankofamerica.com/Control.do?page/msg=signoff&body=signoff>
       a       deli:Profile .
 
 <http://wap.sonyericsson.com/UAProf/S500iR201.xml>
@@ -15087,7 +15081,7 @@
       deli:manufacturedBy <http://www.nokia.com/> ;
       deli:release "R100" .
 
-<http:///wap.samsungmobile.com/uaprof/sch/f699.xml>
+<http://wap.samsungmobile.com/uaprof/sch/f699.xml>
       a       deli:Profile .
 
 <http://gsm.lge.com/html/gsm/C729-M10-D1.xml>
@@ -15143,7 +15137,7 @@
       deli:deviceName "X200" ;
       deli:manufacturedBy <http://www.panasonic.com/> .
 
-<http:///wap.samsungmobile.com/uaprof/GT-S5830T.xml>
+<http://wap.samsungmobile.com/uaprof/GT-S5830T.xml>
       a       deli:Profile ;
       deli:deviceName "GT-S5830T" ;
       deli:manufacturedBy <http://www.samsungmobile.com/> .
@@ -15375,7 +15369,7 @@
       deli:deviceName "LG-KS360" ;
       deli:manufacturedBy <http://www.lg.com/> .
 
-<http://://wap.sonyericsson.com/UAprof/W980R101.xml>
+<http://wap.sonyericsson.com/UAprof/W980R101.xml>
       a       deli:Profile ;
       deli:deviceName "W980" ;
       deli:manufacturedBy <http://www.sonyericsson.com/> .
@@ -15586,7 +15580,7 @@
       deli:deviceName "K1c" ;
       deli:manufacturedBy <http://www.motorola.com/> .
 
-<http:///home/UAProf/deli-20100202/uploads/0417110065155/uaprof/upload.xml>
+<http://home/UAProf/deli-20100202/uploads/0417110065155/uaprof/upload.xml>
       a       deli:Profile .
 
 <http://nds.nokia.com/uaprof/N6800r100.xml>
@@ -16462,7 +16456,7 @@
       deli:deviceName "A260" ;
       deli:manufacturedBy <http://www.sonyericsson.com/> .
 
-<http:///uaprof.motorola.com/phoneconfig/ex122/Profile/EX122/b31d5b81720ac5bf833bcce2cdc2c044.rdf>
+<http://uaprof.motorola.com/phoneconfig/ex122/Profile/EX122/b31d5b81720ac5bf833bcce2cdc2c044.rdf>
       a       deli:Profile .
 
 <http://www.htcmms.com.tw/tmo/sda-1.0.xml>

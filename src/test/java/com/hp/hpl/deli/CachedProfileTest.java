@@ -31,7 +31,6 @@ public class CachedProfileTest {
 		Vector<String> result = new Vector<String>();
 		result.add("1");
 		assertEquals(profile.getAttribute("BitsPerPixel").getValue(), result);
-		fail("Need to use mocks for workspace and vocabulary");
 	}
 
 	
