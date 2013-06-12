@@ -9,6 +9,7 @@ import org.apache.commons.logging.LogFactory;
 
 import com.hp.hpl.deli.ProcessedRequest;
 
+@SuppressWarnings("javadoc")
 class TempProfileDiff {
 	/** Logging support. */
 	private static Log log = LogFactory.getLog(TempProfileDiff.class);

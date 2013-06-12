@@ -17,15 +17,12 @@ import com.hp.hpl.deli.Constants;
 import com.hp.hpl.deli.Profile;
 import com.hp.hpl.deli.ProfileProcessor;
 
+@SuppressWarnings("javadoc")
 abstract public class CCPPProfileTest {
 	static Log log = LogFactory.getLog(CCPPProfileTest.class);
-	
 	static ProfileProcessor configuration;
-	
 	String correctNamespace;
-
 	String profileFile;
-	
 	Profile profile;
 	
 	@BeforeClass

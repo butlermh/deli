@@ -9,6 +9,7 @@ import com.hp.hpl.deli.Constants;
 import com.hp.hpl.deli.Profile;
 import com.hp.hpl.deli.ProfileProcessor;
 
+@SuppressWarnings("javadoc")
 public class W3CTestHarness {
 	public static ProfileProcessor configuration;
 	

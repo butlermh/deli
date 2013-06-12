@@ -4,6 +4,7 @@ import org.junit.*;
 
 import static org.junit.Assert.*;
 
+@SuppressWarnings("javadoc")
 public class EricssonT68ProfileTest extends UAProfProfileTest {
 	// This test checks that you can load a UAProf reference profile from
 	// the local filesystem using DELI.

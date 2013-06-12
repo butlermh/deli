@@ -34,23 +34,15 @@ import com.hp.hpl.jena.shared.JenaException;
 public class ProcessUAProfMetadata {
 
 	final static String BASE = "http://purl.oclc.org/NET/butlermh/deli/";
-
 	private static Log log = LogFactory.getLog(ProcessUAProfMetadata.class);
 
 	private int validProfiles = 0;
-
 	private int invalidProfiles = 0;
-
 	private int unreachableProfiles = 0;
-
 	private int invalidRDF = 0;
-
 	private ProfileProcessor configuration;
-	
 	private AllProfiles profiles ;
-
 	private SynchronizedModel allProfileData = new SynchronizedModel();
-
 	private HashMap<Resource, Resource> results = new HashMap<Resource, Resource>();
 
 	/**

@@ -2,7 +2,7 @@ package com.hp.hpl.deli.functional;
 
 import org.junit.Before;
 
-
+@SuppressWarnings("javadoc")
 public class EricssonT39DefaultsProfileTest extends EricssonT39ProfileTest {
 	@Before
 	public void setUp() {
