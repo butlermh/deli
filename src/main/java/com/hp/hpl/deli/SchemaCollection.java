@@ -9,6 +9,7 @@ import java.util.Map;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -16,6 +17,7 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
+import org.xml.sax.SAXException;
 
 import com.hp.hpl.jena.datatypes.DatatypeFormatException;
 import com.hp.hpl.jena.datatypes.TypeMapper;
@@ -54,11 +56,12 @@ class SchemaCollection extends ModelUtils {
 	 * The constructor reads in a vocabulary definition file and then processess
 	 * the set of vocabularies it references.
 	 * 
-	 * @param configFile The filename of the configuration file.
+	 * @param configData The configuration data.
 	 */
 	SchemaCollection(DeliConfiguration configData) {
-		ResIterator definitions = configData.getModel().listSubjectsWithProperty(
-				RDF.type, DeliSchema.NamespaceDefinition);
+		ResIterator definitions = configData.getModel()
+				.listSubjectsWithProperty(RDF.type,
+						DeliSchema.NamespaceDefinition);
 		if (!definitions.hasNext()) {
 			log.info("Vocabulary: No schemas defined. Loading schemas dynamically.");
 		} else {
@@ -85,19 +88,22 @@ class SchemaCollection extends ModelUtils {
 	private void processNamespaceDefinition(Resource defn) {
 		if (defn.hasProperty(DeliSchema.uri)) {
 			// add namespace
-			String URI = defn.getProperty(DeliSchema.uri).getResource().getURI(); 
+			String URI = defn.getProperty(DeliSchema.uri).getResource()
+					.getURI();
 			namespaceLookup.put(URI, URI);
 			// add alias namespaces
 			if (defn.hasProperty(DeliSchema.aliasUri)) {
 				StmtIterator stmts = defn.listProperties(DeliSchema.aliasUri);
 				while (stmts.hasNext()) {
-					String aliasUri = stmts.nextStatement().getResource().getURI();
+					String aliasUri = stmts.nextStatement().getResource()
+							.getURI();
 					namespaceLookup.put(aliasUri, URI);
 				}
 			}
 			// process datatype definitions for UAProf 2.0 schemas
 			if (defn.hasProperty(DeliSchema.datatypeUri)) {
-				String datatypeUri = defn.getProperty(DeliSchema.datatypeUri).getResource().getURI();
+				String datatypeUri = defn.getProperty(DeliSchema.datatypeUri)
+						.getResource().getURI();
 				if (defn.hasProperty(DeliSchema.datatypeFile)) {
 					datatypesDef = loadDatatypeDef(defn, datatypeUri);
 					datatypesLookup.put(datatypesDef, URI);
@@ -111,30 +117,40 @@ class SchemaCollection extends ModelUtils {
 			// load and process the schema
 			if (defn.hasProperty(DeliSchema.schemaVocabularyFile)) {
 
-				String file = getPropertyString(defn, DeliSchema.schemaVocabularyFile);
+				String file = getPropertyString(defn,
+						DeliSchema.schemaVocabularyFile);
 				addSchemaFromFile(file, URI);
 			}
 		}
 	}
 
+	/**
+	 * Add a schema from a file.
+	 * 
+	 * @param file The filename.
+	 * @param URI The URI of the schema.
+	 */
 	void addSchemaFromFile(String file, String URI) {
 		try {
-			log.debug("Vocabulary: Processing UAProf schema vocabulary file: " + file);
-			addSchema(new Schema(ModelUtils.getResource(file), URI, URI, datatypesDef));
+			log.debug("Vocabulary: Processing UAProf schema vocabulary file: "
+					+ file);
+			addSchema(new Schema(ModelUtils.getResource(file), URI, URI,
+					datatypesDef));
 		} catch (Exception e) {
-			log.error("Vocabulary: Cannot load and process vocabulary schema from "
-					+ file, e);
+			log.error(
+					"Vocabulary: Cannot load and process vocabulary schema from "
+							+ file, e);
 		}
 	}
 
 	/**
 	 * Add a schema to the set of schemas
 	 * 
-	 * @param sp
+	 * @param schema The schema.
 	 */
-	void addSchema(Schema sp) {
-		propertyDescription.putAll(sp.getPropertyDescription());
-		datatypesLookup.putAll(sp.getDatatypesLookup());
+	void addSchema(Schema schema) {
+		propertyDescription.putAll(schema.getPropertyDescription());
+		datatypesLookup.putAll(schema.getDatatypesLookup());
 	}
 
 	/**
@@ -151,7 +167,8 @@ class SchemaCollection extends ModelUtils {
 		// definitions
 		try {
 			TypeMapper tm = TypeMapper.getInstance();
-			Reader fr = new InputStreamReader(ModelUtils.getResource(datatypeFile));
+			Reader fr = new InputStreamReader(
+					ModelUtils.getResource(datatypeFile));
 			result = XSDDatatype.loadUserDefined(datatypeUri, fr, null, tm);
 		} catch (DatatypeFormatException e) {
 			log.error("DELI could not process datatype configuration file: "
@@ -169,14 +186,19 @@ class SchemaCollection extends ModelUtils {
 	 * 
 	 * @param attributeQName The QName of the attribute.
 	 * @param paramName The required Parameter
+	 * @return The value of the attribute property.
+	 * @throws VocabularyException Thrown if there is a problem reading the
+	 *             property.
 	 */
-	public Resource getAttributeProperty(Resource attributeQName, String paramName) throws VocabularyException {
+	public Resource getAttributeProperty(Resource attributeQName,
+			String paramName) throws VocabularyException {
 		Resource alias = getRealQName(attributeQName);
 		if (propertyDescription.containsKey(alias)) {
 			return getRealQName(propertyDescription.get(alias).get(paramName));
 		}
 
-		throw new VocabularyException(attributeQName.getURI() + " is unknown in the vocabulary");
+		throw new VocabularyException(attributeQName.getURI()
+				+ " is unknown in the vocabulary");
 	}
 
 	/**
@@ -213,59 +235,21 @@ class SchemaCollection extends ModelUtils {
 	}
 
 	/**
-	 * This method returns a Vector of Maps representing the properties of
-	 * Vocabulary Attributes with a given Attribute Name. The attribute name can
-	 * either be qualified (in which case it will contain a hash character) or
-	 * unqualified.
-	 * 
-	 * @param name The attribute name as a string (eg 'ColorCapable').
-	 */
-//	Vector<Map<String, Resource>> getAttPropertiesWithAttName(String name) throws VocabularyException {
-//		Vector<Map<String, Resource>> v = new Vector<Map<String, Resource>>();
-//
-//		if (name.lastIndexOf("#") > 0) {
-//			// Qualified attribute name
-//			Resource aliasQName = null;
-//
-//			String namespace = getRealNamespace(name);
-//
-//			if (namespace != null) {
-//				aliasQName = ResourceFactory.createResource(namespace);
-//			}
-//
-//			if (aliasQName != null) {
-//				v.add(propertyDescription.get(aliasQName));
-//			} else {
-//				throw new VocabularyException(name + " is not known");
-//			}
-//		}
-//		// Unqualified attribute name
-//
-//		for (Resource qn : propertyDescription.keySet()) {
-//			if (qn.getLocalName().equals(name)) {
-//				v.add(propertyDescription.get(qn));
-//			}
-//		}
-//		if (v.isEmpty()) {
-//			throw new VocabularyException(name + " is not known");
-//		}
-//
-//		return v;
-//	}
-
-	/*
 	 * This method attempts to get an attributes property set, given only a
 	 * QName. It therefore assumes that there is only one set of properties for
 	 * the attribute name specified. If there are infact more, the first set
 	 * encountered is all that is returned anyway.
 	 * 
 	 * @param attributeQName The attribute QName as a URI
+	 * @return A map of property names on to resources.
+	 * @throws VocabularyException thrown if the attribute is not known.
 	 */
-	Map<String, Resource> getAttribute(Resource attributeQName) throws VocabularyException {
+	Map<String, Resource> getAttribute(Resource attributeQName)
+			throws VocabularyException {
 		Resource aliasAttributeQName = getRealQName(attributeQName);
 		if (propertyDescription.containsKey(aliasAttributeQName)) {
 			return propertyDescription.get(aliasAttributeQName);
-		} 
+		}
 		throw new VocabularyException(attributeQName + " is not known.");
 	}
 
@@ -274,7 +258,7 @@ class SchemaCollection extends ModelUtils {
 	 * vocabulary, when it encounters attributes that are not defined in the
 	 * vocabulary definition.
 	 * 
-	 * @param qualifiedAttribute
+	 * @param qualifiedAttribute The qualified attribute.
 	 * @param currentComponent The qualified name of the component, if known.
 	 * @param collectionType The collection type, if known.
 	 */
@@ -294,15 +278,16 @@ class SchemaCollection extends ModelUtils {
 		}
 
 		if (theURI != null) {
-			currentComponent = (currentComponent == null) ? (theURI + "Unknown")
+			String correctedCurrentComponent = (currentComponent == null) ? (theURI + "Unknown")
 					: getRealNamespace(currentComponent);
-			collectionType = (collectionType == null) ? Constants.SIMPLE : collectionType;
+			String correctedCllectionType = (collectionType == null) ? Constants.SIMPLE
+					: collectionType;
 
 			HashMap<String, Resource> properties = new HashMap<String, Resource>();
 
 			properties.put(Constants.ATTRIBUTE, temp);
-			properties.put(Constants.COMPONENT,
-					getRealQName(ResourceFactory.createResource(currentComponent)));
+			properties.put(Constants.COMPONENT, getRealQName(ResourceFactory
+					.createResource(correctedCurrentComponent)));
 			properties.put(
 					Constants.TYPE,
 					getRealQName(ResourceFactory.createResource(theURI
@@ -311,17 +296,24 @@ class SchemaCollection extends ModelUtils {
 					Constants.RESOLUTION,
 					getRealQName(ResourceFactory.createResource(theURI
 							+ Constants.OVERRIDE)));
-			properties
-					.put(Constants.COLLECTIONTYPE,
-							getRealQName(ResourceFactory.createResource(theURI
-									+ collectionType)));
+			properties.put(
+					Constants.COLLECTIONTYPE,
+					getRealQName(ResourceFactory.createResource(theURI
+							+ correctedCllectionType)));
 
-			propertyDescription.put(properties.get(Constants.ATTRIBUTE), properties);
+			propertyDescription.put(properties.get(Constants.ATTRIBUTE),
+					properties);
 		} else {
 			log.error("Fatal error: cannot create new attribute when namespace is null");
 		}
 	}
 
+	/**
+	 * Get the real namespace from an alias.
+	 * 
+	 * @param alias The alias.
+	 * @return The real namespace.
+	 */
 	protected Resource getRealNamespace(Resource alias) {
 		return ResourceFactory.createResource(getRealNamespace(alias.getURI()));
 	}
@@ -357,18 +349,35 @@ class SchemaCollection extends ModelUtils {
 		return alias;
 	}
 
+	/**
+	 * Is this namespace recognized?
+	 * 
+	 * @param namespace The namespace.
+	 * @return Is this namespace recognized?
+	 */
 	boolean knownNamespace(String namespace) {
 		return namespaceLookup.containsKey(namespace);
 	}
 
 	/**
+	 * Convert a namespace to its canonical form.
+	 * 
+	 * @param namespace The namespace to lookup.
 	 * @return Returns the namespaceLookup.
 	 */
-	String getNamespaceLookup(String s) {
-		return namespaceLookup.get(s);
+	String getNamespaceLookup(String namespace) {
+		return namespaceLookup.get(namespace);
 	}
 
-	void datatypeExpression(String configFile) throws Exception {
+	/**
+	 * Read a XML Schema datatype configuration file.
+	 * 
+	 * @param configFile The XML Schema datatype configuration file.
+	 * @throws ParserConfigurationException Thrown if there is a problem creating the XMl parser.
+	 * @throws IOException Thrown if there is a problem reading the configuration file.
+	 * @throws SAXException Thrown if there is a problem parsing the file.
+	 */
+	void datatypeExpression(String configFile) throws ParserConfigurationException, IOException, SAXException {
 		Document document = null;
 
 		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
@@ -406,8 +415,6 @@ class SchemaCollection extends ModelUtils {
 	 * configuration document
 	 * 
 	 * @param datatype The XML element containing the datatype information
-	 * 
-	 * @param datatype the node with the datatype information
 	 * @throws IOException thrown if there is a problem with the config file
 	 */
 	void setDatatypeFromConfig(Node datatype) throws IOException {

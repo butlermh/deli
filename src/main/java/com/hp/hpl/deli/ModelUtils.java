@@ -11,6 +11,7 @@ import java.io.OutputStream;
 import java.io.Reader;
 import java.net.URL;
 
+import org.apache.commons.io.IOUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.xml.sax.InputSource;
@@ -128,10 +129,16 @@ public class ModelUtils {
 		}
 		RDFWriter writer = model.getWriter(language);
 		writer.setProperty("allowBadURIs", "true");
-		try (OutputStream out = new FileOutputStream(filename);) {
+		OutputStream out = null;
+		try {
+			out = new FileOutputStream(filename);
 			writer.write(model, out, null);
 		} catch (IOException e) {
 			log.error(e, e);
+		} finally {
+			if (out != null) {
+				IOUtils.closeQuietly(out);
+			}
 		}
 	}
 

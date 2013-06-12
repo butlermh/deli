@@ -14,24 +14,24 @@ import org.apache.commons.logging.LogFactory;
 
 import org.apache.commons.codec.binary.Base64;
 
-
 /**
  * This class processes HTTP requests to produce a list of profile references
  * and profile-diffs. It will process CC/PP requests using HTTP-ex, UAProf
  * requests using WSP, UAProf using W-HTTP, and the Nokia emulators that use a
  * variation on W-HTTP.
  */
+@SuppressWarnings("unchecked")
 class ProcessedRequest {
 	/**
 	 * The list of profile references.
 	 */
 	private Vector<String> referenceVector = new Vector<String>();
-	
+
 	/**
-	 * The ordered list of profile-diffs. 
+	 * The ordered list of profile-diffs.
 	 */
 	private Vector<String> diffVector = new Vector<String>();
-	
+
 	private static Log log = LogFactory.getLog(ProcessedRequest.class);
 	private String httpexNumericalNamespace = null;
 	private int maxNumberProfileDiffs = 0;
@@ -39,7 +39,7 @@ class ProcessedRequest {
 	private HashMap<Integer, String> profileDiffDigestMap = new HashMap<Integer, String>();
 
 	/**
-	 * Debug request headers? 
+	 * Debug request headers?
 	 */
 	private boolean debugRequestHeaders = false;
 
@@ -62,12 +62,14 @@ class ProcessedRequest {
 	private boolean useLocalProfilesIfNoCCPP = true;
 
 	private LocalProfiles localProfiles;
-	
+
 	/**
 	 * This method processes the HTTP request to retrieve the profile
 	 * references, profile-diff-digests and profile-diffs. It is UAProf
 	 * specific.
 	 * 
+	 * @param workspace The DELI workspace.
+	 * @param localProfiles The locally cached profiles.
 	 * @param request The HTTP request.
 	 */
 
@@ -79,11 +81,13 @@ class ProcessedRequest {
 				DeliSchema.normaliseWhitespaceInProfileDiff,
 				normaliseWhitespaceInProfileDiff);
 		profileDiffDigestVerification = workspace.get(
-				DeliSchema.profileDiffDigestVerification, profileDiffDigestVerification);
+				DeliSchema.profileDiffDigestVerification,
+				profileDiffDigestVerification);
 		preferLocalOverRemoteProfiles = workspace.get(
-				DeliSchema.preferLocalOverRemoteProfiles, preferLocalOverRemoteProfiles);
-		useLocalProfilesIfNoCCPP = workspace.get(DeliSchema.useLocalProfilesIfNoCCPP,
-				useLocalProfilesIfNoCCPP);
+				DeliSchema.preferLocalOverRemoteProfiles,
+				preferLocalOverRemoteProfiles);
+		useLocalProfilesIfNoCCPP = workspace.get(
+				DeliSchema.useLocalProfilesIfNoCCPP, useLocalProfilesIfNoCCPP);
 		debugRequestHeaders = workspace.get(DeliSchema.debugRequestHeaders,
 				debugRequestHeaders);
 
@@ -110,17 +114,21 @@ class ProcessedRequest {
 					String profileDiff = (String) profileDiffMap.get(r);
 
 					if (profileDiffDigestVerification
-							&& (profileDiffDigestMap.size() == profileDiffMap.size())) {
-						String profileDiffDigest = (String) profileDiffDigestMap.get(r);
+							&& (profileDiffDigestMap.size() == profileDiffMap
+									.size())) {
+						String profileDiffDigest = (String) profileDiffDigestMap
+								.get(r);
 						String calculatedProfileDiffDigest = calculateProfileDiffDigest(
 								profileDiff, normaliseWhitespaceInProfileDiff);
 
-						if (!profileDiffDigest.equals(calculatedProfileDiffDigest)) {
+						if (!profileDiffDigest
+								.equals(calculatedProfileDiffDigest)) {
 							// The profile-diff-digest does not match the
 							// profile-diff, ignore it.
 							log.info("ProcessHttpRequest|ValidateProfileDiff: ");
 							log.info("ProfileDiffDigest and ProfileDiff do not match");
-							log.info("	ProfileDiffDigest:   " + profileDiffDigest);
+							log.info("	ProfileDiffDigest:   "
+									+ profileDiffDigest);
 							log.info("	CalculatedDiffDigest:"
 									+ calculatedProfileDiffDigest);
 						} else {
@@ -155,17 +163,20 @@ class ProcessedRequest {
 		// Fallback for HTTP-ex devices
 		if (profileEnum == null || !profileEnum.hasMoreElements()) {
 			// try opt headers...
-			httpexNumericalNamespace = getNumericalNamespace(request.getHeader("opt"));
+			httpexNumericalNamespace = getNumericalNamespace(request
+					.getHeader("opt"));
 
 			// try man headers if opt found nothing...
 			if (httpexNumericalNamespace == null) {
-				httpexNumericalNamespace = getNumericalNamespace(request.getHeader("man"));
+				httpexNumericalNamespace = getNumericalNamespace(request
+						.getHeader("man"));
 			}
 
 			if (httpexNumericalNamespace != null) {
 				// found http-ex namespace headers
 				log.info("Found HTTP-ex namespace: " + httpexNumericalNamespace);
-				profileEnum = request.getHeaders(httpexNumericalNamespace + "-profile");
+				profileEnum = request.getHeaders(httpexNumericalNamespace
+						+ "-profile");
 			}
 		}
 
@@ -181,8 +192,8 @@ class ProcessedRequest {
 						log.info("Found profile reference: " + token);
 						referenceVector.add(token);
 					} else if (token.indexOf('-') > 0) {
-						int profileDiffNumber = Integer.parseInt(token.substring(0,
-								token.indexOf('-')));
+						int profileDiffNumber = Integer.parseInt(token
+								.substring(0, token.indexOf('-')));
 
 						if (profileDiffNumber > maxNumberProfileDiffs) {
 							maxNumberProfileDiffs = profileDiffNumber;
@@ -190,8 +201,10 @@ class ProcessedRequest {
 
 						String profileDiffDigest = token.substring(
 								token.indexOf('-') + 1, token.length());
-						log.info("Found profile-diff-digest: " + profileDiffDigest);
-						profileDiffDigestMap.put(new Integer(profileDiffNumber),
+						log.info("Found profile-diff-digest: "
+								+ profileDiffDigest);
+						profileDiffDigestMap.put(
+								new Integer(profileDiffNumber),
 								profileDiffDigest);
 					}
 				}
@@ -200,7 +213,8 @@ class ProcessedRequest {
 	}
 
 	private void getProfileDiffs(HttpServletRequest request) {
-		Enumeration<String> profileDiffEnum = request.getHeaders("x-wap-profile-diff");
+		Enumeration<String> profileDiffEnum = request
+				.getHeaders("x-wap-profile-diff");
 
 		// Fallback for Nokia devices
 		if (profileDiffEnum == null || !profileDiffEnum.hasMoreElements()) {
@@ -221,11 +235,12 @@ class ProcessedRequest {
 			int profileDiffNumber = 1;
 
 			while (foundProfileDiff) {
-				String profileDiffHeader = httpexNumericalNamespace + "-profile-diff-"
-						+ profileDiffNumber;
+				String profileDiffHeader = httpexNumericalNamespace
+						+ "-profile-diff-" + profileDiffNumber;
 				profileDiffEnum = request.getHeaders(profileDiffHeader);
 
-				if (profileDiffEnum == null || !profileDiffEnum.hasMoreElements()) {
+				if (profileDiffEnum == null
+						|| !profileDiffEnum.hasMoreElements()) {
 					foundProfileDiff = false;
 				} else {
 					while (profileDiffEnum.hasMoreElements()) {
@@ -234,8 +249,10 @@ class ProcessedRequest {
 						log.info("Found profile diff: " + profileDiff);
 
 						if (profileDiff.charAt(0) == '\"') {
-							profileDiffMap.put(new Integer(profileDiffNumber),
-									profileDiff.substring(1, profileDiff.length() - 1));
+							profileDiffMap.put(
+									new Integer(profileDiffNumber),
+									profileDiff.substring(1,
+											profileDiff.length() - 1));
 						} else {
 							profileDiffMap.put(new Integer(profileDiffNumber),
 									profileDiff);
@@ -260,7 +277,8 @@ class ProcessedRequest {
 					profileDiffMap.put(new Integer(profileDiffNumber),
 							profileDiff.substring(1, profileDiff.length() - 1));
 				} else {
-					profileDiffMap.put(new Integer(profileDiffNumber), profileDiff);
+					profileDiffMap.put(new Integer(profileDiffNumber),
+							profileDiff);
 				}
 			}
 		}
@@ -274,7 +292,8 @@ class ProcessedRequest {
 				String currentName = debugHeaders.nextElement();
 				header.append(currentName + ": ");
 
-				Enumeration<String> debugHeaderValues = request.getHeaders(currentName);
+				Enumeration<String> debugHeaderValues = request
+						.getHeaders(currentName);
 				while (debugHeaderValues.hasMoreElements()) {
 					header.append(debugHeaderValues.nextElement() + " ");
 				}
@@ -290,7 +309,8 @@ class ProcessedRequest {
 	 * @return Did it match the request to a local profile?
 	 * @throws Exception
 	 */
-	private boolean supportLocalProfiles(HttpServletRequest request) throws Exception {
+	private boolean supportLocalProfiles(HttpServletRequest request)
+			throws Exception {
 		if (useLocalProfilesIfNoCCPP) {
 			String userAgent = request.getHeader("user-agent");
 
@@ -299,8 +319,8 @@ class ProcessedRequest {
 
 				if (profileReference != null) {
 					referenceVector.add(profileReference);
-					log.info("Useragent " + userAgent + "matches local profile "
-							+ profileReference);
+					log.info("Useragent " + userAgent
+							+ "matches local profile " + profileReference);
 
 					return true;
 				}
@@ -325,8 +345,8 @@ class ProcessedRequest {
 
 		if (httpex != null) {
 			if (httpex.indexOf("ns=") > 0) {
-				numericalNamespace = httpex.substring(httpex.indexOf("ns=") + 3,
-						httpex.length());
+				numericalNamespace = httpex.substring(
+						httpex.indexOf("ns=") + 3, httpex.length());
 			}
 		}
 
@@ -342,15 +362,15 @@ class ProcessedRequest {
 	 * @param profileDiff The profile-diff.
 	 * @param normaliseWhitespace Turn whitespace normalising on or off.
 	 * @return The profile-diff-digest.
-	 * @throws NoSuchAlgorithmException 
+	 * @throws NoSuchAlgorithmException Thrown if there is a problem making the
+	 *             message digest.
 	 */
-	static String calculateProfileDiffDigest(String profileDiff,
+	static String calculateProfileDiffDigest(final String profileDiff,
 			boolean normaliseWhitespace) throws NoSuchAlgorithmException {
-		if (normaliseWhitespace) {
-			profileDiff = removeWhitespaces(profileDiff);
-		}
+		String normalizedDiff = normaliseWhitespace ? removeWhitespaces(profileDiff)
+				: profileDiff;
 		MessageDigest md = MessageDigest.getInstance("MD5");
-		md.update(profileDiff.getBytes());
+		md.update(normalizedDiff.getBytes());
 		return new String(Base64.encodeBase64(md.digest()));
 	}
 
@@ -378,19 +398,22 @@ class ProcessedRequest {
 
 		// replace multiple whitespace chars with a single space
 		// and remove leading or trailing whitespaces
-		diff.replaceAll("[ \n\r\t]", " ").replaceAll(" *", " ").replaceAll("^ *", "")
-				.replaceAll(" *$", "");
+		diff.replaceAll("[ \n\r\t]", " ").replaceAll(" *", " ")
+				.replaceAll("^ *", "").replaceAll(" *$", "");
 
 		return diff;
 	}
-	
+
 	/**
-	 * @return
+	 * @return The vector of profile references.
 	 */
 	public Vector<String> getReferenceVector() {
 		return referenceVector;
 	}
 
+	/**
+	 * @return The vector of profile-diffs.
+	 */
 	public Vector<String> getDiffVector() {
 		return diffVector;
 	}
