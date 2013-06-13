@@ -1,4 +1,0 @@
-http://nds1.nds.nokia.com/uaprof/NokiaLumia920r100.xml
-http://nds1.nds.nokia.com/uaprof/NokiaLumia820r100.xml
-http://nds1.nds.nokia.com/uaprof/NokiaLumia620r100.xml
-http://uaprof.motorola.com/phoneconfig/xt560/Profile/xt560.rdf

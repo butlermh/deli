@@ -14,6 +14,7 @@ import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.apache.commons.io.FileUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -72,6 +73,10 @@ public class ProcessUAProfMetadata {
 	ProcessUAProfMetadata(Model model) throws IOException {
 		this.profiles = new AllProfiles(model);
 		createPropertiesFile(model);
+		String additionalProfiles = FileUtils.readFileToString(new File("config/additionalprofiles.txt"));
+		for (String additionalProfile : additionalProfiles.split("\n")) {
+			profiles.addDeviceIfNotAlreadyKnown(additionalProfile);
+		}
 		queryGoogle();
 		doWebCrawl();
 
