@@ -25,10 +25,8 @@ class CreateHTML {
 	private HashMap<String, TreeSet<String>> manufacturers = new HashMap<String, TreeSet<String>>();
 
 	/** The RDF model containing the data on all profiles. */
-	private Model profiles = null;
-
+	private final Model profiles;
 	private StringBuffer result = new StringBuffer();
-	
 	private HashMap<Resource, Resource> results;
 
 	/**

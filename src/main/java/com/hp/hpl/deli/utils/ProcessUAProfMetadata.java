@@ -11,6 +11,8 @@ import java.io.Writer;
 import java.lang.reflect.Constructor;
 import java.net.URL;
 import java.util.HashMap;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -32,6 +34,11 @@ import com.hp.hpl.jena.shared.JenaException;
  * are not listed in profiles.n3.
  */
 public class ProcessUAProfMetadata {
+	
+	/**
+	 * The filepath to the file holding all known UAProf files.
+	 */
+	public final static String ALL_KNOWN_UAPROF_PROFILES = Constants.CONFIG_PATH + "profiles.n3";
 
 	final static String BASE = "http://purl.oclc.org/NET/butlermh/deli/";
 	private static Log log = LogFactory.getLog(ProcessUAProfMetadata.class);
@@ -52,7 +59,7 @@ public class ProcessUAProfMetadata {
 	 */
 	public static void main(String[] args) {
 		try {
-			Model model = ModelUtils.loadModel(Constants.ALL_KNOWN_UAPROF_PROFILES);
+			Model model = ModelUtils.loadModel(ALL_KNOWN_UAPROF_PROFILES);
 			new ProcessUAProfMetadata(model);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -114,16 +121,16 @@ public class ProcessUAProfMetadata {
 	void processPage(String pageUri) {
 		String search = "href=\"";
 		try {
+			log.info("Calling to Google: " + pageUri);
 			String inputString = UrlUtils.getURL(pageUri);
+			log.info(inputString);
 			int next = 0;
-
-			while ((next = inputString.indexOf(search, next)) != -1) {
-				int end = inputString.indexOf("\"", next + search.length());
-				end = (end == -1) ? inputString.indexOf("\">", next + search.length())
-						: end;
-				String newURI = inputString.substring((next + search.length()), end);
+			Pattern cite = Pattern.compile("<cite>(.*?)</cite>");
+			Matcher matcher = cite.matcher(inputString);
+			while (matcher.find()) {
+				String newURI = "http://" + matcher.group(1).replaceAll("\"", "").replaceAll("<b>|</b>", "").replaceAll("[ \\t\\n\\r]+", "").trim();
+				log.info(newURI);
 				profiles.addDeviceIfNotAlreadyKnown(newURI);
-				next = end;
 			}
 		} catch (Exception e) {
 			log.error(e.toString(), e);
@@ -149,15 +156,10 @@ public class ProcessUAProfMetadata {
 		class ProcessProfile {
 
 			private StringBuffer messages = new StringBuffer();
-
 			private boolean profileValidFlag = true;
-
 			private boolean unreachable = false;
-
 			private JenaReader myARPReader = new JenaReader();
-
 			private String profile;
-			
 			private String deviceURI;
 
 			ProcessProfile(Resource device) {

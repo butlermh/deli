@@ -71,6 +71,7 @@ class UrlUtils {
 				// open InputStream to URL
 
 				URLConnection conn = theURL.openConnection();
+				conn.setReadTimeout(2000);
 				// have to fake the user agent to get results back from Google
 				conn.setRequestProperty(USER_AGENT, USER_AGENT_STRING);
 				conn.connect();
