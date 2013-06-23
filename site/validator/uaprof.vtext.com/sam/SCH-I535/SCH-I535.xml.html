@@ -1,0 +1,336 @@
+<html>
+<head><title>Validator report for http://uaprof.vtext.com/sam/SCH-I535/SCH-I535.xml</title></head>
+<body>
+<h1>Validator output for http://uaprof.vtext.com/sam/SCH-I535/SCH-I535.xml</h1>
+<pre>
+RDF parser warning:{W102} unqualified use of rdf:ID is deprecated.
+RDF parser warning:{W102} unqualified use of rdf:resource is deprecated.
+RDF parser warning:{W102} unqualified use of rdf:ID is deprecated.
+RDF parser warning:{W102} unqualified use of rdf:resource is deprecated.
+RDF parser warning:{W102} unqualified use of rdf:ID is deprecated.
+RDF parser warning:{W102} unqualified use of rdf:resource is deprecated.
+RDF parser warning:{W102} unqualified use of rdf:ID is deprecated.
+RDF parser warning:{W102} unqualified use of rdf:resource is deprecated.
+RDF parser warning:{W102} unqualified use of rdf:ID is deprecated.
+RDF parser warning:{W102} unqualified use of rdf:resource is deprecated.
+Warning [A: http://www.openmobilealliance.org/tech/profiles/UAPROF/ccppschema-20021212#AcceatDownloadableSoftware] Attribute not defined in vocabulary
+Error [C: http://www.openmobilealliance.org/tech/profiles/UAPROF/ccppschema-20021212#SoftwarePlatform, A: http://www.openmobilealliance.org/tech/profiles/UAPROF/ccppschema-20021212#CcppAccept-Language] does not match collection type Seq
+PROFILE IS NOT VALID
+</pre>
+<p><a href="mailto:markhenrybutler@gmail.com">Problems with this report?</a></p><h1>Original profile</h1>
+<pre>
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt; 
+
+&lt;rdf:RDF 
+	xmlns=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot;
+	xmlns:rdf=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot; 
+	xmlns:prf=&quot;http://www.openmobilealliance.org/tech/profiles/UAPROF/ccppschema-20021212#&quot;
+	&gt;
+	&lt;rdf:Description rdf:ID=&quot;MyDeviceProfile&quot;&gt;
+		&lt;prf:component&gt;
+			&lt;rdf:Description ID=&quot;HardwarePlatform&quot;&gt;
+				&lt;rdf:type resource=&quot;http://www.openmobilealliance.org/tech/profiles/UAPROF/ccppschema-20021212#HardwarePlatform&quot;/&gt;
+				&lt;prf:BitsPerPixel&gt;16&lt;/prf:BitsPerPixel&gt;
+				&lt;prf:ColorCapable&gt;Yes&lt;/prf:ColorCapable&gt;
+				&lt;prf:CPU&gt;MSM8960&lt;/prf:CPU&gt;
+				&lt;prf:ImageCapable&gt;Yes&lt;/prf:ImageCapable&gt;
+				&lt;prf:InputCharSet&gt;
+					&lt;rdf:Bag&gt;
+						&lt;rdf:li&gt;ISO-10646-UCS-2&lt;/rdf:li&gt;
+						&lt;rdf:li&gt;ISO-8859-1&lt;/rdf:li&gt;
+						&lt;rdf:li&gt;US-ASCII&lt;/rdf:li&gt;
+						&lt;rdf:li&gt;UTF-8&lt;/rdf:li&gt;
+					&lt;/rdf:Bag&gt;
+				&lt;/prf:InputCharSet&gt;
+				&lt;prf:Keyboard&gt;No&lt;/prf:Keyboard&gt;
+				&lt;prf:Model&gt;SCH-I535&lt;/prf:Model&gt;
+				&lt;prf:NumberOfSoftKeys&gt;0&lt;/prf:NumberOfSoftKeys&gt;
+				&lt;prf:OutputCharSet&gt;
+					&lt;rdf:Bag&gt;
+						&lt;rdf:li&gt;ISO-10646-UCS-2&lt;/rdf:li&gt;
+						&lt;rdf:li&gt;ISO-8859-1&lt;/rdf:li&gt;
+						&lt;rdf:li&gt;US-ASCII&lt;/rdf:li&gt;
+						&lt;rdf:li&gt;UTF-8&lt;/rdf:li&gt;
+					&lt;/rdf:Bag&gt;
+				&lt;/prf:OutputCharSet&gt;
+				&lt;prf:PixelAspectRatio&gt;1x1&lt;/prf:PixelAspectRatio&gt;
+				&lt;prf:PointingResolution&gt;Pixel&lt;/prf:PointingResolution&gt;
+				&lt;prf:ScreenSize&gt;1280x720&lt;/prf:ScreenSize&gt;
+				&lt;prf:ScreenSizeChar&gt;24x27&lt;/prf:ScreenSizeChar&gt;
+				&lt;prf:StandardFontProportional&gt;Yes&lt;/prf:StandardFontProportional&gt;
+				&lt;prf:SoundOutputCapable&gt;Yes&lt;/prf:SoundOutputCapable&gt;
+				&lt;prf:TextInputCapable&gt;Yes&lt;/prf:TextInputCapable&gt;
+				&lt;prf:Vendor&gt;SAMSUNG&lt;/prf:Vendor&gt;
+				&lt;prf:VoiceInputCapable&gt;Yes&lt;/prf:VoiceInputCapable&gt;
+			&lt;/rdf:Description&gt;
+		&lt;/prf:component&gt;
+		
+		&lt;prf:component&gt;
+			&lt;rdf:Description ID=&quot;SoftwarePlatform&quot;&gt;
+				&lt;rdf:type resource=&quot;http://www.openmobilealliance.org/tech/profiles/UAPROF/ccppschema-20021212#SoftwarePlatform&quot;/&gt;
+				&lt;prf:AcceatDownloadableSoftware&gt;Yes&lt;/prf:AcceatDownloadableSoftware&gt;
+				&lt;!--
+				&lt;prf:AudioInputEncoder&gt;
+					&lt;rdf:Bag&gt;
+						&lt;rdf:li&gt;&lt;/rdf:li&gt;
+					&lt;/rdf:Bag&gt;
+				&lt;/prf:AudioInputEncoder&gt;
+				--&gt;
+				&lt;prf:CcppAccept&gt;
+					&lt;rdf:Bag&gt;
+						&lt;rdf:li&gt;application/java-archive&lt;/rdf:li&gt;
+						&lt;rdf:li&gt;application/ogg&lt;/rdf:li&gt;
+						&lt;rdf:li&gt;application/xhtml+xml&lt;/rdf:li&gt;
+						&lt;rdf:li&gt;audio/aac&lt;/rdf:li&gt;
+						&lt;rdf:li&gt;audio/amr&lt;/rdf:li&gt;
+						&lt;rdf:li&gt;audio/imelody&lt;/rdf:li&gt;
+						&lt;rdf:li&gt;audio/mid&lt;/rdf:li&gt;
+						&lt;rdf:li&gt;audio/midi&lt;/rdf:li&gt;
+						&lt;rdf:li&gt;audio/mp3&lt;/rdf:li&gt;
+						&lt;rdf:li&gt;audio/mpeg3&lt;/rdf:li&gt;
+						&lt;rdf:li&gt;audio/mpeg&lt;/rdf:li&gt;
+						&lt;rdf:li&gt;audio/mpg&lt;/rdf:li&gt;
+						&lt;rdf:li&gt;audio/x-mid&lt;/rdf:li&gt;
+						&lt;rdf:li&gt;audio/x-midi&lt;/rdf:li&gt;
+						&lt;rdf:li&gt;audio/x-mp3&lt;/rdf:li&gt;
+						&lt;rdf:li&gt;audio/x-mpeg3&lt;/rdf:li&gt;
+						&lt;rdf:li&gt;audio/x-mpeg&lt;/rdf:li&gt;
+						&lt;rdf:li&gt;audio/x-mpg&lt;/rdf:li&gt;
+						&lt;rdf:li&gt;video/mpeg4&lt;/rdf:li&gt;
+						&lt;rdf:li&gt;video/mp4&lt;/rdf:li&gt;
+						&lt;rdf:li&gt;video/3gpp&lt;/rdf:li&gt;
+						&lt;rdf:li&gt;image/gif&lt;/rdf:li&gt;
+						&lt;rdf:li&gt;image/jpeg&lt;/rdf:li&gt;
+						&lt;rdf:li&gt;image/jpg&lt;/rdf:li&gt;
+						&lt;rdf:li&gt;image/png&lt;/rdf:li&gt;
+						&lt;rdf:li&gt;text/html&lt;/rdf:li&gt;
+						&lt;rdf:li&gt;text/plain&lt;/rdf:li&gt;
+					&lt;/rdf:Bag&gt;
+				&lt;/prf:CcppAccept&gt;
+				&lt;prf:CcppAccept-Charset&gt;
+					&lt;rdf:Bag&gt;
+						&lt;rdf:li&gt;ISO-10646-UCS-2&lt;/rdf:li&gt;
+						&lt;rdf:li&gt;ISO-8859-1&lt;/rdf:li&gt;
+						&lt;rdf:li&gt;US-ASCII&lt;/rdf:li&gt;
+						&lt;rdf:li&gt;UTF-8&lt;/rdf:li&gt;
+					&lt;/rdf:Bag&gt;
+				&lt;/prf:CcppAccept-Charset&gt;
+				&lt;prf:CcppAccept-Encoding&gt;
+					&lt;rdf:Bag&gt;
+						&lt;rdf:li&gt;base-64&lt;/rdf:li&gt;
+					&lt;/rdf:Bag&gt;
+				&lt;/prf:CcppAccept-Encoding&gt;
+				&lt;prf:CcppAccept-Language&gt;
+					&lt;rdf:Bag&gt;
+						&lt;rdf:li&gt;en&lt;/rdf:li&gt;
+						&lt;rdf:li&gt;es&lt;/rdf:li&gt;
+					&lt;/rdf:Bag&gt;
+				&lt;/prf:CcppAccept-Language&gt;
+				&lt;!--
+				&lt;prf:DownloadableSoftwareSupport&gt;
+					&lt;rdf:Bag&gt;
+						&lt;rdf:li&gt;application/xxx&lt;/rdf:li&gt;
+					&lt;/rdf:Bag&gt;
+				&lt;/prf:DownloadableSoftwareSupport&gt;
+				--&gt;
+				&lt;prf:JavaEnabled&gt;Yes&lt;/prf:JavaEnabled&gt;			
+				&lt;prf:OSName&gt;Android&lt;/prf:OSName&gt;
+				&lt;prf:OSVendor&gt;Google&lt;/prf:OSVendor&gt;
+				&lt;prf:OSVersion&gt;4.0.3&lt;/prf:OSVersion&gt;
+				&lt;prf:RecipientAppAgent&gt;Browser&lt;/prf:RecipientAppAgent&gt;
+				&lt;!--
+				&lt;prf:SoftwareNumber&gt;&lt;/prf:SoftwareNumber&gt;
+				--&gt;
+				&lt;!--
+				&lt;prf:VideoInputEncoder&gt;
+					&lt;rdf:Bag&gt;
+						&lt;rdf:li&gt;h.264&lt;/rdf:li&gt;
+					&lt;/rdf:Bag&gt;
+				&lt;/prf:VideoInputEncoder&gt;
+				--&gt;
+				&lt;!--
+				&lt;prf:Email-URI-Schemes&gt;
+					&lt;rdf:Bag&gt;
+						&lt;rdf:li&gt;mailto&lt;/rdf:li&gt;
+					&lt;/rdf:Bag&gt;
+				&lt;/prf:Email-URI-Schemes&gt;
+				--&gt;
+				&lt;!--
+				&lt;prf:JavaPackage&gt;
+					&lt;rdf:Bag&gt;
+						&lt;rdf:li&gt;&lt;/rdf:li&gt;
+					&lt;/rdf:Bag&gt;
+				&lt;/prf:JavaPackage&gt;
+				--&gt;
+			&lt;/rdf:Description&gt;
+		&lt;/prf:component&gt;
+		
+		&lt;prf:component&gt;
+			&lt;rdf:Description ID=&quot;NetworkCharacteristics&quot;&gt;
+				&lt;rdf:type resource=&quot;http://www.openmobilealliance.org/tech/profiles/UAPROF/ccppschema-20021212#NetworkCharacteristics&quot;/&gt;
+				&lt;!--
+				&lt;prf:CurrentBearerService&gt;&lt;/prf:CurrentBearerService&gt;
+				--&gt;
+				&lt;prf:SecuritySupport&gt;
+					&lt;rdf:Bag&gt;
+						&lt;rdf:li&gt;SSL3.0&lt;/rdf:li&gt;
+						&lt;rdf:li&gt;TLS&lt;/rdf:li&gt;
+					&lt;/rdf:Bag&gt;
+				&lt;/prf:SecuritySupport&gt;
+				&lt;prf:SupportedBearers&gt;
+					&lt;rdf:Bag&gt;
+						&lt;rdf:li&gt;SMS&lt;/rdf:li&gt;
+						&lt;rdf:li&gt;IPv4&lt;/rdf:li&gt;
+						&lt;rdf:li&gt;IPv6&lt;/rdf:li&gt;
+					&lt;/rdf:Bag&gt;
+				&lt;/prf:SupportedBearers&gt;
+			&lt;/rdf:Description&gt;
+		&lt;/prf:component&gt;
+
+		&lt;prf:component&gt;
+			&lt;rdf:Description ID=&quot;BrowserUA&quot;&gt;
+				&lt;rdf:type resource=&quot;http://www.openmobilealliance.org/tech/profiles/UAPROF/ccppschema-20021212#BrowserUA&quot;/&gt;
+				&lt;prf:BrowserName&gt;Android Browser&lt;/prf:BrowserName&gt;
+				&lt;prf:BrowserVersion&gt;Ice Cream Sandwich&lt;/prf:BrowserVersion&gt;
+				&lt;!--
+				&lt;prf:DownloadableBrowserApps&gt;
+					&lt;rdf:Bag&gt;
+						&lt;rdf:li&gt;application/xxx&lt;/rdf:li&gt;
+					&lt;/rdf:Bag&gt;
+				&lt;/prf:DownloadableBrowserApps&gt;
+				--&gt;
+				&lt;prf:FramesCapable&gt;Yes&lt;/prf:FramesCapable&gt;
+				&lt;prf:HtmlVersion&gt;4.0&lt;/prf:HtmlVersion&gt;
+				&lt;prf:JavaAppletEnabled&gt;No&lt;/prf:JavaAppletEnabled&gt;
+				&lt;prf:JavaScriptEnabled&gt;Yes&lt;/prf:JavaScriptEnabled&gt;
+				&lt;prf:JavaScriptVersion&gt;1.5&lt;/prf:JavaScriptVersion&gt;
+				&lt;prf:PreferenceForFrames&gt;Yes&lt;/prf:PreferenceForFrames&gt;
+				&lt;prf:TablesCapable&gt;Yes&lt;/prf:TablesCapable&gt;
+				&lt;prf:XhtmlVersion&gt;1.1&lt;/prf:XhtmlVersion&gt;
+				&lt;!--
+				&lt;prf:XhtmlModules&gt;
+					&lt;rdf:Bag&gt;
+						&lt;rdf:li&gt;&lt;/rdf:li&gt;
+					&lt;/rdf:Bag&gt;
+				&lt;/prf:XhtmlModules&gt;
+				--&gt;
+			&lt;/rdf:Description&gt;
+		&lt;/prf:component&gt;
+		
+		&lt;prf:component&gt;
+			&lt;rdf:Description ID=&quot;WapCharacteristics&quot;&gt;
+				&lt;rdf:type resource=&quot;http://www.openmobilealliance.org/tech/profiles/UAPROF/ccppschema-20021212#WapCharacteristics&quot;/&gt;
+				&lt;!--
+				&lt;prf:SupportedPictogramSet&gt;
+					&lt;rdf:Bag&gt;
+						&lt;rdf:li&gt;&lt;/rdf:li&gt;
+					&lt;/rdf:Bag&gt;
+				&lt;/prf:SupportedPictogramSet&gt;
+				--&gt;
+				&lt;!--
+				&lt;prf:WapDeviceClass&gt;[A|B|C]&lt;/prf:WapDeviceClass&gt;
+				--&gt;
+				&lt;!--
+				&lt;prf:WapVersion&gt;2.0&lt;/prf:WapVersion&gt;
+				--&gt;
+				&lt;!--
+				&lt;prf:WmlDeckSize&gt;4096&lt;/prf:WmlDeckSize&gt;
+				--&gt;
+				&lt;!--
+				&lt;prf:WmlScriptLibraries&gt;
+					&lt;rdf:Bag&gt;
+						&lt;rdf:li&gt;&lt;/rdf:li&gt;
+					&lt;/rdf:Bag&gt;
+				&lt;/prf:WmlScriptLibraries&gt;
+				--&gt;
+				&lt;!--
+				&lt;prf:WmlScriptVersion&gt;1.2&lt;/prf:WmlScriptVersion&gt;
+				--&gt;
+				&lt;!--
+				&lt;prf:WmlVersion&gt;2.0&lt;/prf:WmlVersion&gt;
+				--&gt;
+				&lt;!--
+				&lt;prf:WtaiLibraries&gt;
+					&lt;rdf:Bag&gt;
+						&lt;rdf:li&gt;&lt;/rdf:li&gt;
+					&lt;/rdf:Bag&gt;
+				&lt;/prf:WtaiLibraries&gt;
+				--&gt;
+				&lt;!--
+				&lt;prf:WtaVersion&gt;1.1&lt;/prf:WtaVersion&gt;
+				--&gt;
+				&lt;!--
+				&lt;prf:DrmClass&gt;
+					&lt;rdf:Bag&gt;
+						&lt;rdf:li&gt;Fowardlock&lt;/rdf:li&gt;
+						&lt;rdf:li&gt;CombinedDelivery&lt;/rdf:li&gt;
+						&lt;rdf:li&gt;SeparateDelivery&lt;/rdf:li&gt;
+					&lt;/rdf:Bag&gt;
+				&lt;/prf:DrmClass&gt;
+				--&gt;
+				&lt;!--
+				&lt;prf:DrmConstrains&gt;
+					&lt;rdf:Bag&gt;
+						&lt;rdf:li&gt;&lt;/rdf:li&gt;
+					&lt;/rdf:Bag&gt;
+				&lt;/prf:DrmConstrains&gt;
+				--&gt;
+				&lt;prf:OmaDownload&gt;No&lt;/prf:OmaDownload&gt;
+			&lt;/rdf:Description&gt;
+		&lt;/prf:component&gt;
+		
+		&lt;!--
+		&lt;prf:component&gt;
+			&lt;rdf:Description ID=&quot;PushCharacteristics&quot;&gt;
+				&lt;rdf:type resource=&quot;http://www.openmobilealliance.org/tech/profiles/UAPROF/ccppschema-20021212#PushCharacteristics&quot;/&gt;
+				&lt;!-
+				&lt;prf:Push-Accept&gt;
+					&lt;rdf:Bag&gt;
+						&lt;rdf:li&gt;text/plain&lt;/rdf:li&gt;
+					&lt;/rdf:Bag&gt;
+				&lt;/prf:Push-Accept&gt;
+				-&gt;
+				&lt;!-
+				&lt;prf:Push-Accept-Charset&gt;
+					&lt;rdf:Bag&gt;
+						&lt;rdf:li&gt;US-ASCII&lt;/rdf:li&gt;
+						&lt;rdf:li&gt;ISO-8859-1&lt;/rdf:li&gt;
+						&lt;rdf:li&gt;UTF-8&lt;/rdf:li&gt;
+					&lt;/rdf:Bag&gt;
+				&lt;/prf:Push-Accept-Charset&gt;
+				-&gt;
+				&lt;!-
+				&lt;prf:Push-Accept-Encoding&gt;
+					&lt;rdf:Bag&gt;
+						&lt;rdf:li&gt;base64&lt;/rdf:li&gt;
+					&lt;/rdf:Bag&gt;
+				&lt;/prf:Push-Accept-Encoding&gt;
+				-&gt;
+				&lt;!-
+				&lt;prf:Push-Accept-Language&gt;
+					&lt;rdf:Bag&gt;
+						&lt;rdf:li&gt;en&lt;/rdf:li&gt;
+						&lt;rdf:li&gt;es&lt;/rdf:li&gt;
+					&lt;/rdf:Bag&gt;
+				&lt;/prf:Push-Accept-Language&gt;
+				-&gt;
+				&lt;!-
+				&lt;prf:Push-Accept-AppID&gt;
+					&lt;rdf:Bag&gt;
+						&lt;rdf:li&gt;*&lt;/rdf:li&gt;
+					&lt;/rdf:Bag&gt;
+				&lt;/prf:Push-Accept-AppID&gt;
+				-&gt;
+				&lt;!-
+				&lt;prf:Push-MsgSize&gt;1024&lt;/prf:Push-MsgSize&gt;
+				-&gt;
+				&lt;!-
+				&lt;prf:Push-MaxPushReq&gt;3&lt;/prf:Push-MaxPushReq&gt;
+				-&gt;
+			&lt;/rdf:Description&gt;
+		&lt;/prf:component&gt;
+		--&gt;
+	&lt;/rdf:Description&gt;
+&lt;/rdf:RDF&gt;</pre>
+</body>
+</html>

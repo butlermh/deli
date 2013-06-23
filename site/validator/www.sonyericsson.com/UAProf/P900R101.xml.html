@@ -1,0 +1,363 @@
+<html>
+<head><title>Validator report for http://www.sonyericsson.com/UAProf/P900R101.xml</title></head>
+<body>
+<h1>Validator output for http://www.sonyericsson.com/UAProf/P900R101.xml</h1>
+<pre>
+WARNING: The profile uses a commonly used namespace alias
+Aliased namespace is:    http://www.wapforum.org/profiles/UAPROF/ccppschema-20010330#
+Real namespace is: http://www.wapforum.org/UAPROF/ccppschema-20010330#
+Warning [A: http://www.wapforum.org/profiles/UAPROF/ccppschema-20010330#DrmClass] Attribute not defined in vocabulary
+Warning [A: http://www.wapforum.org/profiles/UAPROF/ccppschema-20010330#OmaDownload] Attribute not defined in vocabulary
+WARNING: Profile omits type information
+Component is null for: http://www.wapforum.org/profiles/UAPROF/ccppschema-20010330#MmsVersion
+Determining component from local ID
+Warning [A: http://www.wapforum.org/profiles/UAPROF/ccppschema-20010330#MmsVersion] Attribute not defined in vocabulary
+Warning [A: http://www.wapforum.org/profiles/UAPROF/ccppschema-20010330#MmsCcppAcceptCharset] Attribute not defined in vocabulary
+Warning [A: http://www.wapforum.org/profiles/UAPROF/ccppschema-20010330#MmsCcppAccept] Attribute not defined in vocabulary
+Warning [A: http://www.wapforum.org/profiles/UAPROF/ccppschema-20010330#MmsMaxImageResolution] Attribute not defined in vocabulary
+Warning [A: http://www.wapforum.org/profiles/UAPROF/ccppschema-20010330#MmsMaxMessageSize] Attribute not defined in vocabulary
+Warning [A: http://www.wapforum.org/profiles/UAPROF/ccppschema-20010330#JavaPackage] Attribute not defined in vocabulary
+Warning [A: http://www.wapforum.org/profiles/UAPROF/ccppschema-20010330#JavaPlatform] Attribute not defined in vocabulary
+Warning [A: http://www.wapforum.org/profiles/UAPROF/ccppschema-20010330#Push-MaxPushReq] Attribute not defined in vocabulary
+Error [C: http://www.wapforum.org/profiles/UAPROF/ccppschema-20010330#PushCharacteristics, A: http://www.wapforum.org/profiles/UAPROF/ccppschema-20010330#WapPushMsgSize] Attribute is in wrong component should be http://www.wapforum.org/UAPROF/ccppschema-20010330#WapCharacteristics
+PROFILE IS NOT VALID
+</pre>
+<p><a href="mailto:markhenrybutler@gmail.com">Problems with this report?</a></p><h1>Original profile</h1>
+<pre>
+&lt;?xml version=&quot;1.0&quot;?&gt;
+&lt;rdf:RDF xmlns:rdf=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot; 
+         xmlns:prf=&quot;http://www.wapforum.org/profiles/UAPROF/ccppschema-20010330#&quot;&gt;
+
+  &lt;rdf:Description rdf:ID=&quot;Profile&quot;&gt;
+
+    &lt;prf:component&gt;
+      &lt;rdf:Description rdf:ID=&quot;HardwarePlatform&quot;&gt;
+      &lt;rdf:type rdf:resource=&quot;http://www.wapforum.org/profiles/UAPROF/ccppschema-20010330#HardwarePlatform&quot;/&gt;
+        &lt;prf:BitsPerPixel&gt;16&lt;/prf:BitsPerPixel&gt;
+        &lt;prf:ColorCapable&gt;Yes&lt;/prf:ColorCapable&gt;
+        &lt;prf:ScreenSize&gt;208x320&lt;/prf:ScreenSize&gt;
+        &lt;prf:ImageCapable&gt;Yes&lt;/prf:ImageCapable&gt;
+        &lt;prf:InputCharSet&gt;
+          &lt;rdf:Bag&gt;
+			&lt;rdf:li&gt;ISO-8859-1&lt;/rdf:li&gt; 
+			&lt;rdf:li&gt;ISO-8859-2&lt;/rdf:li&gt; 
+			&lt;rdf:li&gt;ISO-8859-4&lt;/rdf:li&gt; 
+			&lt;rdf:li&gt;ISO-8859-5&lt;/rdf:li&gt; 
+			&lt;rdf:li&gt;ISO-8859-7&lt;/rdf:li&gt; 
+			&lt;rdf:li&gt;ISO-8859-9&lt;/rdf:li&gt; 
+			&lt;rdf:li&gt;WINDOWS-1252&lt;/rdf:li&gt; 
+			&lt;rdf:li&gt;US-ASCII&lt;/rdf:li&gt; 
+			&lt;rdf:li&gt;UTF-8&lt;/rdf:li&gt; 
+			&lt;rdf:li&gt;ISO-10646-UCS-2&lt;/rdf:li&gt; 
+			&lt;rdf:li&gt;UTF-16&lt;/rdf:li&gt; 
+			&lt;rdf:li&gt;UTF-16be&lt;/rdf:li&gt; 
+			&lt;rdf:li&gt;UTF-16le&lt;/rdf:li&gt; 
+			&lt;rdf:li&gt;UTF-7&lt;/rdf:li&gt; 
+          &lt;/rdf:Bag&gt;
+        &lt;/prf:InputCharSet&gt;
+        &lt;prf:Keyboard&gt;OnScreenQwerty&lt;/prf:Keyboard&gt;
+        &lt;prf:Model&gt;P900R101&lt;/prf:Model&gt;
+        &lt;prf:NumberOfSoftKeys&gt;0&lt;/prf:NumberOfSoftKeys&gt;
+        &lt;prf:OutputCharSet&gt;
+          &lt;rdf:Bag&gt;
+		    &lt;rdf:li&gt;ISO-8859-1&lt;/rdf:li&gt; 
+			&lt;rdf:li&gt;ISO-8859-2&lt;/rdf:li&gt; 
+			&lt;rdf:li&gt;ISO-8859-4&lt;/rdf:li&gt; 
+			&lt;rdf:li&gt;ISO-8859-5&lt;/rdf:li&gt; 
+			&lt;rdf:li&gt;ISO-8859-7&lt;/rdf:li&gt; 
+			&lt;rdf:li&gt;ISO-8859-9&lt;/rdf:li&gt; 
+			&lt;rdf:li&gt;WINDOWS-1252&lt;/rdf:li&gt; 
+			&lt;rdf:li&gt;US-ASCII&lt;/rdf:li&gt; 
+			&lt;rdf:li&gt;UTF-8&lt;/rdf:li&gt; 
+			&lt;rdf:li&gt;ISO-10646-UCS-2&lt;/rdf:li&gt; 
+			&lt;rdf:li&gt;UTF-16&lt;/rdf:li&gt; 
+			&lt;rdf:li&gt;UTF-16be&lt;/rdf:li&gt; 
+			&lt;rdf:li&gt;UTF-16le&lt;/rdf:li&gt; 
+			&lt;rdf:li&gt;UTF-7&lt;/rdf:li&gt; 
+          &lt;/rdf:Bag&gt;
+        &lt;/prf:OutputCharSet&gt;
+        &lt;prf:PixelAspectRatio&gt;1x1&lt;/prf:PixelAspectRatio&gt;
+		&lt;prf:PointingResolution&gt;Pixel&lt;/prf:PointingResolution&gt; 
+        &lt;prf:ScreenSizeChar&gt;20x15&lt;/prf:ScreenSizeChar&gt;
+        &lt;prf:StandardFontProportional&gt;Yes&lt;/prf:StandardFontProportional&gt;
+        &lt;prf:SoundOutputCapable&gt;Yes&lt;/prf:SoundOutputCapable&gt;
+        &lt;prf:TextInputCapable&gt;Yes&lt;/prf:TextInputCapable&gt;
+        &lt;prf:Vendor&gt;Sony Ericsson Mobile Communications&lt;/prf:Vendor&gt;
+        &lt;prf:VoiceInputCapable&gt;Yes&lt;/prf:VoiceInputCapable&gt;
+      &lt;/rdf:Description&gt;
+    &lt;/prf:component&gt;
+
+    &lt;prf:component&gt;
+      &lt;rdf:Description rdf:ID=&quot;SoftwarePlatform&quot;&gt;
+      &lt;rdf:type rdf:resource=&quot;http://www.wapforum.org/profiles/UAPROF/ccppschema-20010330#SoftwarePlatform&quot;/&gt;
+        &lt;prf:AcceptDownloadableSoftware&gt;Yes&lt;/prf:AcceptDownloadableSoftware&gt;
+        &lt;prf:CcppAccept&gt;
+          &lt;rdf:Bag&gt;
+		&lt;rdf:li&gt;application/java&lt;/rdf:li&gt;
+		&lt;rdf:li&gt;application/java-archive&lt;/rdf:li&gt;
+		&lt;rdf:li&gt;application/pdf&lt;/rdf:li&gt;
+		&lt;rdf:li&gt;application/sdp&lt;/rdf:li&gt;  
+		&lt;rdf:li&gt;application/vnd.ms-excel&lt;/rdf:li&gt;
+		&lt;rdf:li&gt;application/vnd.ms-powerpoint&lt;/rdf:li&gt;
+		&lt;rdf:li&gt;application/vnd.msword&lt;/rdf:li&gt;
+		&lt;rdf:li&gt;application/vnd.sonyericsson.mms-template&lt;/rdf:li&gt;
+		&lt;rdf:li&gt;application/vnd.uiq.thm&lt;/rdf:li&gt;
+		&lt;rdf:li&gt;application/vnd.wap.cert-response&lt;/rdf:li&gt;
+		&lt;rdf:li&gt;application/vnd.wap.coc&lt;/rdf:li&gt;
+		&lt;rdf:li&gt;application/vnd.wap.multipart.mixed&lt;/rdf:li&gt;
+		&lt;rdf:li&gt;application/vnd.wap.sia&lt;/rdf:li&gt;
+		&lt;rdf:li&gt;application/vnd.wap.sic&lt;/rdf:li&gt;
+		&lt;rdf:li&gt;application/vnd.wap.slc&lt;/rdf:li&gt;
+		&lt;rdf:li&gt;application/vnd.wap.wbxml&lt;/rdf:li&gt;
+		&lt;rdf:li&gt;application/vnd.wap.wmlc&lt;/rdf:li&gt;
+		&lt;rdf:li&gt;application/vnd.wap.wmlscriptc&lt;/rdf:li&gt;
+		&lt;rdf:li&gt;application/vnd.wap.wtls-ca-certificate&lt;/rdf:li&gt;
+		&lt;rdf:li&gt;application/vnd.wap.xhtml+xml&lt;/rdf:li&gt;
+		&lt;rdf:li&gt;application/xhtml+xml&lt;/rdf:li&gt;
+		&lt;rdf:li&gt;application/x-vnd.wv.csp-prov.ota+wbxml&lt;/rdf:li&gt;
+		&lt;rdf:li&gt;application/x-vnd.wv.csp-prov.ota+xml&lt;/rdf:li&gt;
+		&lt;rdf:li&gt;application/x-x509-ca-cert&lt;/rdf:li&gt;
+		&lt;rdf:li&gt;application/x-x509-user-cert&lt;/rdf:li&gt;
+
+		&lt;rdf:li&gt;audio/3gpp&lt;/rdf:li&gt;  
+		&lt;rdf:li&gt;audio/amr&lt;/rdf:li&gt; 
+		&lt;rdf:li&gt;audio/basic&lt;/rdf:li&gt; 
+		&lt;rdf:li&gt;audio/mid&lt;/rdf:li&gt; 
+		&lt;rdf:li&gt;audio/midi&lt;/rdf:li&gt; 
+		&lt;rdf:li&gt;audio/mp3&lt;/rdf:li&gt; 
+		&lt;rdf:li&gt;audio/rmf&lt;/rdf:li&gt; 
+		&lt;rdf:li&gt;audio/wav&lt;/rdf:li&gt; 
+		&lt;rdf:li&gt;audio/x-imelody&lt;/rdf:li&gt; 
+		&lt;rdf:li&gt;audio/x-mid&lt;/rdf:li&gt; 
+		&lt;rdf:li&gt;audio/x-midi&lt;/rdf:li&gt; 
+		&lt;rdf:li&gt;audio/x-rmf&lt;/rdf:li&gt; 
+		&lt;rdf:li&gt;audio/x-wav&lt;/rdf:li&gt; 
+
+		&lt;rdf:li&gt;image/bmp&lt;/rdf:li&gt;
+		&lt;rdf:li&gt;image/gif&lt;/rdf:li&gt;
+		&lt;rdf:li&gt;image/jpeg&lt;/rdf:li&gt;
+		&lt;rdf:li&gt;image/png&lt;/rdf:li&gt;
+		&lt;rdf:li&gt;image/tiff&lt;/rdf:li&gt;
+		&lt;rdf:li&gt;image/vnd.wap.wbmp&lt;/rdf:li&gt;
+		&lt;rdf:li&gt;image/x-bmp&lt;/rdf:li&gt;
+
+		&lt;rdf:li&gt;multipart/mixed&lt;/rdf:li&gt;
+
+		&lt;rdf:li&gt;text/css&lt;/rdf:li&gt;
+		&lt;rdf:li&gt;text/html&lt;/rdf:li&gt;
+		&lt;rdf:li&gt;text/plain&lt;/rdf:li&gt;
+		&lt;rdf:li&gt;text/vnd.sun.j2me.app-descriptor&lt;/rdf:li&gt;
+		&lt;rdf:li&gt;text/vnd.wap.wml&lt;/rdf:li&gt;
+		&lt;rdf:li&gt;text/x-iMelody&lt;/rdf:li&gt;
+		&lt;rdf:li&gt;text/x-vCalendar&lt;/rdf:li&gt;
+		&lt;rdf:li&gt;text/x-vCard&lt;/rdf:li&gt;
+		&lt;rdf:li&gt;text/x-vMel&lt;/rdf:li&gt;
+
+		&lt;rdf:li&gt;video/3gpp&lt;/rdf:li&gt;  
+		&lt;rdf:li&gt;video/mp4&lt;/rdf:li&gt;  
+		&lt;rdf:li&gt;video/x-pv-pvx&lt;/rdf:li&gt;  
+          &lt;/rdf:Bag&gt;
+        &lt;/prf:CcppAccept&gt;
+        &lt;prf:CcppAccept-Charset&gt;
+          &lt;rdf:Bag&gt;
+			&lt;rdf:li&gt;US-ASCII&lt;/rdf:li&gt; 
+			&lt;rdf:li&gt;ISO-8859-1&lt;/rdf:li&gt; 
+			&lt;rdf:li&gt;ISO-8859-2&lt;/rdf:li&gt; 
+			&lt;rdf:li&gt;ISO-8859-4&lt;/rdf:li&gt; 
+			&lt;rdf:li&gt;ISO-8859-5&lt;/rdf:li&gt; 
+			&lt;rdf:li&gt;ISO-8859-7&lt;/rdf:li&gt; 
+			&lt;rdf:li&gt;ISO-8859-9&lt;/rdf:li&gt; 
+			&lt;rdf:li&gt;WINDOWS-1250&lt;/rdf:li&gt;
+			&lt;rdf:li&gt;WINDOWS-1252&lt;/rdf:li&gt;
+			&lt;rdf:li&gt;WINDOWS-1253&lt;/rdf:li&gt;
+			&lt;rdf:li&gt;WINDOWS-1254&lt;/rdf:li&gt;
+			&lt;rdf:li&gt;KOI8-R&lt;/rdf:li&gt;
+			&lt;rdf:li&gt;csKOI8R&lt;/rdf:li&gt; 
+			&lt;rdf:li&gt;UTF-8&lt;/rdf:li&gt; 
+			&lt;rdf:li&gt;ISO-10646-UCS-2&lt;/rdf:li&gt; 
+			&lt;rdf:li&gt;UTF-16&lt;/rdf:li&gt; 
+			&lt;rdf:li&gt;UTF-16be&lt;/rdf:li&gt; 
+			&lt;rdf:li&gt;UTF-16le&lt;/rdf:li&gt; 
+			&lt;rdf:li&gt;UTF-7&lt;/rdf:li&gt; 
+          &lt;/rdf:Bag&gt;
+        &lt;/prf:CcppAccept-Charset&gt;
+        &lt;prf:CcppAccept-Encoding&gt;
+          &lt;rdf:Bag&gt;
+            &lt;rdf:li&gt;base64&lt;/rdf:li&gt;
+          &lt;/rdf:Bag&gt;
+        &lt;/prf:CcppAccept-Encoding&gt;
+		&lt;prf:DownloadableSoftwareSupport&gt;
+			&lt;rdf:Bag&gt;
+				&lt;rdf:li&gt;application/java-archive&lt;/rdf:li&gt; 
+				&lt;rdf:li&gt;application/java&lt;/rdf:li&gt; 
+				&lt;rdf:li&gt;application/x-java-archive&lt;/rdf:li&gt; 
+			&lt;/rdf:Bag&gt;
+		&lt;/prf:DownloadableSoftwareSupport&gt;
+        &lt;prf:JavaEnabled&gt;Yes&lt;/prf:JavaEnabled&gt;
+        &lt;prf:JavaPlatform&gt;
+          &lt;rdf:Bag&gt;
+            &lt;rdf:li&gt;MIDP&lt;/rdf:li&gt;
+            &lt;rdf:li&gt;CLDC&lt;/rdf:li&gt;
+          &lt;/rdf:Bag&gt;
+        &lt;/prf:JavaPlatform&gt;
+        &lt;prf:JavaPackage&gt;
+          &lt;rdf:Bag&gt;
+            &lt;rdf:li&gt;jsr-135&lt;/rdf:li&gt;
+          &lt;/rdf:Bag&gt;
+        &lt;/prf:JavaPackage&gt;
+      &lt;/rdf:Description&gt;
+    &lt;/prf:component&gt;
+
+    &lt;prf:component&gt;
+      &lt;rdf:Description rdf:ID=&quot;NetworkCharacteristics&quot;&gt;
+      &lt;rdf:type rdf:resource=&quot;http://www.wapforum.org/profiles/UAPROF/ccppschema-20010330#NetworkCharacteristics&quot;/&gt;
+        &lt;prf:SecuritySupport&gt;
+          &lt;rdf:Bag&gt;
+            &lt;rdf:li&gt;WTLS-1&lt;/rdf:li&gt;
+            &lt;rdf:li&gt;WTLS-2&lt;/rdf:li&gt;
+            &lt;rdf:li&gt;WTLS-3&lt;/rdf:li&gt;
+            &lt;rdf:li&gt;signText&lt;/rdf:li&gt;
+          &lt;/rdf:Bag&gt;
+        &lt;/prf:SecuritySupport&gt;
+        &lt;prf:SupportedBearers&gt;
+          &lt;rdf:Bag&gt;
+            &lt;rdf:li&gt;GSM_GPRS_IPV4&lt;/rdf:li&gt;
+            &lt;rdf:li&gt;GSM_CSD_IPV4&lt;/rdf:li&gt;
+          &lt;/rdf:Bag&gt;
+        &lt;/prf:SupportedBearers&gt;
+      &lt;/rdf:Description&gt;
+    &lt;/prf:component&gt;
+
+    &lt;prf:component&gt;
+      &lt;rdf:Description rdf:ID=&quot;BrowserUA&quot;&gt;
+      &lt;rdf:type rdf:resource=&quot;http://www.wapforum.org/profiles/UAPROF/ccppschema-20010330#BrowserUA&quot;/&gt;
+        &lt;prf:BrowserName&gt;Sony Ericsson&lt;/prf:BrowserName&gt;
+        &lt;prf:FramesCapable&gt;No&lt;/prf:FramesCapable&gt;
+        &lt;prf:TablesCapable&gt;Yes&lt;/prf:TablesCapable&gt;
+      &lt;/rdf:Description&gt;
+    &lt;/prf:component&gt;
+
+    &lt;prf:component&gt;
+      &lt;rdf:Description rdf:ID=&quot;WapCharacteristics&quot;&gt;
+      &lt;rdf:type rdf:resource=&quot;http://www.wapforum.org/profiles/UAPROF/ccppschema-20010330#WapCharacteristics&quot;/&gt;
+        &lt;prf:WapDeviceClass&gt;C&lt;/prf:WapDeviceClass&gt;
+        &lt;prf:WapVersion&gt;2.0&lt;/prf:WapVersion&gt;
+        &lt;prf:WmlDeckSize&gt;10000&lt;/prf:WmlDeckSize&gt;
+        &lt;prf:WmlScriptLibraries&gt;
+          &lt;rdf:Bag&gt;
+            &lt;rdf:li&gt;Lang&lt;/rdf:li&gt;
+            &lt;rdf:li&gt;Float&lt;/rdf:li&gt;
+            &lt;rdf:li&gt;String&lt;/rdf:li&gt;
+            &lt;rdf:li&gt;URL&lt;/rdf:li&gt;
+            &lt;rdf:li&gt;WMLBrowser&lt;/rdf:li&gt;
+            &lt;rdf:li&gt;Dialogs&lt;/rdf:li&gt;
+          &lt;/rdf:Bag&gt;
+        &lt;/prf:WmlScriptLibraries&gt;
+        &lt;prf:WmlScriptVersion&gt;
+          &lt;rdf:Bag&gt;
+            &lt;rdf:li&gt;1.2&lt;/rdf:li&gt;
+            &lt;rdf:li&gt;1.1&lt;/rdf:li&gt;
+          &lt;/rdf:Bag&gt;
+        &lt;/prf:WmlScriptVersion&gt;
+        &lt;prf:WmlVersion&gt;
+          &lt;rdf:Bag&gt;
+            &lt;rdf:li&gt;1.3&lt;/rdf:li&gt;
+			&lt;rdf:li&gt;1.2&lt;/rdf:li&gt;
+            &lt;rdf:li&gt;1.1&lt;/rdf:li&gt;
+          &lt;/rdf:Bag&gt;
+        &lt;/prf:WmlVersion&gt;
+        &lt;prf:WtaiLibraries&gt;
+          &lt;rdf:Bag&gt;
+			&lt;rdf:li&gt;WTA.Public.makeCall&lt;/rdf:li&gt; 
+			&lt;rdf:li&gt;WTA.Public.sendDTMF&lt;/rdf:li&gt; 
+			&lt;rdf:li&gt;WTA.Public.addPBEntry&lt;/rdf:li&gt; 
+          &lt;/rdf:Bag&gt;
+        &lt;/prf:WtaiLibraries&gt;
+        &lt;prf:DrmClass&gt;
+          &lt;rdf:Bag&gt;
+            &lt;rdf:li&gt;ForwardLock&lt;/rdf:li&gt;
+          &lt;/rdf:Bag&gt;
+        &lt;/prf:DrmClass&gt;
+        &lt;prf:OmaDownload&gt;No&lt;/prf:OmaDownload&gt;
+      &lt;/rdf:Description&gt;
+    &lt;/prf:component&gt;
+
+    &lt;prf:component&gt;
+      &lt;rdf:Description rdf:ID=&quot;PushCharacteristics&quot;&gt;
+      &lt;rdf:type rdf:resource=&quot;http://www.wapforum.org/profiles/UAPROF/ccppschema-20010330#PushCharacteristics&quot;/&gt;
+        &lt;prf:WapPushMsgSize&gt;3000&lt;/prf:WapPushMsgSize&gt;
+        &lt;prf:Push-MaxPushReq&gt;1&lt;/prf:Push-MaxPushReq&gt;
+      &lt;/rdf:Description&gt;
+    &lt;/prf:component&gt;
+
+    &lt;prf:component&gt;
+      &lt;rdf:Description rdf:ID=&quot;MMSCharacteristics&quot;&gt;
+        &lt;prf:MmsMaxMessageSize&gt;300000&lt;/prf:MmsMaxMessageSize&gt; 
+		&lt;prf:MmsMaxImageResolution&gt;640x480&lt;/prf:MmsMaxImageResolution&gt;
+        &lt;prf:MmsCcppAccept&gt;
+          &lt;rdf:Bag&gt;
+		    &lt;rdf:li&gt;image/jpeg&lt;/rdf:li&gt; 
+			&lt;rdf:li&gt;image/jpg&lt;/rdf:li&gt; 
+			&lt;rdf:li&gt;image/gif&lt;/rdf:li&gt; 
+			&lt;rdf:li&gt;image/png&lt;/rdf:li&gt; 
+			&lt;rdf:li&gt;image/bmp&lt;/rdf:li&gt; 
+			&lt;rdf:li&gt;image/x-bmp&lt;/rdf:li&gt; 
+			&lt;rdf:li&gt;image/vnd.wap.wbmp&lt;/rdf:li&gt; 
+			&lt;rdf:li&gt;application/smil&lt;/rdf:li&gt; 
+			&lt;rdf:li&gt;application/x-sms&lt;/rdf:li&gt; 
+			&lt;rdf:li&gt;application/java-archive&lt;/rdf:li&gt; 
+			&lt;rdf:li&gt;application/vnd.3gpp.sms&lt;/rdf:li&gt; 
+			&lt;rdf:li&gt;application/vnd.sem.mms.protected&lt;/rdf:li&gt; 
+			&lt;rdf:li&gt;application/vnd.oma.drm.message&lt;/rdf:li&gt; 
+			&lt;rdf:li&gt;application/vnd.wap.mms-message&lt;/rdf:li&gt; 
+			&lt;rdf:li&gt;application/vnd.wap.multipart.mixed&lt;/rdf:li&gt; 
+			&lt;rdf:li&gt;application/vnd.wap.multipart.alternative&lt;/rdf:li&gt; 
+			&lt;rdf:li&gt;application/vnd.wap.multipart.related&lt;/rdf:li&gt; 
+			&lt;rdf:li&gt;application/vnd.sonyericsson.mms-template&lt;/rdf:li&gt; 
+			&lt;rdf:li&gt;audio/amr&lt;/rdf:li&gt; 
+			&lt;rdf:li&gt;audio/wav&lt;/rdf:li&gt; 
+			&lt;rdf:li&gt;audio/mid&lt;/rdf:li&gt; 
+			&lt;rdf:li&gt;audio/x-wav&lt;/rdf:li&gt; 
+			&lt;rdf:li&gt;audio/x-mid&lt;/rdf:li&gt; 
+			&lt;rdf:li&gt;audio/midi&lt;/rdf:li&gt; 
+			&lt;rdf:li&gt;audio/x-midi&lt;/rdf:li&gt; 
+			&lt;rdf:li&gt;audio/basic&lt;/rdf:li&gt; 
+			&lt;rdf:li&gt;audio/rmf&lt;/rdf:li&gt; 
+			&lt;rdf:li&gt;audio/x-rmf&lt;/rdf:li&gt; 
+			&lt;rdf:li&gt;audio/iMelody&lt;/rdf:li&gt; 
+			&lt;rdf:li&gt;text/plain&lt;/rdf:li&gt; 
+			&lt;rdf:li&gt;text/x-iMelody&lt;/rdf:li&gt; 
+			&lt;rdf:li&gt;text/x-vCard&lt;/rdf:li&gt; 
+			&lt;rdf:li&gt;text/x-vCalendar&lt;/rdf:li&gt; 
+			&lt;rdf:li&gt;text/x-vNote&lt;/rdf:li&gt; 
+			&lt;rdf:li&gt;video/mp4&lt;/rdf:li&gt;  
+			&lt;rdf:li&gt;video/x-pv-pvx&lt;/rdf:li&gt;  
+			&lt;rdf:li&gt;application/sdp&lt;/rdf:li&gt;  
+			&lt;rdf:li&gt;video/3gpp&lt;/rdf:li&gt;  
+			&lt;rdf:li&gt;audio/3gpp&lt;/rdf:li&gt;  
+          &lt;/rdf:Bag&gt;
+        &lt;/prf:MmsCcppAccept&gt;
+        &lt;prf:MmsCcppAcceptCharset&gt;
+          &lt;rdf:Bag&gt;
+		    &lt;rdf:li&gt;US-ASCII&lt;/rdf:li&gt; 
+			&lt;rdf:li&gt;ISO-8859-1&lt;/rdf:li&gt; 
+			&lt;rdf:li&gt;ISO-8859-2&lt;/rdf:li&gt; 
+			&lt;rdf:li&gt;ISO-8859-3&lt;/rdf:li&gt; 
+			&lt;rdf:li&gt;ISO-8859-4&lt;/rdf:li&gt; 
+			&lt;rdf:li&gt;ISO-8859-5&lt;/rdf:li&gt; 
+			&lt;rdf:li&gt;ISO-8859-6&lt;/rdf:li&gt; 
+			&lt;rdf:li&gt;ISO-8859-7&lt;/rdf:li&gt; 
+			&lt;rdf:li&gt;ISO-8859-8&lt;/rdf:li&gt; 
+			&lt;rdf:li&gt;ISO-8859-9&lt;/rdf:li&gt; 
+			&lt;rdf:li&gt;UTF-8&lt;/rdf:li&gt; 
+			&lt;rdf:li&gt;UTF-16&lt;/rdf:li&gt; 
+			&lt;rdf:li&gt;ISO-10646-UCS-2&lt;/rdf:li&gt; 
+          &lt;/rdf:Bag&gt;
+        &lt;/prf:MmsCcppAcceptCharset&gt;
+        &lt;prf:MmsVersion&gt;1.0&lt;/prf:MmsVersion&gt;
+      &lt;/rdf:Description&gt;
+    &lt;/prf:component&gt;
+  &lt;/rdf:Description&gt;
+&lt;/rdf:RDF&gt;</pre>
+</body>
+</html>

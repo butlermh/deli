@@ -1,0 +1,147 @@
+<html>
+<head><title>Validator report for http://wap.sonyericsson.com/UAprof/T100R101.xml</title></head>
+<body>
+<h1>Validator output for http://wap.sonyericsson.com/UAprof/T100R101.xml</h1>
+<pre>
+RDF parser warning:{W102} unqualified use of rdf:ID is deprecated.
+RDF parser warning:{W102} unqualified use of rdf:ID is deprecated.
+RDF parser warning:{W102} unqualified use of rdf:ID is deprecated.
+RDF parser warning:{W102} unqualified use of rdf:ID is deprecated.
+RDF parser warning:{W102} unqualified use of rdf:ID is deprecated.
+RDF parser warning:{W102} unqualified use of rdf:ID is deprecated.
+WARNING: The profile uses a commonly used namespace alias
+Aliased namespace is:    http://www.wapforum.org/profiles/UAPROF/ccppschema-20010330#
+Real namespace is: http://www.wapforum.org/UAPROF/ccppschema-20010330#
+WARNING: Profile omits type information
+Component is null for: http://www.wapforum.org/profiles/UAPROF/ccppschema-20010330#AcceptDownloadableSoftware
+Component is null for: http://www.wapforum.org/profiles/UAPROF/ccppschema-20010330#WtaiLibraries
+Component is null for: http://www.wapforum.org/profiles/UAPROF/ccppschema-20010330#TablesCapable
+Component is null for: http://www.wapforum.org/profiles/UAPROF/ccppschema-20010330#SoundOutputCapable
+Warning [A: http://www.wapforum.org/profiles/UAPROF/ccppschema-20010330#PixelsAspectRatio] Attribute not defined in vocabulary
+Component is null for: http://www.wapforum.org/profiles/UAPROF/ccppschema-20010330#SupportedBearers
+Error [C: http://www.wapforum.org/UAPROF/ccppschema-20010330#NetworkCharacteristics, A: http://www.wapforum.org/profiles/UAPROF/ccppschema-20010330#SecuritySupport] is not a container.
+PROFILE IS NOT VALID
+</pre>
+<p><a href="mailto:markhenrybutler@gmail.com">Problems with this report?</a></p><h1>Original profile</h1>
+<pre>
+&lt;?xml version=&quot;1.0&quot;?&gt;
+&lt;RDF xmlns=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot; xmlns:rdf=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot; xmlns:prf=&quot;http://www.wapforum.org/profiles/UAPROF/ccppschema-20010330#&quot;&gt;
+  &lt;rdf:Description ID=&quot;Profile&quot;&gt;
+    &lt;prf:component&gt;
+      &lt;rdf:Description ID=&quot;HardwarePlatform&quot;&gt;
+        &lt;prf:ScreenSize&gt;101x67&lt;/prf:ScreenSize&gt;
+        &lt;prf:Model&gt;T100R101&lt;/prf:Model&gt;
+        &lt;prf:InputCharSet&gt;
+          &lt;rdf:Bag&gt;
+            &lt;rdf:li&gt;ISO-8859-1&lt;/rdf:li&gt;
+            &lt;rdf:li&gt;US-ASCII&lt;/rdf:li&gt;
+            &lt;rdf:li&gt;UTF-8&lt;/rdf:li&gt;
+            &lt;rdf:li&gt;ISO-10646-UCS-2&lt;/rdf:li&gt;
+          &lt;/rdf:Bag&gt;
+        &lt;/prf:InputCharSet&gt;
+        &lt;prf:ScreenSizeChar&gt;15x6&lt;/prf:ScreenSizeChar&gt;
+        &lt;prf:BitsPerPixel&gt;2&lt;/prf:BitsPerPixel&gt;
+        &lt;prf:ColorCapable&gt;No&lt;/prf:ColorCapable&gt;
+        &lt;prf:TextInputCapable&gt;Yes&lt;/prf:TextInputCapable&gt;
+        &lt;prf:ImageCapable&gt;Yes&lt;/prf:ImageCapable&gt;
+        &lt;prf:Keyboard&gt;PhoneKeypad&lt;/prf:Keyboard&gt;
+        &lt;prf:NumberOfSoftKeys&gt;0&lt;/prf:NumberOfSoftKeys&gt;
+        &lt;prf:Vendor&gt;Sony Ericsson Mobile Communications&lt;/prf:Vendor&gt;
+        &lt;prf:OutputCharSet&gt;
+          &lt;rdf:Bag&gt;
+            &lt;rdf:li&gt;ISO-8859-1&lt;/rdf:li&gt;
+            &lt;rdf:li&gt;US-ASCII&lt;/rdf:li&gt;
+            &lt;rdf:li&gt;UTF-8&lt;/rdf:li&gt;
+            &lt;rdf:li&gt;ISO-10646-UCS-2&lt;/rdf:li&gt;
+          &lt;/rdf:Bag&gt;
+        &lt;/prf:OutputCharSet&gt;
+        &lt;prf:SoundOutputCapable&gt;Yes&lt;/prf:SoundOutputCapable&gt;
+        &lt;prf:StandardFontProportional&gt;Yes&lt;/prf:StandardFontProportional&gt;
+        &lt;prf:PixelsAspectRatio&gt;1x1&lt;/prf:PixelsAspectRatio&gt;
+      &lt;/rdf:Description&gt;
+    &lt;/prf:component&gt;
+    &lt;prf:component&gt;
+      &lt;rdf:Description ID=&quot;SoftwarePlatform&quot;&gt;
+        &lt;prf:AcceptDownloadableSoftware&gt;No&lt;/prf:AcceptDownloadableSoftware&gt;
+      &lt;/rdf:Description&gt;
+    &lt;/prf:component&gt;
+    &lt;prf:component&gt;
+      &lt;rdf:Description ID=&quot;NetworkCharacteristics&quot;&gt;
+        &lt;prf:SecuritySupport&gt;WTLS class 1/2&lt;/prf:SecuritySupport&gt;
+        &lt;prf:SupportedBearers&gt;
+          &lt;rdf:Bag&gt;
+            &lt;rdf:li&gt;CSD&lt;/rdf:li&gt;
+          &lt;/rdf:Bag&gt;
+        &lt;/prf:SupportedBearers&gt;
+      &lt;/rdf:Description&gt;
+    &lt;/prf:component&gt;
+    &lt;prf:component&gt;
+      &lt;rdf:Description ID=&quot;BrowserUA&quot;&gt;
+        &lt;prf:BrowserName&gt;Sony Ericsson&lt;/prf:BrowserName&gt;
+        &lt;prf:CcppAccept&gt;
+          &lt;rdf:Bag&gt;
+            &lt;rdf:li&gt;application/vnd.wap.wmlc&lt;/rdf:li&gt;
+            &lt;rdf:li&gt;application/vnd.wap.wbxml&lt;/rdf:li&gt;
+            &lt;rdf:li&gt;application/vnd.wap.wmlscriptc&lt;/rdf:li&gt;
+            &lt;rdf:li&gt;application/vnd.wap.multipart.mixed&lt;/rdf:li&gt;
+            &lt;rdf:li&gt;text/x-vMel&lt;/rdf:li&gt;
+            &lt;rdf:li&gt;text/x-eMelody&lt;/rdf:li&gt;
+            &lt;rdf:li&gt;image/vnd.wap.wbmp&lt;/rdf:li&gt;
+            &lt;rdf:li&gt;text/x-iMelody&lt;/rdf:li&gt;
+            &lt;rdf:li&gt;image/gif&lt;/rdf:li&gt;
+          &lt;/rdf:Bag&gt;
+        &lt;/prf:CcppAccept&gt;
+        &lt;prf:CcppAccept-Charset&gt;
+          &lt;rdf:Bag&gt;
+            &lt;rdf:li&gt;US-ASCII&lt;/rdf:li&gt;
+            &lt;rdf:li&gt;ISO-8859-1&lt;/rdf:li&gt;
+            &lt;rdf:li&gt;UTF-8&lt;/rdf:li&gt;
+            &lt;rdf:li&gt;ISO-10646-UCS-2&lt;/rdf:li&gt;
+          &lt;/rdf:Bag&gt;
+        &lt;/prf:CcppAccept-Charset&gt;
+        &lt;prf:CcppAccept-Encoding&gt;
+          &lt;rdf:Bag&gt;
+            &lt;rdf:li&gt;base64&lt;/rdf:li&gt;
+          &lt;/rdf:Bag&gt;
+        &lt;/prf:CcppAccept-Encoding&gt;
+        &lt;prf:FramesCapable&gt;No&lt;/prf:FramesCapable&gt;
+        &lt;prf:TablesCapable&gt;Yes&lt;/prf:TablesCapable&gt;
+      &lt;/rdf:Description&gt;
+    &lt;/prf:component&gt;
+    &lt;prf:component&gt;
+      &lt;rdf:Description ID=&quot;WapCharacteristics&quot;&gt;
+        &lt;prf:WapDeviceClass&gt;C&lt;/prf:WapDeviceClass&gt;
+        &lt;prf:WapPushMsgSize&gt;1500&lt;/prf:WapPushMsgSize&gt;
+        &lt;prf:WapVersion&gt;1.2.1/June 2000&lt;/prf:WapVersion&gt;
+        &lt;prf:WmlVersion&gt;
+          &lt;rdf:Bag&gt;
+            &lt;rdf:li&gt;1.2.1/June 2000&lt;/rdf:li&gt;
+            &lt;rdf:li&gt;1.1&lt;/rdf:li&gt;
+          &lt;/rdf:Bag&gt;
+        &lt;/prf:WmlVersion&gt;
+        &lt;prf:WmlDeckSize&gt;2000&lt;/prf:WmlDeckSize&gt;
+        &lt;prf:WmlScriptVersion&gt;
+          &lt;rdf:Bag&gt;
+            &lt;rdf:li&gt;1.2.1/June 2000&lt;/rdf:li&gt;
+            &lt;rdf:li&gt;1.1&lt;/rdf:li&gt;
+          &lt;/rdf:Bag&gt;
+        &lt;/prf:WmlScriptVersion&gt;
+        &lt;prf:WmlScriptLibraries&gt;
+          &lt;rdf:Bag&gt;
+            &lt;rdf:li&gt;Lang&lt;/rdf:li&gt;
+            &lt;rdf:li&gt;String&lt;/rdf:li&gt;
+            &lt;rdf:li&gt;URL&lt;/rdf:li&gt;
+            &lt;rdf:li&gt;WMLBrowser&lt;/rdf:li&gt;
+            &lt;rdf:li&gt;Dialogs&lt;/rdf:li&gt;
+          &lt;/rdf:Bag&gt;
+        &lt;/prf:WmlScriptLibraries&gt;
+        &lt;prf:WtaiLibraries&gt;
+          &lt;rdf:Bag&gt;
+          &lt;/rdf:Bag&gt;
+        &lt;/prf:WtaiLibraries&gt;
+      &lt;/rdf:Description&gt;
+    &lt;/prf:component&gt;
+  &lt;/rdf:Description&gt;
+&lt;/RDF&gt;</pre>
+</body>
+</html>

@@ -1,0 +1,518 @@
+<html>
+<head><title>Validator report for http://wap.samsungmobile.com/uaprof/SGH-i600.xml</title></head>
+<body>
+<h1>Validator output for http://wap.samsungmobile.com/uaprof/SGH-i600.xml</h1>
+<pre>
+Error: http://www.openmobilealliance.org/tech/profiles/UAPROF/ccppschema-20021212#DrmPermissions there is a problem with components
+Error: http://www.openmobilealliance.org/tech/profiles/UAPROF/ccppschema-20021212#DrmMediaTypes there is a problem with components
+Error: http://www.openmobilealliance.org/tech/profiles/UAPROF/ccppschema-20021212#DrmVersion there is a problem with components
+PROFILE IS NOT VALID
+</pre>
+<p><a href="mailto:markhenrybutler@gmail.com">Problems with this report?</a></p><h1>Original profile</h1>
+<pre>
+&lt;?xml version=&quot;1.0&quot; ?&gt;
+ &lt;!-- 
+*********************************************************************
+*  SAMSUNG GSM/GPRS/3G Handset UA Prof
+*
+*  Version:  1.01
+*  Created:  NOV 14, 2006
+*  Author :  Jung, Yeojin(yeojin2005.jung@samsung.com)
+*  Organization:  R&amp;D Group 10 Software Lab.2 SEC
+*
+*  Copyright 2006 SAMSUNG
+*
+*  Revision History
+*     1.01  Initial Release	Jung,Yeojin 
+*   
+*********************************************************************
+  --&gt; 
+ &lt;rdf:RDF xmlns:rdf=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot; xmlns:prf=&quot;http://www.openmobilealliance.org/tech/profiles/UAPROF/ccppschema-20021212#&quot; xmlns:mms=&quot;http://www.wapforum.org/profiles/MMS/ccppschema-20010111#&quot;&gt;
+ &lt;rdf:Description rdf:ID=&quot;MyDeviceProfile&quot;&gt;
+ &lt;!-- ********************** Hardware Platform Description ***************************************  --&gt; 
+ &lt;prf:component&gt;
+ &lt;rdf:Description rdf:ID=&quot;HardwarePlatform&quot;&gt;
+  &lt;rdf:type rdf:resource=&quot;http://www.openmobilealliance.org/tech/profiles/UAPROF/ccppschema-20021212#HardwarePlatform&quot; /&gt; 
+  &lt;prf:Vendor&gt;SAMSUNG&lt;/prf:Vendor&gt; 
+  &lt;prf:Model&gt;SGH-i600&lt;/prf:Model&gt; 
+  &lt;prf:CPU&gt;OMAP1710&lt;/prf:CPU&gt; 
+  &lt;prf:ScreenSize&gt;320x240&lt;/prf:ScreenSize&gt; 
+  &lt;prf:ColorCapable&gt;Yes&lt;/prf:ColorCapable&gt; 
+  &lt;prf:BitsPerPixel&gt;16&lt;/prf:BitsPerPixel&gt; 
+  &lt;prf:PixelAspectRatio&gt;1x1&lt;/prf:PixelAspectRatio&gt; 
+  &lt;prf:ImageCapable&gt;Yes&lt;/prf:ImageCapable&gt; 
+  &lt;prf:ScreenSizeChar&gt;33x12&lt;/prf:ScreenSizeChar&gt; 
+  &lt;prf:StandardFontProportional&gt;Yes&lt;/prf:StandardFontProportional&gt; 
+ &lt;prf:OutputCharSet&gt;
+	 &lt;rdf:Bag&gt;
+		  &lt;rdf:li&gt;US-ASCII&lt;/rdf:li&gt; 
+		  &lt;rdf:li&gt;UTF-8&lt;/rdf:li&gt; 
+		  &lt;rdf:li&gt;UTF-16&lt;/rdf:li&gt; 
+		  &lt;rdf:li&gt;ISO-10646-UCS-2&lt;/rdf:li&gt; 
+	  &lt;/rdf:Bag&gt;
+  &lt;/prf:OutputCharSet&gt;
+ &lt;prf:InputCharSet&gt;
+	 &lt;rdf:Bag&gt;
+		  &lt;rdf:li&gt;US-ASCII&lt;/rdf:li&gt; 
+		  &lt;rdf:li&gt;UTF-8&lt;/rdf:li&gt; 
+		  &lt;rdf:li&gt;UTF-16&lt;/rdf:li&gt; 
+		  &lt;rdf:li&gt;ISO-10646-UCS-2&lt;/rdf:li&gt; 
+	  &lt;/rdf:Bag&gt;
+  &lt;/prf:InputCharSet&gt;
+  &lt;prf:TextInputCapable&gt;Yes&lt;/prf:TextInputCapable&gt; 
+  &lt;prf:Keyboard&gt;Qwerty&lt;/prf:Keyboard&gt; 
+  &lt;prf:NumberOfSoftKeys&gt;2&lt;/prf:NumberOfSoftKeys&gt; 
+  &lt;prf:SoundOutputCapable&gt;Yes&lt;/prf:SoundOutputCapable&gt; 
+  &lt;prf:VoiceInputCapable&gt;Yes&lt;/prf:VoiceInputCapable&gt; 
+	 &lt;prf:BluetoothProfile&gt;
+	 	&lt;rdf:Bag&gt;
+		  &lt;rdf:li&gt;Handsfree Profile&lt;/rdf:li&gt; 
+			 &lt;!--      &lt;rdf:li&gt;Dial up Networking&lt;/rdf:li&gt; 			  --&gt; 
+			  &lt;rdf:li&gt;Object Push Profile&lt;/rdf:li&gt; 
+			  &lt;rdf:li&gt;File Transfer Profile&lt;/rdf:li&gt; 
+			  &lt;rdf:li&gt;General Access Profile&lt;/rdf:li&gt; 
+			  &lt;rdf:li&gt;Service Discovery Profile&lt;/rdf:li&gt; 
+			  &lt;rdf:li&gt;Serial Port Profile&lt;/rdf:li&gt; 
+			  &lt;rdf:li&gt;General Object Exchange Profile&lt;/rdf:li&gt; 
+			  &lt;rdf:li&gt;Human Input Device Profile&lt;/rdf:li&gt; 
+			  &lt;rdf:li&gt;Advanced Audio Distribution Profile&lt;/rdf:li&gt; 
+			  &lt;rdf:li&gt;Basic Printing Profile&lt;/rdf:li&gt; 
+			  &lt;rdf:li&gt;Audio Video Remote Control Profile&lt;/rdf:li&gt; 
+			  &lt;rdf:li&gt;Handset Profile&lt;/rdf:li&gt; 
+		  &lt;/rdf:Bag&gt;
+	  &lt;/prf:BluetoothProfile&gt;
+  &lt;/rdf:Description&gt;
+  &lt;/prf:component&gt;
+ &lt;!-- ********************** Software Platform Description ***************************************  --&gt; 
+ &lt;prf:component&gt;
+ &lt;rdf:Description rdf:ID=&quot;SoftwarePlatform&quot;&gt;
+  &lt;rdf:type rdf:resource=&quot;http://www.openmobilealliance.org/tech/profiles/UAPROF/ccppschema-20021212#SoftwarePlatform&quot; /&gt; 
+  &lt;prf:AcceptDownloadableSoftware&gt;Yes&lt;/prf:AcceptDownloadableSoftware&gt; 
+ 
+
+ &lt;!--  ********* CCPP accept **********  --&gt; 
+ &lt;prf:CcppAccept&gt;
+	 &lt;rdf:Bag&gt;
+	 &lt;!--  Markup languages   --&gt; 
+	  &lt;rdf:li&gt;text/vnd.wap.wml&lt;/rdf:li&gt; 
+	  &lt;rdf:li&gt;text/vnd.wap.wmlscript&lt;/rdf:li&gt; 
+	  &lt;rdf:li&gt;application/vnd.wap.wmlc&lt;/rdf:li&gt;  
+	  &lt;rdf:li&gt;application/vnd.wap.wbxml&lt;/rdf:li&gt; 
+	  &lt;rdf:li&gt;application/vnd.wap.wmlscriptc&lt;/rdf:li&gt;
+	  &lt;rdf:li&gt;application/vnd.wap.multipart.mixed&lt;/rdf:li&gt; 
+	  &lt;rdf:li&gt;application/vnd.wap.xhtml+xml&lt;/rdf:li&gt; 
+	  &lt;rdf:li&gt;application/xhtml+xml&lt;/rdf:li&gt; 
+	  &lt;rdf:li&gt;application/vnd.wap.sic&lt;/rdf:li&gt; 
+	  &lt;rdf:li&gt;application/vnd.wap.slc&lt;/rdf:li&gt; 
+	  &lt;rdf:li&gt;text/x-vCard&lt;/rdf:li&gt; 
+	  &lt;rdf:li&gt;text/x-vCalendar&lt;/rdf:li&gt; 
+	  &lt;rdf:li&gt;text/plain&lt;/rdf:li&gt; 
+	  &lt;rdf:li&gt;text/css&lt;/rdf:li&gt; 
+	  &lt;rdf:li&gt;text/html&lt;/rdf:li&gt; 
+	 &lt;!--  DRM   --&gt; 
+	  &lt;rdf:li&gt;application/vnd.oma.drm.message&lt;/rdf:li&gt; 
+	  &lt;rdf:li&gt;application/vnd.oma.drm.content&lt;/rdf:li&gt;
+	  &lt;rdf:li&gt;application/vnd.oma.drm.rights+xml&lt;/rdf:li&gt;
+	  &lt;rdf:li&gt;application/vnd.oma.drm.rights+wbxml&lt;/rdf:li&gt;
+	  &lt;rdf:li&gt;application/vnd.oma.dd+xml&lt;/rdf:li&gt; 
+	 &lt;!--  Certificates 
+	  --&gt; 
+	 &lt;!-- 
+	         &lt;rdf:li&gt;application/vnd.wap.hashed-certificate&lt;/rdf:li&gt; 
+	         &lt;rdf:li&gt;application/vnd.wap.signed-certificate&lt;/rdf:li&gt; 
+	         &lt;rdf:li&gt;application/vnd.wap.cert-response&lt;/rdf:li&gt;
+	
+	
+	  --&gt; 
+	  &lt;rdf:li&gt;application/java&lt;/rdf:li&gt; 
+	  &lt;rdf:li&gt;application/java-archive&lt;/rdf:li&gt; 
+	
+	 &lt;!--  Images  --&gt; 
+	  &lt;rdf:li&gt;image/gif&lt;/rdf:li&gt; 
+	  &lt;rdf:li&gt;image/jpeg&lt;/rdf:li&gt; 
+	  &lt;rdf:li&gt;image/png&lt;/rdf:li&gt; 
+	  &lt;rdf:li&gt;image/bmp&lt;/rdf:li&gt; 
+	  &lt;rdf:li&gt;image/jpg&lt;/rdf:li&gt; 
+	  &lt;rdf:li&gt;image/vnd.wap.wbmp&lt;/rdf:li&gt; 
+	 &lt;!--  Audio     --&gt; 
+	  &lt;rdf:li&gt;audio/mid&lt;/rdf:li&gt; 
+	  &lt;rdf:li&gt;audio/midi&lt;/rdf:li&gt; 
+	  &lt;rdf:li&gt;audio/wav&lt;/rdf:li&gt; 
+	  &lt;rdf:li&gt;audio/x-wav&lt;/rdf:li&gt; 
+	  &lt;rdf:li&gt;audio/sp-midi&lt;/rdf:li&gt; 
+	  &lt;rdf:li&gt;audio/amr&lt;/rdf:li&gt; 
+	  &lt;rdf:li&gt;application/vnd.smaf&lt;/rdf:li&gt; 
+	  &lt;rdf:li&gt;audio/mp3&lt;/rdf:li&gt; 
+	  &lt;rdf:li&gt;audio/mpeg&lt;/rdf:li&gt; 
+	  &lt;rdf:li&gt;audio/mpeg3&lt;/rdf:li&gt; 
+	  &lt;rdf:li&gt;audio/aac&lt;/rdf:li&gt; 
+	  &lt;rdf:li&gt;audio/3gpp&lt;/rdf:li&gt; 
+	  &lt;rdf:li&gt;audio/mp4&lt;/rdf:li&gt; 
+	  &lt;rdf:li&gt;audio/x-ms-wax&lt;/rdf:li&gt; 
+	  &lt;rdf:li&gt;audio/x-ms-wma&lt;/rdf:li&gt; 
+	  &lt;rdf:li&gt;audio/x-ms-wav&lt;/rdf:li&gt; 
+	 &lt;!--  Multimedia    --&gt; 
+	  &lt;rdf:li&gt;video/avi&lt;/rdf:li&gt; 
+	  &lt;rdf:li&gt;video/3gpp&lt;/rdf:li&gt; 
+	  &lt;rdf:li&gt;video/mp4&lt;/rdf:li&gt; 
+	  &lt;rdf:li&gt;application/sdp&lt;/rdf:li&gt; 
+	  &lt;rdf:li&gt;application/ram&lt;/rdf:li&gt; 
+	  &lt;rdf:li&gt;video/x-ms-asf&lt;/rdf:li&gt; 
+	  &lt;rdf:li&gt;video/x-ms-asx&lt;/rdf:li&gt; 
+	  &lt;rdf:li&gt;video/x-ms-wm&lt;/rdf:li&gt; 
+	  &lt;rdf:li&gt;video/x-ms-wmp&lt;/rdf:li&gt; 
+	  &lt;rdf:li&gt;video/x-ms-wmv&lt;/rdf:li&gt; 
+	  &lt;rdf:li&gt;video/x-ms-wmx&lt;/rdf:li&gt; 
+	  &lt;rdf:li&gt;video/x-ms-wvx&lt;/rdf:li&gt; 
+	 &lt;!--  OMA Provisioning   --&gt; 
+	  &lt;rdf:li&gt;application/vnd.wap.connectivity-wbxml&lt;/rdf:li&gt; 
+	  &lt;rdf:li&gt;text/vnd.wap.connectivity-xml&lt;/rdf:li&gt; 
+	  &lt;rdf:li&gt;application/vnd.syncml.dm+wbxml&lt;/rdf:li&gt; 
+	  &lt;/rdf:Bag&gt;
+  &lt;/prf:CcppAccept&gt;
+ 
+ &lt;prf:CcppAccept-Charset&gt;
+	 &lt;rdf:Bag&gt;
+		  &lt;rdf:li&gt;US-ASCII&lt;/rdf:li&gt; 
+		  &lt;rdf:li&gt;ISO-10646-UCS-2&lt;/rdf:li&gt; 
+		  &lt;rdf:li&gt;ISO-8859-1&lt;/rdf:li&gt; 
+		  &lt;rdf:li&gt;ISO-8859-2&lt;/rdf:li&gt; 
+		  &lt;rdf:li&gt;ISO-8859-4&lt;/rdf:li&gt; 
+		  &lt;rdf:li&gt;ISO-8859-5&lt;/rdf:li&gt; 
+		  &lt;rdf:li&gt;ISO-8859-7&lt;/rdf:li&gt; 
+		  &lt;rdf:li&gt;ISO-8859-9&lt;/rdf:li&gt; 
+		  &lt;rdf:li&gt;Windows-1250&lt;/rdf:li&gt; 
+		  &lt;rdf:li&gt;Windows-1252&lt;/rdf:li&gt; 
+		  &lt;rdf:li&gt;Windows-1253&lt;/rdf:li&gt; 
+		  &lt;rdf:li&gt;Windows-1254&lt;/rdf:li&gt; 
+		  &lt;rdf:li&gt;UTF-16&lt;/rdf:li&gt; 
+		  &lt;rdf:li&gt;UTF-16be&lt;/rdf:li&gt; 
+		  &lt;rdf:li&gt;UTF-16le&lt;/rdf:li&gt; 
+		  &lt;rdf:li&gt;UTF-7&lt;/rdf:li&gt; 
+		  &lt;rdf:li&gt;UTF-8&lt;/rdf:li&gt; 
+		  &lt;rdf:li&gt;KOI8-R&lt;/rdf:li&gt; 
+		  &lt;rdf:li&gt;csKOI8R&lt;/rdf:li&gt; 
+	  &lt;/rdf:Bag&gt;
+  &lt;/prf:CcppAccept-Charset&gt;
+  &lt;/rdf:Description&gt;
+  &lt;/prf:component&gt;
+ &lt;!-- ********************** Network Characteristics Description ***************************************  --&gt; 
+ &lt;prf:component&gt;
+ &lt;rdf:Description rdf:ID=&quot;NetworkCharacteristics&quot;&gt;
+  &lt;rdf:type rdf:resource=&quot;http://www.openmobilealliance.org/tech/profiles/UAPROF/ccppschema-20021212#NetworkCharacteristics&quot; /&gt; 
+ &lt;prf:CurrentBearerService&gt;3GPP_WCDMA_IPV4&lt;/prf:CurrentBearerService&gt;
+ &lt;prf:SecuritySupport&gt;
+	 &lt;rdf:Bag&gt;
+		  &lt;rdf:li&gt;WTLS-1&lt;/rdf:li&gt; 
+		  &lt;rdf:li&gt;WTLS-2&lt;/rdf:li&gt; 
+		  &lt;rdf:li&gt;SSL&lt;/rdf:li&gt; 
+	  &lt;/rdf:Bag&gt;
+  &lt;/prf:SecuritySupport&gt;
+ &lt;prf:SupportedBearers&gt;
+	 &lt;rdf:Bag&gt;
+		  &lt;rdf:li&gt;SMS&lt;/rdf:li&gt; 
+		  &lt;rdf:li&gt;GSM_GPRS_IPV4&lt;/rdf:li&gt; 
+		  &lt;rdf:li&gt;EGPRS&lt;/rdf:li&gt; 
+		  &lt;rdf:li&gt;3GPP_WCDMA_IPV4&lt;/rdf:li&gt; 
+		  &lt;rdf:li&gt;HSDPA&lt;/rdf:li&gt; 
+		  &lt;rdf:li&gt;Desktop Passthrough&lt;/rdf:li&gt; 
+	  &lt;/rdf:Bag&gt;
+  &lt;/prf:SupportedBearers&gt;
+  &lt;prf:SupportedBluetoothVersion&gt;2.0+EDR&lt;/prf:SupportedBluetoothVersion&gt; 
+  &lt;/rdf:Description&gt;
+  &lt;/prf:component&gt;
+ &lt;!-- ********************** Browser UA Description ***************************************  --&gt; 
+ &lt;prf:component&gt;
+ &lt;rdf:Description rdf:ID=&quot;BrowserUA&quot;&gt;
+  &lt;rdf:type rdf:resource=&quot;http://www.openmobilealliance.org/tech/profiles/UAPROF/ccppschema-20021212#BrowserUA&quot; /&gt; 
+	  &lt;prf:BrowserName&gt;Microsoft Mobile Internet Explorer&lt;/prf:BrowserName&gt; 
+	  &lt;prf:BrowserVersion&gt;6.8&lt;/prf:BrowserVersion&gt; 
+	  &lt;prf:FramesCapable&gt;No&lt;/prf:FramesCapable&gt; 
+	  &lt;prf:TablesCapable&gt;Yes&lt;/prf:TablesCapable&gt; 
+	  &lt;prf:HtmlVersion&gt;4.01&lt;/prf:HtmlVersion&gt; 
+	  &lt;prf:XhtmlVersion&gt;1.1&lt;/prf:XhtmlVersion&gt;
+	  &lt;prf:JavaAppletEnabled&gt;No&lt;/prf:JavaAppletEnabled&gt; 
+	  &lt;prf:JavaScriptEnabled&gt;Yes&lt;/prf:JavaScriptEnabled&gt;  
+ &lt;prf:DownloadableBrowserApps&gt;
+	 &lt;rdf:Bag&gt;
+	  &lt;rdf:li&gt;text/x-vCard&lt;/rdf:li&gt; 
+	  &lt;rdf:li&gt;text/x-vCalendar&lt;/rdf:li&gt; 
+	  &lt;rdf:li&gt;text/css&lt;/rdf:li&gt; 
+	  &lt;rdf:li&gt;text/html&lt;/rdf:li&gt; 
+	  &lt;rdf:li&gt;text/plain&lt;/rdf:li&gt; 
+	  &lt;rdf:li&gt;application/xhtml+xml&lt;/rdf:li&gt; 
+	  &lt;rdf:li&gt;application/vnd.wap.xhtml+xml&lt;/rdf:li&gt; 
+	  &lt;rdf:li&gt;text/vnd.wap.wml&lt;/rdf:li&gt; 
+	 &lt;!--  Certificates   --&gt; 
+	 &lt;!-- 
+	      &lt;rdf:li&gt;application/vnd.wap.hashed-certificate&lt;/rdf:li&gt; 
+	      &lt;rdf:li&gt;application/vnd.wap.signed-certificate&lt;/rdf:li&gt; 
+	      &lt;rdf:li&gt;application/vnd.wap.cert-response&lt;/rdf:li&gt;
+	
+	
+	  --&gt; 
+	 &lt;!--   Images    --&gt; 
+	  &lt;rdf:li&gt;image/gif&lt;/rdf:li&gt; 
+	  &lt;rdf:li&gt;image/jpeg&lt;/rdf:li&gt; 
+	  &lt;rdf:li&gt;image/bmp&lt;/rdf:li&gt; 
+	  &lt;rdf:li&gt;image/jpg&lt;/rdf:li&gt; 
+	  &lt;rdf:li&gt;image/png&lt;/rdf:li&gt; 
+	  &lt;rdf:li&gt;image/vnd.wap.wbmp&lt;/rdf:li&gt; 
+	 &lt;!--   Audio     --&gt; 
+	  &lt;rdf:li&gt;audio/mid&lt;/rdf:li&gt; 
+	  &lt;rdf:li&gt;audio/midi&lt;/rdf:li&gt; 
+	  &lt;rdf:li&gt;audio/sp-midi&lt;/rdf:li&gt; 
+	  &lt;rdf:li&gt;audio/x-wav&lt;/rdf:li&gt; 
+	  &lt;rdf:li&gt;application/vnd.smaf&lt;/rdf:li&gt; 
+	  &lt;rdf:li&gt;audio/amr&lt;/rdf:li&gt; 
+	  &lt;rdf:li&gt;audio/mpeg&lt;/rdf:li&gt; 
+	  &lt;rdf:li&gt;audio/mpeg3&lt;/rdf:li&gt; 
+	  &lt;rdf:li&gt;audio/mp3&lt;/rdf:li&gt; 
+	  &lt;rdf:li&gt;audio/mp4&lt;/rdf:li&gt; 
+	  &lt;rdf:li&gt;audio/3gpp&lt;/rdf:li&gt; 
+	  &lt;rdf:li&gt;audio/aac&lt;/rdf:li&gt; 
+	  &lt;rdf:li&gt;audio/x-ms-wax&lt;/rdf:li&gt; 
+	  &lt;rdf:li&gt;audio/x-ms-wma&lt;/rdf:li&gt; 
+	 &lt;!--  &lt;rdf:li&gt;audio/x-ms-wav&lt;/rdf:li&gt;   --&gt; 
+	 &lt;!--  Multimedia   --&gt; 
+	  &lt;rdf:li&gt;video/avi&lt;/rdf:li&gt; 
+	  &lt;rdf:li&gt;video/3gpp&lt;/rdf:li&gt; 
+	  &lt;rdf:li&gt;video/mp4&lt;/rdf:li&gt; 
+	  &lt;rdf:li&gt;application/sdp&lt;/rdf:li&gt; 
+	  &lt;rdf:li&gt;application/ram&lt;/rdf:li&gt; 
+	  &lt;rdf:li&gt;video/x-ms-asf&lt;/rdf:li&gt; 
+	 &lt;!--   &lt;rdf:li&gt;video/x-ms-asx&lt;/rdf:li&gt;   --&gt; 
+	  &lt;rdf:li&gt;video/x-ms-wm&lt;/rdf:li&gt; 
+	  &lt;rdf:li&gt;video/x-ms-wmp&lt;/rdf:li&gt; 
+	  &lt;rdf:li&gt;video/x-ms-wmv&lt;/rdf:li&gt; 
+	  &lt;rdf:li&gt;video/x-ms-wmx&lt;/rdf:li&gt; 
+	  &lt;rdf:li&gt;video/x-ms-wvx&lt;/rdf:li&gt; 
+	
+	 &lt;!--  DRM   --&gt; 
+	  &lt;rdf:li&gt;application/vnd.oma.drm.message&lt;/rdf:li&gt; 
+	  &lt;rdf:li&gt;application/vnd.oma.drm.content&lt;/rdf:li&gt;
+	  &lt;rdf:li&gt;application/vnd.oma.drm.rights+xml&lt;/rdf:li&gt;
+	  &lt;rdf:li&gt;application/vnd.oma.drm.rights+wbxml&lt;/rdf:li&gt;
+	  &lt;rdf:li&gt;application/vnd.oma.dd+xml&lt;/rdf:li&gt; 
+	  &lt;/rdf:Bag&gt;
+	  &lt;/prf:DownloadableBrowserApps&gt;
+  &lt;/rdf:Description&gt;
+  &lt;/prf:component&gt;
+ 
+ &lt;!-- ********************** WAP Characteristics Description *************************************** --&gt; 
+ &lt;prf:component&gt;
+ &lt;rdf:Description rdf:ID=&quot;WapCharacteristics&quot;&gt;
+ &lt;rdf:type rdf:resource=&quot;http://www.openmobilealliance.org/tech/profiles/UAPROF/ccppschema-20021212#WapCharacteristics&quot; /&gt; 
+ &lt;prf:WapVersion&gt;2.0&lt;/prf:WapVersion&gt; 
+ &lt;prf:WmlVersion&gt;
+	&lt;rdf:Bag&gt;
+		  &lt;rdf:li&gt;1.3&lt;/rdf:li&gt; 
+	&lt;/rdf:Bag&gt;
+  &lt;/prf:WmlVersion&gt;
+ &lt;prf:WmlDeckSize&gt;3000&lt;/prf:WmlDeckSize&gt; 
+ &lt;prf:WmlScriptVersion&gt;
+ &lt;rdf:Bag&gt;
+  &lt;rdf:li&gt;1.2.1&lt;/rdf:li&gt; 
+  &lt;/rdf:Bag&gt;
+  &lt;/prf:WmlScriptVersion&gt;
+ 
+ &lt;!-- *********** WMLSCRIPT LIBRARY ************  --&gt; 
+ &lt;prf:WmlScriptLibraries&gt;
+	 &lt;rdf:Bag&gt;
+		  &lt;rdf:li&gt;Lang&lt;/rdf:li&gt; 
+		  &lt;rdf:li&gt;Float&lt;/rdf:li&gt; 
+		  &lt;rdf:li&gt;String&lt;/rdf:li&gt; 
+		  &lt;rdf:li&gt;URL&lt;/rdf:li&gt; 
+		  &lt;rdf:li&gt;WMLBrowser&lt;/rdf:li&gt; 
+		  &lt;rdf:li&gt;Dialogs&lt;/rdf:li&gt; 
+	  &lt;/rdf:Bag&gt;
+  &lt;/prf:WmlScriptLibraries&gt;
+ &lt;!-- *********** WTAI LIBRARY ************  --&gt; 
+ &lt;prf:WtaiLibraries&gt;
+	 &lt;rdf:Bag&gt;
+		  &lt;rdf:li&gt;WTA.Public.makeCall&lt;/rdf:li&gt; 
+		  &lt;rdf:li&gt;WTA.Public.sendDTMF&lt;/rdf:li&gt; 
+		  &lt;rdf:li&gt;WTA.Public.addPBEntry&lt;/rdf:li&gt; 
+	  &lt;/rdf:Bag&gt;
+  &lt;/prf:WtaiLibraries&gt;
+ &lt;!-- *********** DRM ***********  --&gt; 
+ &lt;prf:DrmClass&gt;
+	 &lt;rdf:Bag&gt;
+		  &lt;rdf:li&gt;ForwardLock&lt;/rdf:li&gt; 
+		  &lt;rdf:li&gt;CombinedDelivery&lt;/rdf:li&gt;
+		  &lt;rdf:li&gt;SeparateDelivery&lt;/rdf:li&gt; 
+	  &lt;/rdf:Bag&gt;
+  &lt;/prf:DrmClass&gt;
+  &lt;prf:OmaDownload&gt;Yes&lt;/prf:OmaDownload&gt;
+ &lt;!--  *********** DRM CONSTRAINS ************   --&gt; 
+ &lt;prf:DrmConstraints&gt;
+	  &lt;rdf:Bag&gt;
+		  &lt;rdf:li&gt;count&lt;/rdf:li&gt; 
+		  &lt;rdf:li&gt;interval&lt;/rdf:li&gt; 
+		  &lt;rdf:li&gt;datetime&lt;/rdf:li&gt; 
+	  &lt;/rdf:Bag&gt;
+ &lt;/prf:DrmConstraints&gt;
+&lt;/rdf:Description&gt;
+&lt;/prf:component&gt;
+&lt;!-- ************************ DRM ************************************** --&gt;
+&lt;prf:DrmPermissions&gt;
+	&lt;rdf:Bag&gt;
+	  &lt;rdf:li&gt;Play&lt;/rdf:li&gt; 
+	  &lt;rdf:li&gt;Display&lt;/rdf:li&gt; 
+	  &lt;rdf:li&gt;Execute&lt;/rdf:li&gt;
+	   &lt;rdf:li&gt;Print&lt;/rdf:li&gt;
+	&lt;/rdf:Bag&gt;
+&lt;/prf:DrmPermissions&gt;
+ 
+&lt;prf:DrmVersion&gt;
+	&lt;rdf:Bag&gt;
+	    &lt;rdf:li&gt;1.0&lt;/rdf:li&gt;
+	&lt;/rdf:Bag&gt;
+&lt;/prf:DrmVersion&gt;
+ 
+&lt;prf:DrmMediaTypes&gt;
+	&lt;rdf:Bag&gt;
+	    &lt;!--      VIDEO FILE     --&gt; 
+	    &lt;rdf:li&gt;audio/mp4&lt;/rdf:li&gt;
+	    &lt;rdf:li&gt;video/mp4&lt;/rdf:li&gt;
+	    &lt;rdf:li&gt;video/m4v&lt;/rdf:li&gt;
+	    &lt;rdf:li&gt;audio/MP4A-LATM&lt;/rdf:li&gt;
+	    &lt;rdf:li&gt;audio/m4a&lt;/rdf:li&gt;
+	    &lt;rdf:li&gt;video/mpeg&lt;/rdf:li&gt;
+	    &lt;rdf:li&gt;video/avi&lt;/rdf:li&gt;
+	    &lt;rdf:li&gt;video/x-pv-pvx&lt;/rdf:li&gt;
+	    &lt;rdf:li&gt;video/3gpp&lt;/rdf:li&gt;
+	    &lt;rdf:li&gt;audio/3gpp&lt;/rdf:li&gt;
+	    &lt;!--      AUDIO FILE     --&gt; 
+	    &lt;rdf:li&gt;audio/mp3&lt;/rdf:li&gt;
+	    &lt;rdf:li&gt;audio/x-mp3&lt;/rdf:li&gt;
+	    &lt;rdf:li&gt;audio/mpeg3&lt;/rdf:li&gt;
+	    &lt;rdf:li&gt;audio/x-mpeg3&lt;/rdf:li&gt;
+	    &lt;rdf:li&gt;audio/mpeg&lt;/rdf:li&gt;
+	    &lt;rdf:li&gt;audio/x-mpeg&lt;/rdf:li&gt;
+	    &lt;rdf:li&gt;audio/x-wav&lt;/rdf:li&gt;
+	    &lt;rdf:li&gt;audio/wav&lt;/rdf:li&gt;
+	    &lt;rdf:li&gt;audio/amr&lt;/rdf:li&gt;
+	    &lt;rdf:li&gt;audio/armnb&lt;/rdf:li&gt;
+	    &lt;rdf:li&gt;audio/ogg&lt;/rdf:li&gt;
+	    &lt;rdf:li&gt;audio/aac&lt;/rdf:li&gt;
+	    &lt;rdf:li&gt;audio/x-aac&lt;/rdf:li&gt;
+	    &lt;rdf:li&gt;audio/midi&lt;/rdf:li&gt;
+	    &lt;rdf:li&gt;audio/mid&lt;/rdf:li&gt;
+	    &lt;rdf:li&gt;audio/x-mid&lt;/rdf:li&gt;
+	    &lt;rdf:li&gt;audio/x-midi&lt;/rdf:li&gt;
+	    &lt;rdf:li&gt;audio/mmf&lt;/rdf:li&gt;
+	    &lt;!--      IMAGE FILE     --&gt; 
+	    &lt;rdf:li&gt;image/bitmap&lt;/rdf:li&gt;
+	    &lt;rdf:li&gt;image/bmp&lt;/rdf:li&gt;
+	    &lt;rdf:li&gt;image/gif&lt;/rdf:li&gt;
+	    &lt;rdf:li&gt;image/png&lt;/rdf:li&gt;
+	    &lt;rdf:li&gt;image/vnd.wap.wbmp&lt;/rdf:li&gt;
+	    &lt;rdf:li&gt;image/jpeg&lt;/rdf:li&gt;
+	    &lt;rdf:li&gt;image/jpg&lt;/rdf:li&gt;
+	    &lt;!--      Txt FILE     --&gt; 
+	    &lt;rdf:li&gt;text/doc&lt;/rdf:li&gt;
+	    &lt;rdf:li&gt;text/xls&lt;/rdf:li&gt;
+	    &lt;rdf:li&gt;text/ppt&lt;/rdf:li&gt;
+	    &lt;rdf:li&gt;text/pdf&lt;/rdf:li&gt;
+	&lt;/rdf:Bag&gt;
+&lt;/prf:DrmMediaTypes&gt;
+
+  &lt;!-- *************************************** Push Characteristics Description ***************************************
+  --&gt; 
+ &lt;prf:component&gt;
+	 &lt;rdf:Description rdf:ID=&quot;PushCharacteristics&quot;&gt;
+	 &lt;rdf:type rdf:resource=&quot;http://www.openmobilealliance.org/tech/profiles/UAPROF/ccppschema-20021212#PushCharacteristics&quot; /&gt; 
+	 &lt;prf:Push-Accept&gt;
+		 &lt;rdf:Bag&gt;
+			 &lt;rdf:li&gt;text/vnd.wap.si&lt;/rdf:li&gt; 
+		 &lt;/rdf:Bag&gt;
+	 &lt;/prf:Push-Accept&gt;
+	 &lt;prf:Push-Accept&gt;
+	 	&lt;rdf:Bag&gt;
+	 		&lt;rdf:li&gt;text/vnd.wap.sl&lt;/rdf:li&gt; 
+	 	&lt;/rdf:Bag&gt;
+	 &lt;/prf:Push-Accept&gt;
+	 &lt;prf:Push-Accept&gt;
+	 	&lt;rdf:Bag&gt;
+	 		&lt;rdf:li&gt;text/plain&lt;/rdf:li&gt; 
+	 	&lt;/rdf:Bag&gt;
+	 &lt;/prf:Push-Accept&gt;
+	 &lt;prf:Push-Accept-Encoding&gt;
+		&lt;rdf:Bag&gt;
+			&lt;rdf:li&gt;base64&lt;/rdf:li&gt; 
+		&lt;/rdf:Bag&gt;
+	  &lt;/prf:Push-Accept-Encoding&gt;
+	  &lt;prf:Push-MsgSize&gt;4096&lt;/prf:Push-MsgSize&gt; 
+	  &lt;/rdf:Description&gt;
+  &lt;/prf:component&gt;
+
+ &lt;!-- ********************** MMS Characteristics Description ***************************************  --&gt; 
+ 
+	 &lt;prf:component&gt;
+		 	&lt;rdf:Description rdf:ID=&quot;MMSCharacteristics&quot;&gt;
+			  &lt;rdf:type rdf:resource=&quot;http://www.wapforum.org/profiles/MMS/ccppschema-20010111#MmsCharacteristics&quot; /&gt; 
+			  &lt;mms:MmsMaxMessageSize&gt;307200&lt;/mms:MmsMaxMessageSize&gt; 
+			  &lt;mms:MmsMaxImageResolution&gt;1280x960&lt;/mms:MmsMaxImageResolution&gt; 
+			  &lt;mms:MmsCcppAccept&gt;
+				 &lt;rdf:Bag&gt;
+					 &lt;!--   Image    --&gt; 
+					  &lt;rdf:li&gt;image/jpeg&lt;/rdf:li&gt; 
+					  &lt;rdf:li&gt;image/gif&lt;/rdf:li&gt; 
+					  &lt;rdf:li&gt;image/vnd.wap.wbmp&lt;/rdf:li&gt; 
+					  &lt;rdf:li&gt;image/jpg&lt;/rdf:li&gt; 
+					  &lt;rdf:li&gt;image/bmp&lt;/rdf:li&gt; 
+					  &lt;rdf:li&gt;image/png&lt;/rdf:li&gt; 
+					 &lt;!--   Audio   --&gt; 
+					  &lt;rdf:li&gt;audio/mid&lt;/rdf:li&gt; 
+					  &lt;rdf:li&gt;audio/midi&lt;/rdf:li&gt; 
+					  &lt;rdf:li&gt;audio/sp-midi&lt;/rdf:li&gt; 
+					  &lt;rdf:li&gt;audio/amr&lt;/rdf:li&gt; 
+					  &lt;rdf:li&gt;audio/x-iMelody&lt;/rdf:li&gt; 
+					  &lt;rdf:li&gt;audio/aac&lt;/rdf:li&gt; 
+					  &lt;rdf:li&gt;audio/mp3&lt;/rdf:li&gt; 
+					  &lt;rdf:li&gt;audio/mpeg&lt;/rdf:li&gt; 
+					  &lt;rdf:li&gt;audio/mpeg3&lt;/rdf:li&gt; 
+					  &lt;rdf:li&gt;audio/wav&lt;/rdf:li&gt; 
+					  &lt;rdf:li&gt;audio/mp4&lt;/rdf:li&gt; 
+					  &lt;rdf:li&gt;application/vnd.smaf&lt;/rdf:li&gt; 
+					  &lt;rdf:li&gt;application/x-smaf&lt;/rdf:li&gt; 
+					 &lt;!--   Video   --&gt; 
+					  &lt;rdf:li&gt;video/3gpp&lt;/rdf:li&gt; 
+					  &lt;rdf:li&gt;video/mp4&lt;/rdf:li&gt; 
+					 &lt;!--   Text   --&gt; 
+					  &lt;rdf:li&gt;text/plain&lt;/rdf:li&gt; 
+					  &lt;rdf:li&gt;text/x-iMelody&lt;/rdf:li&gt; 
+					  &lt;rdf:li&gt;text/x-vCard&lt;/rdf:li&gt; 
+					  &lt;rdf:li&gt;text/x-vCalendar&lt;/rdf:li&gt; 
+					 &lt;!--   Other MIME type    --&gt; 
+					  &lt;rdf:li&gt;application/vnd.wap.multipart.mixed&lt;/rdf:li&gt; 
+					  &lt;rdf:li&gt;application/vnd.wap.multipart.related&lt;/rdf:li&gt; 
+					  &lt;rdf:li&gt;application/vnd.oma.drm.message&lt;/rdf:li&gt; 
+					  &lt;rdf:li&gt;application/vnd.oma.drm.content&lt;/rdf:li&gt; 
+					  &lt;rdf:li&gt;application/vnd.oma.drm.rights+xml&lt;/rdf:li&gt; 
+					  &lt;rdf:li&gt;application/vnd.oma.drm.rights+wbxml&lt;/rdf:li&gt; 
+
+					  &lt;rdf:li&gt;application/smil&lt;/rdf:li&gt; 
+				  &lt;/rdf:Bag&gt;
+			  &lt;/mms:MmsCcppAccept&gt;
+			 &lt;mms:MmsCcppAcceptCharSet&gt;
+			 &lt;rdf:Bag&gt;
+			  &lt;rdf:li&gt;UTF-8&lt;/rdf:li&gt; 
+			  &lt;rdf:li&gt;ISO-8859-1&lt;/rdf:li&gt; 
+			  &lt;rdf:li&gt;US-ASCII&lt;/rdf:li&gt; 
+			  &lt;rdf:li&gt;ISO-10646-UCS-2&lt;/rdf:li&gt; 
+			  &lt;/rdf:Bag&gt;
+			  &lt;/mms:MmsCcppAcceptCharSet&gt;
+			 &lt;mms:MmsVersion&gt;
+				 &lt;rdf:Bag&gt;
+				  &lt;rdf:li&gt;1.2&lt;/rdf:li&gt; 
+				  &lt;/rdf:Bag&gt;
+			  &lt;/mms:MmsVersion&gt;
+		  &lt;/rdf:Description&gt;
+	  &lt;/prf:component&gt;
+	&lt;!--***************************************************************************--&gt;	    	  
+  	&lt;/rdf:Description&gt;
+  &lt;/rdf:RDF&gt;</pre>
+</body>
+</html>

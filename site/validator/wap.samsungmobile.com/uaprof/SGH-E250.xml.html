@@ -1,0 +1,457 @@
+<html>
+<head><title>Validator report for http://wap.samsungmobile.com/uaprof/SGH-E250.xml</title></head>
+<body>
+<h1>Validator output for http://wap.samsungmobile.com/uaprof/SGH-E250.xml</h1>
+<pre>
+Error [C: http://www.openmobilealliance.org/tech/profiles/MMS/ccppschema-20050301-MMS1.2#MmsCharacteristics, A: http://www.openmobilealliance.org/tech/profiles/MMS/ccppschema-20050301-MMS1.2#MmsCcppStreamingCapable] Expected literal found resource
+Error [C: http://www.openmobilealliance.org/tech/profiles/MMS/ccppschema-20050301-MMS1.2#MmsCharacteristics, A: http://www.openmobilealliance.org/tech/profiles/MMS/ccppschema-20050301-MMS1.2#MmsSuppressContentAdaptation] Expected literal found resource
+PROFILE IS NOT VALID
+</pre>
+<p><a href="mailto:markhenrybutler@gmail.com">Problems with this report?</a></p><h1>Original profile</h1>
+<pre>
+&lt;?xml version=&quot;1.0&quot;?&gt;
+&lt;!--
+*****************************************************************************************
+*  SAMSUNG GSM/GPRS Handset UA Prof                                       		*
+*                                                                            		*
+*  Version:  0.1                                                                     	*
+*  Created:  13/07/2006                                                             	*
+*            by KYUNG-EUN LEE 	(lke01.lee@samsung.com)                              	*
+*                                                                                       *
+*  Edited:   10/10/2006                                                                 *
+*            by KI-HONG KWON    (kihong.kwon@samsung.com)                               *
+*               - ADD xhtml version information                                         *
+*               - DELETE Undefined TAGS on the schema                                   *
+*                   (DrmPermissions, DrmVersion, DrmMediaTypes)                         *
+*            10/11/2006                                                                 *
+*            by KI-HONG KWON    (kihong.kwon@samsung.com)                               *
+*               - ADD PUSH Characteristic DRM Information                               *
+*            17/11/2006                                                                 *
+*            by TAEEUN KIM      (taeeun919.kim@samsung.com)                             *
+*               - MODIFY &lt;prf:WmlDeckSize&gt; : 16384 -&gt; 49152                             *
+*            20/11/2006                                                                 *
+*            by KI-HONG KWON    (kihong.kwon@samsung.com)                               *
+*               - Add mimetype by http accept-header                                    *
+*            18/12/2006                                                                 *
+*            by KI-HONG KWON    (kihong.kwon@samsung.com)                               *
+*               - Modify LCD Size And Font Size   																			*
+*            28/12/2006 																																*
+*            by KYUNGEUN LEE     (lke01.lee@samsung.com)																*
+*            	  - delete image/bmp                                      								*
+*                                                                                       *
+*  Comment:  For Full-DRM            																										*
+*                                                                            		*
+*  Organization:  Software Lab.1  R&amp;D Group 6                               		*
+*  Copyright 2006 SAMSUNG. All rights reserved.                                		*
+*                                                                            		*
+*****************************************************************************************
+--&gt;
+&lt;rdf:RDF xmlns:rdf=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot; xmlns:prf=&quot;http://www.openmobilealliance.org/tech/profiles/UAPROF/ccppschema-20021212#&quot; xmlns:mms=&quot;http://www.openmobilealliance.org/tech/profiles/MMS/ccppschema-20050301-MMS1.2#&quot;&gt;
+&lt;rdf:Description rdf:ID=&quot;MyDeviceProfile&quot;&gt;
+   
+&lt;!--*************************************** Hardware Platform Description ***************************************--&gt;
+&lt;prf:component&gt;
+	&lt;rdf:Description rdf:ID=&quot;HardwarePlatform&quot;&gt;
+	&lt;rdf:type rdf:resource=&quot;http://www.openmobilealliance.org/tech/profiles/UAPROF/ccppschema-20021212#HardwarePlatform&quot; /&gt;
+	        &lt;prf:BluetoothProfile&gt;
+		    &lt;rdf:Bag&gt;
+  		   	&lt;rdf:li&gt;Dial up Networking&lt;/rdf:li&gt; 
+  		   	&lt;rdf:li&gt;File Transfer&lt;/rdf:li&gt; 
+                        &lt;rdf:li&gt;General Access&lt;/rdf:li&gt;   		
+  		   	&lt;rdf:li&gt;Handsfree&lt;/rdf:li&gt; 
+  			&lt;rdf:li&gt;Object Push&lt;/rdf:li&gt; 
+  			&lt;rdf:li&gt;Service Discovery&lt;/rdf:li&gt; 
+  			&lt;rdf:li&gt;Serial Port&lt;/rdf:li&gt; 
+  			&lt;rdf:li&gt;General Object Exchange Profile&lt;/rdf:li&gt; 
+ 		     &lt;/rdf:Bag&gt;
+  		&lt;/prf:BluetoothProfile&gt;
+         	&lt;prf:BitsPerPixel&gt;16&lt;/prf:BitsPerPixel&gt;
+		&lt;prf:ColorCapable&gt;Yes&lt;/prf:ColorCapable&gt;
+		&lt;prf:CPU&gt;ARM9&lt;/prf:CPU&gt;
+		&lt;prf:ImageCapable&gt;Yes&lt;/prf:ImageCapable&gt;
+		&lt;prf:InputCharSet&gt;
+		    &lt;rdf:Bag&gt;
+			&lt;rdf:li&gt;ISO-8859-1&lt;/rdf:li&gt;
+			&lt;rdf:li&gt;US-ASCII&lt;/rdf:li&gt;
+			&lt;rdf:li&gt;UTF-8&lt;/rdf:li&gt;
+			&lt;rdf:li&gt;ISO-10646-UCS-2&lt;/rdf:li&gt;
+		    &lt;/rdf:Bag&gt;
+		&lt;/prf:InputCharSet&gt;
+		&lt;prf:Keyboard&gt;PhoneKeypad&lt;/prf:Keyboard&gt;
+		&lt;prf:Model&gt;SGH-E250&lt;/prf:Model&gt;
+		&lt;prf:NumberOfSoftKeys&gt;2&lt;/prf:NumberOfSoftKeys&gt;
+		&lt;prf:OutputCharSet&gt;
+		    &lt;rdf:Bag&gt;
+			&lt;rdf:li&gt;ISO-8859-1&lt;/rdf:li&gt;
+			&lt;rdf:li&gt;US-ASCII&lt;/rdf:li&gt;
+			&lt;rdf:li&gt;UTF-8&lt;/rdf:li&gt;
+			&lt;rdf:li&gt;ISO-10646-UCS-2&lt;/rdf:li&gt;
+		    &lt;/rdf:Bag&gt;
+		&lt;/prf:OutputCharSet&gt;		
+		&lt;prf:ScreenSize&gt;128x160&lt;/prf:ScreenSize&gt;
+		&lt;prf:ScreenSizeChar&gt;8x14&lt;/prf:ScreenSizeChar&gt;
+		&lt;prf:PixelAspectRatio&gt;1x1&lt;/prf:PixelAspectRatio&gt;
+		&lt;prf:SoundOutputCapable&gt;Yes&lt;/prf:SoundOutputCapable&gt;
+		&lt;prf:StandardFontProportional&gt;Yes&lt;/prf:StandardFontProportional&gt;
+		&lt;prf:TextInputCapable&gt;Yes&lt;/prf:TextInputCapable&gt;
+		&lt;prf:Vendor&gt;SAMSUNG&lt;/prf:Vendor&gt;
+		&lt;prf:VoiceInputCapable&gt;Yes&lt;/prf:VoiceInputCapable&gt;
+	&lt;/rdf:Description&gt;
+&lt;/prf:component&gt;
+    
+&lt;!--*************************************** Software Platform Description ***************************************--&gt;
+&lt;prf:component&gt;
+	&lt;rdf:Description rdf:ID=&quot;SoftwarePlatform&quot;&gt;
+		&lt;rdf:type rdf:resource=&quot;http://www.openmobilealliance.org/tech/profiles/UAPROF/ccppschema-20021212#SoftwarePlatform&quot; /&gt;
+		&lt;prf:AcceptDownloadableSoftware&gt;No&lt;/prf:AcceptDownloadableSoftware&gt;
+		&lt;prf:CcppAccept&gt;
+			&lt;rdf:Bag&gt;
+				&lt;!-- Application --&gt;
+				&lt;rdf:li&gt;application/smil&lt;/rdf:li&gt; 
+				&lt;rdf:li&gt;application/vnd.phonecom.mmc-xml&lt;/rdf:li&gt; 
+				&lt;rdf:li&gt;application/vnd.wap.mms-message&lt;/rdf:li&gt;
+				&lt;rdf:li&gt;application/vnd.wap.wmlc&lt;/rdf:li&gt; 
+				&lt;rdf:li&gt;application/vnd.wap.wbxml&lt;/rdf:li&gt; 
+				&lt;rdf:li&gt;application/vnd.wap.connectivity-wbxml&lt;/rdf:li&gt; 
+				&lt;rdf:li&gt;application/vnd.wap.wmlscriptc&lt;/rdf:li&gt; 
+				&lt;rdf:li&gt;application/vnd.wap.multipart.mixed&lt;/rdf:li&gt; 
+				&lt;rdf:li&gt;application/vnd.samsung.specific-image&lt;/rdf:li&gt; 
+				&lt;rdf:li&gt;application/vnd.wap.sic&lt;/rdf:li&gt; 
+				&lt;rdf:li&gt;application/vnd.wap.slc&lt;/rdf:li&gt; 
+				&lt;rdf:li&gt;application/vnd.wap.coc&lt;/rdf:li&gt; 
+				&lt;rdf:li&gt;application/vnd.wap.sia&lt;/rdf:li&gt; 
+				&lt;rdf:li&gt;application/vnd.wap.xhtml+xml&lt;/rdf:li&gt; 
+				&lt;rdf:li&gt;application/xhtml+xml&lt;/rdf:li&gt; 
+				&lt;rdf:li&gt;application/java-archive&lt;/rdf:li&gt; 
+				&lt;rdf:li&gt;application/java&lt;/rdf:li&gt; 
+				&lt;rdf:li&gt;application/x-wap-prov.browser-settings&lt;/rdf:li&gt; 
+				&lt;rdf:li&gt;application/vnd.wap.connectivity-wbxml&lt;/rdf:li&gt; 
+				&lt;rdf:li&gt;application/vnd.oma.drm.message&lt;/rdf:li&gt; 
+				&lt;rdf:li&gt;application/vnd.oma.drm.content&lt;/rdf:li&gt; 
+				&lt;rdf:li&gt;application/vnd.oma.drm.rights+xml&lt;/rdf:li&gt; 
+				&lt;rdf:li&gt;application/vnd.oma.drm.rights+wbxml&lt;/rdf:li&gt; 
+				&lt;rdf:li&gt;application/vnd.oma.dd+xml&lt;/rdf:li&gt; 
+				&lt;rdf:li&gt;application/vnd.syncml+xml&lt;/rdf:li&gt; 
+				&lt;rdf:li&gt;application/vnd.syncml+wbxml&lt;/rdf:li&gt; 
+				&lt;rdf:li&gt;application/sdp&lt;/rdf:li&gt;
+				&lt;rdf:li&gt;application/x-mpeg&lt;/rdf:li&gt;
+				&lt;rdf:li&gt;application/mswprd&lt;/rdf:li&gt;
+				&lt;rdf:li&gt;application/x-mpeg&lt;/rdf:li&gt;
+				&lt;rdf:li&gt;application/vnd.ms-execl&lt;/rdf:li&gt;
+				&lt;rdf:li&gt;application/vnd.ms-powerpoint&lt;/rdf:li&gt;
+				&lt;rdf:li&gt;application/x-msmetafile&lt;/rdf:li&gt;
+				&lt;rdf:li&gt;application/pdf&lt;/rdf:li&gt;
+				&lt;!-- image --&gt;
+				&lt;rdf:li&gt;image/vnd.wap.wbmp&lt;/rdf:li&gt; 
+				&lt;rdf:li&gt;image/gif&lt;/rdf:li&gt; 
+				&lt;rdf:li&gt;image/jpeg&lt;/rdf:li&gt; 
+				&lt;rdf:li&gt;image/png&lt;/rdf:li&gt;
+				&lt;rdf:li&gt;image/jpg&lt;/rdf:li&gt;
+				&lt;rdf:li&gt;image/x-up-wpng&lt;/rdf:li&gt;
+				&lt;!-- audio --&gt;
+				&lt;rdf:li&gt;audio/imelody&lt;/rdf:li&gt; 
+				&lt;rdf:li&gt;audio/midi&lt;/rdf:li&gt; 
+				&lt;rdf:li&gt;audio/sp-mid&lt;/rdf:li&gt; 
+				&lt;rdf:li&gt;audio/sp-midi&lt;/rdf:li&gt; 
+				&lt;rdf:li&gt;audio/mid&lt;/rdf:li&gt;
+				&lt;rdf:li&gt;audio/x-mid&lt;/rdf:li&gt;
+				&lt;rdf:li&gt;audio/x-midi&lt;/rdf:li&gt;
+				&lt;rdf:li&gt;audio/mpeg&lt;/rdf:li&gt;
+				&lt;rdf:li&gt;audio/x-mpeg&lt;/rdf:li&gt;
+				&lt;rdf:li&gt;audio/mpg&lt;/rdf:li&gt;
+				&lt;rdf:li&gt;audio/x-mpg&lt;/rdf:li&gt;
+				&lt;rdf:li&gt;audio/mp3&lt;/rdf:li&gt;
+				&lt;rdf:li&gt;audio/x-mp3&lt;/rdf:li&gt;
+				&lt;rdf:li&gt;audio/mpeg3&lt;/rdf:li&gt;
+				&lt;rdf:li&gt;audio/x-mpeg3&lt;/rdf:li&gt;
+				&lt;rdf:li&gt;audio/3gpp&lt;/rdf:li&gt;
+				&lt;rdf:li&gt;audio/3gp&lt;/rdf:li&gt;
+				&lt;rdf:li&gt;audio/3g&lt;/rdf:li&gt;
+				&lt;rdf:li&gt;audio/aac&lt;/rdf:li&gt;
+				&lt;rdf:li&gt;audio/amr&lt;/rdf:li&gt;
+				&lt;rdf:li&gt;audio/mp4&lt;/rdf:li&gt;
+				&lt;rdf:li&gt;audio/m4a&lt;/rdf:li&gt;
+				&lt;rdf:li&gt;audio/3gpp&lt;/rdf:li&gt;  
+				&lt;!-- video --&gt;
+				&lt;rdf:li&gt;video/3gpp&lt;/rdf:li&gt;
+				&lt;rdf:li&gt;video/3gp&lt;/rdf:li&gt;
+				&lt;rdf:li&gt;video/3g&lt;/rdf:li&gt;
+				&lt;rdf:li&gt;video/mpeg&lt;/rdf:li&gt;
+				&lt;rdf:li&gt;video/mpg&lt;/rdf:li&gt;
+				&lt;rdf:li&gt;video/mp4&lt;/rdf:li&gt;
+				&lt;rdf:li&gt;video/mpg4&lt;/rdf:li&gt;
+				&lt;rdf:li&gt;video/mpeg4&lt;/rdf:li&gt;
+				&lt;rdf:li&gt;video/mpeg-4&lt;/rdf:li&gt;
+				&lt;!-- text --&gt;
+				&lt;rdf:li&gt;text/vnd.sun.j2me.app-descriptor&lt;/rdf:li&gt; 
+				&lt;rdf:li&gt;text/html&lt;/rdf:li&gt; 
+				&lt;rdf:li&gt;text/css&lt;/rdf:li&gt; 
+				&lt;rdf:li&gt;text/plain&lt;/rdf:li&gt;
+				&lt;rdf:li&gt;text/vnd.wap.connectivity-xml&lt;/rdf:li&gt;
+				&lt;rdf:li&gt;text/vnd.wap.xml&lt;/rdf:li&gt;
+				&lt;rdf:li&gt;text/x-imelody&lt;/rdf:li&gt;
+				&lt;rdf:li&gt;text/x-vcalendar&lt;/rdf:li&gt;
+				&lt;rdf:li&gt;text/x-vcard&lt;/rdf:li&gt;
+				&lt;!-- other --&gt;
+				&lt;rdf:li&gt;multipart/mixed&lt;/rdf:li&gt; 
+				&lt;rdf:li&gt;multipart/related&lt;/rdf:li&gt;  
+			&lt;/rdf:Bag&gt;
+		&lt;/prf:CcppAccept&gt;
+		&lt;prf:CcppAccept-Charset&gt;
+			&lt;rdf:Bag&gt;
+				&lt;rdf:li&gt;US-ASCII&lt;/rdf:li&gt;
+				&lt;rdf:li&gt;ISO-8859-1&lt;/rdf:li&gt;
+				&lt;rdf:li&gt;UTF-8&lt;/rdf:li&gt;
+				&lt;rdf:li&gt;ISO-10646-UCS-2&lt;/rdf:li&gt;
+			&lt;/rdf:Bag&gt;
+		&lt;/prf:CcppAccept-Charset&gt;
+		&lt;prf:CcppAccept-Encoding&gt;
+			&lt;rdf:Bag&gt;
+				&lt;rdf:li&gt;base64&lt;/rdf:li&gt;
+			&lt;/rdf:Bag&gt;
+		&lt;/prf:CcppAccept-Encoding&gt;
+		&lt;prf:JavaEnabled&gt;Yes&lt;/prf:JavaEnabled&gt;
+		&lt;prf:JavaPlatform&gt;
+			&lt;rdf:Bag&gt;
+				&lt;rdf:li&gt;MIDP/2.0&lt;/rdf:li&gt;
+				&lt;rdf:li&gt;CLDC/1.1&lt;/rdf:li&gt;
+			&lt;/rdf:Bag&gt;
+		&lt;/prf:JavaPlatform&gt;
+		&lt;prf:JVMVersion&gt;
+			&lt;rdf:Bag&gt;
+				&lt;rdf:li&gt;CLDC-HI&lt;/rdf:li&gt;
+			&lt;/rdf:Bag&gt;
+		&lt;/prf:JVMVersion&gt;
+		&lt;prf:JavaEnabled&gt;Yes&lt;/prf:JavaEnabled&gt;
+	&lt;/rdf:Description&gt;
+&lt;/prf:component&gt;
+
+&lt;!--*************************************** Network Characteristics Description ***************************************--&gt;    
+&lt;prf:component&gt;
+	&lt;rdf:Description rdf:ID=&quot;NetworkCharacteristics&quot;&gt;
+	&lt;rdf:type rdf:resource=&quot;http://www.openmobilealliance.org/tech/profiles/UAPROF/ccppschema-20021212#NetworkCharacteristics&quot; /&gt;
+		&lt;prf:SecuritySupport&gt;
+			&lt;rdf:Bag&gt;
+				&lt;rdf:li&gt;WTLS-2&lt;/rdf:li&gt;
+			&lt;/rdf:Bag&gt;
+		&lt;/prf:SecuritySupport&gt;
+		&lt;prf:SupportedBearers&gt;
+			&lt;rdf:Bag&gt;
+				&lt;rdf:li&gt;GPRS&lt;/rdf:li&gt;
+				&lt;rdf:li&gt;CSD&lt;/rdf:li&gt;
+				&lt;rdf:li&gt;SMS&lt;/rdf:li&gt;
+			&lt;/rdf:Bag&gt;
+		&lt;/prf:SupportedBearers&gt;
+	&lt;/rdf:Description&gt;
+&lt;/prf:component&gt;
+
+&lt;!--*************************************** Browser UA Description ***************************************--&gt;    
+&lt;prf:component&gt;
+	&lt;rdf:Description rdf:ID=&quot;BrowserUA&quot;&gt;
+	&lt;rdf:type rdf:resource=&quot;http://www.openmobilealliance.org/tech/profiles/UAPROF/ccppschema-20021212#BrowserUA&quot; /&gt;
+		&lt;prf:BrowserName&gt;Openwave&lt;/prf:BrowserName&gt;
+		&lt;prf:BrowserVersion&gt;6.2.3.3&lt;/prf:BrowserVersion&gt;
+		&lt;prf:FramesCapable&gt;No&lt;/prf:FramesCapable&gt;
+		&lt;prf:TablesCapable&gt;Yes&lt;/prf:TablesCapable&gt;
+		&lt;prf:JavaAppletEnabled&gt;No&lt;/prf:JavaAppletEnabled&gt;
+		&lt;prf:JavaScriptEnabled&gt;No&lt;/prf:JavaScriptEnabled&gt;
+		&lt;prf:XhtmlVersion&gt;1.0&lt;/prf:XhtmlVersion&gt;
+		&lt;prf:XhtmlModules&gt;
+			&lt;rdf:Bag&gt;
+				&lt;rdf:li&gt;xhtml-basic10&lt;/rdf:li&gt;
+			&lt;/rdf:Bag&gt;
+		&lt;/prf:XhtmlModules&gt;				
+	&lt;/rdf:Description&gt;
+&lt;/prf:component&gt;
+
+&lt;!--*************************************** WAP Characteristics Description ***************************************--&gt;
+&lt;prf:component&gt;
+	&lt;rdf:Description rdf:ID=&quot;WapCharacteristics&quot;&gt;
+	&lt;rdf:type rdf:resource=&quot;http://www.openmobilealliance.org/tech/profiles/UAPROF/ccppschema-20021212#WapCharacteristics&quot; /&gt;
+		&lt;prf:WapDeviceClass&gt;C&lt;/prf:WapDeviceClass&gt;
+		&lt;prf:WapVersion&gt;2.0&lt;/prf:WapVersion&gt;
+		&lt;prf:WmlDeckSize&gt;49152&lt;/prf:WmlDeckSize&gt;
+		&lt;prf:WmlScriptVersion&gt;
+		    &lt;rdf:Bag&gt;
+			&lt;rdf:li&gt;1.2.1&lt;/rdf:li&gt;
+		    &lt;/rdf:Bag&gt;
+		&lt;/prf:WmlScriptVersion&gt;
+		&lt;prf:WmlVersion&gt;
+		    &lt;rdf:Bag&gt;
+			&lt;rdf:li&gt;1.3&lt;/rdf:li&gt;
+		    &lt;/rdf:Bag&gt;
+		&lt;/prf:WmlVersion&gt;
+		&lt;prf:WmlScriptLibraries&gt;
+		    &lt;rdf:Bag&gt;
+			&lt;rdf:li&gt;Lang&lt;/rdf:li&gt;
+			&lt;rdf:li&gt;Float&lt;/rdf:li&gt;
+			&lt;rdf:li&gt;String&lt;/rdf:li&gt;
+			&lt;rdf:li&gt;URL&lt;/rdf:li&gt;
+			&lt;rdf:li&gt;WMLBrowser&lt;/rdf:li&gt;
+			&lt;rdf:li&gt;Dialogs&lt;/rdf:li&gt;
+		    &lt;/rdf:Bag&gt;
+		&lt;/prf:WmlScriptLibraries&gt;
+		&lt;prf:DrmClass&gt;
+		    &lt;rdf:Bag&gt;
+						&lt;rdf:li&gt;ForwardLock&lt;/rdf:li&gt;
+						&lt;rdf:li&gt;CombinedDelivery&lt;/rdf:li&gt;
+						&lt;rdf:li&gt;SeparateDelivery&lt;/rdf:li&gt;
+		    &lt;/rdf:Bag&gt;
+		&lt;/prf:DrmClass&gt;
+		&lt;prf:DrmConstraints&gt;
+			&lt;rdf:Bag&gt;
+				&lt;rdf:li&gt;count&lt;/rdf:li&gt;
+			&lt;/rdf:Bag&gt;
+		&lt;/prf:DrmConstraints&gt;
+		&lt;prf:OmaDownload&gt;Yes&lt;/prf:OmaDownload&gt;
+	&lt;/rdf:Description&gt;
+&lt;/prf:component&gt;
+
+&lt;!--*************************************** Push Characteristics Description ***************************************--&gt;
+&lt;prf:component&gt;
+	&lt;rdf:Description rdf:ID=&quot;PushCharacteristics&quot;&gt;
+	&lt;rdf:type rdf:resource=&quot;http://www.openmobilealliance.org/tech/profiles/UAPROF/ccppschema-20021212#PushCharacteristics&quot; /&gt;
+		&lt;prf:Push-Accept&gt;
+		    &lt;rdf:Bag&gt;
+					&lt;rdf:li&gt;application/vnd.wap.xhtml+xml&lt;/rdf:li&gt;
+					&lt;rdf:li&gt;application/xhtml+xml&lt;/rdf:li&gt;
+				&lt;rdf:li&gt;application/vnd.wap.wbxml&lt;/rdf:li&gt;
+					&lt;rdf:li&gt;application/vnd.wap.connectivity-wbxml&lt;/rdf:li&gt;
+				&lt;rdf:li&gt;application/vnd.oma.drm.rights+xml&lt;/rdf:li&gt;
+				&lt;rdf:li&gt;application/vnd.oma.drm.rights+wbxml&lt;/rdf:li&gt;
+		    &lt;/rdf:Bag&gt;
+		&lt;/prf:Push-Accept&gt;
+		&lt;prf:Push-Accept-Encoding&gt;
+		    &lt;rdf:Bag&gt;
+			&lt;rdf:li&gt;base64&lt;/rdf:li&gt;
+		    &lt;/rdf:Bag&gt;
+		&lt;/prf:Push-Accept-Encoding&gt;
+		&lt;prf:Push-Accept-AppID&gt;
+			&lt;rdf:Bag&gt;
+				&lt;rdf:li&gt;x-wap-application:drm.ua&lt;/rdf:li&gt;
+			&lt;/rdf:Bag&gt;
+		&lt;/prf:Push-Accept-AppID&gt;
+		&lt;prf:Push-MsgSize&gt;4096&lt;/prf:Push-MsgSize&gt;
+	&lt;/rdf:Description&gt;
+&lt;/prf:component&gt;
+
+&lt;!--*************************************** MMS Characteristics Description ***************************************--&gt;
+&lt;prf:component&gt;
+	&lt;rdf:Description rdf:ID=&quot;MmsCharacteristics&quot;&gt;
+	&lt;rdf:type rdf:resource=&quot;http://www.openmobilealliance.org/tech/profiles/MMS/ccppschema-20050301-MMS1.2#MmsCharacteristics&quot; /&gt;
+		&lt;mms:MmsMaxMessageSize&gt;307200&lt;/mms:MmsMaxMessageSize&gt;
+		&lt;mms:MmsMaxImageResolution&gt;1280x1024&lt;/mms:MmsMaxImageResolution&gt;
+		&lt;mms:MmsCcppAccept&gt;
+		    &lt;rdf:Bag&gt;
+			&lt;!-- Image  --&gt;		    
+			&lt;rdf:li&gt;image/jpeg&lt;/rdf:li&gt;
+			&lt;rdf:li&gt;image/gif&lt;/rdf:li&gt;
+			&lt;rdf:li&gt;image/jpg&lt;/rdf:li&gt;
+			&lt;rdf:li&gt;image/pjpeg&lt;/rdf:li&gt;
+			&lt;rdf:li&gt;image/png&lt;/rdf:li&gt;
+			&lt;rdf:li&gt;image/vnd.wap.wbmp&lt;/rdf:li&gt;
+
+			&lt;!-- Video --&gt;
+			&lt;rdf:li&gt;video/3gp&lt;/rdf:li&gt;
+			&lt;rdf:li&gt;video/3gpp&lt;/rdf:li&gt;
+				&lt;rdf:li&gt;video/mpeg&lt;/rdf:li&gt;
+				&lt;rdf:li&gt;video/mpg&lt;/rdf:li&gt;
+			&lt;rdf:li&gt;video/mp4&lt;/rdf:li&gt;
+				&lt;rdf:li&gt;video/mpg4&lt;/rdf:li&gt;
+				&lt;rdf:li&gt;video/mpeg4&lt;/rdf:li&gt;
+				&lt;rdf:li&gt;video/mpeg-4&lt;/rdf:li&gt;
+			&lt;rdf:li&gt;video/mp4v-es&lt;/rdf:li&gt;
+		
+			&lt;!-- Audio --&gt;
+			&lt;rdf:li&gt;audio/amr&lt;/rdf:li&gt;
+			&lt;rdf:li&gt;audio/imelody&lt;/rdf:li&gt;
+			&lt;rdf:li&gt;audio/mid&lt;/rdf:li&gt;
+			&lt;rdf:li&gt;audio/midi&lt;/rdf:li&gt;	
+			&lt;rdf:li&gt;audio/x-midi&lt;/rdf:li&gt; 
+			&lt;rdf:li&gt;audio/x-mid&lt;/rdf:li&gt;
+			&lt;rdf:li&gt;audio/sp-midi&lt;/rdf:li&gt;		
+			&lt;rdf:li&gt;audio/mpeg&lt;/rdf:li&gt;			
+			&lt;rdf:li&gt;audio/x-mpeg&lt;/rdf:li&gt;			
+			&lt;rdf:li&gt;audio/mpg&lt;/rdf:li&gt;
+			&lt;rdf:li&gt;audio/x-mpg&lt;/rdf:li&gt;
+			&lt;rdf:li&gt;audio/mp3&lt;/rdf:li&gt;
+			&lt;rdf:li&gt;audio/x-mp3&lt;/rdf:li&gt;
+			&lt;rdf:li&gt;audio/mpeg3&lt;/rdf:li&gt;
+			&lt;rdf:li&gt;audio/x-mpeg3&lt;/rdf:li&gt;
+	
+			&lt;!-- Text --&gt;			
+			&lt;rdf:li&gt;text/plain&lt;/rdf:li&gt;
+			&lt;rdf:li&gt;text/x-iMelody&lt;/rdf:li&gt;
+			&lt;rdf:li&gt;text/x-vCalendar&lt;/rdf:li&gt;
+			&lt;rdf:li&gt;text/x-vCard&lt;/rdf:li&gt;
+			
+			&lt;!-- Other MIME type  --&gt;
+			&lt;rdf:li&gt;application/vnd.wap.mms-message&lt;/rdf:li&gt;
+			&lt;rdf:li&gt;application/smil&lt;/rdf:li&gt;				
+			&lt;rdf:li&gt;application/vnd.wap.multipart.mixed&lt;/rdf:li&gt;
+			&lt;rdf:li&gt;application/vnd.wap.multipart.alternative&lt;/rdf:li&gt;
+			&lt;rdf:li&gt;application/vnd.wap.multipart.related&lt;/rdf:li&gt;
+			&lt;rdf:li&gt;multipart/mixed&lt;/rdf:li&gt;
+			&lt;rdf:li&gt;multipart/alternative&lt;/rdf:li&gt;
+			&lt;rdf:li&gt;multipart/related&lt;/rdf:li&gt;
+			&lt;rdf:li&gt;application/rpdu&lt;/rdf:li&gt;
+			&lt;rdf:li&gt;application/octet-stream&lt;/rdf:li&gt;
+			&lt;rdf:li&gt;application/vnd.oma.drm.message&lt;/rdf:li&gt;
+			&lt;rdf:li&gt;application/vnd.oma.drm.content&lt;/rdf:li&gt;
+			&lt;rdf:li&gt;application/vnd.oma.drm.rights+xml&lt;/rdf:li&gt;
+			&lt;rdf:li&gt;application/vnd.oma.drm.rights+wbxml&lt;/rdf:li&gt;
+		    &lt;/rdf:Bag&gt;
+		&lt;/mms:MmsCcppAccept&gt;
+		&lt;mms:MmsCcppAcceptCharSet&gt;
+		    &lt;rdf:Bag&gt;
+		    	&lt;rdf:li&gt;US-ASCII&lt;/rdf:li&gt;
+			&lt;rdf:li&gt;ISO-8859-1&lt;/rdf:li&gt;
+			&lt;rdf:li&gt;ISO-8859-2&lt;/rdf:li&gt;
+			&lt;rdf:li&gt;ISO-8859-3&lt;/rdf:li&gt;
+			&lt;rdf:li&gt;ISO-8859-4&lt;/rdf:li&gt;
+			&lt;rdf:li&gt;ISO-8859-5&lt;/rdf:li&gt;
+			&lt;rdf:li&gt;ISO-8859-6&lt;/rdf:li&gt;
+			&lt;rdf:li&gt;ISO-8859-7&lt;/rdf:li&gt;
+			&lt;rdf:li&gt;ISO-8859-8&lt;/rdf:li&gt;
+			&lt;rdf:li&gt;ISO-8859-9&lt;/rdf:li&gt;
+			&lt;rdf:li&gt;UTF-8&lt;/rdf:li&gt;
+			&lt;rdf:li&gt;UTF-16&lt;/rdf:li&gt;
+			&lt;rdf:li&gt;ISO-10646-UCS-2&lt;/rdf:li&gt;
+		   &lt;/rdf:Bag&gt;
+		&lt;/mms:MmsCcppAcceptCharSet&gt;
+		&lt;mms:MmsVersion&gt;
+		   &lt;rdf:Bag&gt;
+		   	&lt;rdf:li&gt;1.2&lt;/rdf:li&gt;
+		   &lt;/rdf:Bag&gt;
+		&lt;/mms:MmsVersion&gt;
+		&lt;mms:MmsCcppStreamingCapable&gt;
+		   &lt;rdf:Bag&gt;
+		   	&lt;rdf:li&gt;No&lt;/rdf:li&gt;
+		   &lt;/rdf:Bag&gt;
+		&lt;/mms:MmsCcppStreamingCapable&gt;
+		&lt;mms:MmsSmilBaseSet&gt;
+		   &lt;rdf:Bag&gt;
+		   	&lt;rdf:li&gt;SMIL-CONF-1-2&lt;/rdf:li&gt;
+		   &lt;/rdf:Bag&gt;
+		&lt;/mms:MmsSmilBaseSet&gt;
+		&lt;mms:MmsContentClass&gt;
+		   &lt;rdf:Bag&gt;
+		   	&lt;rdf:li&gt;TX&lt;/rdf:li&gt;
+		   	&lt;rdf:li&gt;IB&lt;/rdf:li&gt;
+		   	&lt;rdf:li&gt;IR&lt;/rdf:li&gt;
+		   	&lt;rdf:li&gt;VB&lt;/rdf:li&gt;
+		   	&lt;rdf:li&gt;VR&lt;/rdf:li&gt;
+		   &lt;/rdf:Bag&gt;
+		&lt;/mms:MmsContentClass&gt;
+		&lt;mms:MmsSuppressContentAdaptation&gt;
+		   &lt;rdf:Bag&gt;
+		   	&lt;rdf:li&gt;No&lt;/rdf:li&gt;
+		   &lt;/rdf:Bag&gt;
+		&lt;/mms:MmsSuppressContentAdaptation&gt;
+	&lt;/rdf:Description&gt;
+&lt;/prf:component&gt;
+&lt;!--********************************************* END of UAProf *********************************************--&gt;
+&lt;/rdf:Description&gt;
+&lt;/rdf:RDF&gt;</pre>
+</body>
+</html>
