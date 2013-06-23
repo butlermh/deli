@@ -3,8 +3,7 @@ DELI Delivery Context Library
 
 Send all support requests to markhenrybutler@gmail.com
 
-For additional information see 
-http://delicon.sourceforge.net/
+For additional information see http://delicon.sourceforge.net/
 
 =============================
 
@@ -18,22 +17,22 @@ INSTALLING DELI
 
 1. First you need to build DELI type
 
-mvn install
+    mvn install
 
 Then there are various things you can do with DELI:
 
 2. To validate all UAProf profiles in profiles.xml with a direct 
 connection to the internet type
 
-java -cp target/deli-1.0.jar com.hp.hpl.deli.UAProfValidator
+    java -cp target/deli-1.0.jar com.hp.hpl.deli.UAProfValidator
 
 3. To validate all UAProf profiles in profiles.xml behind a firewall type
 
-java -cp target/deli-1.0.jar com.hp.hpl.deli.UAProfValidator -Dhttp.proxyHost=your proxy host -Dhttp.proxyPort=your proxy port
+    java -cp target/deli-1.0.jar com.hp.hpl.deli.UAProfValidator -Dhttp.proxyHost=your proxy host -Dhttp.proxyPort=your proxy port
 
 4. To validate a UAProf profile type
 
-java -cp target/deli-1.0.jar com.hp.hpl.deli.UAProfValidator -Dprofile=your profile
+    java -cp target/deli-1.0.jar com.hp.hpl.deli.UAProfValidator -Dprofile=your profile
 
 5. To run the DELI hello world application build DELI, copy ccpp.war
 to the webapps directory of your app server, and see your app server
@@ -41,7 +40,7 @@ documentation about how to deploy a web app. On Tomcat, the web app
 will deploy automatically. Assuming your app server works on port 8088,
 to see the hello world page point your web browser at 
 
-http://localhost:8088/ccpp/index.html
+    http://localhost:8088/ccpp/index.html
 
 =================================================
 
@@ -57,22 +56,22 @@ The UAProf validator is part of the DELI distribution; the class providing this
 functionality is com.hp.hpl.deli.UAProfValidator. The easiest way to use it is
 to use the command line interface which can be executed as:
 
-java -cp target/deli-1.0.jar com.hp.hpl.deli.UAProfValidator [list of profiles to validate]
+    java -cp target/deli-1.0.jar com.hp.hpl.deli.UAProfValidator [list of profiles to validate]
 
 If you need to use the API, it is documented in the DELI documentation, however 
 a short example is given here:
 
-Workspace.getInstance().configure(null, "config/deliConfig.xml");
-UAProfValidator validator = new UAProfValidator(System.out);
-validator.setDefaultDatatypes();
+    Workspace.getInstance().configure(null, "config/deliConfig.xml");
+    UAProfValidator validator = new UAProfValidator(System.out);
+    validator.setDefaultDatatypes();
 
-String profileName = ...
+    String profileName = ...
 
-if(validator.validate(profileName)) {
-System.out.println("Profile is valid\n");
-} else {
-System.out.println("Profile is not valid\n");
-}
+    if(validator.validate(profileName)) {
+        System.out.println("Profile is valid\n");
+    } else {
+        System.out.println("Profile is not valid\n");
+    }
 
 The first line is required to instruct DELI to load the required vocabulary
 information. The validator object is created, specifying the System.out stream as the
@@ -80,19 +79,19 @@ stream to write status messages to. The validator is then instructed to use the 
 UAProf datatypes; if required an alternative set of datatypes can be loaded
 from a configuration file. The format of this file is as follows:
 
-<?xml version="1.0"?>
-<validator>
-  <datatype>
-    <name>Literal</name>
-    <expression>[A-Za-z0-9/.\\-_ ]+</expression>
-  </datatype>
-  <datatype>
-    <name>Dimension</name>
-    <expression>[0-9]+x[0-9]+</expression>
-  </datatype>
-  ...
-  ...
-</validator>
+    <?xml version="1.0"?>
+    <validator>
+      <datatype>
+        <name>Literal</name>
+        <expression>[A-Za-z0-9/.\\-_ ]+</expression>
+      </datatype>
+      <datatype>
+        <name>Dimension</name>
+        <expression>[0-9]+x[0-9]+</expression>
+      </datatype>
+      ...
+      ...
+    </validator>
 
 Further datatypes can be added by including more <datatype> elements containing a name 
 and regular expression for the new type.
