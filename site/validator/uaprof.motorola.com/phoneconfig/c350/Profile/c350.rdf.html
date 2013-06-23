@@ -1,0 +1,261 @@
+<html>
+<head><title>Validator report for http://uaprof.motorola.com/phoneconfig/c350/Profile/c350.rdf</title></head>
+<body>
+<h1>Validator output for http://uaprof.motorola.com/phoneconfig/c350/Profile/c350.rdf</h1>
+<pre>
+RDF parser warning:{W102} unqualified use of rdf:ID is deprecated.
+RDF parser warning:{W102} unqualified use of rdf:ID is deprecated.
+RDF parser warning:{W102} unqualified use of rdf:ID is deprecated.
+RDF parser warning:{W102} unqualified use of rdf:ID is deprecated.
+RDF parser warning:{W102} unqualified use of rdf:ID is deprecated.
+RDF parser warning:{W102} unqualified use of rdf:ID is deprecated.
+WARNING: The profile uses a commonly used namespace alias
+Aliased namespace is:    http://www.wapforum.org/profiles/UAPROF/ccppschema-20000405#
+Real namespace is: http://www.wapforum.org/UAPROF/ccppschema-20000405#
+WARNING: Profile omits type information
+Component is null for: http://www.wapforum.org/profiles/UAPROF/ccppschema-20000405#InputCharSet
+Component is null for: http://www.wapforum.org/profiles/UAPROF/ccppschema-20000405#WapVersion
+Warning [A: http://www.wapforum.org/profiles/UAPROF/ccppschema-20000405#wtaVersion] Attribute not defined in vocabulary
+Component is null for: http://www.wapforum.org/profiles/UAPROF/ccppschema-20000405#XhtmlModules
+Component is null for: http://www.wapforum.org/profiles/UAPROF/ccppschema-20000405#MexeSpec
+Component is null for: http://www.wapforum.org/profiles/UAPROF/ccppschema-20000405#CurrentBearerService
+Error [C: http://www.wapforum.org/UAPROF/ccppschema-20000405#NetworkCharacteristics, A: http://www.wapforum.org/profiles/UAPROF/ccppschema-20000405#SecuritySupport] Expected literal found resource
+PROFILE IS NOT VALID
+</pre>
+<p><a href="mailto:markhenrybutler@gmail.com">Problems with this report?</a></p><h1>Original profile</h1>
+<pre>
+&lt;?xml version=&quot;1.0&quot;?&gt;
+&lt;!-- This RDF describes the Motorola C350 with Motorola Browser 2.0
+
+==============================================================================
+                        Motorola Confidential Proprietary
+              (c) Copyright Motorola 2002, All Rights Reserved
+
+Version number : C350/RDF/V0.2
+
+=============================================================================
+Notes:
+
+1. This device advertises the following user-agent string for EMEA builds:
+     MOT-c350M/g_xx.xx.xxx MIB/2.0
+   This device advertises the following user-agent string for Asian builds:
+     MOT-c350M/as_g_xx.xx.xxx MIB/2.0
+
+     where xx.xx.xxx is a any combination of digits.
+   
+2. This RDF is an early access version of the RDF being made available
+   for purposes of interoperability testing.
+   
+3. This Document is based of
+
+   WAP-174, User Agent Profiling Specification  WAP-174-UAProf-19991110-a.pdf 
+   WAP-174_003, User Agent Profiling SIN  WAP-174_003-UAProf-20010208-a.pdf 
+   WAP-174_004, User Agent Profiling SIN WAP-174_004-UAProf-20010208-a.pdf 
+   WAP-174_006, User Agent Profiling SIN WAP-174_006-UAProf-20011002-a.pdf 
+   WAP-174_100, User Agent Profiling SIN WAP-174_100-UAProf-20000621-a.pdf 
+
+
+--&gt;
+
+&lt;RDF xmlns=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot;
+xmlns:rdf=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot;
+xmlns:prf=&quot;http://www.wapforum.org/profiles/UAPROF/ccppschema-20000405#&quot;&gt;
+&lt;rdf:Description ID=&quot;C350-Profile&quot;&gt;
+  &lt;prf:component&gt;
+    &lt;rdf:Description ID=&quot;HardwarePlatform&quot;&gt;
+        &lt;prf:ScreenSize&gt;96x65&lt;/prf:ScreenSize&gt;
+        &lt;prf:Model&gt;C350&lt;/prf:Model&gt;
+        &lt;prf:InputCharSet&gt;
+          &lt;rdf:Bag&gt;
+            &lt;rdf:li&gt;UCS-2&lt;/rdf:li&gt;
+          &lt;/rdf:Bag&gt;
+        &lt;/prf:InputCharSet&gt;
+        &lt;prf:ScreenSizeChar&gt;14x7&lt;/prf:ScreenSizeChar&gt; &lt;!-- for a single page excluding the title --&gt;
+        &lt;prf:BitsPerPixel&gt;12&lt;/prf:BitsPerPixel&gt;
+        &lt;prf:ColorCapable&gt;Yes&lt;/prf:ColorCapable&gt;
+        &lt;prf:TextInputCapable&gt;Yes&lt;/prf:TextInputCapable&gt;
+        &lt;prf:ImageCapable&gt;Yes&lt;/prf:ImageCapable&gt;
+        &lt;prf:Keyboard&gt;PhoneKeypad&lt;/prf:Keyboard&gt;
+        &lt;prf:NumberOfSoftKeys&gt;2&lt;/prf:NumberOfSoftKeys&gt;
+	&lt;prf:PointingResolution&gt;None&lt;/prf:PointingResolution&gt;
+	&lt;prf:CPU&gt;ARM7TDMI-S&lt;/prf:CPU&gt;
+        &lt;prf:Vendor&gt;Motorola&lt;/prf:Vendor&gt;
+        &lt;prf:PixelAspectRatio&gt;237x1000&lt;/prf:PixelAspectRatio&gt; &lt;!-- being verified with marketing  --&gt;
+        &lt;prf:OutputCharSet&gt;
+          &lt;rdf:Bag&gt;
+            &lt;rdf:li&gt;UCS-2&lt;/rdf:li&gt;
+          &lt;/rdf:Bag&gt;
+        &lt;/prf:OutputCharSet&gt;
+        &lt;prf:SoundOutputCapable&gt;Yes&lt;/prf:SoundOutputCapable&gt;
+        &lt;prf:StandardFontProportional&gt;Yes&lt;/prf:StandardFontProportional&gt;
+	&lt;prf:VoiceInputCapable&gt;Yes&lt;/prf:VoiceInputCapable&gt;
+     &lt;/rdf:Description&gt;
+  &lt;/prf:component&gt;
+
+  &lt;prf:component&gt;
+    &lt;rdf:Description ID=&quot;SoftwarePlatform&quot;&gt;
+      	&lt;prf:AcceptDownloadableSoftware&gt;Yes&lt;/prf:AcceptDownloadableSoftware&gt;
+	&lt;prf:AudioInputEncoder&gt;
+	 &lt;rdf:Bag&gt;
+	   &lt;rdf:li&gt;None&lt;/rdf:li&gt;
+         &lt;/rdf:Bag&gt;
+        &lt;/prf:AudioInputEncoder&gt;
+	&lt;prf:DownloadableSoftwareSupport&gt;
+         &lt;rdf:Bag&gt;
+           &lt;rdf:li&gt;None&lt;/rdf:li&gt;
+         &lt;/rdf:Bag&gt;
+        &lt;/prf:DownloadableSoftwareSupport&gt;
+	&lt;prf:JVMVersion&gt;
+	 &lt;rdf:Bag&gt;
+	   &lt;rdf:li&gt;None&lt;/rdf:li&gt;
+         &lt;/rdf:Bag&gt;
+	&lt;/prf:JVMVersion&gt;
+        &lt;prf:MexeClassmark&gt;None&lt;/prf:MexeClassmark&gt;
+	&lt;prf:MexeSpec&gt;None&lt;/prf:MexeSpec&gt;
+	&lt;prf:OSName&gt;VRTXmc&lt;/prf:OSName&gt;
+	&lt;prf:OSVersion&gt;SUAPI_C_2.0.11_R_ADS1.1&lt;/prf:OSVersion&gt;
+	&lt;prf:OSVendor&gt;Mentor Graphics&lt;/prf:OSVendor&gt;
+	&lt;prf:RecipientAppAgent&gt;BrowserUA&lt;/prf:RecipientAppAgent&gt;
+	&lt;prf:SoftwareNumber&gt;2&lt;/prf:SoftwareNumber&gt;
+	&lt;prf:VideoInputEncoder&gt;
+	 &lt;rdf:Bag&gt;
+	   &lt;rdf:li&gt;None&lt;/rdf:li&gt;
+	 &lt;/rdf:Bag&gt;
+	&lt;/prf:VideoInputEncoder&gt;	 
+    &lt;/rdf:Description&gt;
+  &lt;/prf:component&gt;
+
+  &lt;prf:component&gt;
+    &lt;rdf:Description ID=&quot;NetworkCharacteristics&quot;&gt;
+	&lt;prf:SecuritySupport&gt;
+         &lt;rdf:Bag&gt;
+           &lt;rdf:li&gt;WTLS-1&lt;/rdf:li&gt;
+           &lt;rdf:li&gt;WTLS-2&lt;/rdf:li&gt;
+         &lt;/rdf:Bag&gt;
+        &lt;/prf:SecuritySupport&gt;
+        &lt;prf:SupportedBearers&gt;
+         &lt;rdf:Bag&gt;
+           &lt;rdf:li&gt;SMS&lt;/rdf:li&gt;
+           &lt;rdf:li&gt;CSD&lt;/rdf:li&gt;
+           &lt;rdf:li&gt;GPRS&lt;/rdf:li&gt;
+         &lt;/rdf:Bag&gt;
+       &lt;/prf:SupportedBearers&gt;
+       &lt;prf:CurrentBearerService&gt;GSM_GPRS_IPV4_UDP&lt;/prf:CurrentBearerService&gt;
+    &lt;/rdf:Description&gt;
+   &lt;/prf:component&gt;
+
+   &lt;prf:component&gt;
+    &lt;rdf:Description ID=&quot;BrowserUA&quot;&gt;
+	&lt;prf:BrowserName&gt;MIB/2.0&lt;/prf:BrowserName&gt;
+	&lt;prf:BrowserVersion&gt;2.0&lt;/prf:BrowserVersion&gt;
+	&lt;prf:FramesCapable&gt;No&lt;/prf:FramesCapable&gt;
+      	&lt;prf:TablesCapable&gt;Yes&lt;/prf:TablesCapable&gt;
+	&lt;prf:CcppAccept&gt;
+         &lt;rdf:Bag&gt;
+           &lt;rdf:li&gt;application/vnd.wap.wmlc&lt;/rdf:li&gt;
+           &lt;rdf:li&gt;application/vnd.wap.wmlscriptc&lt;/rdf:li&gt;
+           &lt;rdf:li&gt;text/html&lt;/rdf:li&gt;
+           &lt;rdf:li&gt;application/xhtml+xml&lt;/rdf:li&gt;
+           &lt;rdf:li&gt;image/vnd.wap.wbmp&lt;/rdf:li&gt;
+           &lt;rdf:li&gt;image/gif&lt;/rdf:li&gt;
+           &lt;rdf:li&gt;application/vnd.wap.multipart.related&lt;/rdf:li&gt;
+           &lt;rdf:li&gt;application/vnd.wap.multipart.mixed&lt;/rdf:li&gt;
+           &lt;rdf:li&gt;application/vnd.iota.mmp-mmc&lt;/rdf:li&gt;
+           &lt;rdf:li&gt;application/vnd.phonecom.mmc-xml&lt;/rdf:li&gt;
+           &lt;rdf:li&gt;application/vnd.phonecom.mmc-wbxml&lt;/rdf:li&gt;
+           &lt;rdf:li&gt;application/octet-stream&lt;/rdf:li&gt;
+           &lt;rdf:li&gt;audio/imelody&lt;/rdf:li&gt;
+           &lt;rdf:li&gt;image/ems.userdefined.picture&lt;/rdf:li&gt;
+           &lt;rdf:li&gt;image/ems.userdefined.animation&lt;/rdf:li&gt;
+           &lt;rdf:li&gt;image/ems.predefined.animation&lt;/rdf:li&gt;
+           &lt;rdf:li&gt;audio/midi&lt;/rdf:li&gt;
+           &lt;rdf:li&gt;audio/mid&lt;/rdf:li&gt;
+           &lt;rdf:li&gt;application/java-archive&lt;/rdf:li&gt;
+           &lt;rdf:li&gt;text/vnd.sun.j2me.app-descriptor&lt;/rdf:li&gt;
+         &lt;/rdf:Bag&gt;
+        &lt;/prf:CcppAccept&gt;
+        &lt;prf:CcppAccept-Charset&gt;
+         &lt;rdf:Bag&gt;
+           &lt;rdf:li&gt;utf-8&lt;/rdf:li&gt;
+         &lt;/rdf:Bag&gt;
+        &lt;/prf:CcppAccept-Charset&gt;
+        &lt;prf:CcppAccept-Encoding&gt;
+          &lt;rdf:Bag&gt;
+            &lt;rdf:li&gt;None&lt;/rdf:li&gt;
+          &lt;/rdf:Bag&gt;
+        &lt;/prf:CcppAccept-Encoding&gt;
+        &lt;prf:CcppAccept-Language&gt;
+          &lt;rdf:Seq&gt;
+&lt;!-- The Languages changes depending on the Language Packages available on the device and also with Market Requirements  --&gt;
+            &lt;rdf:li&gt;en&lt;/rdf:li&gt; 
+            &lt;rdf:li&gt;fr&lt;/rdf:li&gt;
+            &lt;rdf:li&gt;es&lt;/rdf:li&gt;
+            &lt;rdf:li&gt;pt&lt;/rdf:li&gt;
+          &lt;/rdf:Seq&gt;
+        &lt;/prf:CcppAccept-Language&gt;
+        &lt;prf:DownloadableBrowserApps&gt;
+          &lt;rdf:Bag&gt;
+            &lt;rdf:li&gt;None&lt;/rdf:li&gt;
+          &lt;/rdf:Bag&gt;
+        &lt;/prf:DownloadableBrowserApps&gt;
+	&lt;prf:HtmlVersion&gt;None&lt;/prf:HtmlVersion&gt;
+	&lt;prf:JavaScriptVersion&gt;None&lt;/prf:JavaScriptVersion&gt;
+	&lt;prf:PreferenceForFrames&gt;No&lt;/prf:PreferenceForFrames&gt;
+	&lt;prf:XhtmlVersion&gt;1.1&lt;/prf:XhtmlVersion&gt;
+	&lt;prf:XhtmlModules&gt;
+	  &lt;rdf:Bag&gt;
+	    &lt;rdf:li&gt;Structure Module&lt;/rdf:li&gt;
+	    &lt;rdf:li&gt;Text Module&lt;/rdf:li&gt;
+	    &lt;rdf:li&gt;Hypertext Module&lt;/rdf:li&gt;
+	    &lt;rdf:li&gt;List Module&lt;/rdf:li&gt;
+	    &lt;rdf:li&gt;Basic Forms Module&lt;/rdf:li&gt;
+	    &lt;rdf:li&gt;Basic Tables Module&lt;/rdf:li&gt;
+	    &lt;rdf:li&gt;Image Module&lt;/rdf:li&gt;
+	    &lt;rdf:li&gt;Base Module&lt;/rdf:li&gt;
+	  &lt;/rdf:Bag&gt;
+	&lt;/prf:XhtmlModules&gt;
+    &lt;/rdf:Description&gt;
+   &lt;/prf:component&gt;
+
+   &lt;prf:component&gt;
+    &lt;rdf:Description ID=&quot;WapCharacteristics&quot;&gt;
+	&lt;prf:WapDeviceClass&gt;C&lt;/prf:WapDeviceClass&gt;
+	&lt;prf:WapPushMsgPriority&gt;all&lt;/prf:WapPushMsgPriority&gt; &lt;!-- &quot;all&quot; means messages of all messages are accepted --&gt;
+      	&lt;prf:WapPushMsgSize&gt;336&lt;/prf:WapPushMsgSize&gt; &lt;!-- Size of Max Push message --&gt;
+	&lt;prf:WapVersion&gt;1.2.1&lt;/prf:WapVersion&gt;
+      	&lt;prf:WmlVersion&gt;
+       	  &lt;rdf:Bag&gt;
+            &lt;rdf:li&gt;1.1&lt;/rdf:li&gt;
+            &lt;rdf:li&gt;1.2&lt;/rdf:li&gt;
+            &lt;rdf:li&gt;1.3&lt;/rdf:li&gt;
+          &lt;/rdf:Bag&gt;
+        &lt;/prf:WmlVersion&gt;
+      	&lt;prf:WmlDeckSize&gt;7700&lt;/prf:WmlDeckSize&gt;
+      	&lt;prf:WmlScriptVersion&gt;
+          &lt;rdf:Bag&gt;
+            &lt;rdf:li&gt;1.1&lt;/rdf:li&gt;
+            &lt;rdf:li&gt;1.2.1&lt;/rdf:li&gt;
+       	  &lt;/rdf:Bag&gt;
+      	&lt;/prf:WmlScriptVersion&gt;
+      	&lt;prf:WmlScriptLibraries&gt;
+          &lt;rdf:Bag&gt;
+            &lt;rdf:li&gt;Lang&lt;/rdf:li&gt;
+            &lt;rdf:li&gt;Float&lt;/rdf:li&gt;
+            &lt;rdf:li&gt;String&lt;/rdf:li&gt;
+            &lt;rdf:li&gt;URL&lt;/rdf:li&gt;
+            &lt;rdf:li&gt;WMLBrowser&lt;/rdf:li&gt;
+            &lt;rdf:li&gt;Dialog&lt;/rdf:li&gt;
+       	  &lt;/rdf:Bag&gt;
+      	&lt;/prf:WmlScriptLibraries&gt;
+      	&lt;prf:WtaiLibraries&gt;
+          &lt;rdf:Bag&gt;
+            &lt;rdf:li&gt;WTA.Public &lt;/rdf:li&gt; &lt;!-- Motorola supports only makecall --&gt;
+          &lt;/rdf:Bag&gt;
+      	&lt;/prf:WtaiLibraries&gt;
+	&lt;prf:wtaVersion&gt;1.1&lt;/prf:wtaVersion&gt;
+    &lt;/rdf:Description&gt;
+   &lt;/prf:component&gt;
+ &lt;/rdf:Description&gt;
+&lt;/RDF&gt;</pre>
+</body>
+</html>

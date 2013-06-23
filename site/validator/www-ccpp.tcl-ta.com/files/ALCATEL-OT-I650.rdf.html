@@ -1,0 +1,478 @@
+<html>
+<head><title>Validator report for http://www-ccpp.tcl-ta.com/files/ALCATEL-OT-I650.rdf</title></head>
+<body>
+<h1>Validator output for http://www-ccpp.tcl-ta.com/files/ALCATEL-OT-I650.rdf</h1>
+<pre>
+RDF parser error:Content is not allowed in prolog.
+The profile does not contain any RDF information - use W3C RDF Validator
+PROFILE IS NOT VALID
+</pre>
+<p><a href="mailto:markhenrybutler@gmail.com">Problems with this report?</a></p><h1>Original profile</h1>
+<pre>
+﻿&lt;?xml version=&quot;1.0&quot;?&gt;
+
+&lt;!-- This RDF document defines the UAProf&#039;s CPI for certain handsets         --&gt;
+&lt;!-- in TCL &amp; Alcatel&#039;s One Touch I650. This version is for parsers          --&gt;
+&lt;!-- that are MMS 1.2-enabled.                                               --&gt;
+&lt;!--                                                                         --&gt;
+&lt;!--*************************************************************************--&gt;
+&lt;!--          Updated Jun 17, 2008  by Hu Jin                                --&gt;
+&lt;!--*************************************************************************--&gt;
+
+&lt;rdf:RDF xmlns:rdf=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot;
+         xmlns:prf=&quot;http://www.openmobilealliance.org/tech/profiles/UAPROF/ccppschema-20021212#&quot;
+         xmlns:mms=&quot;http://www.openmobilealliance.org/tech/profiles/MMS/ccppschema-20050301-MMS1.2#&quot;&gt;
+
+&lt;rdf:Description rdf:ID=&quot;AlcatelOneTouch_I650&quot;&gt;  
+
+  &lt;!-- there are totally 7 main components in the profile to describe the phone capability : --&gt;
+  &lt;!-- (1) HardwarePlatform --&gt;
+  &lt;!-- (2) SoftwarePlatform --&gt;
+  &lt;!-- (3) NetworkCharacteristics --&gt;
+  &lt;!-- (4) BrowserUA --&gt;
+  &lt;!-- (5) WapCharacteristics --&gt;
+  &lt;!-- (6) PushCharacteristics --&gt;
+  &lt;!-- (7) MmsCharacteristics --&gt;
+     
+  &lt;!-- HardwarePlatform --&gt;
+  &lt;prf:component&gt;
+    &lt;rdf:Description rdf:ID=&quot;HardwarePlatform&quot;&gt;      
+      &lt;rdf:type rdf:resource=&quot;http://www.openmobilealliance.org/tech/profiles/UAPROF/ccppschema-20021212#HardwarePlatform&quot; /&gt;
+      &lt;prf:BluetoothProfile&gt;
+        &lt;rdf:Bag&gt;
+           &lt;rdf:li&gt;Headset Profile&lt;/rdf:li&gt;
+           &lt;rdf:li&gt;Handsfree Profile 1.5&lt;/rdf:li&gt;
+           &lt;rdf:li&gt;Dial-up Networking Profile&lt;/rdf:li&gt;
+           &lt;rdf:li&gt;Object Push Profile&lt;/rdf:li&gt;
+           &lt;rdf:li&gt;General Access Profile&lt;/rdf:li&gt;
+           &lt;rdf:li&gt;Service Discovery Profile&lt;/rdf:li&gt;
+           &lt;rdf:li&gt;Audio/Video Remote Control profile&lt;/rdf:li&gt;
+           &lt;rdf:li&gt;Advanced Audio Distribution Profile &lt;/rdf:li&gt;
+        &lt;/rdf:Bag&gt;
+      &lt;/prf:BluetoothProfile&gt;
+      &lt;prf:BitsPerPixel&gt;16&lt;/prf:BitsPerPixel&gt;
+      &lt;prf:ColorCapable&gt;Yes&lt;/prf:ColorCapable&gt;
+      &lt;prf:CPU&gt;MTK6225&lt;/prf:CPU&gt;
+      &lt;prf:ImageCapable&gt;Yes&lt;/prf:ImageCapable&gt; 
+      &lt;prf:InputCharSet&gt;
+        &lt;rdf:Bag&gt;
+          &lt;rdf:li&gt;ISO-8859-1&lt;/rdf:li&gt;
+          &lt;rdf:li&gt;US-ASCII&lt;/rdf:li&gt; 
+          &lt;rdf:li&gt;UTF-8&lt;/rdf:li&gt;
+          &lt;rdf:li&gt;UTF-16&lt;/rdf:li&gt;
+          &lt;rdf:li&gt;ISO-10646-UCS-2&lt;/rdf:li&gt;         
+        &lt;/rdf:Bag&gt;
+      &lt;/prf:InputCharSet&gt;        
+      &lt;prf:Keyboard&gt;PhoneKeyPad&lt;/prf:Keyboard&gt;
+      &lt;prf:Model&gt;OneTouch-I650&lt;/prf:Model&gt;
+      &lt;prf:NumberOfSoftKeys&gt;2&lt;/prf:NumberOfSoftKeys&gt; 
+      &lt;prf:OutputCharSet&gt;
+        &lt;rdf:Bag&gt;
+          &lt;rdf:li&gt;ISO-8859-1&lt;/rdf:li&gt; 
+          &lt;rdf:li&gt;US-ASCII&lt;/rdf:li&gt; 
+          &lt;rdf:li&gt;UTF-8&lt;/rdf:li&gt;
+          &lt;rdf:li&gt;UTF-16&lt;/rdf:li&gt;
+          &lt;rdf:li&gt;ISO-10646-UCS-2&lt;/rdf:li&gt;        
+        &lt;/rdf:Bag&gt;
+      &lt;/prf:OutputCharSet&gt;
+      &lt;prf:PixelAspectRatio&gt;1x1&lt;/prf:PixelAspectRatio&gt;
+      &lt;prf:PointingResolution&gt;Character&lt;/prf:PointingResolution&gt;
+      &lt;prf:ScreenSize&gt;128x160&lt;/prf:ScreenSize&gt;
+      &lt;prf:ScreenSizeChar&gt;18x6&lt;/prf:ScreenSizeChar&gt;
+      &lt;prf:SoundOutputCapable&gt;Yes&lt;/prf:SoundOutputCapable&gt;
+      &lt;prf:StandardFontProportional&gt;Yes&lt;/prf:StandardFontProportional&gt;
+      &lt;prf:TextInputCapable&gt;Yes&lt;/prf:TextInputCapable&gt;
+      &lt;prf:Vendor&gt;Alcatel&lt;/prf:Vendor&gt;
+      &lt;prf:VoiceInputCapable&gt;Yes&lt;/prf:VoiceInputCapable&gt;                  
+    &lt;/rdf:Description&gt; 
+  &lt;/prf:component&gt;
+
+  &lt;!-- SoftwarePlatform --&gt;
+  &lt;prf:component&gt;
+    &lt;rdf:Description rdf:ID=&quot;SoftwarePlatform&quot;&gt;
+      &lt;rdf:type rdf:resource=&quot;http://www.openmobilealliance.org/tech/profiles/UAPROF/ccppschema-20021212#SoftwarePlatform&quot; /&gt;
+      &lt;prf:AcceptDownloadableSoftware&gt;Yes&lt;/prf:AcceptDownloadableSoftware&gt;
+      
+      
+      &lt;prf:CcppAccept&gt;
+        &lt;rdf:Bag&gt;
+          
+          &lt;rdf:li&gt;application/vnd.wap.wmlc&lt;/rdf:li&gt;
+          &lt;rdf:li&gt;application/vnd.wap.wbxml&lt;/rdf:li&gt;
+          &lt;rdf:li&gt;application/vnd.wap.wmlscriptc&lt;/rdf:li&gt;
+          &lt;rdf:li&gt;application/wml+xml&lt;/rdf:li&gt;
+          &lt;rdf:li&gt;text/vnd.wap.wmlscript&lt;/rdf:li&gt;
+          &lt;rdf:li&gt;text/vnd.wap.wml&lt;/rdf:li&gt;
+          &lt;rdf:li&gt;text/x-wap.wml&lt;/rdf:li&gt;
+          &lt;rdf:li&gt;text/plain&lt;/rdf:li&gt;          
+          &lt;rdf:li&gt;application/vnd.wap.sic&lt;/rdf:li&gt;
+          &lt;rdf:li&gt;application/vnd.wap.slc&lt;/rdf:li&gt;
+          &lt;rdf:li&gt;application/vnd.wap.coc&lt;/rdf:li&gt;          
+          &lt;rdf:li&gt;text/vnd.wap.si&lt;/rdf:li&gt;
+          &lt;rdf:li&gt;text/vnd.wap.sl&lt;/rdf:li&gt;
+          &lt;rdf:li&gt;text/vnd.wap.co&lt;/rdf:li&gt;
+                    
+          &lt;!-- if support MMS --&gt;
+          &lt;rdf:li&gt;application/vnd.wap.mms-message&lt;/rdf:li&gt;
+          &lt;rdf:li&gt;application/smil&lt;/rdf:li&gt;
+          &lt;rdf:li&gt;application/vnd.wap.multipart.related&lt;/rdf:li&gt;
+          &lt;rdf:li&gt;application/vnd.wap.multipart.mixed&lt;/rdf:li&gt;          
+          
+          &lt;!-- if support WAP 2.0 --&gt;
+          &lt;rdf:li&gt;application/vnd.wap.xhtml+xml&lt;/rdf:li&gt;
+          &lt;rdf:li&gt;application/xhtml+xml&lt;/rdf:li&gt;
+          &lt;rdf:li&gt;text/html&lt;/rdf:li&gt;
+          &lt;rdf:li&gt;text/x-html&lt;/rdf:li&gt;
+          &lt;rdf:li&gt;text/css&lt;/rdf:li&gt;          
+
+          &lt;!-- if support WTLS/TLS --&gt;          
+          &lt;rdf:li&gt;application/vnd.wap.hashed-certificate&lt;/rdf:li&gt;
+          &lt;rdf:li&gt;application/vnd.wap.signed-certificate&lt;/rdf:li&gt;
+          &lt;rdf:li&gt;application/vnd.wap.wtls-ca-certificate&lt;/rdf:li&gt;
+          &lt;rdf:li&gt;application/x-x509-ca-cert&lt;/rdf:li&gt;
+          
+          &lt;!-- if support DRM --&gt;      
+          &lt;rdf:li&gt;application/vnd.oma.drm.message&lt;/rdf:li&gt;
+          &lt;rdf:li&gt;application/vnd.oma.drm.rights+xml&lt;/rdf:li&gt;
+          &lt;rdf:li&gt;application/vnd.oma.drm.rights+wbxml&lt;/rdf:li&gt; 
+          &lt;rdf:li&gt;application/vnd.oma.drm.content&lt;/rdf:li&gt;
+                   
+          &lt;!-- Audio object support list --&gt;
+          &lt;rdf:li&gt;audio/amr&lt;/rdf:li&gt;
+          &lt;rdf:li&gt;audio/midi&lt;/rdf:li&gt;
+          &lt;rdf:li&gt;audio/mid&lt;/rdf:li&gt;
+          &lt;rdf:li&gt;audio/x-midi&lt;/rdf:li&gt;
+          &lt;rdf:li&gt;audio/sp-midi&lt;/rdf:li&gt;
+          &lt;rdf:li&gt;audio/imelody&lt;/rdf:li&gt;
+          &lt;rdf:li&gt;text/x-imelody&lt;/rdf:li&gt;
+          &lt;rdf:li&gt;audio/x-wav&lt;/rdf:li&gt;
+          &lt;rdf:li&gt;audio/wav&lt;/rdf:li&gt;
+          &lt;rdf:li&gt;audio/mp3&lt;/rdf:li&gt;
+          &lt;rdf:li&gt;audio/mpeg&lt;/rdf:li&gt;          
+          &lt;rdf:li&gt;audio/m4a&lt;/rdf:li&gt;  
+          &lt;rdf:li&gt;audio/aac&lt;/rdf:li&gt;
+          
+          &lt;!-- Video object support list --&gt;               
+          &lt;rdf:li&gt;video/mp4&lt;/rdf:li&gt;
+          &lt;rdf:li&gt;video/3gpp&lt;/rdf:li&gt;  
+          
+                    
+          &lt;!-- Image object support list --&gt;
+          &lt;rdf:li&gt;image/vnd.wap.wbmp&lt;/rdf:li&gt;
+          &lt;rdf:li&gt;image/jpeg&lt;/rdf:li&gt;
+          &lt;rdf:li&gt;image/jpg&lt;/rdf:li&gt;
+          &lt;rdf:li&gt;image/png&lt;/rdf:li&gt;
+          &lt;rdf:li&gt;image/bmp&lt;/rdf:li&gt;
+          &lt;rdf:li&gt;image/gif&lt;/rdf:li&gt;          
+          
+          &lt;!-- If support vCard --&gt;
+          &lt;rdf:li&gt;text/x-vCard&lt;/rdf:li&gt;
+          
+          &lt;!-- If support vCalendar--&gt;
+          &lt;rdf:li&gt;text/x-vCalendar&lt;/rdf:li&gt;
+                                                  
+        &lt;/rdf:Bag&gt;
+      &lt;/prf:CcppAccept&gt;
+      &lt;prf:CcppAccept-Charset&gt;
+        &lt;rdf:Bag&gt;
+          &lt;rdf:li&gt;US-ASCII&lt;/rdf:li&gt;
+          &lt;rdf:li&gt;ISO-8859-1&lt;/rdf:li&gt;
+          &lt;rdf:li&gt;UTF-8&lt;/rdf:li&gt;
+          &lt;rdf:li&gt;UTF-16&lt;/rdf:li&gt;
+          &lt;rdf:li&gt;ISO-10646-UCS-2&lt;/rdf:li&gt;
+        &lt;/rdf:Bag&gt;
+      &lt;/prf:CcppAccept-Charset&gt;
+      
+      &lt;!-- If support email or IMPS --&gt;
+      &lt;prf:CcppAccept-Encoding&gt;
+        &lt;rdf:Bag&gt;
+          &lt;rdf:li&gt;base64&lt;/rdf:li&gt;
+          &lt;rdf:li&gt;quoted-printable&lt;/rdf:li&gt;
+        &lt;/rdf:Bag&gt;
+      &lt;/prf:CcppAccept-Encoding&gt;
+      
+      &lt;prf:CcppAccept-Language&gt;
+        &lt;rdf:Seq&gt;
+          &lt;rdf:li&gt;en&lt;/rdf:li&gt;
+          &lt;rdf:li&gt;zh&lt;/rdf:li&gt;
+        &lt;/rdf:Seq&gt;
+      &lt;/prf:CcppAccept-Language&gt;
+      
+      &lt;!-- If support JAVA --&gt;
+      &lt;prf:JavaEnabled&gt;No&lt;/prf:JavaEnabled&gt;
+
+      &lt;prf:MexeClassmarks&gt;
+        &lt;rdf:Bag&gt;
+          &lt;rdf:li&gt;1&lt;/rdf:li&gt;
+          &lt;rdf:li&gt;3&lt;/rdf:li&gt;
+        &lt;/rdf:Bag&gt;
+      &lt;/prf:MexeClassmarks&gt;
+      &lt;prf:MexeSecureDomains&gt;No&lt;/prf:MexeSecureDomains&gt;
+      &lt;prf:OSName&gt;NucleusPLUS&lt;/prf:OSName&gt;
+      &lt;prf:OSVendor&gt;Mentor Graphic&lt;/prf:OSVendor&gt;
+      &lt;prf:OSVersion&gt;V1.11.19&lt;/prf:OSVersion&gt;
+      &lt;prf:VideoInputEncoder&gt;
+         &lt;rdf:Bag&gt;
+          &lt;rdf:li&gt;H.263&lt;/rdf:li&gt;
+          &lt;rdf:li&gt;MPEG-4&lt;/rdf:li&gt;
+         &lt;/rdf:Bag&gt;
+      &lt;/prf:VideoInputEncoder&gt;
+
+    &lt;/rdf:Description&gt;      
+  &lt;/prf:component&gt;
+    
+  &lt;!-- NetworkCharacteristics --&gt;
+  &lt;prf:component&gt;
+    &lt;rdf:Description rdf:ID=&quot;NetworkCharacteristics&quot;&gt;
+      &lt;rdf:type rdf:resource=&quot;http://www.openmobilealliance.org/tech/profiles/UAPROF/ccppschema-20021212#NetworkCharacteristics&quot; /&gt;
+      &lt;prf:SupportedBluetoothVersion&gt;2.0&lt;/prf:SupportedBluetoothVersion&gt;      
+      &lt;!-- If support WTLS --&gt;
+      &lt;prf:SecuritySupport&gt;
+        &lt;rdf:Bag&gt;
+          &lt;rdf:li&gt;WTLS-1&lt;/rdf:li&gt;
+          &lt;rdf:li&gt;WTLS-2&lt;/rdf:li&gt;
+        &lt;/rdf:Bag&gt;
+      &lt;/prf:SecuritySupport&gt;
+      
+      &lt;prf:SupportedBearers&gt;
+        &lt;rdf:Bag&gt;
+          &lt;rdf:li&gt;CSD&lt;/rdf:li&gt;
+          &lt;rdf:li&gt;GPRS&lt;/rdf:li&gt;
+        &lt;/rdf:Bag&gt;
+      &lt;/prf:SupportedBearers&gt;
+    &lt;/rdf:Description&gt;      
+  &lt;/prf:component&gt;
+  
+  &lt;!-- BrowserUA --&gt;
+  &lt;prf:component&gt;
+    &lt;rdf:Description rdf:ID=&quot;BrowserUA&quot;&gt;  
+      &lt;rdf:type rdf:resource=&quot;http://www.openmobilealliance.org/tech/profiles/UAPROF/ccppschema-20021212#BrowserUA&quot; /&gt;
+      
+      &lt;prf:BrowserName&gt;Obigo WAP Browser&lt;/prf:BrowserName&gt;
+      &lt;prf:BrowserVersion&gt;Q3C&lt;/prf:BrowserVersion&gt;
+
+      &lt;prf:FramesCapable&gt;No&lt;/prf:FramesCapable&gt;
+      &lt;prf:TablesCapable&gt;Yes&lt;/prf:TablesCapable&gt; 
+ 		  &lt;prf:JavaAppletEnabled&gt;No&lt;/prf:JavaAppletEnabled&gt;
+			&lt;prf:JavaScriptEnabled&gt;No&lt;/prf:JavaScriptEnabled&gt;
+      &lt;!-- If support WAP 2.0 --&gt;
+      &lt;prf:XhtmlVersion&gt;1.0&lt;/prf:XhtmlVersion&gt;
+      &lt;prf:XhtmlModules&gt;
+        &lt;rdf:Bag&gt;
+          &lt;rdf:li&gt;xhtml-basic10&lt;/rdf:li&gt; 
+        &lt;/rdf:Bag&gt;
+      &lt;/prf:XhtmlModules&gt;
+    &lt;/rdf:Description&gt;
+  &lt;/prf:component&gt;
+    
+  &lt;!-- WapCharacteristics --&gt;
+  &lt;prf:component&gt;
+    &lt;rdf:Description rdf:ID=&quot;WapCharacteristics&quot;&gt;  
+      &lt;rdf:type rdf:resource=&quot;http://www.openmobilealliance.org/tech/profiles/UAPROF/ccppschema-20021212#WapCharacteristics&quot; /&gt; 
+      &lt;prf:WapDeviceClass&gt;C&lt;/prf:WapDeviceClass&gt;
+      
+      &lt;!-- If support WAP 1.2.1, use  &lt;prf:WapVersion&gt;1.2.1&lt;/prf:WapVersion&gt; --&gt;
+      &lt;!-- If support WAP 2.0, use &lt;prf:WapVersion&gt;2.0&lt;/prf:WapVersion&gt; --&gt;
+      &lt;prf:WapVersion&gt;2.0&lt;/prf:WapVersion&gt;
+      
+      &lt;prf:WmlDeckSize&gt;65536&lt;/prf:WmlDeckSize&gt;
+      &lt;prf:WmlScriptLibraries&gt;
+        &lt;rdf:Bag&gt;
+          &lt;rdf:li&gt;Lang&lt;/rdf:li&gt; 
+          &lt;rdf:li&gt;Float&lt;/rdf:li&gt;
+          &lt;rdf:li&gt;String&lt;/rdf:li&gt;
+          &lt;rdf:li&gt;URL&lt;/rdf:li&gt;
+          &lt;rdf:li&gt;WMLBrowser&lt;/rdf:li&gt;
+          &lt;rdf:li&gt;Dialogs&lt;/rdf:li&gt;
+        &lt;/rdf:Bag&gt;
+      &lt;/prf:WmlScriptLibraries&gt;
+      &lt;prf:WmlScriptVersion&gt;
+        &lt;rdf:Bag&gt;
+          &lt;rdf:li&gt;1.3&lt;/rdf:li&gt;
+        &lt;/rdf:Bag&gt;
+      &lt;/prf:WmlScriptVersion&gt;
+      &lt;prf:WmlVersion&gt;
+        &lt;rdf:Bag&gt;
+          &lt;rdf:li&gt;1.3&lt;/rdf:li&gt;
+        &lt;/rdf:Bag&gt;         
+      &lt;/prf:WmlVersion&gt;
+      &lt;prf:WtaiLibraries&gt;
+        &lt;rdf:Bag&gt;
+          &lt;rdf:li&gt;WTA.Public.makeCall&lt;/rdf:li&gt; 
+          &lt;rdf:li&gt;WTA.Public.sendDTMF&lt;/rdf:li&gt; 
+          &lt;rdf:li&gt;WTA.Public.addPBEntry&lt;/rdf:li&gt; 
+        &lt;/rdf:Bag&gt;       
+      &lt;/prf:WtaiLibraries&gt;
+      &lt;prf:WtaVersion&gt;1.1&lt;/prf:WtaVersion&gt;
+       
+      &lt;!-- If support DRM --&gt;
+      &lt;prf:DrmClass&gt;
+        &lt;rdf:Bag&gt;
+          &lt;rdf:li&gt;ForwardLock&lt;/rdf:li&gt;
+          &lt;rdf:li&gt;CombinedDelivery&lt;/rdf:li&gt;
+          &lt;rdf:li&gt;SeparateDelivery&lt;/rdf:li&gt;
+        &lt;/rdf:Bag&gt;
+      &lt;/prf:DrmClass&gt;
+      &lt;prf:DrmConstraints&gt;
+        &lt;rdf:Bag&gt;
+          &lt;rdf:li&gt;count&lt;/rdf:li&gt;
+          &lt;rdf:li&gt;interval&lt;/rdf:li&gt;
+          &lt;rdf:li&gt;datetime&lt;/rdf:li&gt;
+        &lt;/rdf:Bag&gt;
+      &lt;/prf:DrmConstraints&gt;
+      &lt;prf:OmaDownload&gt;Yes&lt;/prf:OmaDownload&gt;
+    &lt;/rdf:Description&gt;
+  &lt;/prf:component&gt;
+    
+  &lt;!-- PushCharacteristics --&gt;
+  &lt;prf:component&gt;
+    &lt;rdf:Description rdf:ID=&quot;PushCharacteristics&quot;&gt;
+      &lt;rdf:type rdf:resource=&quot;http://www.openmobilealliance.org/tech/profiles/UAPROF/ccppschema-20021212#PushCharacteristics&quot; /&gt;  
+      &lt;prf:Push-Accept&gt;
+        &lt;rdf:Bag&gt;
+
+          &lt;!-- if support MMS --&gt;
+          &lt;rdf:li&gt;application/vnd.wap.mms-message&lt;/rdf:li&gt;   
+          
+          &lt;!-- if support DRM --&gt;
+          &lt;rdf:li&gt;application/vnd.oma.drm.rights+xml&lt;/rdf:li&gt;
+          &lt;rdf:li&gt;application/vnd.oma.drm.rights+wbxml&lt;/rdf:li&gt;
+                                        
+        &lt;/rdf:Bag&gt;
+      &lt;/prf:Push-Accept&gt;
+      
+      &lt;prf:Push-Accept-Charset&gt;
+        &lt;rdf:Bag&gt;      
+          &lt;rdf:li&gt;ISO-8859-1&lt;/rdf:li&gt;
+          &lt;rdf:li&gt;US-ASCII&lt;/rdf:li&gt; 
+          &lt;rdf:li&gt;UTF-8&lt;/rdf:li&gt;
+          &lt;rdf:li&gt;UTF-16&lt;/rdf:li&gt;
+          &lt;rdf:li&gt;ISO-10646-UCS-2&lt;/rdf:li&gt;               
+        &lt;/rdf:Bag&gt;
+      &lt;/prf:Push-Accept-Charset&gt;
+      
+      &lt;prf:Push-Accept-Encoding&gt;
+				&lt;rdf:Bag&gt;
+					&lt;rdf:li&gt;quoted-printable&lt;/rdf:li&gt;
+				&lt;/rdf:Bag&gt;
+			&lt;/prf:Push-Accept-Encoding&gt;
+			
+      &lt;prf:Push-Accept-Language&gt;
+        &lt;rdf:Seq&gt;
+          &lt;rdf:li&gt;en&lt;/rdf:li&gt;
+        &lt;/rdf:Seq&gt;
+      &lt;/prf:Push-Accept-Language&gt;				
+      
+      &lt;prf:Push-Accept-AppID&gt;
+        &lt;rdf:Bag&gt;      
+
+          &lt;rdf:li&gt;x-wap-application:wml.ua&lt;/rdf:li&gt; 
+          &lt;rdf:li&gt;x-wap-application:push.sia&lt;/rdf:li&gt; 
+          
+          &lt;!-- if support MMS --&gt;
+          &lt;rdf:li&gt;x-wap-application:mms.ua&lt;/rdf:li&gt; 
+          
+          &lt;!-- if support DRM --&gt;
+          &lt;rdf:li&gt;x-wap-application:drm.ua&lt;/rdf:li&gt;       
+
+          
+        &lt;/rdf:Bag&gt;      
+      &lt;/prf:Push-Accept-AppID&gt;
+      
+      &lt;prf:Push-MsgSize&gt;1460&lt;/prf:Push-MsgSize&gt;
+      &lt;prf:Push-MaxPushReq&gt;2&lt;/prf:Push-MaxPushReq&gt;
+    &lt;/rdf:Description&gt;
+  &lt;/prf:component&gt;
+
+  &lt;!-- if support MMS --&gt;
+  &lt;!-- MmsCharacteristics --&gt;
+  &lt;prf:component&gt;
+    &lt;rdf:Description rdf:ID=&quot;MmsCharacteristics&quot;&gt;
+      &lt;rdf:type rdf:resource=&quot;http://www.openmobilealliance.org/tech/profiles/MMS/ccppschema-20050301-MMS1.2#MmsCharacteristics&quot; /&gt;
+      &lt;mms:MmsMaxMessageSize&gt;300000&lt;/mms:MmsMaxMessageSize&gt;
+      &lt;mms:MmsMaxImageResolution&gt;1024x768&lt;/mms:MmsMaxImageResolution&gt;
+      
+      &lt;mms:MmsCcppAccept&gt;
+        &lt;rdf:Bag&gt;
+          
+          &lt;rdf:li&gt;text/plain&lt;/rdf:li&gt;
+          &lt;rdf:li&gt;application/vnd.wap.mms-message&lt;/rdf:li&gt;
+          &lt;rdf:li&gt;application/smil&lt;/rdf:li&gt;
+          &lt;rdf:li&gt;application/vnd.wap.multipart.related&lt;/rdf:li&gt;
+          &lt;rdf:li&gt;application/vnd.wap.multipart.mixed&lt;/rdf:li&gt;          
+         
+          &lt;!-- if support DRM --&gt;
+          &lt;rdf:li&gt;application/vnd.oma.drm.message&lt;/rdf:li&gt;
+          &lt;rdf:li&gt;application/vnd.oma.drm.content&lt;/rdf:li&gt;
+          
+                                        
+          &lt;!-- Audio object support list --&gt;
+          &lt;rdf:li&gt;audio/amr&lt;/rdf:li&gt;
+          &lt;rdf:li&gt;audio/midi&lt;/rdf:li&gt;
+          &lt;rdf:li&gt;audio/mid&lt;/rdf:li&gt;
+          &lt;rdf:li&gt;audio/x-midi&lt;/rdf:li&gt;
+          &lt;rdf:li&gt;audio/sp-midi&lt;/rdf:li&gt;
+          &lt;rdf:li&gt;audio/imelody&lt;/rdf:li&gt;
+          &lt;rdf:li&gt;text/x-imelody&lt;/rdf:li&gt;
+          &lt;rdf:li&gt;audio/x-wav&lt;/rdf:li&gt;
+          &lt;rdf:li&gt;audio/wav&lt;/rdf:li&gt;
+          &lt;rdf:li&gt;audio/mp3&lt;/rdf:li&gt;
+          &lt;rdf:li&gt;audio/mpeg&lt;/rdf:li&gt;          
+          &lt;rdf:li&gt;audio/m4a&lt;/rdf:li&gt;  
+          &lt;rdf:li&gt;audio/aac&lt;/rdf:li&gt;
+
+          &lt;!-- Video object support list --&gt;               
+          &lt;rdf:li&gt;video/mp4&lt;/rdf:li&gt;
+          &lt;rdf:li&gt;video/3gpp&lt;/rdf:li&gt;              
+          
+          &lt;!-- Image object support list --&gt;
+          &lt;rdf:li&gt;image/vnd.wap.wbmp&lt;/rdf:li&gt;
+          &lt;rdf:li&gt;image/jpeg&lt;/rdf:li&gt;
+          &lt;rdf:li&gt;image/jpg&lt;/rdf:li&gt;
+          &lt;rdf:li&gt;image/png&lt;/rdf:li&gt;
+          &lt;rdf:li&gt;image/bmp&lt;/rdf:li&gt;
+          &lt;rdf:li&gt;image/gif&lt;/rdf:li&gt;          
+          
+          &lt;!-- If support vCard --&gt;
+          &lt;rdf:li&gt;text/x-vCard&lt;/rdf:li&gt;
+          
+          &lt;!-- If support vCalendar--&gt;
+          &lt;rdf:li&gt;text/x-vCalendar&lt;/rdf:li&gt;
+                            
+        &lt;/rdf:Bag&gt;      
+      &lt;/mms:MmsCcppAccept&gt;
+      
+      &lt;mms:MmsCcppAcceptCharSet&gt;
+        &lt;rdf:Bag&gt;      
+          &lt;rdf:li&gt;ISO-8859-1&lt;/rdf:li&gt;
+          &lt;rdf:li&gt;US-ASCII&lt;/rdf:li&gt; 
+          &lt;rdf:li&gt;UTF-8&lt;/rdf:li&gt;
+          &lt;rdf:li&gt;UTF-16&lt;/rdf:li&gt;
+          &lt;rdf:li&gt;ISO-10646-UCS-2&lt;/rdf:li&gt;               
+        &lt;/rdf:Bag&gt;      
+      &lt;/mms:MmsCcppAcceptCharSet&gt;
+      
+      &lt;mms:MmsVersion&gt;
+        &lt;rdf:Bag&gt;
+          &lt;rdf:li&gt;1.2&lt;/rdf:li&gt; 
+        &lt;/rdf:Bag&gt;
+      &lt;/mms:MmsVersion&gt;
+      
+      &lt;mms:MmsContentClass&gt;
+        &lt;rdf:Bag&gt;
+          &lt;rdf:li&gt;TX&lt;/rdf:li&gt; 
+          &lt;rdf:li&gt;IR&lt;/rdf:li&gt; 
+          &lt;rdf:li&gt;IB&lt;/rdf:li&gt; 
+          &lt;rdf:li&gt;VB&lt;/rdf:li&gt; 
+          &lt;rdf:li&gt;VR&lt;/rdf:li&gt; 
+        &lt;/rdf:Bag&gt;
+      &lt;/mms:MmsContentClass&gt;
+
+    &lt;/rdf:Description&gt;
+  &lt;/prf:component&gt;
+    
+&lt;/rdf:Description&gt;  
+
+&lt;/rdf:RDF&gt;</pre>
+</body>
+</html>

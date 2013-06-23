@@ -1,0 +1,447 @@
+<html>
+<head><title>Validator report for http://device.sprintpcs.com/Samsung/SPH-A880/YC24.rdf</title></head>
+<body>
+<h1>Validator output for http://device.sprintpcs.com/Samsung/SPH-A880/YC24.rdf</h1>
+<pre>
+RDF parser warning:{W119} A processing instruction is in RDF content. No processing was done. 
+RDF parser warning:{W102} unqualified use of rdf:ID is deprecated.
+RDF parser warning:{W102} unqualified use of rdf:ID is deprecated.
+RDF parser warning:{W102} unqualified use of rdf:resource is deprecated.
+RDF parser warning:{W102} unqualified use of rdf:ID is deprecated.
+RDF parser warning:{W102} unqualified use of rdf:resource is deprecated.
+RDF parser warning:{W102} unqualified use of rdf:ID is deprecated.
+RDF parser warning:{W102} unqualified use of rdf:resource is deprecated.
+RDF parser warning:{W102} unqualified use of rdf:ID is deprecated.
+RDF parser warning:{W102} unqualified use of rdf:resource is deprecated.
+RDF parser warning:{W102} unqualified use of rdf:ID is deprecated.
+RDF parser warning:{W102} unqualified use of rdf:resource is deprecated.
+RDF parser warning:{W102} unqualified use of rdf:ID is deprecated.
+RDF parser warning:{W102} unqualified use of rdf:resource is deprecated.
+RDF parser warning:{W102} unqualified use of rdf:ID is deprecated.
+RDF parser warning:{W102} unqualified use of rdf:resource is deprecated.
+The profile uses an unknown namespace: [http://device.sprintpcs.com/uaprof/]
+The profile uses an unknown namespace: [http://device.sprintpcs.com/namespace/]
+Error [C: http://www.wapforum.org/profiles/UAPROF/ccppschema-20010430#SoftwarePlatform, A: http://www.wapforum.org/profiles/UAPROF/ccppschema-20010430#CcppAccept-Language] does not match collection type Seq
+PROFILE IS NOT VALID
+</pre>
+<p><a href="mailto:markhenrybutler@gmail.com">Problems with this report?</a></p><h1>Original profile</h1>
+<pre>
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;?xml-stylesheet type=&quot;text/xsl&quot; href=&quot;/uaprof.xsl&quot;?&gt;
+&lt;!--
+*********************************************************************
+*	Sprint PCS 3G handset UA Prof template
+*
+*	Version:		1.3
+*	Created:		1/3/02
+*	Author:			Scott Papineau (spapin01@sprintspectrum.com)
+*	Organization:	Subscriber Equipment Business Unit (SEBU)
+*	Modified: 		10/22/03
+*
+*	Copyright 2003 Sprint PCS
+*
+*	Note
+*		Elements that are not required by Sprint PCS have been omitted
+*		from this template.  Vendors may add elements that are defined
+*		in the UAPROF specification if additional features are supported
+*		by their device
+*
+*	Revision History
+*		0.1		Initial Release
+*
+*		1.2		Updated for Multimedia (J Gilborne)
+*
+*		1.3		Updated for FOTA Components (K Hunter) 10/21
+*				Updated for OTA Diagnostics Components  (K Hunter) 10/21
+*				Updated Multimedia Component to include MultimediaEncoderDisplaySize
+*				Updated WapDeviceClass with documentation
+*
+*	Known issues
+*		
+*		Push characteristics are not defined yet
+*		
+*		
+*********************************************************************
+--&gt;
+&lt;rdf:RDF xmlns:rdf=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot; xmlns:prf=&quot;http://www.wapforum.org/profiles/UAPROF/ccppschema-20010430#&quot; xmlns:xpcs=&quot;http://device.sprintpcs.com/namespace/xpcs&quot; xmlns=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot;&gt;
+	&lt;rdf:Description ID=&quot;MyDeviceProfile&quot;&gt;
+		&lt;!--********************** Hardware Platform Description ***************************************--&gt;
+		&lt;prf:component&gt;
+			&lt;rdf:Description ID=&quot;HardwarePlatform&quot;&gt;
+				&lt;rdf:type resource=&quot;http://www.wapforum.org/profiles/UAPROF/ccppschema-20010430#HardwarePlatform&quot;/&gt;
+				&lt;!-- ******** Vendor/model *******--&gt;
+				&lt;!-- Enter the vendor name here.  This must match the vendor name in the EDF --&gt;
+				&lt;prf:Vendor&gt;SAMSUNG&lt;/prf:Vendor&gt;
+				&lt;!-- Enter the device model name here.  This must match the model name in the EDF --&gt;
+				&lt;prf:Model&gt;SPH-A880&lt;/prf:Model&gt;
+				&lt;!-- Change if different --&gt;
+				&lt;prf:CPU&gt;ARM9&lt;/prf:CPU&gt;
+				&lt;!--****** Display ******--&gt;
+				&lt;!-- Enter screen size in pixels here - width x height --&gt;
+				&lt;prf:ScreenSize&gt;176x220&lt;/prf:ScreenSize&gt;
+				&lt;!-- &quot;Yes&quot; if device supports color --&gt;
+				&lt;prf:ColorCapable&gt;Yes&lt;/prf:ColorCapable&gt;
+				&lt;!-- Enter the color or grayscale depth here --&gt;
+				&lt;prf:BitsPerPixel&gt;16&lt;/prf:BitsPerPixel&gt;
+				&lt;!-- Change if not 1:1 --&gt;
+				&lt;prf:PixelAspectRatio&gt;1x1&lt;/prf:PixelAspectRatio&gt;
+				&lt;!-- This should always be &quot;Yes&quot; --&gt;
+				&lt;prf:ImageCapable&gt;Yes&lt;/prf:ImageCapable&gt;
+				&lt;!-- Enter the screen size in characters here.  Use the default font. --&gt;
+				&lt;prf:ScreenSizeChar&gt;16x9&lt;/prf:ScreenSizeChar&gt;
+				&lt;!-- Change the to &quot;No&quot; only if the default font on the device is not proportional --&gt;
+				&lt;prf:StandardFontProportional&gt;Yes&lt;/prf:StandardFontProportional&gt;
+				&lt;!-- List the supported output character sets here. --&gt;
+				&lt;prf:OutputCharSet&gt;
+					&lt;rdf:Bag&gt;
+						&lt;rdf:li&gt;ISO-8859-1&lt;/rdf:li&gt;
+						&lt;rdf:li&gt;US-ASCII&lt;/rdf:li&gt;
+						&lt;rdf:li&gt;UTF-8&lt;/rdf:li&gt;
+						&lt;rdf:li&gt;UTF-16&lt;/rdf:li&gt;
+				&lt;rdf:li&gt;UTF-16&lt;/rdf:li&gt;
+					&lt;/rdf:Bag&gt;
+				&lt;/prf:OutputCharSet&gt;
+				&lt;!-- ******** Input capabilities ******--&gt;
+				&lt;!-- List the supported Input character sets here --&gt;
+				&lt;prf:InputCharSet&gt;
+					&lt;rdf:Bag&gt;
+						&lt;rdf:li&gt;ISO-8859-1&lt;/rdf:li&gt;
+						&lt;rdf:li&gt;US-ASCII&lt;/rdf:li&gt;
+						&lt;rdf:li&gt;UTF-8&lt;/rdf:li&gt;
+					&lt;/rdf:Bag&gt;
+				&lt;/prf:InputCharSet&gt;
+				&lt;!-- This should always be &quot;Yes&quot; --&gt;
+				&lt;prf:TextInputCapable&gt;Yes&lt;/prf:TextInputCapable&gt;
+				&lt;!-- This value should only be changed if the device does not use a standard DTMF keypad --&gt;
+				&lt;prf:Keyboard&gt;PhoneKeypad&lt;/prf:Keyboard&gt;
+				&lt;!-- Enter the number of softkeys supported by the device --&gt;
+				&lt;prf:NumberOfSoftKeys&gt;2&lt;/prf:NumberOfSoftKeys&gt;
+				&lt;!-- ********* Audio **********--&gt;
+				&lt;!-- This should always be &quot;Yes&quot; --&gt;
+				&lt;prf:SoundOutputCapable&gt;Yes&lt;/prf:SoundOutputCapable&gt;
+				&lt;!-- This should be &quot;Yes&quot; for all voice capable devices --&gt;
+				&lt;prf:VoiceInputCapable&gt;Yes&lt;/prf:VoiceInputCapable&gt;
+				&lt;!--******************************--&gt;
+			&lt;/rdf:Description&gt;
+		&lt;/prf:component&gt;
+		&lt;!--********************** Software Platform Description ***************************************--&gt;
+		&lt;prf:component&gt;
+			&lt;rdf:Description ID=&quot;SoftwarePlatform&quot;&gt;
+				&lt;rdf:type resource=&quot;http://www.wapforum.org/profiles/UAPROF/ccppschema-20010430#SoftwarePlatform&quot;/&gt;
+				&lt;!-- ***** Basic ******--&gt;
+				&lt;!-- Should be &quot;Yes&quot; for all Java capable devices --&gt;
+				&lt;prf:AcceptDownloadableSoftware&gt;Yes&lt;/prf:AcceptDownloadableSoftware&gt;
+				&lt;!-- Use this for J2ME app support --&gt;
+				&lt;prf:DownloadableSoftwareSupport&gt;
+					&lt;rdf:Bag&gt;&lt;rdf:li&gt;application/java-archive&lt;/rdf:li&gt;&lt;/rdf:Bag&gt;
+				&lt;/prf:DownloadableSoftwareSupport&gt;
+				&lt;!-- Enter the software version number here.  This must match the version reported via IOTA--&gt;
+				&lt;prf:SoftwareNumber&gt;YC24&lt;/prf:SoftwareNumber&gt;
+				&lt;!-- Should not change if using Qualcomm software--&gt;
+				&lt;prf:OSName&gt;Rex&lt;/prf:OSName&gt;
+				&lt;!-- Should not change if using Qualcomm software--&gt;
+				&lt;prf:OSVendor&gt;QUALCOMM&lt;/prf:OSVendor&gt;
+				&lt;!-- Fill in version of DMSS Software base --&gt;
+				&lt;prf:OSVersion&gt;MSS6100/5.2&lt;/prf:OSVersion&gt;
+				&lt;!-- ********** Java ***********--&gt;
+				&lt;!-- Should be yes for all Java capable products --&gt;
+				&lt;prf:JavaEnabled&gt;Yes&lt;/prf:JavaEnabled&gt;
+				&lt;!-- Indicate MIDP + Sprint Extension profile support --&gt;
+				&lt;prf:JavaPlatform&gt;
+					&lt;rdf:Bag&gt;
+			&lt;rdf:li&gt;MIDP-2.0&lt;/rdf:li&gt;
+			&lt;rdf:li&gt;SPRINTPCS-2.0&lt;/rdf:li&gt;
+					&lt;/rdf:Bag&gt;
+				&lt;/prf:JavaPlatform&gt;
+				&lt;!-- Indicate the VM vendor/version here --&gt;
+				&lt;prf:JVMVersion&gt;
+					&lt;rdf:Bag&gt;&lt;rdf:li&gt;SunKVM/1.1&lt;/rdf:li&gt;&lt;/rdf:Bag&gt;
+				&lt;/prf:JVMVersion&gt;
+				&lt;!-- ********* CCPP accept **********--&gt;
+				&lt;!-- List all accepted MIME types here --&gt;
+				&lt;prf:CcppAccept&gt;
+					&lt;rdf:Bag&gt;
+			&lt;!-- Markup languages --&gt;
+			&lt;rdf:li&gt;text/vnd.wap.wml&lt;/rdf:li&gt;
+			&lt;rdf:li&gt;application/vnd.wap.wmlc&lt;/rdf:li&gt;
+			&lt;rdf:li&gt;application/xhtml+xml&lt;/rdf:li&gt;
+			&lt;rdf:li&gt;application/vnd.wap.wmlc&lt;/rdf:li&gt;
+			&lt;rdf:li&gt;application/vnd.wap.wbxml&lt;/rdf:li&gt;
+	        &lt;rdf:li&gt;application/vnd.wap.wmlscriptc&lt;/rdf:li&gt;
+			&lt;!-- ahn --&gt;
+			&lt;rdf:li&gt;text/css&lt;/rdf:li&gt;
+			&lt;!-- ahn --&gt;
+			&lt;!-- Images --&gt;
+			&lt;rdf:li&gt;image/vnd.wap.wbmp&lt;/rdf:li&gt;
+			&lt;rdf:li&gt;image/jpeg&lt;/rdf:li&gt;
+			&lt;rdf:li&gt;image/png&lt;/rdf:li&gt;
+			&lt;rdf:li&gt;image/gif&lt;/rdf:li&gt;
+			&lt;!-- Audio / Multimedia  --&gt;
+			&lt;rdf:li&gt;audio/midi&lt;/rdf:li&gt;
+			&lt;rdf:li&gt;audio/mp3&lt;/rdf:li&gt;
+			&lt;rdf:li&gt;audio/vnd.qcelp&lt;/rdf:li&gt;
+			&lt;rdf:li&gt;application/x-pmd&lt;/rdf:li&gt;
+			&lt;rdf:li&gt;video/x-ls-mjpg&lt;/rdf:li&gt;
+			&lt;rdf:li&gt;audio/mp4&lt;/rdf:li&gt;
+			&lt;rdf:li&gt;audio/mp4a-latm&lt;/rdf:li&gt;
+			&lt;!-- ahn --&gt;
+			&lt;rdf:li&gt;video/mp4v-es&lt;/rdf:li&gt;
+			&lt;!-- ahn --&gt;
+			&lt;rdf:li&gt;video/mp4&lt;/rdf:li&gt;
+			&lt;!-- ahn --&gt;
+			&lt;rdf:li&gt;video/3gpp2&lt;/rdf:li&gt;
+			&lt;!-- ahn --&gt;
+			&lt;rdf:li&gt;video/3gpp&lt;/rdf:li&gt;
+			&lt;!-- ahn --&gt;
+			&lt;rdf:li&gt;audio/3gpp2&lt;/rdf:li&gt;
+			&lt;!-- ahn --&gt;
+			&lt;rdf:li&gt;audio/3gpp&lt;/rdf:li&gt;
+			&lt;!-- ahn --&gt;
+			&lt;rdf:li&gt;audio/qcelp&lt;/rdf:li&gt;
+			&lt;!-- ahn --&gt;
+			&lt;rdf:li&gt;audio/amr&lt;/rdf:li&gt;
+			&lt;!-- ahn --&gt;
+			&lt;!-- Other: add other supported types here --&gt;
+			&lt;rdf:li&gt;text/vnd.sun.j2me.app-descriptor&lt;/rdf:li&gt;
+			&lt;rdf:li&gt;text/x-pcs-gcd&lt;/rdf:li&gt;
+			&lt;rdf:li&gt;application/x-pcs-mcd+xml&lt;/rdf:li&gt;
+			&lt;!-- ahn --&gt;
+			&lt;rdf:li&gt;application/sdp&lt;/rdf:li&gt;
+			&lt;!-- ahn --&gt;
+			&lt;rdf:li&gt;application/x-pmd&lt;/rdf:li&gt;
+			&lt;!-- ahn --&gt;
+		&lt;/rdf:Bag&gt;					
+
+				&lt;/prf:CcppAccept&gt;
+				&lt;!-- List all accepted character sets here --&gt;
+				&lt;prf:CcppAccept-Charset&gt;
+					&lt;rdf:Bag&gt;
+						&lt;rdf:li&gt;ISO-8859-1&lt;/rdf:li&gt;
+						&lt;rdf:li&gt;US-ASCII&lt;/rdf:li&gt;
+						&lt;rdf:li&gt;UTF-8&lt;/rdf:li&gt;
+			&lt;rdf:li&gt;UTF-16&lt;/rdf:li&gt;
+						&lt;!-- Enter other items... --&gt;
+					&lt;/rdf:Bag&gt;
+				&lt;/prf:CcppAccept-Charset&gt;
+				&lt;!-- List all accepted languages here in order of preference --&gt;
+				&lt;prf:CcppAccept-Language&gt;
+					&lt;rdf:Bag&gt;
+						&lt;rdf:li&gt;en-us&lt;/rdf:li&gt;
+						&lt;!-- Enter other items... --&gt;
+					&lt;/rdf:Bag&gt;
+				&lt;/prf:CcppAccept-Language&gt;
+				&lt;!-- List all accepted transfer encodings here --&gt;
+				&lt;!-- ******** Input Encoders ******--&gt;
+				&lt;!-- &lt;prf:AudioInputEncoder&gt;
+	
+				&lt;/prf:AudioInputEncoder&gt;--&gt;
+				&lt;!--******************************--&gt;
+			&lt;/rdf:Description&gt;
+		&lt;/prf:component&gt;
+		&lt;!--********************** Network Characteristics Description ***************************************--&gt;
+		&lt;prf:component&gt;
+			&lt;rdf:Description ID=&quot;NetworkCharacteristics&quot;&gt;
+				&lt;rdf:type resource=&quot;http://www.wapforum.org/profiles/UAPROF/ccppschema-20010430#NetworkCharacteristics&quot;/&gt;
+				&lt;!-- Indicate support for SSL 3.0 and TLS 1.0 --&gt;
+				&lt;prf:SecuritySupport&gt;
+					&lt;rdf:Bag&gt;
+						&lt;rdf:li&gt;SSL-3.0&lt;/rdf:li&gt;
+						&lt;rdf:li&gt;TLS-1.0&lt;/rdf:li&gt;
+					&lt;/rdf:Bag&gt;
+				&lt;/prf:SecuritySupport&gt;
+				&lt;!-- Indicate support for IS-2000 release 0 packet data bearer --&gt;
+				&lt;!-- May add more detail here in a later rev. --&gt;
+				&lt;prf:SupportedBearers&gt;
+					&lt;rdf:Bag&gt;
+			&lt;rdf:li&gt;IPv4&lt;/rdf:li&gt;
+					&lt;/rdf:Bag&gt;
+				&lt;/prf:SupportedBearers&gt;
+			&lt;/rdf:Description&gt;
+		&lt;/prf:component&gt;
+		&lt;!--********************** Browser UA Description ***************************************--&gt;
+		&lt;prf:component&gt;
+			&lt;rdf:Description ID=&quot;BrowserUA&quot;&gt;
+				&lt;rdf:type resource=&quot;http://www.wapforum.org/profiles/UAPROF/ccppschema-20010430#BrowserUA&quot;/&gt;
+				&lt;!-- ********* Browser Identification ********** --&gt;
+				&lt;!-- Enter the browser vendor/product name here --&gt;
+				&lt;prf:BrowserName&gt;AU System&lt;/prf:BrowserName&gt;
+				&lt;!-- Enter the browser version here --&gt;
+				&lt;prf:BrowserVersion&gt;AU-MIC/2.0 MMP/2.0&lt;/prf:BrowserVersion&gt;
+				&lt;!-- ********** Capabilities *********** --&gt;
+				&lt;!-- Frames are not supported --&gt;
+				&lt;prf:FramesCapable&gt;No&lt;/prf:FramesCapable&gt;
+				&lt;!-- Basic tables are supported in xhtml-basic --&gt;
+				&lt;prf:TablesCapable&gt;Yes&lt;/prf:TablesCapable&gt;
+				&lt;!-- Frames are not supported --&gt;
+				&lt;prf:PreferenceForFrames&gt;No&lt;/prf:PreferenceForFrames&gt;
+				&lt;!-- *********** Applet / Script support is not required ********** --&gt;
+				&lt;prf:DownloadableBrowserApps&gt;
+					&lt;rdf:Bag&gt;&lt;rdf:li&gt;No&lt;/rdf:li&gt;&lt;/rdf:Bag&gt;
+				&lt;/prf:DownloadableBrowserApps&gt;
+				&lt;prf:JavaAppletEnabled&gt;No&lt;/prf:JavaAppletEnabled&gt;
+				&lt;prf:JavaScriptEnabled&gt;No&lt;/prf:JavaScriptEnabled&gt;
+				&lt;!-- ************* XHTML support - indicate XHTML-Basic 1.0 ************ --&gt;
+				&lt;prf:XhtmlVersion&gt;XHTML-Basic/1.0&lt;/prf:XhtmlVersion&gt;
+				&lt;!--&lt;prf:XhtmlModules&gt;
+					&lt;/prf:XhtmlModules&gt;--&gt;
+				&lt;!--******************************--&gt;
+			&lt;/rdf:Description&gt;
+		&lt;/prf:component&gt;
+		&lt;!--********************** WAP Characteristics Description ***************************************--&gt;
+		&lt;prf:component&gt;
+			&lt;rdf:Description ID=&quot;WapCharacteristics&quot;&gt;
+				&lt;rdf:type resource=&quot;http://www.wapforum.org/profiles/UAPROF/ccppschema-20010430#WapCharacteristics&quot;/&gt;
+				&lt;!--******** General ***********--&gt;
+				&lt;!-- WAP Device Class defined in http://www1.wapforum.org/tech/documents/PROP-ClassConform-20000211.pdf --&gt;
+				&lt;prf:WapDeviceClass&gt;A&lt;/prf:WapDeviceClass&gt;
+				&lt;prf:WapVersion&gt;2.0&lt;/prf:WapVersion&gt;
+				&lt;!--*********** WML ************--&gt;
+				&lt;!-- If full wml 2.0 is supported, it should be added here --&gt;
+				&lt;prf:WmlVersion&gt;
+					&lt;rdf:Bag&gt;
+						&lt;rdf:li&gt;1.1&lt;/rdf:li&gt;
+						&lt;rdf:li&gt;1.2&lt;/rdf:li&gt;
+					&lt;/rdf:Bag&gt;
+				&lt;/prf:WmlVersion&gt;
+				&lt;!-- Enter the maximum deck size for wml --&gt;
+				&lt;prf:WmlDeckSize&gt;64000&lt;/prf:WmlDeckSize&gt;
+				&lt;!--******************************--&gt;
+			&lt;/rdf:Description&gt;
+		&lt;/prf:component&gt;
+		&lt;!--********************** Push Characteristics Description ***************************************--&gt;
+		&lt;!-- Note: This entire section is TBD in this revision --&gt;
+    &lt;prf:component&gt;
+      &lt;rdf:Description ID=&quot;PushCharacteristics&quot;&gt;
+        &lt;rdf:type resource=&quot;http://www.wapforum.org/profiles/UAPROF/ccppschema-20010430#PushCharacteristics&quot;/&gt;
+        &lt;prf:Push-Accept&gt;
+          &lt;rdf:Bag&gt;
+            &lt;rdf:li&gt;application/wml+xml&lt;/rdf:li&gt;
+            &lt;rdf:li&gt;text/html&lt;/rdf:li&gt;
+          &lt;/rdf:Bag&gt;
+        &lt;/prf:Push-Accept&gt;
+        &lt;prf:Push-Accept-Encoding&gt;
+          &lt;rdf:Bag&gt;
+            &lt;rdf:li&gt;base64&lt;/rdf:li&gt;
+            &lt;rdf:li&gt;quoted-printable&lt;/rdf:li&gt;
+          &lt;/rdf:Bag&gt;
+        &lt;/prf:Push-Accept-Encoding&gt;
+        &lt;prf:Push-Accept-AppID&gt;
+          &lt;rdf:Bag&gt;
+            &lt;rdf:li&gt;x-wap-application:wml.ua&lt;/rdf:li&gt;
+            &lt;rdf:li&gt;*&lt;/rdf:li&gt;
+          &lt;/rdf:Bag&gt;
+        &lt;/prf:Push-Accept-AppID&gt;
+        &lt;prf:Push-MsgSize&gt;1400&lt;/prf:Push-MsgSize&gt;
+        &lt;!-- ********************************--&gt;
+      &lt;/rdf:Description&gt;
+    &lt;/prf:component&gt;
+		&lt;!-- ****************** Sprint UA Prof Extensions ******************************--&gt;
+		&lt;prf:component&gt;
+				&lt;rdf:Description ID=&quot;SprintExtensions&quot;&gt;
+				&lt;rdf:type resource=&quot;http://device.sprintpcs.com/uaprof/sprint-uaprof-extensions.xml&quot;/&gt;
+				&lt;!-- MultimediaPlayback support --&gt;
+				&lt;xpcs:MultimediaPlaybackSupport&gt;YES&lt;/xpcs:MultimediaPlaybackSupport&gt;
+				&lt;!-- Multimedia Streaming Support --&gt;
+				&lt;xpcs:MultimediaStreamingSupport&gt;YES&lt;/xpcs:MultimediaStreamingSupport&gt;
+				&lt;!-- Multimedia Encoding Support --&gt;
+				&lt;xpcs:MultimediaEncodingSupport&gt;YES&lt;/xpcs:MultimediaEncodingSupport&gt;
+				&lt;!-- Type and version of MM player supported --&gt;
+				&lt;xpcs:MultimediaPlayer&gt;Qualcomm QTV/4.4.2&lt;/xpcs:MultimediaPlayer&gt;
+				&lt;!-- Type and version of MM encoder supported --&gt;
+				&lt;xpcs:MultimediaEncoder&gt;Qualcomm QCamcorder/1.6&lt;/xpcs:MultimediaEncoder&gt;
+				&lt;!-- Multimedia Encoder Supported Display Size(s) --&gt;
+				&lt;xpcs:MultimediaEncoderDisplaySize&gt;
+					&lt;rdf:Bag&gt;
+						&lt;rdf:li&gt;176 x 144&lt;/rdf:li&gt;
+					&lt;/rdf:Bag&gt;
+				&lt;/xpcs:MultimediaEncoderDisplaySize&gt;
+				&lt;!-- File Format the decoder supports --&gt;
+				&lt;xpcs:MultimediaFileFormatForDecoder&gt;
+					&lt;rdf:Bag&gt;
+						&lt;rdf:li&gt;MP4&lt;/rdf:li&gt;
+						&lt;rdf:li&gt;3gp&lt;/rdf:li&gt;
+						&lt;rdf:li&gt;3g2&lt;/rdf:li&gt;
+						&lt;rdf:li&gt;M4A&lt;/rdf:li&gt;
+						&lt;rdf:li&gt;MP3&lt;/rdf:li&gt;
+						&lt;rdf:li&gt;AAC&lt;/rdf:li&gt;
+					&lt;/rdf:Bag&gt;
+				&lt;/xpcs:MultimediaFileFormatForDecoder&gt;
+				&lt;!-- File Format the encoder supports --&gt;
+				&lt;xpcs:MultimediaFileFormatForEncoder&gt;
+					&lt;rdf:Bag&gt;
+						&lt;rdf:li&gt;3g2&lt;/rdf:li&gt;
+						&lt;rdf:li&gt;3gp&lt;/rdf:li&gt;
+					&lt;/rdf:Bag&gt;
+				&lt;/xpcs:MultimediaFileFormatForEncoder&gt;
+				&lt;!-- Display size the Multimedia player supports --&gt;
+				&lt;xpcs:MultimediaVideoDisplaySize&gt;
+					&lt;rdf:Bag&gt;
+						&lt;rdf:li&gt;176 x 144&lt;/rdf:li&gt;
+						&lt;rdf:li&gt;128 x 96&lt;/rdf:li&gt;
+					&lt;/rdf:Bag&gt;
+				&lt;/xpcs:MultimediaVideoDisplaySize&gt;
+				&lt;!-- Maximum frame rate the device supports when playing local files --&gt;
+				&lt;xpcs:MultimediaMaximumFrameRateForPlayback&gt;25fps&lt;/xpcs:MultimediaMaximumFrameRateForPlayback&gt;
+				&lt;!-- Maximum frame rate the device supports when streaming content --&gt;
+				&lt;xpcs:MultimediaMaximumFrameRateForStreaming&gt;15fps&lt;/xpcs:MultimediaMaximumFrameRateForStreaming&gt;
+				&lt;!-- Maximum frame rate the device supports when encoding content --&gt;
+				&lt;xpcs:MultimediaMaximumFrameRateForEncoding&gt;15fps&lt;/xpcs:MultimediaMaximumFrameRateForEncoding&gt;
+				&lt;!-- Maximum bit rate the Multimedia player supports when playing local files --&gt;
+				&lt;xpcs:MultimediaMaximumBitRateForPlayback&gt;128kbps&lt;/xpcs:MultimediaMaximumBitRateForPlayback&gt;
+				&lt;!-- Maximum bit rate the device supports when streaming content --&gt;
+				&lt;xpcs:MultimediaMaximumBitRateForStreaming&gt;128kbps&lt;/xpcs:MultimediaMaximumBitRateForStreaming&gt;
+				&lt;!-- Maximum bit rate the device supports when encoding content --&gt;
+				&lt;xpcs:MultimediaMaximumBitRateForEncoding&gt;100kbps&lt;/xpcs:MultimediaMaximumBitRateForEncoding&gt;
+				&lt;!-- List all supported video codecs for decoding here --&gt;
+				&lt;xpcs:VideoCodecsForDecoding&gt;
+					&lt;rdf:Bag&gt;
+						&lt;rdf:li&gt;MPEG-4 Level 0, 1, and Level 2&lt;/rdf:li&gt;
+						&lt;rdf:li&gt;H.263 Profile 0 and Level 10&lt;/rdf:li&gt;
+						&lt;!-- Enter other items... --&gt;
+					&lt;/rdf:Bag&gt;
+				&lt;/xpcs:VideoCodecsForDecoding&gt;
+				&lt;!-- List all supported video codecs for encoding here --&gt;
+				&lt;xpcs:VideoCodecsForEncoding&gt;
+					&lt;rdf:Bag&gt;
+						&lt;rdf:li&gt;Mpeg4 Level 0 and 1&lt;/rdf:li&gt;
+						&lt;!-- Enter other items... --&gt;
+					&lt;/rdf:Bag&gt;
+				&lt;/xpcs:VideoCodecsForEncoding&gt;
+				&lt;!-- List all supported audio codecs here --&gt;
+				&lt;xpcs:AudioCodecsForDecoding&gt;
+					&lt;rdf:Bag&gt;
+						&lt;rdf:li&gt;QCELP&lt;/rdf:li&gt;
+						&lt;rdf:li&gt;AAC&lt;/rdf:li&gt;
+						&lt;rdf:li&gt;AMR-NB&lt;/rdf:li&gt;
+						&lt;rdf:li&gt;aacPlus&lt;/rdf:li&gt;
+						&lt;!-- Enter other items... --&gt;
+					&lt;/rdf:Bag&gt;
+				&lt;/xpcs:AudioCodecsForDecoding&gt;
+				&lt;!-- List all supported audio codecs here --&gt;
+				&lt;xpcs:AudioCodecsForEncoding&gt;
+					&lt;rdf:Bag&gt;
+						&lt;rdf:li&gt;QCELP&lt;/rdf:li&gt;
+						&lt;!-- Enter other items... --&gt;
+					&lt;/rdf:Bag&gt;
+				&lt;/xpcs:AudioCodecsForEncoding&gt;
+				&lt;!-- MCD version --&gt;
+				&lt;xpcs:SprintMcdVersion&gt;1.1&lt;/xpcs:SprintMcdVersion&gt;
+				&lt;!-- PictureMailSupport --&gt;
+				&lt;xpcs:PictureMailSupport&gt;Yes&lt;/xpcs:PictureMailSupport&gt;
+				&lt;!-- VideoMailSupport --&gt;
+				&lt;xpcs:VideoMailSupport&gt;Yes&lt;/xpcs:VideoMailSupport&gt;
+				&lt;xpcs:MobileOriginatedSmsSupport&gt;Yes&lt;/xpcs:MobileOriginatedSmsSupport&gt;
+				&lt;!-- ***************  FOTA Components  *****************--&gt;
+				&lt;xpcs:FotaProtocolVersion&gt;1.1&lt;/xpcs:FotaProtocolVersion&gt;
+				&lt;xpcs:FotaClientVersion&gt;2.0&lt;/xpcs:FotaClientVersion&gt;
+				&lt;xpcs:FotaClientVendor&gt;Samsung&lt;/xpcs:FotaClientVendor&gt;
+				&lt;!-- ***************  OTA Diagnostics Components  *****************--&gt;
+				&lt;xpcs:DiagnosticsProtocolVersion&gt;&lt;!-- example --&gt;&lt;/xpcs:DiagnosticsProtocolVersion&gt;
+				&lt;xpcs:DiagnosticsClientVersion&gt;&lt;!-- example --&gt;&lt;/xpcs:DiagnosticsClientVersion&gt;
+				&lt;xpcs:DiagnosticsClientVendor&gt;&lt;!-- example --&gt;&lt;/xpcs:DiagnosticsClientVendor&gt;
+			&lt;/rdf:Description&gt;
+		&lt;/prf:component&gt;
+	&lt;/rdf:Description&gt;
+&lt;/rdf:RDF&gt;</pre>
+</body>
+</html>

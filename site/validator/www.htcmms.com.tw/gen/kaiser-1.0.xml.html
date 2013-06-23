@@ -1,0 +1,386 @@
+<html>
+<head><title>Validator report for http://www.htcmms.com.tw/gen/kaiser-1.0.xml</title></head>
+<body>
+<h1>Validator output for http://www.htcmms.com.tw/gen/kaiser-1.0.xml</h1>
+<pre>
+Error [C: http://www.3gpp.org/profiles/PSS/ccppschema-PSS5#Streaming, A: http://www.3gpp.org/profiles/PSS/ccppschema-PSS6#MediaAlternatives] Attribute is in wrong component should be http://www.3gpp.org/profiles/PSS/ccppschema-PSS6#Streaming
+Error [C: http://www.3gpp.org/profiles/PSS/ccppschema-PSS5#Streaming, A: http://www.3gpp.org/profiles/PSS/ccppschema-PSS6#AdaptationSupport] Attribute is in wrong component should be http://www.3gpp.org/profiles/PSS/ccppschema-PSS6#Streaming
+Error [C: http://www.3gpp.org/profiles/PSS/ccppschema-PSS5#Streaming, A: http://www.3gpp.org/profiles/PSS/ccppschema-PSS6#StreamingAccept] Attribute is in wrong component should be http://www.3gpp.org/profiles/PSS/ccppschema-PSS6#Streaming
+Error [C: http://www.3gpp.org/profiles/PSS/ccppschema-PSS5#Streaming, A: http://www.3gpp.org/profiles/PSS/ccppschema-PSS6#ExtendedRtcpReports] Attribute is in wrong component should be http://www.3gpp.org/profiles/PSS/ccppschema-PSS6#Streaming
+Error [C: http://www.3gpp.org/profiles/PSS/ccppschema-PSS5#Streaming, A: http://www.3gpp.org/profiles/PSS/ccppschema-PSS6#VideoDecodingByteRate] Attribute is in wrong component should be http://www.3gpp.org/profiles/PSS/ccppschema-PSS6#Streaming
+Error [C: http://www.3gpp.org/profiles/PSS/ccppschema-PSS5#Streaming, A: http://www.3gpp.org/profiles/PSS/ccppschema-PSS6#RtpProfiles] Attribute is in wrong component should be http://www.3gpp.org/profiles/PSS/ccppschema-PSS6#Streaming
+Error [C: http://www.3gpp.org/profiles/PSS/ccppschema-PSS5#Streaming, A: http://www.3gpp.org/profiles/PSS/ccppschema-PSS6#VideoInitialPostDecoderBufferingPeriod] Attribute is in wrong component should be http://www.3gpp.org/profiles/PSS/ccppschema-PSS6#Streaming
+Error [C: http://www.3gpp.org/profiles/PSS/ccppschema-PSS5#Streaming, A: http://www.3gpp.org/profiles/PSS/ccppschema-PSS6#VideoPreDecoderBufferSize] Attribute is in wrong component should be http://www.3gpp.org/profiles/PSS/ccppschema-PSS6#Streaming
+Error [C: http://www.3gpp.org/profiles/PSS/ccppschema-PSS5#Streaming, A: http://www.3gpp.org/profiles/PSS/ccppschema-PSS6#RtpRetransmission] Attribute is in wrong component should be http://www.3gpp.org/profiles/PSS/ccppschema-PSS6#Streaming
+PROFILE IS NOT VALID
+</pre>
+<p><a href="mailto:markhenrybutler@gmail.com">Problems with this report?</a></p><h1>Original profile</h1>
+<pre>
+&lt;?xml version=&quot;1.0&quot;?&gt;
+&lt;rdf:RDF xmlns:rdf=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot; 
+	 xmlns:mms=&quot;http://www.wapforum.org/profiles/MMS/ccppschema-20010111#&quot;
+         xmlns:pss5=&quot;http://www.3gpp.org/profiles/PSS/ccppschema-PSS5#&quot; 
+	 xmlns:pss6=&quot;http://www.3gpp.org/profiles/PSS/ccppschema-PSS6#&quot; 
+       	 xmlns:prf=&quot;http://www.openmobilealliance.org/tech/profiles/UAPROF/ccppschema-20021212#&quot;&gt;
+	&lt;rdf:Description rdf:ID=&quot;Profile&quot;&gt;
+    	&lt;prf:component&gt;
+	&lt;rdf:Description rdf:ID=&quot;HardwarePlatform&quot;&gt;
+			&lt;rdf:type rdf:resource=&quot;http://www.openmobilealliance.org/tech/profiles/UAPROF/ccppschema-20021212#HardwarePlatform&quot; /&gt;
+        		&lt;prf:Model&gt;Kaiser&lt;/prf:Model&gt;
+        		&lt;prf:Vendor&gt;High Tech Computer Corporation&lt;/prf:Vendor&gt;        		
+        		&lt;prf:BitsPerPixel&gt;16&lt;/prf:BitsPerPixel&gt;
+        		&lt;prf:ColorCapable&gt;Yes&lt;/prf:ColorCapable&gt;
+        		&lt;prf:ScreenSize&gt;240x320&lt;/prf:ScreenSize&gt;
+        		&lt;prf:ImageCapable&gt;Yes&lt;/prf:ImageCapable&gt;
+        		&lt;prf:PixelAspectRatio&gt;1x1&lt;/prf:PixelAspectRatio&gt;
+        		&lt;prf:ScreenSizeChar&gt;16x36&lt;/prf:ScreenSizeChar&gt;
+        		&lt;prf:StandardFontProportional&gt;Yes&lt;/prf:StandardFontProportional&gt;
+        		&lt;prf:SoundOutputCapable&gt;Yes&lt;/prf:SoundOutputCapable&gt;
+        		&lt;prf:TextInputCapable&gt;Yes&lt;/prf:TextInputCapable&gt;
+        		&lt;prf:VoiceInputCapable&gt;Yes&lt;/prf:VoiceInputCapable&gt;        		
+        		&lt;prf:InputCharSet&gt;
+          			&lt;rdf:Bag&gt;
+            			&lt;rdf:li&gt;US-ASCII&lt;/rdf:li&gt;
+            			&lt;rdf:li&gt;UTF-8&lt;/rdf:li&gt;
+	                  	&lt;rdf:li&gt;UTF-16&lt;/rdf:li&gt;
+            			&lt;rdf:li&gt;ISO-10646-UCS-2&lt;/rdf:li&gt;
+          			&lt;/rdf:Bag&gt;
+        		&lt;/prf:InputCharSet&gt;
+        		&lt;prf:Keyboard&gt;Qwerty&lt;/prf:Keyboard&gt;
+        		&lt;prf:NumberOfSoftKeys&gt;2&lt;/prf:NumberOfSoftKeys&gt;
+        		&lt;prf:OutputCharSet&gt;
+          			&lt;rdf:Bag&gt;
+            			&lt;rdf:li&gt;US-ASCII&lt;/rdf:li&gt;
+            			&lt;rdf:li&gt;UTF-8&lt;/rdf:li&gt;
+                  		&lt;rdf:li&gt;UTF-16&lt;/rdf:li&gt;
+            			&lt;rdf:li&gt;ISO-10646-UCS-2&lt;/rdf:li&gt;
+          			&lt;/rdf:Bag&gt;
+        		&lt;/prf:OutputCharSet&gt;
+        		&lt;prf:BluetoothProfile&gt;
+            		&lt;rdf:Bag&gt;
+	            		&lt;rdf:li&gt;Headset Profile&lt;/rdf:li&gt;
+	            		&lt;rdf:li&gt;Handsfree Profile&lt;/rdf:li&gt;
+	            		&lt;rdf:li&gt;Dial-up Networking Profile&lt;/rdf:li&gt;
+	            		&lt;rdf:li&gt;Object Push Profile&lt;/rdf:li&gt;
+	            		&lt;rdf:li&gt;General Access Profile&lt;/rdf:li&gt;
+	            		&lt;rdf:li&gt;Serial Port Profile&lt;/rdf:li&gt;
+	            		&lt;rdf:li&gt;General Object Exchange Profile&lt;/rdf:li&gt;
+	            		&lt;rdf:li&gt;Human Input Device Profile&lt;/rdf:li&gt;
+	            		&lt;rdf:li&gt;Advanced Audio Distribution Profile&lt;/rdf:li&gt;
+	            		&lt;rdf:li&gt;Audio/Video Remote Control Profile&lt;/rdf:li&gt;
+            		&lt;/rdf:Bag&gt;
+            	        &lt;/prf:BluetoothProfile&gt;
+      	&lt;/rdf:Description&gt;
+    	&lt;/prf:component&gt;
+    	
+        &lt;prf:component&gt;
+	&lt;rdf:Description rdf:ID=&quot;SoftwarePlatform&quot;&gt;
+			&lt;rdf:type rdf:resource=&quot;http://www.openmobilealliance.org/tech/profiles/UAPROF/ccppschema-20021212#SoftwarePlatform&quot; /&gt;
+        		&lt;prf:AcceptDownloadableSoftware&gt;Yes&lt;/prf:AcceptDownloadableSoftware&gt;
+        		&lt;prf:CcppAccept&gt;
+          			&lt;rdf:Bag&gt;
+			            &lt;rdf:li&gt;application/vnd.wap.wbxml&lt;/rdf:li&gt;
+			            &lt;rdf:li&gt;application/vnd.wap.wmlscriptc&lt;/rdf:li&gt;
+				    &lt;rdf:li&gt;application/vnd.wap.multipart.mixed&lt;/rdf:li&gt;
+				    &lt;rdf:li&gt;application/vnd.wap.xhtml+xml&lt;/rdf:li&gt;
+				    &lt;rdf:li&gt;application/xhtml+xml&lt;/rdf:li&gt;
+				    &lt;rdf:li&gt;application/vnd.oma.dd+xml&lt;/rdf:li&gt;
+				    &lt;rdf:li&gt;application/vnd.oma.drm.message&lt;/rdf:li&gt; 
+			    	    &lt;rdf:li&gt;application/vnd.oma.drm.rights+xml&lt;/rdf:li&gt;
+			    	    &lt;rdf:li&gt;application/vnd.oma.drm.content&lt;/rdf:li&gt; 
+			    	    &lt;rdf:li&gt;application/vnd.oma.drm.rights+wbxml&lt;/rdf:li&gt;
+                                    &lt;rdf:li&gt;application/x-gzip&lt;/rdf:li&gt; 
+                                    &lt;rdf:li&gt;application/x-compress&lt;/rdf:li&gt; 
+ 				  		&lt;rdf:li&gt;audio/3gpp&lt;/rdf:li&gt;
+				  		&lt;rdf:li&gt;audio/mid&lt;/rdf:li&gt;
+  				  		&lt;rdf:li&gt;audio/midi&lt;/rdf:li&gt;
+  				  		&lt;rdf:li&gt;audio/sp-midi&lt;/rdf:li&gt;
+				  		&lt;rdf:li&gt;audio/mp3&lt;/rdf:li&gt;
+				  		&lt;rdf:li&gt;audio/mp4&lt;/rdf:li&gt;
+				  		&lt;rdf:li&gt;audio/mpeg&lt;/rdf:li&gt;
+                  		&lt;rdf:li&gt;audio/wav&lt;/rdf:li&gt;
+  				  		&lt;rdf:li&gt;audio/x-mp3&lt;/rdf:li&gt;
+				  		&lt;rdf:li&gt;audio/x-mpeg&lt;/rdf:li&gt;
+				  		&lt;rdf:li&gt;audio/x-mpg&lt;/rdf:li&gt;
+				  		&lt;rdf:li&gt;audio/x-ms-wax&lt;/rdf:li&gt;
+				  		&lt;rdf:li&gt;audio/x-ms-wma&lt;/rdf:li&gt;
+  				  		&lt;rdf:li&gt;audio/x-ms-wav&lt;/rdf:li&gt;
+				  		&lt;rdf:li&gt;image/bitmap&lt;/rdf:li&gt;
+				  		&lt;rdf:li&gt;image/bmp&lt;/rdf:li&gt;
+				  		&lt;rdf:li&gt;image/gif&lt;/rdf:li&gt;
+                  		&lt;rdf:li&gt;image/jpeg&lt;/rdf:li&gt;
+				  		&lt;rdf:li&gt;image/jpg&lt;/rdf:li&gt;
+				  		&lt;rdf:li&gt;image/pjpeg&lt;/rdf:li&gt;
+                  		&lt;rdf:li&gt;image/png&lt;/rdf:li&gt;
+				  		&lt;rdf:li&gt;image/vnd.wap.wbmp&lt;/rdf:li&gt;
+				  		&lt;rdf:li&gt;image/xbm&lt;/rdf:li&gt;
+                  		&lt;rdf:li&gt;image/wbmp&lt;/rdf:li&gt;
+				  		&lt;rdf:li&gt;image/x-bmp&lt;/rdf:li&gt;
+				  		&lt;rdf:li&gt;image/x-png&lt;/rdf:li&gt;
+                  		&lt;rdf:li&gt;image/x-windows-bmp&lt;/rdf:li&gt;
+				  		&lt;rdf:li&gt;image/x-xbitmap&lt;/rdf:li&gt;
+				  		&lt;rdf:li&gt;message/rfc822&lt;/rdf:li&gt;
+                  		&lt;rdf:li&gt;text/css&lt;/rdf:li&gt;
+                  		&lt;rdf:li&gt;text/html&lt;/rdf:li&gt;
+                  		&lt;rdf:li&gt;text/plain&lt;/rdf:li&gt;
+                  		&lt;rdf:li&gt;text/vnd.wap.wml&lt;/rdf:li&gt;
+                  		&lt;rdf:li&gt;text/x-ical&lt;/rdf:li&gt;
+                  		&lt;rdf:li&gt;text/xml&lt;/rdf:li&gt;
+                  		&lt;rdf:li&gt;text/xsl&lt;/rdf:li&gt;
+                  		&lt;rdf:li&gt;text/x-vcal&lt;/rdf:li&gt;
+						&lt;rdf:li&gt;application/java&lt;/rdf:li&gt;
+            			&lt;rdf:li&gt;application/java-archive&lt;/rdf:li&gt;
+                  		&lt;rdf:li&gt;text/vnd.sun.j2me.app-descriptor&lt;/rdf:li&gt;
+                  		&lt;rdf:li&gt;video/3gpp&lt;/rdf:li&gt;
+                  		&lt;rdf:li&gt;video/avi&lt;/rdf:li&gt;
+                  		&lt;rdf:li&gt;video/mp4&lt;/rdf:li&gt;
+				  		&lt;rdf:li&gt;video/x-ms-asf&lt;/rdf:li&gt;
+                  		&lt;rdf:li&gt;video/x-ms-asx&lt;/rdf:li&gt;
+                  		&lt;rdf:li&gt;video/x-ms-wm&lt;/rdf:li&gt;
+                  		&lt;rdf:li&gt;video/x-ms-wmp&lt;/rdf:li&gt;
+                  		&lt;rdf:li&gt;video/x-ms-wmv&lt;/rdf:li&gt;
+                  		&lt;rdf:li&gt;video/x-ms-wmx&lt;/rdf:li&gt;
+                  		&lt;rdf:li&gt;video/x-ms-wvx&lt;/rdf:li&gt;
+		          	&lt;/rdf:Bag&gt;
+		        &lt;/prf:CcppAccept&gt;
+        		&lt;prf:CcppAccept-Charset&gt;
+          			&lt;rdf:Bag&gt;
+			            &lt;rdf:li&gt;US-ASCII&lt;/rdf:li&gt;
+                  		&lt;rdf:li&gt;ISO-10646-UCS-2&lt;/rdf:li&gt;
+			            &lt;rdf:li&gt;ISO-8859-1&lt;/rdf:li&gt;
+                  		&lt;rdf:li&gt;ISO-8859-2&lt;/rdf:li&gt;
+                  		&lt;rdf:li&gt;ISO-8859-4&lt;/rdf:li&gt;
+                  		&lt;rdf:li&gt;ISO-8859-5&lt;/rdf:li&gt;
+                  		&lt;rdf:li&gt;ISO-8859-7&lt;/rdf:li&gt;
+                  		&lt;rdf:li&gt;ISO-8859-9&lt;/rdf:li&gt;
+                  		&lt;rdf:li&gt;Windows-1250&lt;/rdf:li&gt;
+                  		&lt;rdf:li&gt;Windows-1252&lt;/rdf:li&gt;
+                  		&lt;rdf:li&gt;Windows-1253&lt;/rdf:li&gt;
+                  		&lt;rdf:li&gt;Windows-1254&lt;/rdf:li&gt;
+                  		&lt;rdf:li&gt;UTF-16&lt;/rdf:li&gt;
+                  		&lt;rdf:li&gt;UTF-16be&lt;/rdf:li&gt;
+                  		&lt;rdf:li&gt;UTF-16le&lt;/rdf:li&gt;
+                  		&lt;rdf:li&gt;UTF-7&lt;/rdf:li&gt;
+			            &lt;rdf:li&gt;UTF-8&lt;/rdf:li&gt;
+                  		&lt;rdf:li&gt;KOI8-R&lt;/rdf:li&gt;
+                  		&lt;rdf:li&gt;csKOI8R&lt;/rdf:li&gt;
+          			&lt;/rdf:Bag&gt;
+        		&lt;/prf:CcppAccept-Charset&gt;
+        		&lt;prf:CcppAccept-Encoding&gt;
+          			&lt;rdf:Bag&gt;
+            			&lt;rdf:li&gt;base64&lt;/rdf:li&gt;
+          			&lt;/rdf:Bag&gt;
+        		&lt;/prf:CcppAccept-Encoding&gt;
+      	&lt;/rdf:Description&gt;
+    	&lt;/prf:component&gt;
+    	
+        &lt;prf:component&gt;
+	&lt;rdf:Description rdf:ID=&quot;NetworkCharacteristics&quot;&gt;
+			&lt;rdf:type rdf:resource=&quot;http://www.openmobilealliance.org/tech/profiles/UAPROF/ccppschema-20021212#NetworkCharacteristics&quot; /&gt;
+        		&lt;prf:SecuritySupport&gt;
+          			&lt;rdf:Bag&gt;
+			            &lt;rdf:li&gt;WTLS-1&lt;/rdf:li&gt;
+			            &lt;rdf:li&gt;WTLS-2&lt;/rdf:li&gt;
+			            &lt;rdf:li&gt;SSL&lt;/rdf:li&gt;
+					&lt;/rdf:Bag&gt;
+        		&lt;/prf:SecuritySupport&gt;
+        		&lt;prf:SupportedBearers&gt;
+		          &lt;rdf:Bag&gt;
+		            &lt;rdf:li&gt;GSM_GPRS_IPV4&lt;/rdf:li&gt;
+		            &lt;rdf:li&gt;GSM_CSD_IPV4&lt;/rdf:li&gt;
+		            &lt;rdf:li&gt;Desktop Passthrough&lt;/rdf:li&gt;
+		          &lt;/rdf:Bag&gt;
+        		&lt;/prf:SupportedBearers&gt;
+      	&lt;/rdf:Description&gt;
+    	&lt;/prf:component&gt;
+
+    	&lt;prf:component&gt;
+	&lt;rdf:Description rdf:ID=&quot;BrowserUA&quot;&gt;
+			&lt;rdf:type rdf:resource=&quot;http://www.openmobilealliance.org/tech/profiles/UAPROF/ccppschema-20021212#BrowserUA&quot; /&gt;
+		        &lt;prf:BrowserName&gt;Microsoft Pocket Internet Explorer&lt;/prf:BrowserName&gt;
+		        &lt;prf:BrowserVersion&gt;4.0&lt;/prf:BrowserVersion&gt;
+		        &lt;prf:HtmlVersion&gt;4.01&lt;/prf:HtmlVersion&gt;
+		        &lt;prf:XhtmlVersion&gt;1.1&lt;/prf:XhtmlVersion&gt;
+		        &lt;prf:FramesCapable&gt;No&lt;/prf:FramesCapable&gt;
+		        &lt;prf:PreferenceForFrames&gt;No&lt;/prf:PreferenceForFrames&gt;
+		        &lt;prf:TablesCapable&gt;Yes&lt;/prf:TablesCapable&gt;
+      	&lt;/rdf:Description&gt;
+    	&lt;/prf:component&gt;
+
+    	&lt;prf:component&gt;
+	&lt;rdf:Description rdf:ID=&quot;WapCharacteristics&quot;&gt;
+			&lt;rdf:type rdf:resource=&quot;http://www.openmobilealliance.org/tech/profiles/UAPROF/ccppschema-20021212#WapCharacteristics&quot; /&gt;
+		        &lt;prf:WapDeviceClass&gt;C&lt;/prf:WapDeviceClass&gt;
+		        &lt;prf:WapVersion&gt;2.0&lt;/prf:WapVersion&gt;
+		        &lt;prf:WmlDeckSize&gt;3000&lt;/prf:WmlDeckSize&gt;
+		        &lt;prf:WmlScriptLibraries&gt;
+					&lt;rdf:Bag&gt;
+			            &lt;rdf:li&gt;Lang&lt;/rdf:li&gt;
+			            &lt;rdf:li&gt;Float&lt;/rdf:li&gt;
+			            &lt;rdf:li&gt;String&lt;/rdf:li&gt;
+			            &lt;rdf:li&gt;URL&lt;/rdf:li&gt;
+			            &lt;rdf:li&gt;WMLBrowser&lt;/rdf:li&gt;
+			            &lt;rdf:li&gt;Dialogs&lt;/rdf:li&gt;
+					&lt;/rdf:Bag&gt;
+        		&lt;/prf:WmlScriptLibraries&gt;
+        		&lt;prf:WmlScriptVersion&gt;
+          			&lt;rdf:Bag&gt;
+            			&lt;rdf:li&gt;1.2.1/June 2000&lt;/rdf:li&gt;
+                  		&lt;rdf:li&gt;1.1&lt;/rdf:li&gt;
+          			&lt;/rdf:Bag&gt;
+        		&lt;/prf:WmlScriptVersion&gt;
+        		&lt;prf:WmlVersion&gt;
+          			&lt;rdf:Bag&gt;
+            			&lt;rdf:li&gt;1.2.1/June 2000&lt;/rdf:li&gt;
+            			&lt;rdf:li&gt;1.1&lt;/rdf:li&gt;
+          			&lt;/rdf:Bag&gt;
+        		&lt;/prf:WmlVersion&gt;
+        		&lt;prf:WtaiLibraries&gt;
+          			&lt;rdf:Bag&gt;
+            			&lt;rdf:li&gt;WTA.Public.makeCall&lt;/rdf:li&gt;
+                  		&lt;rdf:li&gt;WTA.Public.sendDTMF&lt;/rdf:li&gt;
+                  		&lt;rdf:li&gt;WTA.Public.addPBEntry&lt;/rdf:li&gt;
+           			&lt;/rdf:Bag&gt;
+        		&lt;/prf:WtaiLibraries&gt;
+        		&lt;prf:DrmClass&gt;
+          			&lt;rdf:Bag&gt;
+	            		&lt;rdf:li&gt;ForwardLock&lt;/rdf:li&gt;
+	            		&lt;rdf:li&gt;CombinedDelivery&lt;/rdf:li&gt;
+	            		&lt;rdf:li&gt;SeparateDelivery&lt;/rdf:li&gt;
+	          		&lt;/rdf:Bag&gt;
+	        	&lt;/prf:DrmClass&gt;
+	        	&lt;prf:DrmConstraints&gt;
+	          		&lt;rdf:Bag&gt;
+	            		&lt;rdf:li&gt;datetime&lt;/rdf:li&gt;
+	            		&lt;rdf:li&gt;interval&lt;/rdf:li&gt;
+	            		&lt;rdf:li&gt;count&lt;/rdf:li&gt;
+	          		&lt;/rdf:Bag&gt;
+	        	&lt;/prf:DrmConstraints&gt;
+	        	&lt;prf:OmaDownload&gt;Yes&lt;/prf:OmaDownload&gt;
+      	&lt;/rdf:Description&gt;
+    	&lt;/prf:component&gt;
+
+    	&lt;prf:component&gt;
+	&lt;rdf:Description rdf:ID=&quot;MMSCharacteristics&quot;&gt;
+      		&lt;rdf:type rdf:resource=&quot;http://www.wapforum.org/profiles/MMS/ccppschema-20010111#MmsCharacteristics&quot; /&gt; 
+				&lt;mms:MmsMaxMessageSize&gt;614400&lt;/mms:MmsMaxMessageSize&gt;
+				&lt;mms:MmsMaxImageResolution&gt;1600x1600&lt;/mms:MmsMaxImageResolution&gt;
+				&lt;mms:MmsCcppAccept&gt;
+          			&lt;rdf:Bag&gt;
+			            &lt;rdf:li&gt;image/bmp&lt;/rdf:li&gt; 
+			    		&lt;rdf:li&gt;image/x-bmp&lt;/rdf:li&gt; 
+			    		&lt;rdf:li&gt;image/x-ms-bmp&lt;/rdf:li&gt; 
+			    		&lt;rdf:li&gt;image/vnd.wap.wbmp&lt;/rdf:li&gt; 
+			    		&lt;rdf:li&gt;image/gif&lt;/rdf:li&gt; 
+			    		&lt;rdf:li&gt;image/jpeg&lt;/rdf:li&gt; 
+			    		&lt;rdf:li&gt;image/jpg&lt;/rdf:li&gt; 
+			    		&lt;rdf:li&gt;image/png&lt;/rdf:li&gt; 
+			    		&lt;rdf:li&gt;audio/amr&lt;/rdf:li&gt; 
+			   		 	&lt;rdf:li&gt;audio/x-amr&lt;/rdf:li&gt; 
+			    		&lt;rdf:li&gt;audio/mid&lt;/rdf:li&gt; 
+			    		&lt;rdf:li&gt;audio/midi&lt;/rdf:li&gt; 
+			    		&lt;rdf:li&gt;audio/sp-midi&lt;/rdf:li&gt; 
+			    		&lt;rdf:li&gt;audio/x-mid&lt;/rdf:li&gt; 
+			    		&lt;rdf:li&gt;audio/x-midi&lt;/rdf:li&gt; 
+			    		&lt;rdf:li&gt;audio/wav&lt;/rdf:li&gt; 
+			    		&lt;rdf:li&gt;audio/x-wav&lt;/rdf:li&gt; 
+			    		&lt;rdf:li&gt;audio/3gpp&lt;/rdf:li&gt; 
+			    		&lt;rdf:li&gt;audio/mp4&lt;/rdf:li&gt; 
+			    		&lt;rdf:li&gt;video/3gpp&lt;/rdf:li&gt; 
+			    		&lt;rdf:li&gt;video/mp4&lt;/rdf:li&gt; 
+			    		&lt;rdf:li&gt;text/x-vCalendar&lt;/rdf:li&gt; 
+			    		&lt;rdf:li&gt;text/x-vCard&lt;/rdf:li&gt; 
+			    		&lt;rdf:li&gt;text/plain&lt;/rdf:li&gt; 
+			    		&lt;rdf:li&gt;application/smil&lt;/rdf:li&gt;
+			    		&lt;rdf:li&gt;application/vnd.wap.mms-message&lt;/rdf:li&gt; 
+			    		&lt;rdf:li&gt;application/vnd.wap.multipart.mixed&lt;/rdf:li&gt; 
+			    		&lt;rdf:li&gt;application/vnd.wap.multipart.related&lt;/rdf:li&gt;
+			    		&lt;rdf:li&gt;application/vnd.oma.drm.message&lt;/rdf:li&gt;
+			    		&lt;rdf:li&gt;application/vnd.oma.drm.rights+xml&lt;/rdf:li&gt;
+			    		&lt;rdf:li&gt;application/vnd.oma.drm.content&lt;/rdf:li&gt; 
+			    		&lt;rdf:li&gt;application/vnd.oma.drm.rights+wbxml&lt;/rdf:li&gt;
+          			&lt;/rdf:Bag&gt;
+				&lt;/mms:MmsCcppAccept&gt;
+				&lt;mms:MmsCcppAcceptCharSet&gt;
+					&lt;rdf:Bag&gt;
+						&lt;rdf:li&gt;US-ASCII&lt;/rdf:li&gt; 
+			 			&lt;rdf:li&gt;UTF-8&lt;/rdf:li&gt;
+			 			&lt;rdf:li&gt;UTF-16&lt;/rdf:li&gt;
+			 			&lt;rdf:li&gt;ISO-10646-UCS-2&lt;/rdf:li&gt; 
+			 			&lt;rdf:li&gt;ISO-8859-1&lt;/rdf:li&gt;
+		          	&lt;/rdf:Bag&gt;
+				&lt;/mms:MmsCcppAcceptCharSet&gt;
+				&lt;mms:MmsVersion&gt;
+          			&lt;rdf:Bag&gt;
+            			&lt;rdf:li&gt;1.1&lt;/rdf:li&gt;
+          			&lt;/rdf:Bag&gt;
+				&lt;/mms:MmsVersion&gt;
+      	&lt;/rdf:Description&gt;
+    	&lt;/prf:component&gt;
+  	
+  	&lt;!-- Streaming --&gt;
+  	&lt;prf:component&gt;
+	&lt;rdf:Description rdf:ID=&quot;Streaming&quot;&gt;
+   	      &lt;rdf:type rdf:resource=&quot;http://www.3gpp.org/profiles/PSS/ccppschema-PSS5#Streaming&quot;/&gt;
+   	      &lt;rdf:type rdf:resource=&quot;http://www.3gpp.org/profiles/PSS/ccppschema-PSS6#Streaming&quot;/&gt; 
+	     &lt;!-- &lt;pss6:ThreeGPPLinkChar&gt;No&lt;/pss6:ThreeGPPLinkChar&gt; --&gt;
+	       &lt;pss6:VideoDecodingByteRate&gt;8000&lt;/pss6:VideoDecodingByteRate&gt; 
+               &lt;pss6:VideoInitialPostDecoderBufferingPeriod&gt;0&lt;/pss6:VideoInitialPostDecoderBufferingPeriod&gt;
+               &lt;pss6:VideoPreDecoderBufferSize&gt;0&lt;/pss6:VideoPreDecoderBufferSize&gt;
+               &lt;pss6:StreamingAccept&gt;
+        	&lt;rdf:Bag&gt;
+        	&lt;rdf:li&gt;audio/AMR&lt;/rdf:li&gt;
+        	&lt;rdf:li&gt;audio/AAC&lt;/rdf:li&gt;
+        	&lt;rdf:li&gt;audio/3gpp&lt;/rdf:li&gt;
+        	&lt;rdf:li&gt;audio/MP4A-LATM&lt;/rdf:li&gt;
+		&lt;rdf:li&gt;audio/MP4A-ES&lt;/rdf:li&gt;
+        	&lt;rdf:li&gt;video/3gpp&lt;/rdf:li&gt;
+        	&lt;rdf:li&gt;video/mp4&lt;/rdf:li&gt;
+		&lt;rdf:li&gt;video/H263-2000;profile=0;level=45&lt;/rdf:li&gt;
+		&lt;rdf:li&gt;video/MP4V-ES&lt;/rdf:li&gt;
+        	&lt;/rdf:Bag&gt;
+   	      &lt;/pss6:StreamingAccept&gt;
+   	      &lt;pss6:AdaptationSupport&gt;Yes&lt;/pss6:AdaptationSupport&gt; 
+  	      &lt;pss6:ExtendedRtcpReports&gt;Yes&lt;/pss6:ExtendedRtcpReports&gt; 
+  	      &lt;pss6:RtpRetransmission&gt;No&lt;/pss6:RtpRetransmission&gt; 
+  	      &lt;pss6:MediaAlternatives&gt;No&lt;/pss6:MediaAlternatives&gt; 
+   	      &lt;pss6:RtpProfiles&gt;
+              &lt;rdf:Bag&gt;
+                &lt;rdf:li&gt;RTP/AVP&lt;/rdf:li&gt;
+              &lt;/rdf:Bag&gt;
+              &lt;/pss6:RtpProfiles&gt;
+     	      &lt;pss5:AudioChannels&gt;Stereo&lt;/pss5:AudioChannels&gt;
+              &lt;pss5:RenderingScreenSize&gt;240x320&lt;/pss5:RenderingScreenSize&gt;
+              &lt;pss5:PssAccept&gt;
+	    	&lt;rdf:Bag&gt;
+	        &lt;rdf:li&gt;audio/AMR&lt;/rdf:li&gt;
+		&lt;rdf:li&gt;audio/MP4A-LATM&lt;/rdf:li&gt;
+		&lt;rdf:li&gt;audio/MP4A-ES&lt;/rdf:li&gt;
+		&lt;rdf:li&gt;video/3gpp&lt;/rdf:li&gt;
+		&lt;rdf:li&gt;video/mp4&lt;/rdf:li&gt;
+		&lt;rdf:li&gt;video/H263-2000;profile=0;level=45&lt;/rdf:li&gt;
+		&lt;rdf:li&gt;video/MP4V-ES&lt;/rdf:li&gt;
+          	&lt;/rdf:Bag&gt;
+              &lt;/pss5:PssAccept&gt;
+               &lt;pss5:VideoDecodingByteRate&gt;8000&lt;/pss5:VideoDecodingByteRate&gt;   
+               &lt;pss5:VideoInitialPostDecoderBufferingPeriod&gt;0&lt;/pss5:VideoInitialPostDecoderBufferingPeriod&gt;
+               &lt;pss5:VideoPreDecoderBufferSize&gt;0&lt;/pss5:VideoPreDecoderBufferSize&gt;
+        &lt;/rdf:Description&gt;
+        &lt;/prf:component&gt;
+  	&lt;!-- Streaming --&gt;
+        &lt;/rdf:Description&gt;
+&lt;/rdf:RDF&gt;
+
+&lt;!-- Revision History
+===========================================================================
+Date 		: 09Mar07
+Modified By	: Hans Mao
+
+Copied from Hermes-2.0
+add &lt;rdf:li&gt;application/vnd.oma.drm.rights+wbxml&lt;/rdf:li&gt;
+    
+===========================================================================
+
+End Revision History --&gt;</pre>
+</body>
+</html>

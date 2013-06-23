@@ -1,0 +1,435 @@
+<html>
+<head><title>Validator report for http://mms.cellcom.com/uaprofs/lg-vx5000.xml</title></head>
+<body>
+<h1>Validator output for http://mms.cellcom.com/uaprofs/lg-vx5000.xml</h1>
+<pre>
+RDF parser error:The processing instruction target matching &quot;[xX][mM][lL]&quot; is not allowed.
+The profile does not contain any RDF information - use W3C RDF Validator
+PROFILE IS NOT VALID
+</pre>
+<p><a href="mailto:markhenrybutler@gmail.com">Problems with this report?</a></p><h1>Original profile</h1>
+<pre>
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;
+&lt;?xml:stylesheet type=&quot;text/xsl&quot; href=&quot;uaprof.xsl&quot;?&gt;
+
+&lt;!--
+*********************************************************************
+*	Verizon Wireless WAP 2.0 handset UA Prof template
+*
+*	Version:		0.1
+*	Created:		09/12/04
+*	Author:			yong-seon Shin
+*	Organization:	Subscriber Equipment Business Unit (SEBU)
+*
+*	Copyright 2002 LG Electronics 
+*
+*	Note
+*		Add elements that are defined in the UAPROF specification 
+*       if additional features are supported by their device
+*
+*	Revision History
+*		0.1		Initial Release(09/12/04)
+*
+*	Known issues
+*	
+*		
+*********************************************************************
+--&gt;	 
+
+&lt;rdf:RDF xmlns:rdf=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot; xmlns:prf=&quot;http://www.wapforum.org/profiles/UAPROF/ccppschema-20010430#&quot; xmlns=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot;&gt;
+
+&lt;rdf:Description ID=&quot;BP5000UAProfile&quot;&gt;
+
+&lt;!--********************** Hardware Platform Description ***************************************--&gt;
+&lt;prf:component&gt;
+	&lt;rdf:Description ID=&quot;HardwarePlatform&quot;&gt;
+	&lt;rdf:type resource=&quot;http://www.wapforum.org/profiles/UAPROF/ccppschema-20010430#   HardwarePlatform&quot;/&gt;
+
+&lt;!-- ******** Vendor/model *******--&gt;	
+
+
+&lt;!-- Enter the vendor name here.  This must match the vendor name in the EDF --&gt;		
+		&lt;prf:Vendor&gt;
+			LG
+		&lt;/prf:Vendor&gt;
+	
+&lt;!-- Enter the device model name here.  This must match the SKU --&gt;		
+		&lt;prf:Model&gt;
+			VX5000
+		&lt;/prf:Model&gt;
+		
+&lt;!-- Change if different --&gt;
+		&lt;prf:CPU&gt;
+			ARM7
+		&lt;/prf:CPU&gt;
+		
+		
+&lt;!--****** Display ******--&gt;
+		
+&lt;!-- Enter screen size in pixels here - width x height --&gt;
+		&lt;prf:ScreenSize&gt;
+			128x160
+		&lt;/prf:ScreenSize&gt;
+		
+&lt;!-- &quot;Yes&quot; if device supports color --&gt;	
+		&lt;prf:ColorCapable&gt;
+			Yes
+		&lt;/prf:ColorCapable&gt;
+		
+&lt;!-- Enter the color or grayscale depth here --&gt;
+		&lt;prf:BitsPerPixel&gt;
+			16
+		&lt;/prf:BitsPerPixel&gt;
+		
+&lt;!-- Change if not 1:1 --&gt;
+		&lt;prf:PixelAspectRatio&gt;
+			1x1
+		&lt;/prf:PixelAspectRatio&gt;
+		
+&lt;!-- This should always be &quot;Yes&quot; --&gt;
+		&lt;prf:ImageCapable&gt;
+			Yes
+		&lt;/prf:ImageCapable&gt;
+
+&lt;!-- Enter the screen size in characters here.  Use the default font.--&gt;
+		&lt;prf:ScreenSizeChar&gt;
+			12x16
+		&lt;/prf:ScreenSizeChar&gt;
+
+&lt;!-- Change to &quot;No&quot; only if the default font on the device is not proportional --&gt;
+		&lt;prf:StandardFontProportional&gt;
+			No
+		&lt;/prf:StandardFontProportional&gt;
+
+
+&lt;!-- List the supported output character sets here. UTF-8 and UTF-16 are required by spec--&gt;
+		&lt;prf:OutputCharSet&gt;
+			&lt;rdf:Bag&gt;
+				&lt;rdf:li&gt;ISO-8859-1&lt;/rdf:li&gt;
+				&lt;rdf:li&gt;US-ASCII&lt;/rdf:li&gt;
+				&lt;rdf:li&gt;UTF-8&lt;/rdf:li&gt;
+				&lt;rdf:li&gt;UTF-16&lt;/rdf:li&gt;
+			&lt;/rdf:Bag&gt;
+		&lt;/prf:OutputCharSet&gt;
+		
+		
+
+&lt;!-- ******** Input capabilities ******--&gt;		
+&lt;!-- List the supported Input character sets here --&gt;
+		&lt;prf:InputCharSet&gt;
+			&lt;rdf:Bag&gt;
+				&lt;rdf:li&gt;ISO-8859-1&lt;/rdf:li&gt;
+				&lt;rdf:li&gt;US-ASCII&lt;/rdf:li&gt;
+				&lt;rdf:li&gt;UTF-8&lt;/rdf:li&gt;
+			&lt;/rdf:Bag&gt;
+		&lt;/prf:InputCharSet&gt;
+		
+&lt;!-- This should always be &quot;Yes&quot; --&gt;
+		&lt;prf:TextInputCapable&gt;
+			Yes
+		&lt;/prf:TextInputCapable&gt;
+		
+&lt;!-- This value should only be changed if the device does not use a standard DTMF keypad --&gt;
+		&lt;prf:Keyboard&gt;
+			PhoneKeypad
+		&lt;/prf:Keyboard&gt;
+
+&lt;!-- Enter the number of softkeys supported by the device --&gt;
+		&lt;prf:NumberOfSoftKeys&gt;
+			2
+		&lt;/prf:NumberOfSoftKeys&gt;
+		
+
+&lt;!-- ********* Audio **********--&gt;	
+
+&lt;!-- This should always be &quot;Yes&quot; --&gt;
+		&lt;prf:SoundOutputCapable&gt;
+			Yes
+		&lt;/prf:SoundOutputCapable&gt;
+
+
+&lt;!-- This should be &quot;Yes&quot; for all voice capable devices --&gt;		
+		&lt;prf:VoiceInputCapable&gt;
+			Yes
+		&lt;/prf:VoiceInputCapable&gt;
+
+&lt;!--******************************--&gt;		
+	&lt;/rdf:Description&gt;
+&lt;/prf:component&gt;
+
+&lt;!--********************** Software Platform Description ***************************************--&gt;
+&lt;prf:component&gt;
+	&lt;rdf:Description ID=&quot;SoftwarePlatform&quot;&gt;
+	&lt;rdf:type resource=&quot;http://www.wapforum.org/profiles/UAPROF/ccppschema-20010430#  SoftwarePlatform&quot;/&gt;
+
+&lt;!-- ***** Basic ******--&gt;
+
+&lt;!-- Should be &quot;Yes&quot; for all Java capable devices --&gt;
+	&lt;prf:AcceptDownloadableSoftware&gt;
+		No
+	&lt;/prf:AcceptDownloadableSoftware&gt;
+	
+&lt;!-- Enter the software version number here.  This must match the version reported via IOTA--&gt;
+	&lt;prf:SoftwareNumber&gt;
+		T50ATE05
+	&lt;/prf:SoftwareNumber&gt;
+
+&lt;!-- Should not change if using Qualcomm software--&gt;	
+	&lt;prf:OSName&gt;
+		Rex
+	&lt;/prf:OSName&gt;
+
+&lt;!-- Should not change if using Qualcomm software--&gt;	
+	&lt;prf:OSVendor&gt;
+		QUALCOMM
+	&lt;/prf:OSVendor&gt;
+	
+&lt;!-- Fill in version of DMSS Software base --&gt;
+	&lt;prf:OSVersion&gt;
+		DMSS6050/3.3
+	&lt;/prf:OSVersion&gt;
+
+	&lt;!-- Enter Max Image Resolution here --&gt;
+	&lt;prf:MmsMaxImageResolution&gt;640x480&lt;/prf:MmsMaxImageResolution&gt; 
+	
+&lt;!-- ********* CCPP accept **********--&gt;
+
+&lt;!-- List all accepted MIME types here --&gt;
+	&lt;prf:MmsCcppAccept&gt;
+		&lt;rdf:Bag&gt;
+			&lt;!-- Markup languages --&gt;
+			&lt;rdf:li&gt;text/html&lt;/rdf:li&gt;
+			&lt;rdf:li&gt;text/vnd.wap.wml&lt;/rdf:li&gt;
+			&lt;rdf:li&gt;text/vnd.wap.wmlscript&lt;/rdf:li&gt;
+			&lt;rdf:li&gt;application/vnd.wap.wmlscriptc&lt;/rdf:li&gt;
+			&lt;rdf:li&gt;application/vnd.wap.wmlc&lt;/rdf:li&gt;
+			&lt;rdf:li&gt;application/xhtml+xml&lt;/rdf:li&gt;
+			
+			&lt;!-- Images --&gt;
+			&lt;rdf:li&gt;image/vnd.wap.wbmp&lt;/rdf:li&gt;
+			&lt;rdf:li&gt;image/jpeg&lt;/rdf:li&gt;
+			&lt;rdf:li&gt;image/png&lt;/rdf:li&gt;
+			&lt;rdf:li&gt;image/x-up-wpng&lt;/rdf:li&gt;
+			&lt;rdf:li&gt;image/gif&lt;/rdf:li&gt;
+			&lt;rdf:li&gt;image/bmp&lt;/rdf:li&gt;
+			
+			&lt;!-- Audio / Multimedia  --&gt;
+			&lt;rdf:li&gt;audio/midi&lt;/rdf:li&gt;
+			&lt;rdf:li&gt;audio/vnd.qcelp&lt;/rdf:li&gt;
+			&lt;rdf:li&gt;application/x-pmd&lt;/rdf:li&gt;
+			
+			&lt;!-- Other: add other supported types here --&gt;
+						
+		&lt;/rdf:Bag&gt;
+	
+	&lt;/prf:MmsCcppAccept&gt;
+	
+&lt;!-- List all accepted character sets here. UTF-8 and UTF-16 required by spec --&gt;
+	
+	&lt;prf:CcppAccept-Charset&gt;
+		&lt;rdf:Bag&gt;
+			&lt;rdf:li&gt;ISO-8859-1&lt;/rdf:li&gt;
+			&lt;rdf:li&gt;US-ASCII&lt;/rdf:li&gt;
+			&lt;rdf:li&gt;UTF-8&lt;/rdf:li&gt;
+			&lt;rdf:li&gt;UTF-16&lt;/rdf:li&gt;
+			&lt;!-- Enter other items... --&gt;
+		&lt;/rdf:Bag&gt;
+	
+	&lt;/prf:CcppAccept-Charset&gt;
+	
+&lt;!-- List all accepted languages here in order of preference --&gt;
+	
+	&lt;prf:CcppAccept-Language&gt;
+		&lt;rdf:Seq&gt;
+			&lt;rdf:li&gt;en&lt;/rdf:li&gt;
+			&lt;!-- Enter other languages, e.g. spanish, french... --&gt;
+			&lt;rdf:li&gt;sp&lt;/rdf:li&gt;
+		&lt;/rdf:Seq&gt;
+	&lt;/prf:CcppAccept-Language&gt;
+	
+&lt;!-- List all accepted transfer encodings here --&gt;
+	
+	&lt;prf:CcppAccept-Encoding&gt;
+		&lt;rdf:Bag&gt;
+			&lt;rdf:li&gt;gzip&lt;/rdf:li&gt;
+			&lt;rdf:li&gt;deflate&lt;/rdf:li&gt;
+			&lt;!-- Enter items... --&gt;
+		&lt;/rdf:Bag&gt;
+	&lt;/prf:CcppAccept-Encoding&gt;
+	
+&lt;!-- ******** Input Encoders ******--&gt;
+&lt;!-- Don&#039;t know if we need this or not... --&gt;
+	&lt;prf:AudioInputEncoder&gt;
+	
+	&lt;/prf:AudioInputEncoder&gt;
+	
+&lt;!--******************************--&gt;	
+	&lt;/rdf:Description&gt;
+&lt;/prf:component&gt;
+
+&lt;!--********************** Network Characteristics Description ***************************************--&gt;
+
+	&lt;prf:component&gt;
+	&lt;rdf:Description ID=&quot;NetworkCharacteristics&quot;&gt;
+	&lt;rdf:type resource=&quot;http://www.wapforum.org/profiles/UAPROF/ccppschema-20010430#  NetworkCharacteristics&quot;/&gt;
+	
+&lt;!-- Indicate support for SSL 3.0 and TLS 1.0 --&gt;
+	&lt;prf:SecuritySupport&gt;
+		&lt;rdf:Bag&gt;
+			&lt;rdf:li&gt;SSL-3.0&lt;/rdf:li&gt;
+			&lt;rdf:li&gt;TLS-1.0&lt;/rdf:li&gt;
+		&lt;/rdf:Bag&gt;
+	&lt;/prf:SecuritySupport&gt;
+	
+&lt;!-- Indicate support for IS-2000 release 0 packet data bearer --&gt;
+&lt;!-- May add more detail here in a later rev. --&gt;
+	&lt;prf:SupportedBearers&gt;
+		&lt;rdf:Bag&gt;
+			&lt;rdf:li&gt;IPv4&lt;/rdf:li&gt;
+		&lt;/rdf:Bag&gt;
+	&lt;/prf:SupportedBearers&gt;
+		
+	&lt;/rdf:Description&gt;
+&lt;/prf:component&gt;
+
+&lt;!--********************** Browser UA Description ***************************************--&gt;
+
+&lt;prf:component&gt;
+	&lt;rdf:Description ID=&quot;BrowserUA&quot;&gt;
+	&lt;rdf:type resource=&quot;http://www.wapforum.org/profiles/UAPROF/ccppschema-20010430#  BrowserUA&quot;/&gt;
+	
+&lt;!-- ********* Browser Identification ********** --&gt;
+
+&lt;!-- Enter the browser vendor/product name here --&gt;
+	&lt;prf:BrowserName&gt;
+		OPENWAVE
+	&lt;/prf:BrowserName&gt;
+	
+&lt;!-- Enter the browser version here --&gt;
+	&lt;prf:BrowserVersion&gt;
+		6.2.3.2
+	&lt;/prf:BrowserVersion&gt;
+	
+&lt;!-- ********** Capabilities *********** --&gt;
+	
+&lt;!-- Frames are not supported --&gt;
+	&lt;prf:FramesCapable&gt;
+		No
+	&lt;/prf:FramesCapable&gt;
+	
+&lt;!-- Basic tables are supported in xhtml-basic --&gt;
+	&lt;prf:TablesCapable&gt;
+		Yes
+	&lt;/prf:TablesCapable&gt;
+	
+&lt;!-- Frames are not supported --&gt;
+	&lt;prf:PreferenceForFrames&gt;
+		No
+	&lt;/prf:PreferenceForFrames&gt;
+	
+&lt;!-- *********** Applet / Script support is not required ********** --&gt;	
+	&lt;prf:DownloadableBrowserApps&gt;
+		&lt;rdf:Bag&gt;
+			&lt;rdf:li&gt;No&lt;/rdf:li&gt;
+		&lt;/rdf:Bag&gt;
+	&lt;/prf:DownloadableBrowserApps&gt;
+
+	&lt;prf:JavaAppletEnabled&gt;
+		No
+	&lt;/prf:JavaAppletEnabled&gt;
+
+	&lt;prf:JavaScriptEnabled&gt;
+		No
+	&lt;/prf:JavaScriptEnabled&gt;
+	
+	
+&lt;!-- ************* XHTML support - indicate XHTML-Basic 1.0 ************ --&gt;
+	&lt;prf:XhtmlVersion&gt;
+		XHTML-Basic/1.0
+	&lt;/prf:XhtmlVersion&gt;
+	
+&lt;!-- May need to add additional modules here --&gt;
+	&lt;prf:XhtmlModules&gt;
+	
+	&lt;/prf:XhtmlModules&gt;
+
+&lt;!--******************************--&gt;
+	
+	&lt;/rdf:Description&gt;
+&lt;/prf:component&gt;
+
+&lt;!--********************** WAP Characteristics Description ***************************************--&gt;
+
+&lt;prf:component&gt;
+	&lt;rdf:Description ID=&quot;WapCharacteristics&quot;&gt;
+	&lt;rdf:type resource=&quot;http://www.wapforum.org/profiles/UAPROF/ccppschema-20010430#  WapCharacteristics&quot;/&gt;
+
+&lt;!--******** General ***********--&gt;
+
+	
+	&lt;prf:WapVersion&gt;
+		2.0
+	&lt;/prf:WapVersion&gt;
+
+&lt;!--*********** WML ************--&gt;
+
+&lt;!-- If full wml 2.0 is supported, it should be added here --&gt;	
+	&lt;prf:WmlVersion&gt;
+		&lt;rdf:Bag&gt;
+			&lt;rdf:li&gt;1.1&lt;/rdf:li&gt;
+			&lt;rdf:li&gt;1.2&lt;/rdf:li&gt;
+		&lt;/rdf:Bag&gt;
+	&lt;/prf:WmlVersion&gt;
+
+&lt;!-- Enter the maximum deck size for wml --&gt;
+	&lt;prf:WmlDeckSize&gt;
+		4096
+	&lt;/prf:WmlDeckSize&gt;
+
+&lt;!--******************************--&gt;
+	&lt;/rdf:Description&gt;
+&lt;/prf:component&gt;
+
+&lt;!--********************** Push Characteristics Description ***************************************--&gt;
+&lt;!-- Note: This entire section is TBD in this revision --&gt;
+
+&lt;prf:component&gt;
+	&lt;rdf:Description ID=&quot;PushCharacteristics&quot;&gt;
+	&lt;rdf:type resource=&quot;http://www.wapforum.org/profiles/UAPROF/ccppschema-20010430#  PushCharacteristics&quot;/&gt;
+
+	&lt;prf:Push-Accept&gt;
+		&lt;rdf:Bag&gt;
+			&lt;rdf:li&gt;text/vnd.wap.si&lt;/rdf:li&gt;
+			&lt;rdf:li&gt;text/vnd.wap.sl&lt;/rdf:li&gt;
+			&lt;rdf:li&gt;text/vnd.wap.co&lt;/rdf:li&gt;
+			&lt;rdf:li&gt;application/vnd.wap.sic&lt;/rdf:li&gt;
+			&lt;rdf:li&gt;application/vnd.wap.slc&lt;/rdf:li&gt;
+			&lt;rdf:li&gt;application/vnd.wap.coc&lt;/rdf:li&gt;
+		&lt;/rdf:Bag&gt;
+	&lt;/prf:Push-Accept&gt;
+
+	&lt;prf:Push-Accept-Encoding&gt;
+		&lt;rdf:Bag&gt;
+			&lt;rdf:li&gt;gzip&lt;/rdf:li&gt;
+			&lt;rdf:li&gt;deflate&lt;/rdf:li&gt;
+		&lt;/rdf:Bag&gt;
+	&lt;/prf:Push-Accept-Encoding&gt;
+
+	&lt;prf:Push-Accept-AppID&gt;
+		&lt;rdf:Bag&gt;
+			&lt;rdf:li&gt;x-wap-application:wml.ua&lt;/rdf:li&gt;
+			&lt;rdf:li&gt;*&lt;/rdf:li&gt;
+		&lt;/rdf:Bag&gt;
+	&lt;/prf:Push-Accept-AppID&gt;
+
+	&lt;prf:Push-MsgSize&gt;
+		1400
+	&lt;/prf:Push-MsgSize&gt;
+	
+	&lt;/rdf:Description&gt;
+&lt;/prf:component&gt;
+
+&lt;/rdf:Description&gt;
+&lt;/rdf:RDF&gt;</pre>
+</body>
+</html>

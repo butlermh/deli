@@ -1,0 +1,229 @@
+<html>
+<head><title>Validator report for http://www.consumer.philips.com/wbu/uapX523.xml</title></head>
+<body>
+<h1>Validator output for http://www.consumer.philips.com/wbu/uapX523.xml</h1>
+<pre>
+RDF parser warning:{W102} unqualified use of rdf:resource is deprecated.
+RDF parser warning:{W102} unqualified use of rdf:resource is deprecated.
+RDF parser warning:{W102} unqualified use of rdf:resource is deprecated.
+RDF parser warning:{W102} unqualified use of rdf:resource is deprecated.
+RDF parser warning:{W102} unqualified use of rdf:resource is deprecated.
+RDF parser warning:{W102} unqualified use of rdf:resource is deprecated.
+The profile uses an unknown namespace: [http://www.openmobilealliance.org/tech/profiles/uaprof/ccppschema-20021212#]
+WARNING: The profile uses a commonly used namespace alias
+Aliased namespace is:    http://www.wapforum.org/profiles/UAPROF/ccppschema-20010330#
+Real namespace is: http://www.wapforum.org/UAPROF/ccppschema-20010330#
+Warning [A: http://www.wapforum.org/profiles/UAPROF/ccppschema-20010330#MmsVersion] Attribute not defined in vocabulary
+Warning [A: http://www.wapforum.org/profiles/UAPROF/ccppschema-20010330#MmsCcppAccept-Charset] Attribute not defined in vocabulary
+Warning [A: http://www.wapforum.org/profiles/UAPROF/ccppschema-20010330#MmsCcppAccept] Attribute not defined in vocabulary
+Warning [A: http://www.wapforum.org/profiles/UAPROF/ccppschema-20010330#MmsMaxImageResolution] Attribute not defined in vocabulary
+Warning [A: http://www.wapforum.org/profiles/UAPROF/ccppschema-20010330#MmsMaxMessageSize] Attribute not defined in vocabulary
+Error [C: http://www.wapforum.org/profiles/UAPROF/ccppschema-20010330#NetworkCharacteristics, A: http://www.wapforum.org/profiles/UAPROF/ccppschema-20010330#SupportedBearers] is not a container.
+Warning [A: http://www.wapforum.org/profiles/UAPROF/ccppschema-20010330#Push-MaxPushReq] Attribute not defined in vocabulary
+Warning [A: http://www.wapforum.org/profiles/UAPROF/ccppschema-20010330#Push-MsgSize] Attribute not defined in vocabulary
+Warning [A: http://www.wapforum.org/profiles/UAPROF/ccppschema-20010330#Push-Accept-AppID] Attribute not defined in vocabulary
+Warning [A: http://www.wapforum.org/profiles/UAPROF/ccppschema-20010330#Push-Accept-Encoding] Attribute not defined in vocabulary
+Warning [A: http://www.wapforum.org/profiles/UAPROF/ccppschema-20010330#Push-Accept-Charset] Attribute not defined in vocabulary
+Warning [A: http://www.wapforum.org/profiles/UAPROF/ccppschema-20010330#Push-Accept] Attribute not defined in vocabulary
+PROFILE IS NOT VALID
+</pre>
+<p><a href="mailto:markhenrybutler@gmail.com">Problems with this report?</a></p><h1>Original profile</h1>
+<pre>
+&lt;?xml version=&quot;1.0&quot;?&gt;
+&lt;rdf:RDF xmlns:rdf=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot;
+      xmlns:dc=&quot;http://purl.org/dc/elements/1.1/&quot;
+      xmlns:prf=&quot;http://www.wapforum.org/profiles/UAPROF/ccppschema-20010330#&quot;&gt;
+  &lt;rdf:Description rdf:ID=&quot;PhilipsX523&quot;&gt;
+    &lt;prf:component&gt;
+        &lt;rdf:Description rdf:ID=&quot;HardwarePlatform&quot;&gt;
+        &lt;rdf:type resource=&quot;http://www.wapforum.org/profiles/UAPROF/ccppschema-20010330#HardwarePlatform&quot; /&gt;
+            &lt;prf:BitsPerPixel&gt;18&lt;/prf:BitsPerPixel&gt;
+            &lt;prf:ColorCapable&gt;Yes&lt;/prf:ColorCapable&gt;
+            &lt;prf:CPU&gt;ARM9&lt;/prf:CPU&gt;
+            &lt;prf:ImageCapable&gt;Yes&lt;/prf:ImageCapable&gt;
+            &lt;prf:InputCharSet&gt;
+                &lt;rdf:Bag&gt;
+                  &lt;rdf:li&gt;ISO-10646-UCS-2&lt;/rdf:li&gt;
+                &lt;/rdf:Bag&gt;
+            &lt;/prf:InputCharSet&gt;
+            &lt;prf:Keyboard&gt;PhoneKeypad&lt;/prf:Keyboard&gt;
+            &lt;prf:OutputCharSet&gt;
+                &lt;rdf:Bag&gt;
+                  &lt;rdf:li&gt;ISO-10646-UCS-2&lt;/rdf:li&gt;
+                &lt;/rdf:Bag&gt;
+            &lt;/prf:OutputCharSet&gt;
+            &lt;prf:PixelAspectRatio&gt;1x1&lt;/prf:PixelAspectRatio&gt;
+            &lt;prf:ScreenSize&gt;240x320&lt;/prf:ScreenSize&gt;
+            &lt;prf:ScreenSizeChar&gt;14x14&lt;/prf:ScreenSizeChar&gt;
+            &lt;prf:SoundOutputCapable&gt;Yes&lt;/prf:SoundOutputCapable&gt;
+            &lt;prf:StandardFontProportional&gt;Yes&lt;/prf:StandardFontProportional&gt;
+            &lt;prf:TextInputCapable&gt;Yes&lt;/prf:TextInputCapable&gt;
+            &lt;prf:Vendor&gt;Philips&lt;/prf:Vendor&gt;
+			&lt;prf:Model&gt;X523&lt;/prf:Model&gt;
+            &lt;prf:VoiceInputCapable&gt;Yes&lt;/prf:VoiceInputCapable&gt;
+        &lt;/rdf:Description&gt;
+    &lt;/prf:component&gt;
+
+    &lt;prf:component&gt;
+        &lt;rdf:Description rdf:ID=&quot;SoftwarePlatform&quot;&gt;
+        &lt;rdf:type resource=&quot;http://www.wapforum.org/profiles/UAPROF/ccppschema-20010330#SoftwarePlatform&quot; /&gt;
+            &lt;prf:AcceptDownloadableSoftware&gt;Yes&lt;/prf:AcceptDownloadableSoftware&gt;
+            &lt;prf:JavaEnabled&gt;Yes&lt;/prf:JavaEnabled&gt;
+        &lt;/rdf:Description&gt;
+    &lt;/prf:component&gt;
+
+
+    &lt;prf:component&gt;
+        &lt;rdf:Description rdf:ID=&quot;NetworkCharacteristics&quot;&gt;
+        &lt;rdf:type resource=&quot;http://www.wapforum.org/profiles/UAPROF/ccppschema-20010330#NetworkCharacteristics&quot; /&gt;
+        &lt;prf:SupportedBearers&gt;GPRS,CSD,OneWaySMS&lt;/prf:SupportedBearers&gt;
+        &lt;/rdf:Description&gt;
+    &lt;/prf:component&gt;
+
+    &lt;prf:component&gt;
+        &lt;rdf:Description rdf:ID=&quot;BrowserUA&quot;&gt;
+        &lt;rdf:type resource=&quot;http://www.wapforum.org/profiles/UAPROF/ccppschema-20010330#BrowserUA&quot; /&gt;
+            &lt;prf:BrowserName&gt;Obigo&lt;/prf:BrowserName&gt;
+            &lt;prf:BrowserVersion&gt;2.0&lt;/prf:BrowserVersion&gt;
+            &lt;prf:CcppAccept&gt;
+                &lt;rdf:Bag&gt;
+                  &lt;rdf:li&gt;text/html&lt;/rdf:li&gt;
+                  &lt;rdf:li&gt;text/plain&lt;/rdf:li&gt;
+                  &lt;rdf:li&gt;text/vnd.wap.wml&lt;/rdf:li&gt;
+                  &lt;rdf:li&gt;text/vnd.sun.j2me.app-descriptor&lt;/rdf:li&gt;
+                  &lt;rdf:li&gt;application/java-archive&lt;/rdf:li&gt;
+                  &lt;rdf:li&gt;application/x-jar&lt;/rdf:li&gt;
+                  &lt;rdf:li&gt;application/xhtml+xml; profile=http://www.wapforum.org/xhtml&lt;/rdf:li&gt;
+                  &lt;rdf:li&gt;application/vnd.wap.xhtml+xml&lt;/rdf:li&gt;
+                  &lt;rdf:li&gt;application/vnd.wap.wmlscriptc&lt;/rdf:li&gt;
+                  &lt;rdf:li&gt;application/vnd.wap.wmlc&lt;/rdf:li&gt;
+                  &lt;rdf:li&gt;image/vnd.wap.wbmp&lt;/rdf:li&gt;
+                  &lt;rdf:li&gt;image/gif&lt;/rdf:li&gt;
+                  &lt;rdf:li&gt;image/jpeg&lt;/rdf:li&gt;
+                  &lt;!-- MIME types below are only for download purpose --&gt;
+                  &lt;rdf:li&gt;audio/mid&lt;/rdf:li&gt;
+                  &lt;rdf:li&gt;audio/midi&lt;/rdf:li&gt;
+                  &lt;rdf:li&gt;audio/amr&lt;/rdf:li&gt;
+                  &lt;rdf:li&gt;audio/x-wav&lt;/rdf:li&gt;
+                  &lt;rdf:li&gt;audio/mpeg&lt;/rdf:li&gt;
+              &lt;/rdf:Bag&gt;
+            &lt;/prf:CcppAccept&gt;
+            &lt;prf:CcppAccept-Charset&gt;
+              &lt;rdf:Bag&gt;
+                &lt;rdf:li&gt;UTF-8&lt;/rdf:li&gt;
+                &lt;rdf:li&gt;US-ASCII&lt;/rdf:li&gt;
+                &lt;rdf:li&gt;ISO-8859-1&lt;/rdf:li&gt;
+              &lt;/rdf:Bag&gt;
+            &lt;/prf:CcppAccept-Charset&gt;
+            &lt;prf:CcppAccept-Encoding&gt;
+              &lt;rdf:Bag&gt;
+                &lt;rdf:li&gt;binary&lt;/rdf:li&gt;
+              &lt;/rdf:Bag&gt;
+            &lt;/prf:CcppAccept-Encoding&gt;
+            &lt;prf:FramesCapable&gt;No&lt;/prf:FramesCapable&gt;
+            &lt;prf:TablesCapable&gt;Yes&lt;/prf:TablesCapable&gt;
+        &lt;/rdf:Description&gt;
+    &lt;/prf:component&gt;
+
+    &lt;prf:component&gt;
+        &lt;rdf:Description rdf:ID=&quot;WapCharacteristics&quot;&gt;
+        &lt;rdf:type resource=&quot;http://www.wapforum.org/profiles/UAPROF/ccppschema-20010330#WapCharacteristics&quot; /&gt;
+            &lt;prf:WapDeviceClass&gt;C&lt;/prf:WapDeviceClass&gt;
+            &lt;prf:WapVersion&gt;2.0&lt;/prf:WapVersion&gt;
+            &lt;!-- with WSPCO with WTP SAR: --&gt;
+            &lt;prf:WmlDeckSize&gt;32768&lt;/prf:WmlDeckSize&gt;
+            &lt;prf:WmlScriptLibraries&gt;
+              &lt;rdf:Bag&gt;
+                &lt;rdf:li&gt;Lang&lt;/rdf:li&gt;
+                &lt;rdf:li&gt;Float&lt;/rdf:li&gt;
+                &lt;rdf:li&gt;String&lt;/rdf:li&gt;
+                &lt;rdf:li&gt;URL&lt;/rdf:li&gt;
+                &lt;rdf:li&gt;WMLBrowser&lt;/rdf:li&gt;
+                &lt;rdf:li&gt;Dialogs&lt;/rdf:li&gt;
+              &lt;/rdf:Bag&gt;
+            &lt;/prf:WmlScriptLibraries&gt;
+            &lt;prf:WmlScriptVersion&gt;
+                &lt;rdf:Bag&gt;
+                    &lt;rdf:li&gt;1.1&lt;/rdf:li&gt;
+                    &lt;rdf:li&gt;1.2&lt;/rdf:li&gt;
+                &lt;/rdf:Bag&gt;
+            &lt;/prf:WmlScriptVersion&gt;
+            &lt;prf:WmlVersion&gt;
+                &lt;rdf:Bag&gt;
+                    &lt;rdf:li&gt;1.0&lt;/rdf:li&gt;
+                    &lt;rdf:li&gt;1.1&lt;/rdf:li&gt;
+                    &lt;rdf:li&gt;1.2&lt;/rdf:li&gt;
+                    &lt;rdf:li&gt;1.3&lt;/rdf:li&gt;
+                &lt;/rdf:Bag&gt;
+            &lt;/prf:WmlVersion&gt;
+        &lt;/rdf:Description&gt;
+    &lt;/prf:component&gt;
+
+    &lt;prf:component&gt;
+        &lt;rdf:Description rdf:ID=&quot;PushCharacteristics&quot;&gt;
+         &lt;rdf:type rdf:resource=&quot;http://www.openmobilealliance.org/tech/profiles/uaprof/ccppschema-20021212#PushCharacteristics&quot; /&gt;
+          &lt;prf:Push-Accept&gt;
+            &lt;rdf:Bag&gt;
+              &lt;rdf:li&gt;application/vnd.wap.sic&lt;/rdf:li&gt;
+              &lt;rdf:li&gt;application/x-wap-prov.browser-settings&lt;/rdf:li&gt;
+            &lt;/rdf:Bag&gt;
+          &lt;/prf:Push-Accept&gt;
+          &lt;prf:Push-Accept-Charset&gt;
+            &lt;rdf:Bag&gt;
+              &lt;rdf:li&gt;UTF-8&lt;/rdf:li&gt;
+            &lt;/rdf:Bag&gt;
+          &lt;/prf:Push-Accept-Charset&gt;
+          &lt;prf:Push-Accept-Encoding&gt;
+            &lt;rdf:Bag&gt;
+              &lt;rdf:li&gt;binary&lt;/rdf:li&gt;
+            &lt;/rdf:Bag&gt;
+          &lt;/prf:Push-Accept-Encoding&gt;
+          &lt;prf:Push-Accept-AppID&gt;
+            &lt;rdf:Bag&gt;
+              &lt;rdf:li&gt;x-wap-application:*&lt;/rdf:li&gt;
+              &lt;rdf:li&gt;x-wap-application:wml.ua&lt;/rdf:li&gt;
+            &lt;/rdf:Bag&gt;
+          &lt;/prf:Push-Accept-AppID&gt;
+          &lt;!-- with WSPCO with WTP SAR: --&gt;
+          &lt;prf:Push-MsgSize&gt;32768&lt;/prf:Push-MsgSize&gt;
+          &lt;prf:Push-MaxPushReq&gt;3&lt;/prf:Push-MaxPushReq&gt;
+        &lt;/rdf:Description&gt;
+    &lt;/prf:component&gt;
+
+  &lt;prf:component&gt;
+    &lt;rdf:Description rdf:ID=&quot;MMSCharacteristics&quot;&gt;
+    &lt;rdf:type resource=&quot;http://www.wapforum.org/profiles/MMS/ccppschema-20010111#MMSCharacteristics&quot; /&gt;
+      &lt;prf:MmsMaxMessageSize&gt;100000&lt;/prf:MmsMaxMessageSize&gt;
+      &lt;prf:MmsMaxImageResolution&gt;640x480&lt;/prf:MmsMaxImageResolution&gt;
+      &lt;prf:MmsCcppAccept&gt;
+        &lt;rdf:Bag&gt;
+          &lt;rdf:li&gt;application/vnd.wap.mms-message&lt;/rdf:li&gt;
+          &lt;rdf:li&gt;application/vnd.wap.multipart.mixed&lt;/rdf:li&gt;
+          &lt;rdf:li&gt;application/vnd.wap.multipart.alternative&lt;/rdf:li&gt;
+          &lt;rdf:li&gt;application/vnd.wap.multipart.related&lt;/rdf:li&gt;
+          &lt;rdf:li&gt;application/smil&lt;/rdf:li&gt;
+          &lt;rdf:li&gt;text/plain&lt;/rdf:li&gt;
+          &lt;rdf:li&gt;image/vnd.wap.wbmp&lt;/rdf:li&gt;
+          &lt;rdf:li&gt;image/gif&lt;/rdf:li&gt;
+          &lt;rdf:li&gt;image/jpeg&lt;/rdf:li&gt;
+          &lt;rdf:li&gt;audio/amr&lt;/rdf:li&gt;
+          &lt;rdf:li&gt;audio/iMelody&lt;/rdf:li&gt;
+          &lt;rdf:li&gt;text/x-imelody&lt;/rdf:li&gt;
+          &lt;rdf:li&gt;audio/midi&lt;/rdf:li&gt;
+          &lt;rdf:li&gt;audio/mid&lt;/rdf:li&gt;
+        &lt;/rdf:Bag&gt;
+      &lt;/prf:MmsCcppAccept&gt;
+      &lt;prf:MmsCcppAccept-Charset&gt;
+        &lt;rdf:Bag&gt;
+          &lt;rdf:li&gt;ISO-10646-UCS-2&lt;/rdf:li&gt;
+          &lt;rdf:li&gt;UTF-8&lt;/rdf:li&gt;
+          &lt;rdf:li&gt;US-ASCII&lt;/rdf:li&gt;
+        &lt;/rdf:Bag&gt;
+      &lt;/prf:MmsCcppAccept-Charset&gt;
+      &lt;prf:MmsVersion&gt;1.0&lt;/prf:MmsVersion&gt;
+    &lt;/rdf:Description&gt;
+  &lt;/prf:component&gt;
+  &lt;/rdf:Description&gt;
+&lt;/rdf:RDF&gt;</pre>
+</body>
+</html>
