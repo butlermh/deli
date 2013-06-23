@@ -1,0 +1,458 @@
+<html>
+<head><title>Validator report for http://device.telusmobility.com/motorola/v710.rdf</title></head>
+<body>
+<h1>Validator output for http://device.telusmobility.com/motorola/v710.rdf</h1>
+<pre>
+WARNING: The profile uses a commonly used namespace alias
+Aliased namespace is:    http://www.wapforum.org/profiles/UAPROF/ccppschema-20020710#
+Real namespace is: http://www.wapforum.org/UAPROF/ccppschema-20020710#
+Error [C: http://www.wapforum.org/profiles/UAPROF/ccppschema-20020710#WapCharacteristics, A: http://www.wapforum.org/profiles/UAPROF/ccppschema-20020710#DrmConstraints] is not a container.
+PROFILE IS NOT VALID
+</pre>
+<p><a href="mailto:markhenrybutler@gmail.com">Problems with this report?</a></p><h1>Original profile</h1>
+<pre>
+&lt;?xml version=&quot;1.0&quot;?&gt;
+&lt;!-- 
+ 
+ This RDF file describes the Motorola PCC user agent profile with 
+ Openwave Browser 6.2.x
+
+=====================================================================
+ File name URL:
+      http://XX
+
+                        
+Version number : 1.0
+
+======================================================================
+
+ Author               Modification   Tracking    Descrition Of Change
+                          Date        Number
+========              ============   ==========  =====================
+ w15900               02/26/2004      LIBdd80068   Initial Creation
+ w15900               04/04/2004      LIBdd93057   Update software capability
+ a20454               09/02/2004                   Update J2me/Browser/MMS capability 
+ a20454               09/10/2004                   Update WAP PUSH capability for SIA 
+ a20454               09/16/2004                   Update with Telus
+ a20454               10/14/2004                   Update PixelAspectRatio
+ a20454               10/18/2004                   Remove 3 warnings according to W3C RDF Validation 
+
+--&gt;
+ &lt;rdf:RDF xmlns:rdf=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot; xmlns:rdfs=&quot;http://www.w3.org/2000/01/rdf-schema#&quot; xmlns:prf=&quot;http://www.wapforum.org/profiles/UAPROF/ccppschema-20020710#&quot; xmlns:mms=&quot;http://www.wapforum.org/profiles/MMS/ccppschema-20010111#&quot;&gt;
+  &lt;rdf:Description rdf:ID=&quot;UAPROF&quot;&gt;
+
+  &lt;!--   ******************************************************************   
+  --&gt; 
+  &lt;!--   ***** Component: HardwarePlatform *****   
+  --&gt; 
+  &lt;prf:component&gt;
+  &lt;rdf:Description rdf:ID=&quot;HardwarePlatform&quot;&gt;
+  &lt;rdf:type rdf:resource=&quot;http://www.wapforum.org/profiles/UAPROF/ccppschema-20020710#HardwarePlatform&quot; /&gt; 
+  &lt;prf:BitsPerPixel&gt;16&lt;/prf:BitsPerPixel&gt; 
+  &lt;prf:ColorCapable&gt;Yes&lt;/prf:ColorCapable&gt; 
+  &lt;prf:ImageCapable&gt;Yes&lt;/prf:ImageCapable&gt; 
+  &lt;prf:CPU&gt;ARM9&lt;/prf:CPU&gt;
+  &lt;prf:InputCharSet&gt;
+  &lt;rdf:Bag&gt;
+  &lt;rdf:li&gt;utf-8&lt;/rdf:li&gt; 
+  &lt;/rdf:Bag&gt;
+  &lt;/prf:InputCharSet&gt;
+  &lt;prf:Keyboard&gt;PhoneKeypad&lt;/prf:Keyboard&gt; 
+  &lt;prf:Model&gt;Motorola-v710&lt;/prf:Model&gt; 
+  &lt;prf:NumberOfSoftKeys&gt;2&lt;/prf:NumberOfSoftKeys&gt;
+   &lt;prf:OutputCharSet&gt;
+  &lt;rdf:Bag&gt; 
+  &lt;rdf:li&gt;utf-8&lt;/rdf:li&gt;  
+  &lt;/rdf:Bag&gt;
+  &lt;/prf:OutputCharSet&gt;
+  &lt;prf:PixelAspectRatio&gt;1x1&lt;/prf:PixelAspectRatio&gt; 
+  &lt;prf:ScreenSize&gt;172x162&lt;/prf:ScreenSize&gt; 
+  &lt;prf:ScreenSizeChar&gt;7x11&lt;/prf:ScreenSizeChar&gt; 
+  &lt;prf:SoundOutputCapable&gt;Yes&lt;/prf:SoundOutputCapable&gt; 
+  &lt;prf:StandardFontProportional&gt;Yes&lt;/prf:StandardFontProportional&gt; 
+  &lt;prf:TextInputCapable&gt;Yes&lt;/prf:TextInputCapable&gt; 
+  &lt;prf:Vendor&gt;Motorola&lt;/prf:Vendor&gt; 
+  &lt;prf:VoiceInputCapable&gt;Yes&lt;/prf:VoiceInputCapable&gt; 
+  &lt;/rdf:Description&gt;
+  &lt;/prf:component&gt;
+
+ &lt;!--   ****************************************************************** 
+  --&gt; 
+  &lt;!--   ***** Component: SoftwarePlatform *****   
+  --&gt; 
+  &lt;prf:component&gt;
+  &lt;rdf:Description rdf:ID=&quot;SoftwarePlatform&quot;&gt;
+  &lt;rdf:type rdf:resource=&quot;http://www.wapforum.org/profiles/UAPROF/ccppschema-20020710#SoftwarePlatform&quot; /&gt; 
+  &lt;prf:AcceptDownloadableSoftware&gt;Yes&lt;/prf:AcceptDownloadableSoftware&gt; 
+   &lt;prf:CcppAccept&gt;
+   &lt;rdf:Bag&gt;
+       &lt;rdf:li&gt;text/html&lt;/rdf:li&gt;
+       &lt;rdf:li&gt;text/xhtml&lt;/rdf:li&gt;
+       &lt;rdf:li&gt;text/css&lt;/rdf:li&gt;
+       &lt;rdf:li&gt;text/plain&lt;/rdf:li&gt;
+       &lt;rdf:li&gt;text/vnd.wap.wml&lt;/rdf:li&gt;
+       &lt;rdf:li&gt;text/vnd.sun.j2me.app-descriptor&lt;/rdf:li&gt;
+       &lt;rdf:li&gt;text/xhtml&lt;/rdf:li&gt;
+       
+       &lt;rdf:li&gt;application/octet-stream&lt;/rdf:li&gt;
+       &lt;rdf:li&gt;application/vnd.phonecom.mmc-xml&lt;/rdf:li&gt;
+       &lt;rdf:li&gt;application/vnd.wap.wmlc &lt;/rdf:li&gt;
+       &lt;rdf:li&gt;application/vnd.wap.mms-message&lt;/rdf:li&gt;
+       &lt;rdf:li&gt;application/vnd.wap.wmlscriptc&lt;/rdf:li&gt;
+       &lt;rdf:li&gt;application/vnd.wap.xhtml+xml&lt;/rdf:li&gt;
+       &lt;rdf:li&gt;application/xhtml+xml&lt;/rdf:li&gt;
+       &lt;rdf:li&gt;application/motorola-mmstemplate&lt;/rdf:li&gt;
+       &lt;rdf:li&gt;application/x-pmd&lt;/rdf:li&gt;
+       &lt;rdf:li&gt;application/vnd.oma.dd+xml&lt;/rdf:li&gt;
+       &lt;rdf:li&gt;application/vnd.oma.drm.message&lt;/rdf:li&gt; 
+       &lt;rdf:li&gt;application/vnd.smaf&lt;/rdf:li&gt;
+       &lt;rdf:li&gt;application/x-smaf&lt;/rdf:li&gt;
+       &lt;rdf:li&gt;application/java&lt;/rdf:li&gt; 
+       &lt;rdf:li&gt;application/java-archive&lt;/rdf:li&gt;       
+
+       &lt;rdf:li&gt;image/bmp&lt;/rdf:li&gt;
+       &lt;rdf:li&gt;image/gif&lt;/rdf:li&gt;
+       &lt;rdf:li&gt;image/jpeg&lt;/rdf:li&gt;
+       &lt;rdf:li&gt;image/jpg&lt;/rdf:li&gt;
+       &lt;rdf:li&gt;image/png&lt;/rdf:li&gt;  
+       &lt;rdf:li&gt;image/vnd.wap.wbmp&lt;/rdf:li&gt;
+       &lt;rdf:li&gt;image/x-up-wpng&lt;/rdf:li&gt;
+
+       &lt;rdf:li&gt;audio/mid&lt;/rdf:li&gt;
+       &lt;rdf:li&gt;audio/midi&lt;/rdf:li&gt;
+       &lt;rdf:li&gt;audio/mp3&lt;/rdf:li&gt;
+       &lt;rdf:li&gt;audio/mpeg3&lt;/rdf:li&gt;
+       &lt;rdf:li&gt;audio/mpeg&lt;/rdf:li&gt;
+       &lt;rdf:li&gt;audio/mpg&lt;/rdf:li&gt;
+       &lt;rdf:li&gt;audio/x-mp3&lt;/rdf:li&gt;
+       &lt;rdf:li&gt;audio/x-mpeg&lt;/rdf:li&gt;
+       &lt;rdf:li&gt;audio/x-mpeg3&lt;/rdf:li&gt;
+       &lt;rdf:li&gt;audio/x-mpg&lt;/rdf:li&gt;
+       &lt;rdf:li&gt;audio/x-wav&lt;/rdf:li&gt;
+       &lt;rdf:li&gt;audio/x-midi&lt;/rdf:li&gt;
+       &lt;rdf:li&gt;audio/sp-midi&lt;/rdf:li&gt;
+       &lt;rdf:li&gt;audio/amr&lt;/rdf:li&gt;
+       &lt;rdf:li&gt;audio/imelody&lt;/rdf:li&gt;
+       &lt;rdf:li&gt;audio/wav&lt;/rdf:li&gt;
+       &lt;rdf:li&gt;audio/qcp&lt;/rdf:li&gt;
+       &lt;rdf:li&gt;audio/vnd.qcelp&lt;/rdf:li&gt;
+
+       &lt;rdf:li&gt;video/mp4&lt;/rdf:li&gt;
+       &lt;rdf:li&gt;video/3gpp2&lt;/rdf:li&gt;
+       &lt;rdf:li&gt;video/3gpp&lt;/rdf:li&gt;
+       
+       &lt;rdf:li&gt;multipart/mixed &lt;/rdf:li&gt;
+       &lt;rdf:li&gt;application/vnd.wap.multipart.mixed&lt;/rdf:li&gt; 
+       &lt;rdf:li&gt;multipart/related&lt;/rdf:li&gt;    
+       &lt;rdf:li&gt;application/vnd.wap.multipart.related&lt;/rdf:li&gt;    
+  &lt;/rdf:Bag&gt;
+  &lt;/prf:CcppAccept&gt;
+
+  &lt;prf:CcppAccept-Charset&gt;
+  &lt;rdf:Bag&gt;
+  &lt;rdf:li&gt;utf-8&lt;/rdf:li&gt; 
+  &lt;/rdf:Bag&gt;
+  &lt;/prf:CcppAccept-Charset&gt;
+
+  &lt;prf:CcppAccept-Encoding&gt;
+  &lt;rdf:Bag&gt;
+  &lt;rdf:li&gt;gzip&lt;/rdf:li&gt;
+  &lt;rdf:li&gt;deflate&lt;/rdf:li&gt; 
+  &lt;/rdf:Bag&gt;
+  &lt;/prf:CcppAccept-Encoding&gt;
+
+  &lt;prf:CcppAccept-Language&gt;
+  &lt;rdf:Seq&gt;
+  &lt;rdf:li&gt;en &lt;/rdf:li&gt;
+  &lt;rdf:li&gt;fr-ca&lt;/rdf:li&gt;
+  &lt;/rdf:Seq&gt;
+  &lt;/prf:CcppAccept-Language&gt;
+
+  &lt;prf:DownloadableSoftwareSupport&gt;
+  &lt;rdf:Bag&gt;
+  &lt;rdf:li&gt;application/java&lt;/rdf:li&gt; 
+  &lt;rdf:li&gt;application/java-archive&lt;/rdf:li&gt; 
+  &lt;/rdf:Bag&gt;
+  &lt;/prf:DownloadableSoftwareSupport&gt;
+  
+  &lt;!-- &lt;prf:RecipientAppAgent&gt; --&gt;
+  &lt;!-- &lt;rdf:Seq&gt; --&gt;
+  &lt;!-- &lt;rdf:li&gt;browser&lt;/rdf:li&gt; --&gt;
+  &lt;!-- &lt;rdf:li&gt;OTA1.0&lt;/rdf:li&gt; --&gt; 
+  &lt;!-- &lt;/rdf:Seq&gt; --&gt;
+  &lt;!-- &lt;/prf:RecipientAppAgent&gt; --&gt;
+  
+  &lt;!-- &lt;prf:Softwarenumber&gt;TELUS_1X_1.0A.0I&lt;/prf:Softwarenumber&gt; --&gt;
+  &lt;prf:JavaEnabled&gt;Yes&lt;/prf:JavaEnabled&gt;
+  &lt;prf:JavaPlatform&gt;
+  &lt;rdf:Bag&gt;
+  &lt;rdf:li&gt;CLDC/1.1-compatible&lt;/rdf:li&gt; 
+  &lt;rdf:li&gt;MIDP/2.0-compatible&lt;/rdf:li&gt;
+  &lt;rdf:li&gt;WMA/1.0-compatible&lt;/rdf:li&gt;
+  &lt;rdf:li&gt;MMA/1.0-compatible&lt;/rdf:li&gt;
+  &lt;rdf:li&gt;TELUSMOBILITY-2.1&lt;/rdf:li&gt; 
+  &lt;/rdf:Bag&gt;
+  &lt;/prf:JavaPlatform&gt;
+  &lt;prf:JVMVersion&gt;
+  &lt;rdf:Bag&gt;
+  &lt;rdf:li&gt;Jbed FastDac/1.0.0&lt;/rdf:li&gt;
+  &lt;/rdf:Bag&gt;
+  &lt;/prf:JVMVersion&gt;
+  
+  &lt;prf:OSName&gt;REX&lt;/prf:OSName&gt; 
+  &lt;prf:OSVendor&gt;Qualcomm&lt;/prf:OSVendor&gt; 
+  &lt;prf:OSVersion&gt;DMSS6100&lt;/prf:OSVersion&gt;   
+
+  &lt;/rdf:Description&gt;
+  &lt;/prf:component&gt;
+
+
+  
+&lt;!--   ******************************************************************  
+  --&gt; 
+  &lt;!--    ***** Component: NetworkCharacteristics *****   
+  --&gt; 
+  
+  &lt;prf:component&gt;
+  &lt;rdf:Description rdf:ID=&quot;NetworkCharacteristics&quot;&gt;
+  &lt;rdf:type rdf:resource=&quot;http://www.wapforum.org/profiles/UAPROF/ccppschema-20020710#NetworkCharacteristics&quot; /&gt; 
+  &lt;prf:SupportedBluetoothVersion&gt;&lt;/prf:SupportedBluetoothVersion&gt; 
+  &lt;prf:CurrentBearerService&gt;CSD&lt;/prf:CurrentBearerService&gt; 
+  &lt;prf:SecuritySupport&gt;
+  &lt;rdf:Bag&gt;
+  &lt;rdf:li&gt;TLS1.0&lt;/rdf:li&gt; 
+  &lt;/rdf:Bag&gt;
+  &lt;/prf:SecuritySupport&gt;
+  &lt;prf:SupportedBearers&gt;
+  &lt;rdf:Bag&gt;
+  &lt;rdf:li&gt;CSD&lt;/rdf:li&gt; 
+  &lt;rdf:li&gt;SMS&lt;/rdf:li&gt; 
+  &lt;rdf:li&gt;IPv4&lt;/rdf:li&gt; 
+  &lt;/rdf:Bag&gt;
+  &lt;/prf:SupportedBearers&gt;
+  &lt;/rdf:Description&gt;
+  &lt;/prf:component&gt; 
+
+ &lt;!--   ******************************************************************   
+  --&gt; 
+  &lt;!--   ***** Component: BrowserUA *****   
+  --&gt; 
+
+ &lt;prf:component&gt;
+ &lt;rdf:Description rdf:ID=&quot;BrowserUA&quot;&gt;
+  &lt;rdf:type rdf:resource=&quot;http://www.wapforum.org/profiles/UAPROF/ccppschema-20020710#BrowserUA&quot; /&gt;
+  &lt;prf:BrowserName&gt;UP.Browser&lt;/prf:BrowserName&gt; 
+  &lt;prf:BrowserVersion&gt;6.2.2.3 &lt;/prf:BrowserVersion&gt;
+  &lt;!-- &lt;prf:DownloadableBrowserApps&gt;No&lt;/prf:DownloadableBrowserApps&gt; --&gt; 
+  &lt;prf:FramesCapable&gt;Yes&lt;/prf:FramesCapable&gt; 
+  &lt;prf:HtmlVersion&gt;4.0&lt;/prf:HtmlVersion&gt; 
+  &lt;prf:JavaAppletEnabled&gt;No&lt;/prf:JavaAppletEnabled&gt; 
+  &lt;prf:JavaScriptEnabled&gt;No&lt;/prf:JavaScriptEnabled&gt; 
+  &lt;prf:JavaScriptVersion&gt;No&lt;/prf:JavaScriptVersion&gt; 
+  &lt;prf:PreferenceForFrames&gt;No&lt;/prf:PreferenceForFrames&gt; 
+  &lt;prf:TablesCapable&gt;Yes&lt;/prf:TablesCapable&gt; 
+  &lt;prf:XhtmlVersion&gt;1.1&lt;/prf:XhtmlVersion&gt; 
+  &lt;prf:XhtmlModules&gt;
+  &lt;rdf:Bag&gt;
+  &lt;rdf:li&gt;XHTML-struct&lt;/rdf:li&gt; 
+  &lt;rdf:li&gt;XHTML-text&lt;/rdf:li&gt; 
+  &lt;rdf:li&gt;XHTML-hypertext&lt;/rdf:li&gt; 
+  &lt;rdf:li&gt;XHTML-list&lt;/rdf:li&gt; 
+  &lt;rdf:li&gt;XHTML-basicforms&lt;/rdf:li&gt; 
+  &lt;rdf:li&gt;XHTML-basictables&lt;/rdf:li&gt; 
+  &lt;rdf:li&gt;XHTML-image&lt;/rdf:li&gt; 
+  &lt;rdf:li&gt;XHTML-metainformation&lt;/rdf:li&gt; 
+  &lt;rdf:li&gt;XHTML-link&lt;/rdf:li&gt; 
+  &lt;rdf:li&gt;XHTML-base&lt;/rdf:li&gt; 
+  &lt;rdf:li&gt;XHTML-forms&lt;/rdf:li&gt; 
+  &lt;rdf:li&gt;XHTML-presentation&lt;/rdf:li&gt; 
+  &lt;rdf:li&gt;XHTML-stylesheet&lt;/rdf:li&gt; 
+  &lt;/rdf:Bag&gt;
+  &lt;/prf:XhtmlModules&gt;
+  &lt;/rdf:Description&gt;
+  &lt;/prf:component&gt;
+
+ &lt;!--   ******************************************************************   
+  --&gt; 
+  &lt;!--   ***** Component: WapCharacteristics *****   
+  --&gt; 
+ &lt;prf:component&gt;
+
+ &lt;rdf:Description rdf:ID=&quot;WapCharacteristics&quot;&gt;
+ &lt;rdf:type rdf:resource=&quot;http://www.wapforum.org/profiles/UAPROF/ccppschema-20020710#WapCharacteristics&quot;/&gt;
+  &lt;prf:SupportedPictogramSet&gt;
+  &lt;rdf:Bag&gt;
+  &lt;rdf:li&gt; core &lt;/rdf:li&gt;
+  &lt;/rdf:Bag&gt;
+  &lt;/prf:SupportedPictogramSet&gt;
+  &lt;prf:WapDeviceClass&gt;C &lt;/prf:WapDeviceClass&gt;
+  &lt;prf:WapVersion&gt;2.0&lt;/prf:WapVersion&gt;
+  
+  &lt;prf:WmlVersion&gt;
+   &lt;rdf:Bag&gt;
+   &lt;rdf:li&gt;1.1&lt;/rdf:li&gt;
+   &lt;rdf:li&gt;1.2&lt;/rdf:li&gt;
+   &lt;rdf:li&gt;1.3&lt;/rdf:li&gt;
+   &lt;/rdf:Bag&gt;
+  &lt;/prf:WmlVersion&gt;
+  &lt;!-- &lt;prf:WmlDeckSize&gt;3000 &lt;/prf:WmlDeckSize&gt; --&gt; 
+  &lt;prf:WtaiLibraries&gt;
+   &lt;rdf:Bag&gt;
+    &lt;rdf:li&gt;WTA.Public&lt;/rdf:li&gt; 
+    &lt;/rdf:Bag&gt;
+  &lt;/prf:WtaiLibraries&gt;
+  &lt;prf:WtaVersion&gt;  &lt;/prf:WtaVersion&gt;
+  &lt;prf:WmlScriptLibraries&gt;
+  &lt;rdf:Bag&gt;
+  &lt;rdf:li&gt;Lang &lt;/rdf:li&gt;
+  &lt;rdf:li&gt;Float &lt;/rdf:li&gt;
+  &lt;rdf:li&gt;String&lt;/rdf:li&gt;
+  &lt;rdf:li&gt;URL &lt;/rdf:li&gt;
+  &lt;rdf:li&gt;WMLBrowser &lt;/rdf:li&gt;
+  &lt;rdf:li&gt;Dialogs&lt;/rdf:li&gt;
+  &lt;/rdf:Bag&gt; 
+  &lt;/prf:WmlScriptLibraries&gt;  
+  &lt;!-- &lt;prf:DrmClass&gt; &lt;/prf:DrmClass&gt; --&gt; 
+  &lt;!-- &lt;prf:DrmMode&gt;1&lt;/prf:DrmMode&gt; --&gt; 
+  &lt;prf:DrmConstraints&gt; &lt;/prf:DrmConstraints&gt;
+  &lt;prf:OmaDownload&gt; Yes &lt;/prf:OmaDownload&gt;
+
+  &lt;/rdf:Description&gt; 
+  &lt;/prf:component&gt; 
+
+&lt;!--   ******************************************************************   
+  --&gt; 
+  &lt;!--   ***** Component: PushCharacteristics *****   
+  --&gt; 
+
+ 
+ &lt;prf:component&gt;
+  &lt;rdf:Description rdf:ID=&quot;PushCharacteristics&quot;&gt;
+  &lt;rdf:type rdf:resource=&quot;http://www.wapforum.org/profiles/UAPROF/ccppschema-20020710#PushCharacteristics&quot;/&gt;
+  &lt;prf:Push-Accept&gt;
+  &lt;rdf:Bag&gt;
+   &lt;rdf:li&gt;text/vnd.wap.si&lt;/rdf:li&gt;
+   &lt;rdf:li&gt;application/vnd.wap.sic&lt;/rdf:li&gt;
+   &lt;rdf:li&gt;text/vnd.wap.sl&lt;/rdf:li&gt;
+   &lt;rdf:li&gt;application/vnd.wap.slc&lt;/rdf:li&gt;
+   &lt;rdf:li&gt;application/vnd.wap.sia&lt;/rdf:li&gt;
+   &lt;rdf:li&gt;application/vnd.wap.mms-message&lt;/rdf:li&gt;
+   &lt;rdf:li&gt;text/plain&lt;/rdf:li&gt;
+   &lt;rdf:li&gt;text/vnd.wap.wml&lt;/rdf:li&gt;
+   &lt;rdf:li&gt;application/vnd.wap.wmlc&lt;/rdf:li&gt;
+   &lt;rdf:li&gt;application/vnd.wap.xhtml+xml&lt;/rdf:li&gt;
+   &lt;rdf:li&gt;multipart/mixed&lt;/rdf:li&gt;
+   &lt;rdf:li&gt;application/vnd.wap.multipart.mixed&lt;/rdf:li&gt;
+   &lt;rdf:li&gt;multipart/related&lt;/rdf:li&gt;
+   &lt;rdf:li&gt;application/vnd.wap.multipart.related&lt;/rdf:li&gt;  
+  &lt;/rdf:Bag&gt;
+  &lt;/prf:Push-Accept&gt;
+  &lt;prf:Push-Accept-Charset&gt;
+  &lt;rdf:Bag&gt;
+  &lt;rdf:li&gt;iso-8859-1&lt;/rdf:li&gt;      
+  &lt;rdf:li&gt;utf-8&lt;/rdf:li&gt;  
+  &lt;rdf:li&gt;us-ascii&lt;/rdf:li&gt; 
+  &lt;/rdf:Bag&gt;
+  &lt;/prf:Push-Accept-Charset&gt;
+  &lt;prf:Push-Accept-Encoding&gt;
+  &lt;rdf:Bag&gt;
+  &lt;rdf:li&gt;utf-8&lt;/rdf:li&gt; 
+  &lt;rdf:li&gt;base64&lt;/rdf:li&gt; 
+  &lt;/rdf:Bag&gt;
+  &lt;/prf:Push-Accept-Encoding&gt;
+  &lt;prf:Push-Accept-Language&gt;
+   &lt;rdf:Seq&gt;
+   &lt;rdf:li&gt;en &lt;/rdf:li&gt;
+   &lt;rdf:li&gt;fr-ca&lt;/rdf:li&gt;
+   &lt;/rdf:Seq&gt; 
+  &lt;/prf:Push-Accept-Language&gt;
+  &lt;prf:Push-Accept-AppID&gt;
+  &lt;rdf:Bag&gt;
+  &lt;rdf:li&gt;*&lt;/rdf:li&gt; 
+  &lt;/rdf:Bag&gt;
+  &lt;/prf:Push-Accept-AppID&gt;
+  &lt;prf:Push-MsgSize&gt;1400&lt;/prf:Push-MsgSize&gt; 
+  &lt;prf:Push-MaxPushReq&gt;1&lt;/prf:Push-MaxPushReq&gt; 
+  &lt;/rdf:Description&gt;
+  &lt;/prf:component&gt;
+
+&lt;!--   ******************************************************************   
+  --&gt; 
+  &lt;!--   ***** Component: MMSCharacteristics *****   
+  --&gt; 
+
+    &lt;prf:component&gt;
+
+    &lt;rdf:Description rdf:ID=&quot;MMSCharacteristics&quot;&gt;
+     &lt;rdf:type rdf:resource=&quot;http://www.wapforum.org/profiles/MMS/ccppschema-20010111#MmsCharacteristics&quot;/&gt;
+      &lt;mms:MmsMaxMessageSize&gt;256000&lt;/mms:MmsMaxMessageSize&gt; 
+      &lt;mms:MmsMaxImageResolution&gt;1280*960&lt;/mms:MmsMaxImageResolution&gt; 
+      &lt;mms:MmsCcppAccept&gt;
+       &lt;rdf:Bag&gt;
+        &lt;rdf:li&gt;audio/amr&lt;/rdf:li&gt; 
+         &lt;rdf:li&gt;audio/mp4&lt;/rdf:li&gt;
+         &lt;rdf:li&gt;audio/x-amr&lt;/rdf:li&gt;
+         &lt;rdf:li&gt;audio/mp3&lt;/rdf:li&gt; 
+         &lt;rdf:li&gt;audio/x-mp3&lt;/rdf:li&gt; 
+         &lt;rdf:li&gt;audio/mpeg3&lt;/rdf:li&gt;
+         &lt;rdf:li&gt;audio/mpeg&lt;/rdf:li&gt;
+         &lt;rdf:li&gt;audio/x-mpeg3&lt;/rdf:li&gt;
+         &lt;rdf:li&gt;audio/midi&lt;/rdf:li&gt; 
+         &lt;rdf:li&gt;audio/mid&lt;/rdf:li&gt;
+         &lt;rdf:li&gt;audio/x-mid&lt;/rdf:li&gt;
+         &lt;rdf:li&gt;audio/qcp&lt;/rdf:li&gt;
+         &lt;rdf:li&gt;audio/vnd.qcelp&lt;/rdf:li&gt;
+         &lt;rdf:li&gt;audio/imelody&lt;/rdf:li&gt;
+         &lt;rdf:li&gt;text/x-imelody&lt;/rdf:li&gt;
+         &lt;rdf:li&gt;audio/x-imelody&lt;/rdf:li&gt;
+         &lt;rdf:li&gt;image/bmp&lt;/rdf:li&gt;
+         &lt;rdf:li&gt;image/x-bmp&lt;/rdf:li&gt;
+         &lt;rdf:li&gt;image/jpeg&lt;/rdf:li&gt;
+         &lt;rdf:li&gt;image/jpg&lt;/rdf:li&gt;
+         &lt;rdf:li&gt;image/gif&lt;/rdf:li&gt;
+         &lt;rdf:li&gt;image/png&lt;/rdf:li&gt;
+         &lt;rdf:li&gt;image/x-up-wpng&lt;/rdf:li&gt;
+         &lt;rdf:li&gt;image/vnd.wap.wbmp&lt;/rdf:li&gt;
+         &lt;rdf:li&gt;application/vnd.wap.multipart.mixed&lt;/rdf:li&gt; 
+         &lt;rdf:li&gt;application/vnd.wap.multipart.related&lt;/rdf:li&gt; 
+         &lt;rdf:li&gt;application/smil&lt;/rdf:li&gt; 
+         &lt;rdf:li&gt;audio/wav&lt;/rdf:li&gt; 
+         &lt;rdf:li&gt;audio/x-wav&lt;/rdf:li&gt; 
+         &lt;rdf:li&gt;video/mp4&lt;/rdf:li&gt;
+         &lt;rdf:li&gt;video/3gpp&lt;/rdf:li&gt;
+         &lt;rdf:li&gt;video/3gpp2&lt;/rdf:li&gt;
+         &lt;rdf:li&gt;application/vnd.oma.drm.message&lt;/rdf:li&gt;
+         &lt;rdf:li&gt;application/vnd.wap.mms-message&lt;/rdf:li&gt;
+       &lt;/rdf:Bag&gt;
+      &lt;/mms:MmsCcppAccept&gt;
+      &lt;mms:MmsCcppAcceptCharSet&gt;
+       &lt;rdf:Bag&gt;
+        &lt;rdf:li&gt;UTF-8&lt;/rdf:li&gt;
+	&lt;rdf:li&gt;UTF-16&lt;/rdf:li&gt;
+        &lt;rdf:li&gt;ISO-8859-1&lt;/rdf:li&gt; 
+        &lt;rdf:li&gt;US-ASCII&lt;/rdf:li&gt; 
+        &lt;rdf:li&gt;ISO-10646-UCS-2&lt;/rdf:li&gt; 
+      &lt;/rdf:Bag&gt;
+     &lt;/mms:MmsCcppAcceptCharSet&gt;
+     &lt;mms:MmsCcppAcceptLanguage&gt;
+      &lt;rdf:Bag&gt;
+      &lt;rdf:li&gt;en&lt;/rdf:li&gt;
+      &lt;rdf:li&gt;fr-ca&lt;/rdf:li&gt;
+      &lt;/rdf:Bag&gt;
+     &lt;/mms:MmsCcppAcceptLanguage&gt;
+     &lt;mms:MmsCcppAcceptEncoding&gt;
+      &lt;rdf:Bag&gt;
+       &lt;rdf:li&gt;base64&lt;/rdf:li&gt;
+      &lt;/rdf:Bag&gt;
+     &lt;/mms:MmsCcppAcceptEncoding&gt;
+     &lt;mms:MmsVersion&gt;
+       &lt;rdf:Bag&gt;
+          &lt;rdf:li&gt;1.0&lt;/rdf:li&gt;
+       &lt;/rdf:Bag&gt;     
+     &lt;/mms:MmsVersion&gt; 
+   &lt;/rdf:Description&gt;
+  &lt;/prf:component&gt;
+  &lt;/rdf:Description&gt;
+&lt;/rdf:RDF&gt;</pre>
+</body>
+</html>
