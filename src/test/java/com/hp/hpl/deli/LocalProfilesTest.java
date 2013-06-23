@@ -5,8 +5,10 @@ import static org.junit.Assert.fail;
 
 import org.junit.Before;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 
+@SuppressWarnings("javadoc")
 public class LocalProfilesTest {
 
 	@BeforeClass
@@ -17,17 +19,17 @@ public class LocalProfilesTest {
 	public void setUp() throws Exception {
 	}
 
-	@Test
+	@Test @Ignore
 	public void testLocalProfilesWorkspace() {
 		fail("Not yet implemented");
 	}
 
-	@Test
+	@Test @Ignore
 	public void testLocalProfilesString() {
 		fail("Not yet implemented");
 	}
 
-	@Test
+	@Test @Ignore
 	public void testGetReference() {
 		fail("Not yet implemented");
 	}

@@ -17,16 +17,14 @@ import com.hp.hpl.deli.Profile;
 import com.hp.hpl.deli.ProfileProcessor;
 import com.hp.hpl.deli.VocabularyException;
 
+@SuppressWarnings("javadoc")
 public class TestCCPPServlet extends HttpServlet {
 	/**
 	 * Comment for <code>serialVersionUID</code>
 	 */
 	private static final long serialVersionUID = 1L;
-
 	private boolean HTML = true;
-
 	private static ProfileProcessor configuration;
-
 	private static HttpProfileProcessor profileProcessor;
 
 	public void init(ServletConfig config) throws ServletException {

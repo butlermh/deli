@@ -16,25 +16,30 @@ import com.hp.hpl.jena.rdf.model.Statement;
  */
 public class ProfileAttribute extends AbstractProcessAttribute {
 	private static Log log = LogFactory.getLog(ProfileAttribute.class);
-	
-	private SchemaCollection vocabulary;
-	
-	private Resource name;
 
-	private Resource component;
-
+	private final SchemaCollection vocabulary;
+	private final Resource name;
+	private final Resource component;
 	private Vector<String> attributeValue = new Vector<String>();
-
 	private Vector<String> defaultAttributeValue = new Vector<String>();
-	
-	ProfileAttribute(ProfileProcessor configuration, Statement attributeStatement,
-			Resource currentComponent, boolean isDefault) {
+
+	/**
+	 * Constructor.
+	 * 
+	 * @param configuration The ProfileProcessor configuration.
+	 * @param attributeStatement A statement containing an attribute.
+	 * @param currentComponent The current component.
+	 * @param isDefault Is this a default attribute.
+	 */
+	ProfileAttribute(ProfileProcessor configuration,
+			Statement attributeStatement, Resource currentComponent,
+			boolean isDefault) {
 		boolean processUndefinedAttributes = configuration.getWorkspace().get(
 				DeliSchema.processUndefinedAttributes, false);
 		Resource attribute = attributeStatement.getPredicate();
+		this.vocabulary = configuration.getVocabulary();
 		this.name = vocabulary.getRealNamespace(attribute);
 		this.component = vocabulary.getRealNamespace(currentComponent);
-		this.vocabulary = configuration.getVocabulary();
 		RDFNode value = attributeStatement.getObject();
 		// this property in the vocabulary?
 		try {
@@ -42,8 +47,8 @@ public class ProfileAttribute extends AbstractProcessAttribute {
 		} catch (VocabularyException ve) {
 			if (processUndefinedAttributes) {
 				String collectionType = determineContainerType(value);
-				vocabulary.addAttributeToVocabulary(attribute, currentComponent.getURI(),
-						collectionType);
+				vocabulary.addAttributeToVocabulary(attribute,
+						currentComponent.getURI(), collectionType);
 			}
 		}
 		// get values
@@ -52,13 +57,15 @@ public class ProfileAttribute extends AbstractProcessAttribute {
 			attributeValues.add(value.asLiteral().getString().trim());
 		} else {
 			try {
-			NodeIterator i = getContainerIterator(value.asResource());
+				NodeIterator i = getContainerIterator(value.asResource());
 				while (i.hasNext()) {
 					RDFNode theNode = i.nextNode();
 					if (theNode instanceof Literal) {
-						attributeValues.add(theNode.asLiteral().getString().trim());
+						attributeValues.add(theNode.asLiteral().getString()
+								.trim());
 					} else {
-						attributeValues.add(theNode.asResource().getURI().trim());
+						attributeValues.add(theNode.asResource().getURI()
+								.trim());
 					}
 				}
 			} catch (ProfileProcessingException ve) {//
@@ -101,6 +108,7 @@ public class ProfileAttribute extends AbstractProcessAttribute {
 	/**
 	 * Does the attribute contain this literal value?
 	 * 
+	 * @param value The literal value.
 	 * @return Does the attribute contain this literal value?
 	 */
 	public boolean contains(String value) {
@@ -121,6 +129,8 @@ public class ProfileAttribute extends AbstractProcessAttribute {
 	 * Get the resolution rule applied to the attribute.
 	 * 
 	 * @return The resolution rule.
+	 * @throws VocabularyException Thrown if there is a problem getting the
+	 *             property from the vocabulary.
 	 */
 	public String getResolution() throws VocabularyException {
 		return getAttributeProperty(Constants.RESOLUTION);
@@ -130,6 +140,8 @@ public class ProfileAttribute extends AbstractProcessAttribute {
 	 * Get the collectionType of the attribute.
 	 * 
 	 * @return The attribute collectionType.
+	 * @throws VocabularyException Thrown if there is a problem getting an
+	 *             attribute from the vocabulary.
 	 */
 	public String getCollectionType() throws VocabularyException {
 		return getAttributeProperty(Constants.COLLECTIONTYPE);
@@ -139,6 +151,8 @@ public class ProfileAttribute extends AbstractProcessAttribute {
 	 * Get the type of the attribute.
 	 * 
 	 * @return The attribute type.
+	 * @throws VocabularyException Thrown if there is a problem getting an
+	 *             attribute from the vocabulary.
 	 */
 	public String getType() throws VocabularyException {
 		return getAttributeProperty(Constants.TYPE);
@@ -150,8 +164,10 @@ public class ProfileAttribute extends AbstractProcessAttribute {
 	 * @param string
 	 * @return
 	 */
-	private String getAttributeProperty(String string) throws VocabularyException {
-		return vocabulary.getAttributeProperty(getName(), string).getLocalName();
+	private String getAttributeProperty(String string)
+			throws VocabularyException {
+		return vocabulary.getAttributeProperty(getName(), string)
+				.getLocalName();
 	}
 
 	/**
@@ -177,9 +193,9 @@ public class ProfileAttribute extends AbstractProcessAttribute {
 		result.append("\nValue:      	 " + getValue());
 		result.append("\nDefaultVal: 	 " + getDefaultValue());
 		try {
-		result.append("\nResolution: 	 " + getResolution());
-		result.append("\nCollectionType:  " + getCollectionType());
-		result.append("\nType:       	 " + getType() +"\n");
+			result.append("\nResolution: 	 " + getResolution());
+			result.append("\nCollectionType:  " + getCollectionType());
+			result.append("\nType:       	 " + getType() + "\n");
 		} catch (VocabularyException ve) {
 			ve.printStackTrace();
 		}
@@ -202,39 +218,39 @@ public class ProfileAttribute extends AbstractProcessAttribute {
 
 		if (resolutionRule.equals(Constants.LOCKED)) {
 			/*
-			 * if attribute is locked then: 
-			 * value B changes value A only if value A is a default
+			 * if attribute is locked then: value B changes value A only if
+			 * value A is a default
 			 */
 			if ((getValue() == null) && (b.getValue() != null)) {
 				attributeValue = b.getValue();
 			}
 		} else if (resolutionRule.equals(Constants.OVERRIDE)) {
 			/*
-			 * if attribute is override then: 
-			 * value B changes value A only if value B is not a default
+			 * if attribute is override then: value B changes value A only if
+			 * value B is not a default
 			 */
 			if (b.getValue() != null) {
 				attributeValue = b.getValue();
 			}
 		} else if (resolutionRule.equals(Constants.APPEND)) {
 			/*
-			 * if attribute is appended then: 
-			 * non-default values always override default values
-			 * non-default values are appended to other non-default values
+			 * if attribute is appended then: non-default values always override
+			 * default values non-default values are appended to other
+			 * non-default values
 			 */
 			try {
-			if (!getCollectionType().equals(
-					Constants.SIMPLE)) {
-				if ((b.getValue() != null) && (getValue() != null)) {
-					for (String s : b.getValue()) {
-						if (attributeValue.contains(s)) {
-							attributeValue.add(s);
+				if (!getCollectionType().equals(Constants.SIMPLE)) {
+					if ((b.getValue() != null) && (getValue() != null)) {
+						for (String s : b.getValue()) {
+							if (attributeValue.contains(s)) {
+								attributeValue.add(s);
+							}
 						}
+					} else if ((b.getValue() != null) && (getValue() == null)) {
+						attributeValue = b.getValue();
 					}
-				} else if ((b.getValue() != null) && (getValue() == null)) {
-					attributeValue = b.getValue();
 				}
-			} } catch (VocabularyException ppe) {
+			} catch (VocabularyException ppe) {
 				ppe.printStackTrace();
 			}
 		}

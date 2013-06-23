@@ -21,23 +21,28 @@ import com.hp.hpl.jena.rdf.model.Resource;
 import com.hp.hpl.jena.rdf.model.ResourceFactory;
 import com.hp.hpl.jena.vocabulary.RDFS;
 
+/**
+ * A UAProf schema.
+ */
 class Schema {
-	private static Log log = LogFactory.getLog(Schema.class);
-
+	private static final Log log = LogFactory.getLog(Schema.class);
+	private final Model vocabularySchema = ModelFactory.createDefaultModel();
 	private Property resolutionRuleProperty = null;
-
-	private Model vocabularySchema = ModelFactory.createDefaultModel();
-
-	private String prfUri = null;
-
-	private String schemaName = null;
+	private String prfUri;
+	private String schemaName;
 
 	/** Datatyping information. */
-	private Map<List<String>, String> datatypesLookup = new HashMap<List<String>, String>();
+	private final Map<List<String>, String> datatypesLookup = new HashMap<List<String>, String>();
 
 	/** A mapping of UAProf properties onto a vector describing each property. */
-	private Map<Resource, Map<String, Resource>> propertyDescription = new HashMap<Resource, Map<String, Resource>>();
+	private final Map<Resource, Map<String, Resource>> propertyDescription = new HashMap<Resource, Map<String, Resource>>();
 
+	/**
+	 * Constructor.
+	 * 
+	 * @param url The schema URL.
+	 * @param datatypesDef The datatype definition.
+	 */
 	Schema(String url, List<String> datatypesDef)
 	{
 		// read the document in from a URL
@@ -53,8 +58,9 @@ class Schema {
 	 * @param in The schema file to be processed.
 	 * @param prfUri The URI of the namespace to be associated with the
 	 *            schema.
-	 * @param datatypesDef
-	 * @throws Exception
+	 * @param schemaName The name of the schema.
+	 * @param datatypesDef The datatype definitions.
+	 * @throws IOException Thrown if there is a problem reading the schema.
 	 */
 	Schema(InputStream in, String prfUri, String schemaName, List<String> datatypesDef)
 			throws IOException {
@@ -207,20 +213,21 @@ class Schema {
 
 	private String getCollectionTypeFromComments(String commentString, String attributeName,
 			String collectionTypeName) {
+		String correctedCollectionTypeName = collectionTypeName;
 		if (commentString.indexOf("(bag)") > 0) {
-			if (!collectionTypeName.equals(Constants.BAG)) {
+			if (!correctedCollectionTypeName.equals(Constants.BAG)) {
 				log.warn("Vocabulary inconsistency warning: " + attributeName + " only declares it is a "
 						+ Constants.BAG + " in the comments field for schema " + schemaName);
 			}
-			collectionTypeName = Constants.BAG;
+			correctedCollectionTypeName = Constants.BAG;
 		} else if (commentString.indexOf("(sequence)") > 0) {
-			if (!collectionTypeName.equals(Constants.SEQ)) {
+			if (!correctedCollectionTypeName.equals(Constants.SEQ)) {
 				log.warn("Vocabulary inconsistency warning: " + attributeName + " only declares it is a "
 						+ Constants.SEQ + " in the comments field for schema" + schemaName);
 			}
-			collectionTypeName = Constants.SEQ;
+			correctedCollectionTypeName = Constants.SEQ;
 		}
-		return collectionTypeName;
+		return correctedCollectionTypeName;
 	}
 
 	private String getCommentString(Resource attribute) {

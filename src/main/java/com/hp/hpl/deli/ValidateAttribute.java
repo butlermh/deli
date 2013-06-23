@@ -6,28 +6,32 @@ import com.hp.hpl.jena.rdf.model.RDFNode;
 import com.hp.hpl.jena.rdf.model.Resource;
 import com.hp.hpl.jena.rdf.model.Statement;
 
+/**
+ * Validate an attribute.
+ */
 class ValidateAttribute extends AbstractProcessAttribute {
-	private SchemaCollection vocabulary;
-
-	Resource attribute;
-
-	private RDFNode object;
-
-	private Resource currentComponent;
-
+	
+	private final SchemaCollection vocabulary;
+	private final Resource attribute;
+	private final RDFNode object;
+	private final Resource currentComponent;
 	private boolean isProfileValid;
 
-	/** Is datatype validation on? */
+	/**
+	 * Is datatype validation on? 
+	 */
 	private boolean datatypeValidationOn = true;
-
 	private boolean printedWarningAboutDatatyping = false;
+	private StringBuffer validationMessages = new StringBuffer();
 
-	StringBuffer validationMessages = new StringBuffer();
-
-	void outputMsg(String s) {
-		validationMessages.append(s + "\n");
-	}
-
+	/**
+	 * @param configuration The configuration.
+	 * @param attributeStatement The statement.
+	 * @param currentComponent The current component.
+	 * @param currentlyProcessingDefaults Are we currently processing defaults?
+	 * @param isProfileValid Is the profile valid?
+	 * @param printedWarningAboutDatatyping Should we print datatype warnings?
+	 */
 	ValidateAttribute(ProfileProcessor configuration, Statement attributeStatement,
 			Resource currentComponent, boolean currentlyProcessingDefaults,
 			boolean isProfileValid, boolean printedWarningAboutDatatyping) {
@@ -54,7 +58,19 @@ class ValidateAttribute extends AbstractProcessAttribute {
 			}
 		}
 	}
+	
+	/**
+	 * Output a message.
+	 * 
+	 * @param msg The message.
+	 */
+	void outputMsg(String msg) {
+		validationMessages.append(msg + "\n");
+	}
 
+	/**
+	 * Validate an attribute.
+	 */
 	void validateAttribute() {
 		try {
 			String vocabularyCollectionType = vocabulary.getAttributeProperty(attribute,
@@ -95,6 +111,11 @@ class ValidateAttribute extends AbstractProcessAttribute {
 		}
 	}
 
+	/**
+	 * Validate a container.
+	 * 
+	 * @param container The container.
+	 */
 	void validateContainer(String container) {
 		if (!isContainer(object.asResource(), container)) {
 			validatorError("does not match collection type " + container);
@@ -109,6 +130,11 @@ class ValidateAttribute extends AbstractProcessAttribute {
 		}
 	}
 
+	/**
+	 * Print out a validator error message.
+	 * 
+	 * @param message The message.
+	 */
 	void validatorError(String message) {
 		outputMsg("Error [C: " + currentComponent + ", A: " + attribute + "] " + message);
 		isProfileValid = false;
@@ -128,6 +154,11 @@ class ValidateAttribute extends AbstractProcessAttribute {
 		return isProfileValid;
 	}
 
+	/**
+	 * Check the datatype of a node.
+	 *
+	 * @param valueToCheck The value to check.
+	 */
 	void checkDatatype(RDFNode valueToCheck) {
 		try {
 			Resource vocabularyType = vocabulary.getAttributeProperty(attribute,
@@ -180,6 +211,9 @@ class ValidateAttribute extends AbstractProcessAttribute {
 		}
 	}
 
+	/**
+	 * @return Did we already print the warning about datatyping?
+	 */
 	public boolean printedWarningAboutDatatyping() {
 		return printedWarningAboutDatatyping;
 	}

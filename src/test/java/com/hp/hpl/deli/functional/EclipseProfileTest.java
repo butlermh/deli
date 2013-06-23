@@ -5,7 +5,7 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 
-
+@SuppressWarnings("javadoc")
 public class EclipseProfileTest extends UAProfProfileTest {
 	@Before
 	public void setUp() {

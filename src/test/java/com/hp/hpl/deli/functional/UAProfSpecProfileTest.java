@@ -5,7 +5,7 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 
-
+@SuppressWarnings("javadoc")
 public class UAProfSpecProfileTest extends UAProfProfileTest {
     // This test checks that you can load a UAProf reference profile from
     // the local filesystem using DELI.

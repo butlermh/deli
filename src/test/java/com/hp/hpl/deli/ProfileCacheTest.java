@@ -7,6 +7,7 @@ import junit.framework.TestCase;
 
 import org.junit.Test;
 
+@SuppressWarnings("javadoc")
 public class ProfileCacheTest extends TestCase {
 
 	public ProfileCacheTest(String name) {

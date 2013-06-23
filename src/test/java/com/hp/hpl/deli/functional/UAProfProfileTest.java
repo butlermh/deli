@@ -4,6 +4,7 @@ import org.junit.Test;
 
 import com.hp.hpl.deli.Constants;
 
+@SuppressWarnings("javadoc")
 abstract public class UAProfProfileTest extends CCPPProfileTest {
 
 	@Test

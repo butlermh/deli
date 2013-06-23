@@ -16,6 +16,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+@SuppressWarnings("javadoc")
 public class MockHttpServletRequest implements HttpServletRequest {
 
 	private Vector<String> headers = null;

@@ -24,14 +24,10 @@ public class AllProfiles {
 	static Log log = LogFactory.getLog(AllProfiles.class);
 
 	private Model profiles;
-
 	private Manufacturers manufacturers;
-
 	private ExcludeHosts excludedHost = new ExcludeHosts();
-
 	private List<Resource> crawlDb = Collections
 			.synchronizedList(new LinkedList<Resource>());
-
 	HashSet<String> unretrievableProfiles = new HashSet<String>();
 
 	AllProfiles(Model profiles) {

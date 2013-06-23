@@ -7,10 +7,13 @@ import com.hp.hpl.jena.rdf.model.RDFNode;
 import com.hp.hpl.jena.rdf.model.Resource;
 import com.hp.hpl.jena.vocabulary.RDF;
 
-class AbstractProcessAttribute {
+/**
+ * Abstract class for processing attributes.
+ */
+abstract class AbstractProcessAttribute {
 	
 	/**
-	 * @param statement
+	 * @param resource The RDF node with the container.
 	 * @return Does this statement contain a simple attribute, sequence or bag?
 	 */
 	static String determineContainerType(RDFNode resource) {
@@ -27,8 +30,10 @@ class AbstractProcessAttribute {
 	}
 	
 	/**
-	 * @param resource
-	 * @param container
+	 * Does this node have a container of a specific type?
+	 * 
+	 * @param resource The resource to test.
+	 * @param container The container type.
 	 * @return Does resource match the container type?
 	 */
 	static boolean isContainer(Resource resource, String container) {
@@ -37,8 +42,9 @@ class AbstractProcessAttribute {
 	}
 	
 	/**
-	 * @param resource
+	 * @param resource The resource with the container.
 	 * @return an iterator to the container
+	 * @throws ProfileProcessingException Thrown if the container does not have a known type.
 	 */
 	static NodeIterator getContainerIterator(Resource resource) throws ProfileProcessingException {
 		Model model = resource.getModel();

@@ -4,6 +4,7 @@ import org.junit.*;
 
 import static org.junit.Assert.assertTrue;
 
+@SuppressWarnings("javadoc")
 public class EricssonT39ProfileTest extends UAProfProfileTest {
 
 	@Before
