@@ -1,7 +1,5 @@
-(Sorry folks, this code is old and rusty - in the process of updating, please be patient ...)
-
 DELI Delivery Context Library
-====
+=============================
 
 Send all support requests to markhenrybutler@gmail.com
 
@@ -12,11 +10,11 @@ http://delicon.sourceforge.net/
 
 PRE-REQUISITES
 
-To use DELI, you need a Java JDK, Apache Maven and Apache Ant. 
+To use DELI, you need a Java JDK and Apache Maven.
 
 =============================
 
-INSTALLING DELI ON WINDOWS
+INSTALLING DELI
 
 1. First you need to build DELI type
 
@@ -27,15 +25,15 @@ Then there are various things you can do with DELI:
 2. To validate all UAProf profiles in profiles.xml with a direct 
 connection to the internet type
 
-ant UAProfValidator
+java -cp target/deli-1.0.jar com.hp.hpl.deli.UAProfValidator
 
 3. To validate all UAProf profiles in profiles.xml behind a firewall type
 
-ant runUAProfValidatorProxy -Dhttp.proxyHost=your proxy host -Dhttp.proxyPort=your proxy port
+java -cp target/deli-1.0.jar com.hp.hpl.deli.UAProfValidator -Dhttp.proxyHost=your proxy host -Dhttp.proxyPort=your proxy port
 
 4. To validate a UAProf profile type
 
-ant validate -Dprofile=your profile
+java -cp target/deli-1.0.jar com.hp.hpl.deli.UAProfValidator -Dprofile=your profile
 
 5. To run the DELI hello world application build DELI, copy ccpp.war
 to the webapps directory of your app server, and see your app server
@@ -45,38 +43,7 @@ to see the hello world page point your web browser at
 
 http://localhost:8088/ccpp/index.html
 
-=============================
-
-INSTALLING DELI ON LINUX
-
-1. First you need to build DELI type
-
-mvn install
-
-Then there are various things you can do with DELI:
-
-2. To validate all UAProf profiles in profiles.xml with a direct 
-connection to the internet type
-
-. ant.sh runUAProfValidator
-
-3. To validate all UAProf profiles in profiles.xml behind a firewall type
-
-. ant.sh runUAProfValidatorProxy -Dhttp.proxyHost=your proxy host -Dhttp.proxyPort=your proxy port
-
-4. To validate a UAProf profile type
-
-. ant.sh validate -Dprofile=your profile
-
-5. To run the DELI hello world application build DELI, copy ccpp.war
-to the webapps directory of your app server, and see your app server
-documentation about how to deploy a web app. On Tomcat, the web app
-will deploy automatically. Assuming your app server works on port 8088,
-to see the hello world page point your web browser at 
-
-http://localhost:8088/ccpp/index.html
-
-=============================
+=================================================
 
 IMPORTANT
 
@@ -90,7 +57,7 @@ The UAProf validator is part of the DELI distribution; the class providing this
 functionality is com.hp.hpl.deli.UAProfValidator. The easiest way to use it is
 to use the command line interface which can be executed as:
 
-java com.hp.hpl.deli.UAProfValidator [list of profiles to validate]
+java -cp target/deli-1.0.jar com.hp.hpl.deli.UAProfValidator [list of profiles to validate]
 
 If you need to use the API, it is documented in the DELI documentation, however 
 a short example is given here:
