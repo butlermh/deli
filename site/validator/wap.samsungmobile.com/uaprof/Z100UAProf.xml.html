@@ -1,0 +1,363 @@
+<html>
+<head><title>Validator report for http://wap.samsungmobile.com/uaprof/Z100UAProf.xml</title></head>
+<body>
+<h1>Validator output for http://wap.samsungmobile.com/uaprof/Z100UAProf.xml</h1>
+<pre>
+RDF parser warning:{W102} unqualified use of rdf:resource is deprecated.
+RDF parser warning:{W102} unqualified use of rdf:resource is deprecated.
+RDF parser warning:{W102} unqualified use of rdf:resource is deprecated.
+RDF parser warning:{W102} unqualified use of rdf:resource is deprecated.
+RDF parser warning:{W102} unqualified use of rdf:resource is deprecated.
+RDF parser warning:{W102} unqualified use of rdf:resource is deprecated.
+RDF parser warning:{W102} unqualified use of rdf:resource is deprecated.
+WARNING: The profile uses a commonly used namespace alias
+Aliased namespace is:    http://www.wapforum.org/profiles/UAPROF/ccppschema-20020710#
+Real namespace is: http://www.wapforum.org/UAPROF/ccppschema-20020710#
+Error [C: http://www.wapforum.org/profiles/UAPROF/ccppschema-20020710#SoftwarePlatform, A: http://www.wapforum.org/profiles/UAPROF/ccppschema-20020710#CcppAccept-Language] does not match collection type Seq
+Error [C: http://www.wapforum.org/profiles/UAPROF/ccppschema-20020710#BrowserUA, A: http://www.wapforum.org/profiles/UAPROF/ccppschema-20020710#DownloadableBrowserApps] is not a container.
+Warning [A: http://www.wapforum.org/profiles/UAPROF/ccppschema-20020710#MmsVersion] Attribute not defined in vocabulary
+Warning [A: http://www.wapforum.org/profiles/UAPROF/ccppschema-20020710#MmsCcppAcceptCharSet] Attribute not defined in vocabulary
+Warning [A: http://www.wapforum.org/profiles/UAPROF/ccppschema-20020710#MmsCcppAccept] Attribute not defined in vocabulary
+Warning [A: http://www.wapforum.org/profiles/UAPROF/ccppschema-20020710#MmsMaxImageResolution] Attribute not defined in vocabulary
+Warning [A: http://www.wapforum.org/profiles/UAPROF/ccppschema-20020710#MmsMaxMessageSize] Attribute not defined in vocabulary
+PROFILE IS NOT VALID
+</pre>
+<p><a href="mailto:markhenrybutler@gmail.com">Problems with this report?</a></p><h1>Original profile</h1>
+<pre>
+&lt;?xml version=&quot;1.0&quot; ?&gt; 
+
+&lt;!-- 
+***************************************************************************************
+*  SAMSUNG Z100 UMTS Handset UAProf ( User Agent Profile )
+*
+*  Version:  1.0
+*  Created:  16/06/2003
+*  Last Updated : 18/10/2003
+*  Author :  Kooktae Choi( ktchoi@samsung.com )
+*  Organization:  Mocha Group in UMTS Development 1 ( Telecommunication Department )
+*
+*  Copyright 2003 SAMSUNG Electronics Co. Ltd.
+*
+*  Revision History
+*     0.1  Initial Release
+*     1.0  Revised by Kooktae Choi on 29/09/2003
+*
+***************************************************************************************
+--&gt; 
+
+&lt;rdf:RDF xmlns:rdf=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot; xmlns:prf=&quot;http://www.wapforum.org/profiles/UAPROF/ccppschema-20020710#&quot; xmlns=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot;&gt;
+&lt;rdf:Description rdf:ID=&quot;Z100DeviceProfile&quot;&gt;
+
+
+  	&lt;!-- Hardware Platform Description --&gt; 
+  	&lt;prf:component&gt;
+  	&lt;rdf:Description rdf:ID=&quot;HardwarePlatform&quot;&gt;
+  	&lt;rdf:type resource=&quot;http://www.wapforum.org/profiles/UAPROF/ccppschema-20020710#HardwarePlatform&quot; /&gt;
+   
+	  	&lt;!-- Vendor/model --&gt; 
+	  	&lt;prf:Vendor&gt;SAMSUNG&lt;/prf:Vendor&gt; 
+	  	&lt;prf:Model&gt;Z100&lt;/prf:Model&gt; 
+	  	&lt;prf:CPU&gt;ARM7&lt;/prf:CPU&gt;
+	  	 
+	  	&lt;!-- Display --&gt; 
+	  	&lt;prf:ScreenSize&gt;176x192&lt;/prf:ScreenSize&gt; 
+	  	&lt;prf:ColorCapable&gt;Yes&lt;/prf:ColorCapable&gt; 
+	  	&lt;prf:BitsPerPixel&gt;16&lt;/prf:BitsPerPixel&gt; 
+	  	&lt;prf:PixelAspectRatio&gt;1x1&lt;/prf:PixelAspectRatio&gt; 
+	  	&lt;prf:ImageCapable&gt;Yes&lt;/prf:ImageCapable&gt; 
+	  	&lt;prf:ScreenSizeChar&gt;20x14&lt;/prf:ScreenSizeChar&gt; 
+	  	&lt;prf:StandardFontProportional&gt;No&lt;/prf:StandardFontProportional&gt; 
+	  	&lt;prf:OutputCharSet&gt;
+	  		&lt;rdf:Bag&gt;
+	  		&lt;rdf:li&gt;ISO-8859-1&lt;/rdf:li&gt; 
+	  		&lt;rdf:li&gt;US-ASCII&lt;/rdf:li&gt; 
+	  		&lt;rdf:li&gt;UTF-8&lt;/rdf:li&gt; 
+			&lt;rdf:li&gt;ISO-10646-UCS-2&lt;/rdf:li&gt; 
+	  		&lt;rdf:li&gt;GSM&lt;/rdf:li&gt; 
+	  		&lt;/rdf:Bag&gt;
+	  	&lt;/prf:OutputCharSet&gt;
+	  	
+		&lt;!-- Input capabilities --&gt; 
+		&lt;prf:InputCharSet&gt;
+			&lt;rdf:Bag&gt;
+			&lt;rdf:li&gt;ISO-8859-1&lt;/rdf:li&gt; 
+			&lt;rdf:li&gt;US-ASCII&lt;/rdf:li&gt; 
+			&lt;rdf:li&gt;ISO-10646-UCS-2&lt;/rdf:li&gt; 
+			&lt;/rdf:Bag&gt;
+		&lt;/prf:InputCharSet&gt;
+		&lt;prf:TextInputCapable&gt;Yes&lt;/prf:TextInputCapable&gt; 
+		&lt;prf:Keyboard&gt;PhoneKeypad&lt;/prf:Keyboard&gt; 
+		&lt;prf:NumberOfSoftKeys&gt;2&lt;/prf:NumberOfSoftKeys&gt; 
+		
+		&lt;!--  Audio --&gt; 
+		&lt;prf:SoundOutputCapable&gt;Yes&lt;/prf:SoundOutputCapable&gt; 
+		&lt;prf:VoiceInputCapable&gt;No&lt;/prf:VoiceInputCapable&gt; 
+		
+	&lt;/rdf:Description&gt;
+	&lt;/prf:component&gt;
+	  
+	  
+	&lt;!-- Software Platform Description --&gt; 
+	&lt;prf:component&gt;
+	&lt;rdf:Description rdf:ID=&quot;SoftwarePlatform&quot;&gt;
+	&lt;rdf:type resource=&quot;http://www.wapforum.org/profiles/UAPROF/ccppschema-20020710#SoftwarePlatform&quot; /&gt; 
+	
+		&lt;!--  Basic --&gt;
+
+		&lt;!--  Java --&gt;
+		&lt;prf:JavaEnabled&gt;Yes&lt;/prf:JavaEnabled&gt;
+		&lt;prf:JavaPlatform&gt;
+			&lt;rdf:Bag&gt;
+				&lt;rdf:li&gt;CLDC 1.04&lt;/rdf:li&gt;
+			&lt;/rdf:Bag&gt;
+		&lt;/prf:JavaPlatform&gt;
+		&lt;prf:JVMVersion&gt;
+			&lt;rdf:Bag&gt;
+				&lt;rdf:li&gt;MIDP 1.0&lt;/rdf:li&gt;
+				&lt;rdf:li&gt;MIDP 2.0&lt;/rdf:li&gt;
+			&lt;/rdf:Bag&gt;
+		&lt;/prf:JVMVersion&gt;
+		
+		&lt;!--  CCPP accept --&gt; 
+		&lt;prf:CcppAccept&gt;
+			&lt;rdf:Bag&gt;
+				&lt;!--  Markup languages --&gt; 
+				&lt;rdf:li&gt;text/vnd.wap.wml&lt;/rdf:li&gt; 
+				&lt;rdf:li&gt;application/vnd.wap.wmlc&lt;/rdf:li&gt; 
+				&lt;rdf:li&gt;application/vnd.wap.wbxml&lt;/rdf:li&gt; 
+				&lt;rdf:li&gt;application/vnd.wap.wmlscriptc&lt;/rdf:li&gt;
+				&lt;rdf:li&gt;text/vnd.wap.channel&lt;/rdf:li&gt;
+				&lt;rdf:li&gt;application/vnd.wap.channelc&lt;/rdf:li&gt;
+				&lt;rdf:li&gt;application/vnd.wap.xhtml+xml&lt;/rdf:li&gt;
+				&lt;rdf:li&gt;text/html&lt;/rdf:li&gt; 
+				&lt;rdf:li&gt;text/plain&lt;/rdf:li&gt;
+				&lt;rdf:li&gt;text/css&lt;/rdf:li&gt;
+				&lt;rdf:li&gt;application/wml+xml&lt;/rdf:li&gt;
+				&lt;rdf:li&gt;application/xhtml+xml&lt;/rdf:li&gt; 
+				&lt;!--  Images --&gt; 
+				&lt;rdf:li&gt;image/vnd.wap.wbmp&lt;/rdf:li&gt; 
+				&lt;rdf:li&gt;image/gif&lt;/rdf:li&gt; 
+				&lt;rdf:li&gt;image/jpeg&lt;/rdf:li&gt; 
+				&lt;rdf:li&gt;image/png&lt;/rdf:li&gt;
+				&lt;rdf:li&gt;image/bmp&lt;/rdf:li&gt;
+				&lt;!--  Audio --&gt; 
+				&lt;rdf:li&gt;audio/midi&lt;/rdf:li&gt; 
+				&lt;rdf:li&gt;audio/x-mmf&lt;/rdf:li&gt;
+				&lt;rdf:li&gt;audio/x-iMelody&lt;/rdf:li&gt;
+				&lt;rdf:li&gt;audio/mpeg2&lt;/rdf:li&gt;
+				&lt;rdf:li&gt;audio/amr&lt;/rdf:li&gt;
+				&lt;rdf:li&gt;audio/basic&lt;/rdf:li&gt;
+				&lt;rdf:li&gt;application/vnd.smaf&lt;/rdf:li&gt; 
+				&lt;rdf:li&gt;audio/tone&lt;/rdf:li&gt;
+				&lt;!--  Video --&gt;
+				&lt;rdf:li&gt;video/h263&lt;/rdf:li&gt;
+				&lt;rdf:li&gt;video/mpeg&lt;/rdf:li&gt;
+				&lt;rdf:li&gt;video/x-pv-mp4&lt;/rdf:li&gt;
+				&lt;rdf:li&gt;video/3gpp&lt;/rdf:li&gt;
+				&lt;!--  Nokia OTA Provisioning --&gt; 
+				&lt;rdf:li&gt;application/x-nokia.settings&lt;/rdf:li&gt; 
+				&lt;rdf:li&gt;application/x-wap-prov.browser-settings&lt;/rdf:li&gt; 
+				&lt;!--  WAP Provisioning --&gt;
+				&lt;rdf:li&gt;text/vnd.wap.connectivity-xml&lt;/rdf:li&gt;
+				&lt;rdf:li&gt;application/vnd.wap.connectivity-wbxml&lt;/rdf:li&gt;
+			&lt;/rdf:Bag&gt;
+		&lt;/prf:CcppAccept&gt;
+		&lt;prf:CcppAccept-Charset&gt;
+			&lt;rdf:Bag&gt;
+				&lt;rdf:li&gt;ISO-8859-1&lt;/rdf:li&gt; 
+				&lt;rdf:li&gt;US-ASCII&lt;/rdf:li&gt; 
+				&lt;rdf:li&gt;UTF-8&lt;/rdf:li&gt; 
+			&lt;/rdf:Bag&gt;
+		&lt;/prf:CcppAccept-Charset&gt;
+		&lt;prf:CcppAccept-Language&gt;
+			&lt;rdf:Bag&gt;
+				&lt;rdf:li&gt;en&lt;/rdf:li&gt;
+				&lt;rdf:li&gt;fr&lt;/rdf:li&gt;
+				&lt;rdf:li&gt;de&lt;/rdf:li&gt;
+				&lt;rdf:li&gt;es&lt;/rdf:li&gt;
+				&lt;rdf:li&gt;it&lt;/rdf:li&gt; 
+			&lt;/rdf:Bag&gt;
+		&lt;/prf:CcppAccept-Language&gt;
+		
+	&lt;/rdf:Description&gt;
+	&lt;/prf:component&gt;
+	   
+	  
+	&lt;!-- Network Characteristics Description --&gt; 
+	&lt;prf:component&gt;
+	&lt;rdf:Description rdf:ID=&quot;NetworkCharacteristics&quot;&gt;
+	&lt;rdf:type resource=&quot;http://www.wapforum.org/profiles/UAPROF/ccppschema-20020710#NetworkCharacteristics&quot; /&gt; 
+	
+		&lt;prf:SecuritySupport&gt;
+			&lt;rdf:Bag&gt;
+				&lt;rdf:li&gt;WTLS-1&lt;/rdf:li&gt; 
+			&lt;/rdf:Bag&gt;
+		&lt;/prf:SecuritySupport&gt;
+		&lt;prf:SupportedBearers&gt;
+			&lt;rdf:Bag&gt;
+				&lt;rdf:li&gt;GSM&lt;/rdf:li&gt;
+				&lt;rdf:li&gt;SMS&lt;/rdf:li&gt;
+				&lt;rdf:li&gt;GPRS&lt;/rdf:li&gt; 
+				&lt;rdf:li&gt;UMTS&lt;/rdf:li&gt;
+			&lt;/rdf:Bag&gt;
+		&lt;/prf:SupportedBearers&gt;
+		
+	&lt;/rdf:Description&gt;
+	&lt;/prf:component&gt;
+	  
+	  
+	&lt;!-- Browser UA Description --&gt; 
+	&lt;prf:component&gt;
+	&lt;rdf:Description rdf:ID=&quot;BrowserUA&quot;&gt;
+	&lt;rdf:type resource=&quot;http://www.wapforum.org/profiles/UAPROF/ccppschema-20020710#BrowserUA&quot; /&gt; 
+	
+		&lt;!--  Browser Identification --&gt; 		
+		&lt;prf:BrowserName&gt;Samsung Mobile Browser&lt;/prf:BrowserName&gt; 
+		&lt;prf:BrowserVersion&gt;3.0&lt;/prf:BrowserVersion&gt; 
+		
+		&lt;!-- Capabilities --&gt; 
+		&lt;prf:FramesCapable&gt;No&lt;/prf:FramesCapable&gt; 
+		&lt;prf:TablesCapable&gt;Yes&lt;/prf:TablesCapable&gt; 
+		&lt;prf:PreferenceForFrames&gt;No&lt;/prf:PreferenceForFrames&gt; 
+		&lt;prf:HtmlVersion&gt;4.0&lt;/prf:HtmlVersion&gt;
+		&lt;prf:XhtmlVersion&gt;1.0&lt;/prf:XhtmlVersion&gt;
+		
+		&lt;!--  Applet / Script --&gt; 
+		&lt;prf:DownloadableBrowserApps&gt;No&lt;/prf:DownloadableBrowserApps&gt; 
+		&lt;prf:JavaAppletEnabled&gt;No&lt;/prf:JavaAppletEnabled&gt; 
+		&lt;prf:JavaScriptEnabled&gt;No&lt;/prf:JavaScriptEnabled&gt; 
+	
+	&lt;/rdf:Description&gt;
+	&lt;/prf:component&gt;
+	  
+	  
+	  
+	&lt;!-- WAP Characteristics Description --&gt; 
+	&lt;prf:component&gt;
+	&lt;rdf:Description rdf:ID=&quot;WapCharacteristics&quot;&gt;
+	&lt;rdf:type resource=&quot;http://www.wapforum.org/profiles/UAPROF/ccppschema-20020710#WapCharacteristics&quot; /&gt; 
+	
+		&lt;!-- General --&gt; 
+		&lt;prf:WapVersion&gt;2.0&lt;/prf:WapVersion&gt; 
+		
+		&lt;!-- WML --&gt; 
+		&lt;prf:WmlVersion&gt;
+			&lt;rdf:Bag&gt;
+				&lt;rdf:li&gt;1.1&lt;/rdf:li&gt; 
+				&lt;rdf:li&gt;1.2&lt;/rdf:li&gt; 
+				&lt;rdf:li&gt;1.3&lt;/rdf:li&gt;
+				&lt;rdf:li&gt;2.0&lt;/rdf:li&gt;
+			&lt;/rdf:Bag&gt;
+		&lt;/prf:WmlVersion&gt;
+		&lt;prf:WmlDeckSize&gt;5000&lt;/prf:WmlDeckSize&gt; 
+		
+		&lt;!-- WMLSCRIPT --&gt; 
+		&lt;prf:WmlScriptVersion&gt;
+			&lt;rdf:Bag&gt;
+				&lt;rdf:li&gt;1.2&lt;/rdf:li&gt; 
+			&lt;/rdf:Bag&gt;
+		&lt;/prf:WmlScriptVersion&gt;
+		
+		&lt;!-- WMLSCRIPT LIBRARY --&gt; 
+		&lt;prf:WmlScriptLibraries&gt;
+			&lt;rdf:Bag&gt;
+				&lt;rdf:li&gt;Lang&lt;/rdf:li&gt; 
+				&lt;rdf:li&gt;Float&lt;/rdf:li&gt; 
+				&lt;rdf:li&gt;String&lt;/rdf:li&gt; 
+				&lt;rdf:li&gt;URL&lt;/rdf:li&gt; 
+				&lt;rdf:li&gt;WMLBrowser&lt;/rdf:li&gt; 
+				&lt;rdf:li&gt;Dialogs&lt;/rdf:li&gt; 
+			&lt;/rdf:Bag&gt;
+		&lt;/prf:WmlScriptLibraries&gt;
+		
+		&lt;!-- WTAI LIBRARY --&gt; 
+		&lt;prf:WtaiLibraries&gt;
+			&lt;rdf:Bag&gt;
+				&lt;rdf:li&gt;WTA.Public.makeCall&lt;/rdf:li&gt; 
+			&lt;/rdf:Bag&gt;
+		&lt;/prf:WtaiLibraries&gt;
+	
+	&lt;/rdf:Description&gt;
+	&lt;/prf:component&gt;
+	  
+	  
+	  
+	&lt;!-- Push Characteristics Description --&gt;  
+	&lt;prf:component&gt;
+	&lt;rdf:Description rdf:ID=&quot;PushCharacteristics&quot;&gt;
+	&lt;rdf:type resource=&quot;http://www.wapforum.org/profiles/UAPROF/ccppschema-20020710#PushCharacteristics&quot; /&gt; 
+	
+		&lt;prf:Push-Accept&gt;
+			&lt;rdf:Bag&gt;
+				&lt;rdf:li&gt;text/vnd.wap.si&lt;/rdf:li&gt; 
+				&lt;rdf:li&gt;application/vnd.wap.sic&lt;/rdf:li&gt;
+				&lt;rdf:li&gt;text/vnd.wap.sl&lt;/rdf:li&gt;
+				&lt;rdf:li&gt;application/vnd.wap.slc&lt;/rdf:li&gt;
+				&lt;rdf:li&gt;application/vnd.wap.mms-message&lt;/rdf:li&gt;
+				&lt;rdf:li&gt;application/x-wap-prov.browser-settings&lt;/rdf:li&gt;			
+			&lt;/rdf:Bag&gt;
+		&lt;/prf:Push-Accept&gt;
+		&lt;prf:Push-Accept-AppID&gt;
+			&lt;rdf:Bag&gt;
+				&lt;rdf:li&gt;x-wap-application:wml.ua&lt;/rdf:li&gt;
+				&lt;rdf:li&gt;x-wap-application:mms.ua&lt;/rdf:li&gt; 
+				&lt;rdf:li&gt;*&lt;/rdf:li&gt; 
+			&lt;/rdf:Bag&gt;
+		&lt;/prf:Push-Accept-AppID&gt;
+		&lt;prf:Push-MsgSize&gt;5000&lt;/prf:Push-MsgSize&gt; 
+	
+	&lt;/rdf:Description&gt;
+	&lt;/prf:component&gt;
+	  
+	  
+	  
+	&lt;!-- MMS Characteristics Description --&gt;  
+	&lt;prf:component&gt;
+	&lt;rdf:Description rdf:ID=&quot;MMSCharacteristics&quot;&gt;
+	&lt;rdf:type resource=&quot;http://www.wapforum.org/profiles/MMS/ccppschema-20010111#MmsCharacteristics&quot; /&gt; 
+	
+		&lt;prf:MmsMaxMessageSize&gt;100000&lt;/prf:MmsMaxMessageSize&gt; 
+		&lt;prf:MmsMaxImageResolution&gt;176x192&lt;/prf:MmsMaxImageResolution&gt; 
+		&lt;prf:MmsCcppAccept&gt;
+			&lt;rdf:Bag&gt;
+				&lt;rdf:li&gt;image/gif&lt;/rdf:li&gt; 
+				&lt;rdf:li&gt;image/jpeg&lt;/rdf:li&gt; 
+				&lt;rdf:li&gt;image/png&lt;/rdf:li&gt;
+				&lt;rdf:li&gt;image/vnd.wap.wbmp&lt;/rdf:li&gt;
+				&lt;rdf:li&gt;audio/midi&lt;/rdf:li&gt; 
+				&lt;rdf:li&gt;audio/sp-midi&lt;/rdf:li&gt; 
+				&lt;rdf:li&gt;audio/x-mmf&lt;/rdf:li&gt;
+				&lt;rdf:li&gt;audio/iMelody&lt;/rdf:li&gt;
+				&lt;rdf:li&gt;audio/amr&lt;/rdf:li&gt;
+				&lt;rdf:li&gt;video/h263&lt;/rdf:li&gt;
+				&lt;rdf:li&gt;video/3gpp&lt;/rdf:li&gt;
+				&lt;rdf:li&gt;video/mp4&lt;/rdf:li&gt;
+				&lt;rdf:li&gt;text/plain&lt;/rdf:li&gt; 
+				&lt;rdf:li&gt;text/html&lt;/rdf:li&gt; 
+				&lt;rdf:li&gt;text/vnd.wap.wml&lt;/rdf:li&gt; 
+				&lt;rdf:li&gt;text/x-iMelody&lt;/rdf:li&gt; 
+				&lt;rdf:li&gt;text/x-vcard&lt;/rdf:li&gt; 
+				&lt;rdf:li&gt;text/x-vcal&lt;/rdf:li&gt; 
+				&lt;rdf:li&gt;application/vnd.wap.multipart.mixed&lt;/rdf:li&gt; 
+				&lt;rdf:li&gt;application/vnd.wap.multipart.related&lt;/rdf:li&gt;
+				&lt;rdf:li&gt;application/smil&lt;/rdf:li&gt;
+			&lt;/rdf:Bag&gt;
+		&lt;/prf:MmsCcppAccept&gt;
+		&lt;prf:MmsCcppAcceptCharSet&gt;
+			&lt;rdf:Bag&gt;
+				&lt;rdf:li&gt;UTF-8&lt;/rdf:li&gt; 
+				&lt;rdf:li&gt;ISO-8859-1&lt;/rdf:li&gt; 
+				&lt;rdf:li&gt;US-ASCII&lt;/rdf:li&gt; 
+				&lt;rdf:li&gt;ISO-10646-UCS-2&lt;/rdf:li&gt; 
+			&lt;/rdf:Bag&gt;
+		&lt;/prf:MmsCcppAcceptCharSet&gt;
+		&lt;prf:MmsVersion&gt;1.0&lt;/prf:MmsVersion&gt; 
+	
+	&lt;/rdf:Description&gt;
+	&lt;/prf:component&gt;
+	  
+  
+&lt;/rdf:Description&gt;
+&lt;/rdf:RDF&gt;</pre>
+</body>
+</html>

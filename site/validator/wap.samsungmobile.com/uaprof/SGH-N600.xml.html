@@ -1,0 +1,168 @@
+<html>
+<head><title>Validator report for http://wap.samsungmobile.com/uaprof/SGH-N600.xml</title></head>
+<body>
+<h1>Validator output for http://wap.samsungmobile.com/uaprof/SGH-N600.xml</h1>
+<pre>
+WARNING: The profile uses a commonly used namespace alias
+Aliased namespace is:    http://www.wapforum.org/profiles/UAPROF/ccppschema-20020710#
+Real namespace is: http://www.wapforum.org/UAPROF/ccppschema-20020710#
+Error: http://www.wapforum.org/profiles/UAPROF/ccppschema-20020710#WmlScriptLibraries there is a problem with components
+Error: http://www.wapforum.org/profiles/UAPROF/ccppschema-20020710#WmlVersion there is a problem with components
+Error: http://www.wapforum.org/profiles/UAPROF/ccppschema-20020710#WmlScriptVersion there is a problem with components
+Error: http://www.wapforum.org/profiles/UAPROF/ccppschema-20020710#WmlDeckSize there is a problem with components
+Error: http://www.wapforum.org/profiles/UAPROF/ccppschema-20020710#WapVersion there is a problem with components
+Error: http://www.wapforum.org/profiles/UAPROF/ccppschema-20020710#WapPushMsgSize there is a problem with components
+Error: http://www.wapforum.org/profiles/UAPROF/ccppschema-20020710#WapDeviceClass there is a problem with components
+Error: http://www.w3.org/1999/02/22-rdf-syntax-ns#type there is a problem with components
+PROFILE IS NOT VALID
+</pre>
+<p><a href="mailto:markhenrybutler@gmail.com">Problems with this report?</a></p><h1>Original profile</h1>
+<pre>
+&lt;?xml version=&quot;1.0&quot;?&gt;
+&lt;!--
+*********************************************************************
+*  SAMSUNG GSM/GPRS Handset UA Prof
+*
+*  Version:  0.4
+*  Created:  18/11/2003
+*  Edited:   26/11/2003
+*  Author :  INHYE BAE(aimee.bae@samsung.com)
+*  Organization:  R&amp;D Group 2 Software Lab. Application team.
+*
+*  Copyright 2003 SAMSUNG
+*
+*  Revision History
+*     0.1   Initial Release
+*     0.11  Modified Release (&lt;/RDF&gt; -&gt; &lt;/rdf:RDF&gt;)
+*********************************************************************
+--&gt;
+&lt;rdf:RDF xmlns:rdf=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot; xmlns:prf=&quot;http://www.wapforum.org/profiles/UAPROF/ccppschema-20020710#&quot; xmlns=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot;&gt;
+&lt;!--*************************************** Hardware Platform Description ***************************************--&gt;
+&lt;prf:component&gt;
+		&lt;prf:BitsPerPixel&gt;16&lt;/prf:BitsPerPixel&gt;
+		&lt;prf:ColorCapable&gt;No&lt;/prf:ColorCapable&gt;
+		&lt;prf:CPU&gt;ARM7&lt;/prf:CPU&gt;
+		&lt;prf:ImageCapable&gt;Yes&lt;/prf:ImageCapable&gt;
+		&lt;prf:InputCharSet&gt;
+		    &lt;rdf:Bag&gt;
+			&lt;rdf:li&gt;ISO-8859-1&lt;/rdf:li&gt;
+			&lt;rdf:li&gt;US-ASCII&lt;/rdf:li&gt;
+			&lt;rdf:li&gt;UTF-8&lt;/rdf:li&gt;
+		    &lt;/rdf:Bag&gt;
+		&lt;/prf:InputCharSet&gt;
+		&lt;prf:Keyboard&gt;PhoneKeypad&lt;/prf:Keyboard&gt;
+		&lt;prf:Model&gt;SGH-N600&lt;/prf:Model&gt;
+		&lt;prf:NumberOfSoftKeys&gt;2&lt;/prf:NumberOfSoftKeys&gt;
+		&lt;prf:OutputCharSet&gt;
+		    &lt;rdf:Bag&gt;
+			&lt;rdf:li&gt;ISO-8859-1&lt;/rdf:li&gt;
+			&lt;rdf:li&gt;US-ASCII&lt;/rdf:li&gt;
+			&lt;rdf:li&gt;UTF-8&lt;/rdf:li&gt;
+		    &lt;/rdf:Bag&gt;
+		&lt;/prf:OutputCharSet&gt;		
+		&lt;prf:ScreenSize&gt;128x64&lt;/prf:ScreenSize&gt;
+		&lt;prf:ScreenSizeChar&gt;8x16&lt;/prf:ScreenSizeChar&gt;
+		&lt;prf:SoundOutputCapable&gt;Yes&lt;/prf:SoundOutputCapable&gt;
+		&lt;prf:StandardFontProportional&gt;Yes&lt;/prf:StandardFontProportional&gt;
+		&lt;prf:TextInputCapable&gt;Yes&lt;/prf:TextInputCapable&gt;
+		&lt;prf:Vendor&gt;SAMSUNG&lt;/prf:Vendor&gt;
+		&lt;prf:VoiceInputCapable&gt;Yes&lt;/prf:VoiceInputCapable&gt;
+&lt;/prf:component&gt;
+&lt;!--*************************************** Software Platform Description ***************************************--&gt;
+&lt;prf:component&gt;
+		&lt;prf:AcceptDownloadableSoftware&gt;No&lt;/prf:AcceptDownloadableSoftware&gt;
+		&lt;prf:CcppAccept&gt;
+		    &lt;rdf:Bag&gt;
+			&lt;rdf:li&gt;application/vnd.wap.wmlc&lt;/rdf:li&gt;
+			&lt;rdf:li&gt;application/vnd.wap.wbxml&lt;/rdf:li&gt;
+			&lt;rdf:li&gt;application/vnd.wap.wmlscriptc&lt;/rdf:li&gt;
+			&lt;rdf:li&gt;application/vnd.wap.multipart.mixed&lt;/rdf:li&gt;
+			&lt;rdf:li&gt;image/vnd.wap.wbmp&lt;/rdf:li&gt;
+			&lt;rdf:li&gt;image/gif&lt;/rdf:li&gt;
+			
+			&lt;rdf:li&gt;application/vnd.smaf&lt;/rdf:li&gt;
+			&lt;rdf:li&gt;application/vnd.samsung.specific-image&lt;/rdf:li&gt;
+			
+			&lt;rdf:li&gt;application/x-wap-prov.browser-settings&lt;/rdf:li&gt;
+		    &lt;/rdf:Bag&gt;
+		&lt;/prf:CcppAccept&gt;
+		&lt;prf:CcppAccept-Charset&gt;
+		    &lt;rdf:Bag&gt;
+		    	&lt;rdf:li&gt;US-ASCII&lt;/rdf:li&gt;
+			&lt;rdf:li&gt;ISO-8859-1&lt;/rdf:li&gt;
+			&lt;rdf:li&gt;UTF-8&lt;/rdf:li&gt;
+		    &lt;/rdf:Bag&gt;
+		&lt;/prf:CcppAccept-Charset&gt;
+		&lt;prf:CcppAccept-Encoding&gt;
+		    &lt;rdf:Bag&gt;
+		    	&lt;rdf:li&gt;base64&lt;/rdf:li&gt;
+		    &lt;/rdf:Bag&gt;
+		&lt;/prf:CcppAccept-Encoding&gt;
+&lt;/prf:component&gt;
+&lt;!--*************************************** Network Characteristics Description ***************************************--&gt;    
+&lt;prf:component&gt;
+    		&lt;prf:SecuritySupport&gt;
+		    &lt;rdf:Bag&gt;
+			&lt;rdf:li&gt;WTLS&lt;/rdf:li&gt;
+		    &lt;/rdf:Bag&gt;
+		&lt;/prf:SecuritySupport&gt;
+		&lt;prf:SupportedBearers&gt;
+		    &lt;rdf:Bag&gt;
+			&lt;rdf:li&gt;CSD&lt;/rdf:li&gt;
+			&lt;rdf:li&gt;SMS&lt;/rdf:li&gt;
+		    &lt;/rdf:Bag&gt;
+		&lt;/prf:SupportedBearers&gt;
+&lt;/prf:component&gt;
+&lt;!--*************************************** Browser UA Description ***************************************--&gt;    
+&lt;prf:component&gt;
+		&lt;prf:BrowserName&gt;Openwave&lt;/prf:BrowserName&gt;
+		&lt;prf:BrowserVersion&gt;4.1&lt;/prf:BrowserVersion&gt;
+		
+&lt;/prf:component&gt;
+&lt;!--*************************************** WAP Characteristics Description ***************************************--&gt;
+&lt;prf:component&gt;
+		&lt;prf:WapDeviceClass&gt;C&lt;/prf:WapDeviceClass&gt;
+		&lt;prf:WapPushMsgSize&gt;1400&lt;/prf:WapPushMsgSize&gt;
+		&lt;prf:WapVersion&gt;1.1&lt;/prf:WapVersion&gt;
+		&lt;prf:WmlDeckSize&gt;4096&lt;/prf:WmlDeckSize&gt;
+		&lt;prf:WmlScriptVersion&gt;
+		    &lt;rdf:Bag&gt;
+			&lt;rdf:li&gt;1.1&lt;/rdf:li&gt;
+		    &lt;/rdf:Bag&gt;
+		&lt;/prf:WmlScriptVersion&gt;
+		&lt;prf:WmlVersion&gt;
+		    &lt;rdf:Bag&gt;
+		    	&lt;rdf:li&gt;1.1&lt;/rdf:li&gt;
+		    &lt;/rdf:Bag&gt;
+		&lt;/prf:WmlVersion&gt;
+		&lt;prf:WmlScriptLibraries&gt;
+		    &lt;rdf:Bag&gt;
+			&lt;rdf:li&gt;Lang&lt;/rdf:li&gt;
+			&lt;rdf:li&gt;Float&lt;/rdf:li&gt;
+			&lt;rdf:li&gt;String&lt;/rdf:li&gt;
+			&lt;rdf:li&gt;URL&lt;/rdf:li&gt;
+			&lt;rdf:li&gt;WMLBrowser&lt;/rdf:li&gt;
+			&lt;rdf:li&gt;Dialogs&lt;/rdf:li&gt;
+		    &lt;/rdf:Bag&gt;
+		&lt;/prf:WmlScriptLibraries&gt;
+&lt;/prf:component&gt;
+&lt;!--*************************************** Push Characteristics Description ***************************************--&gt;
+&lt;prf:component&gt;
+		&lt;prf:Push-Accept&gt;
+		    &lt;rdf:Bag&gt;
+			&lt;rdf:li&gt;text/plain&lt;/rdf:li&gt;
+		    &lt;/rdf:Bag&gt;
+		&lt;/prf:Push-Accept&gt;
+		&lt;prf:Push-Accept-Encoding&gt;
+		    &lt;rdf:Bag&gt;
+			&lt;rdf:li&gt;base64&lt;/rdf:li&gt;
+		    &lt;/rdf:Bag&gt;
+		&lt;/prf:Push-Accept-Encoding&gt;
+		&lt;prf:Push-MsgSize&gt;4096&lt;/prf:Push-MsgSize&gt;
+&lt;/prf:component&gt;
+
+		
+&lt;!--********************************************* END of UAProf *********************************************--&gt;
+&lt;/rdf:RDF&gt;</pre>
+</body>
+</html>

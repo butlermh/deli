@@ -1,0 +1,1598 @@
+<html>
+<head><title>Validator report for http://www.openmobilealliance.org/tech/profiles/uaprof/ccppschema-20070511.rdf</title></head>
+<body>
+<h1>Validator output for http://www.openmobilealliance.org/tech/profiles/uaprof/ccppschema-20070511.rdf</h1>
+<pre>
+The profile uses an unknown namespace: [http://www.openmobilealliance.org/tech/profiles/UAPROF/ccppschema-2007511#]
+The profile uses an unknown namespace: [http://www.w3.org/2000/01/rdf-schema#]
+Error: http://www.openmobilealliance.org/tech/profiles/UAPROF/ccppschema-2007511#ResolutionRule there is a problem with components
+Error: http://www.w3.org/2000/01/rdf-schema#range there is a problem with components
+Error: http://www.w3.org/2000/01/rdf-schema#domain there is a problem with components
+Error: http://www.w3.org/1999/02/22-rdf-syntax-ns#type there is a problem with components
+Error: http://www.w3.org/2000/01/rdf-schema#label there is a problem with components
+Error: http://www.w3.org/2000/01/rdf-schema#comment there is a problem with components
+PROFILE IS NOT VALID
+</pre>
+<p><a href="mailto:markhenrybutler@gmail.com">Problems with this report?</a></p><h1>Original profile</h1>
+<pre>
+&lt;?xml version=&#039;1.0&#039;?&gt;
+
+&lt;!--
+
+LEGAL DISCLAIMER
+
+  Use of this document is subject to all of the terms and conditions
+  of the Use Agreement located at
+    http://www.openmobilealliance.org/UseAgreement.html
+
+  You may use this document or any part of the document for internal
+  or educational purposes only, provided you do not modify, edit or
+  take out of context the information in this document in any manner.
+  Information contained in this document may be used, at your sole
+  risk, for any purposes.
+
+  You may not use this document in any other manner without the prior
+  written permission of the Open Mobile Alliance.  The Open Mobile
+  Alliance authorizes you to copy this document, provided that you
+  retain all copyright and other proprietary notices contained in the
+  original materials on any copies of the materials and that you
+  comply strictly with these terms.  This copyright permission does
+  not constitute an endorsement of the products or services.  The
+  Open Mobile Alliance assumes no responsibility for errors or
+  omissions in this document.
+
+  Each Open Mobile Alliance member has agreed to use reasonable
+  endeavors to inform the Open Mobile Alliance in a timely manner of
+  Essential IPR as it becomes aware that the Essential IPR is related
+  to the prepared or published specification.  However, the members
+  do not have an obligation to conduct IPR searches.  The declared
+  Essential IPR is publicly available to members and non-members of
+  the Open Mobile Alliance and may be found on the &quot;OMA IPR
+  Declarations&quot; list at http://www.openmobilealliance.org/ipr.html.
+  The Open Mobile Alliance has not conducted an independent IPR review
+  of this document and the information contained herein, and makes no
+  representations or warranties regarding third party IPR, including
+  without limitation patents, copyrights or trade secret rights.  This
+  document may contain inventions for which you must obtain licenses
+  from third parties before making, using or selling the inventions.
+  Defined terms above are set forth in the schedule to the Open Mobile
+  Alliance Application Form.
+
+  NO REPRESENTATIONS OR WARRANTIES (WHETHER EXPRESS OR IMPLIED) ARE
+  MADE BY THE OPEN MOBILE ALLIANCE OR ANY OPEN MOBILE ALLIANCE MEMBER
+  OR ITS AFFILIATES REGARDING ANY OF THE IPR&#039;S REPRESENTED ON THE &quot;OMA
+  IPR DECLARATIONS&quot; LIST, INCLUDING, BUT NOT LIMITED TO THE ACCURACY,
+  COMPLETENESS, VALIDITY OR RELEVANCE OF THE INFORMATION OR WHETHER OR
+  NOT SUCH RIGHTS ARE ESSENTIAL OR NON-ESSENTIAL.
+
+  THE OPEN MOBILE ALLIANCE IS NOT LIABLE FOR AND HEREBY DISCLAIMS ANY
+  DIRECT, INDIRECT, PUNITIVE, SPECIAL, INCIDENTAL, CONSEQUENTIAL, OR
+  EXEMPLARY DAMAGES ARISING OUT OF OR IN CONNECTION WITH THE USE OF
+  DOCUMENTS AND THE INFORMATION CONTAINED IN THE DOCUMENTS.
+
+  Copyright 2007 Open Mobile Alliance Ltd.  All Rights Reserved.
+  Used with the permission of the Open Mobile Alliance Ltd. under the
+  terms set forth above.
+
+--&gt;
+
+
+&lt;!DOCTYPE rdf:RDF [
+	&lt;!ENTITY ns-rdf &#039;http://www.w3.org/1999/02/22-rdf-syntax-ns#&#039;&gt;
+	&lt;!ENTITY ns-rdfs &#039;http://www.w3.org/2000/01/rdf-schema#&#039;&gt;
+	&lt;!ENTITY ns-prf &#039;http://www.openmobilealliance.org/tech/profiles/UAPROF/ccppschema-2007511#&#039;&gt;
+	&lt;!ENTITY prf-dt &#039;http://www.openmobilealliance.org/tech/profiles/UAPROF/xmlschema-20030226#&#039;&gt;
+	&lt;!ENTITY xsd &#039;http://www.w3.org/2001/XMLSchema#&#039;&gt;
+]&gt;
+
+&lt;rdf:RDF
+  xmlns      = &#039;&amp;ns-rdf;&#039;
+  xmlns:rdf  = &#039;&amp;ns-rdf;&#039;
+  xmlns:rdfs = &#039;&amp;ns-rdfs;&#039;
+  xmlns:prf  = &#039;&amp;ns-prf;&#039;&gt;
+
+
+  &lt;!-- ****************************************************************** --&gt;
+  &lt;!-- ***** Common Class definitions ***** --&gt;
+  &lt;!-- ****************************************************************** --&gt;
+
+  &lt;rdf:Description rdf:ID=&#039;Component&#039;&gt;
+    &lt;rdfs:comment xml:lang=&#039;en&#039;&gt;
+      A Component within the CC/PP Schema is a class of related properties
+      that describe the capabilities and preferences information.
+    &lt;/rdfs:comment&gt;
+    &lt;rdf:type rdf:resource=&#039;&amp;ns-rdfs;Class&#039;/&gt;
+    &lt;rdfs:subClassOf rdf:resource=&#039;&amp;ns-rdfs;Resource&#039;/&gt;
+    &lt;rdfs:label xml:lang=&#039;en&#039;&gt;Component&lt;/rdfs:label&gt;
+  &lt;/rdf:Description&gt;
+
+  &lt;!-- ****************************************************************** --&gt;
+  &lt;!-- ***** Common Property definitions ***** --&gt;
+  &lt;!-- ****************************************************************** --&gt;
+
+  &lt;rdf:Description rdf:ID=&#039;component&#039;&gt;
+    &lt;rdfs:comment xml:lang=&#039;en&#039;&gt;
+      The component attribute links the various components to the
+      root node (profile).
+    &lt;/rdfs:comment&gt;
+    &lt;rdfs:label xml:lang=&#039;en&#039;&gt;component&lt;/rdfs:label&gt;
+    &lt;rdf:type rdf:resource=&#039;&amp;ns-rdf;Property&#039;/&gt;
+   &lt;/rdf:Description&gt;
+
+  &lt;rdf:Description rdf:ID=&#039;ResolutionRule&#039;&gt;
+    &lt;rdfs:comment xml:lang=&#039;en&#039;&gt;
+      Defines a property for an Attribute&#039;s Resolution Rule.
+    &lt;/rdfs:comment&gt;
+    &lt;rdfs:label xml:lang=&#039;en&#039;&gt;ResolutionRule&lt;/rdfs:label&gt;
+    &lt;rdf:type rdf:resource=&#039;&amp;ns-rdf;Property&#039;/&gt;
+    &lt;rdfs:domain rdf:resource=&#039;&amp;ns-rdf;Property&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;prf-dt;ResolutionRule&#039;/&gt;
+   &lt;/rdf:Description&gt;
+
+  &lt;!-- ****************************************************************** --&gt;
+  &lt;!-- ***** Datatype declarations for Attribute values ***** --&gt;
+  &lt;!-- ****************************************************************** --&gt;
+
+  &lt;rdfs:Datatype rdf:about=&#039;&amp;prf-dt;Boolean&#039;&gt;
+    &lt;rdfs:comment xml:lang=&#039;en&#039;&gt;A datatype for Boolean Attributes (Yes/No).&lt;/rdfs:comment&gt;
+    &lt;rdfs:subClassOf rdf:resource=&#039;&amp;xsd;boolean&#039;/&gt;
+  &lt;/rdfs:Datatype&gt;
+
+  &lt;rdfs:Datatype rdf:about=&#039;&amp;prf-dt;Dimension&#039;&gt;
+    &lt;rdfs:comment xml:lang=&#039;en&#039;&gt;A datatype for Dimension Attributes (nxn).&lt;/rdfs:comment&gt;
+    &lt;rdfs:subClassOf rdf:resource=&#039;&amp;xsd;anySimpleType&#039;/&gt;
+  &lt;/rdfs:Datatype&gt;
+
+  &lt;rdfs:Datatype rdf:about=&#039;&amp;prf-dt;Literal&#039;&gt;
+    &lt;rdfs:comment xml:lang=&#039;en&#039;&gt;A datatype for Literal Attributes.&lt;/rdfs:comment&gt;
+    &lt;rdfs:subClassOf rdf:resource=&#039;&amp;xsd;anySimpleType&#039;/&gt;
+  &lt;/rdfs:Datatype&gt;
+
+  &lt;rdfs:Datatype rdf:about=&#039;&amp;prf-dt;Number&#039;&gt;
+    &lt;rdfs:comment xml:lang=&#039;en&#039;&gt;A datatype for non-negative Integer Attributes.&lt;/rdfs:comment&gt;
+    &lt;rdfs:subClassOf rdf:resource=&#039;&amp;xsd;nonNegativeInteger&#039;/&gt;
+  &lt;/rdfs:Datatype&gt;
+
+  &lt;!-- ****************************************************************** --&gt;
+  &lt;!-- ***** Datatype declarations for this schema ***** --&gt;
+  &lt;!-- ****************************************************************** --&gt;
+
+  &lt;rdfs:Datatype rdf:about=&#039;&amp;prf-dt;ResolutionRule&#039;&gt;
+    &lt;rdfs:comment xml:lang=&#039;en&#039;&gt;A datatype for the Attribute&#039;s Resolution Rule.&lt;/rdfs:comment&gt;
+    &lt;rdfs:subClassOf rdf:resource=&#039;&amp;xsd;string&#039;/&gt;
+  &lt;/rdfs:Datatype&gt;
+
+  &lt;!-- ****************************************************************** --&gt;
+  &lt;!-- ***** Component definitions ***** --&gt;
+  &lt;!-- ****************************************************************** --&gt;
+
+  &lt;rdf:Description rdf:ID=&#039;HardwarePlatform&#039;&gt;
+    &lt;rdfs:comment xml:lang=&#039;en&#039;&gt;The HardwarePlatform component contains properties of the device&#039;s Hardware, such as display size, supported character sets, etc.&lt;/rdfs:comment&gt;
+    &lt;rdfs:label xml:lang=&#039;en&#039;&gt;Component: HardwarePlatform&lt;/rdfs:label&gt;
+    &lt;rdf:type rdf:resource=&#039;&amp;ns-rdfs;Class&#039;/&gt;
+    &lt;rdfs:subClassOf rdf:resource=&#039;#Component&#039;/&gt;
+   &lt;/rdf:Description&gt;
+
+  &lt;rdf:Description rdf:ID=&#039;SoftwarePlatform&#039;&gt;
+    &lt;rdfs:comment xml:lang=&#039;en&#039;&gt; The SoftwarePlatform component contains properties of the device&#039;s application environment, operating system, and installed software.&lt;/rdfs:comment&gt;
+    &lt;rdfs:label xml:lang=&#039;en&#039;&gt;Component: SoftwarePlatform&lt;/rdfs:label&gt;
+    &lt;rdf:type rdf:resource=&#039;&amp;ns-rdfs;Class&#039;/&gt;
+    &lt;rdfs:subClassOf rdf:resource=&#039;#Component&#039;/&gt;
+   &lt;/rdf:Description&gt;
+
+  &lt;rdf:Description rdf:ID=&#039;BrowserUA&#039;&gt;
+    &lt;rdfs:comment xml:lang=&#039;en&#039;&gt;The BrowserUA component contains attributes related to the browser user agent running on the device.&lt;/rdfs:comment&gt;
+    &lt;rdfs:label xml:lang=&#039;en&#039;&gt;Component: BrowserUA&lt;/rdfs:label&gt;
+    &lt;rdf:type rdf:resource=&#039;&amp;ns-rdfs;Class&#039;/&gt;
+    &lt;rdfs:subClassOf rdf:resource=&#039;#Component&#039;/&gt;
+   &lt;/rdf:Description&gt;
+
+  &lt;rdf:Description rdf:ID=&#039;NetworkCharacteristics&#039;&gt;
+    &lt;rdfs:comment xml:lang=&#039;en&#039;&gt;The NetworkCharacteristics component contains properties describing the network environment including the supported bearers&lt;/rdfs:comment&gt;
+    &lt;rdfs:label xml:lang=&#039;en&#039;&gt;Component: NetworkCharacteristics&lt;/rdfs:label&gt;
+    &lt;rdf:type rdf:resource=&#039;&amp;ns-rdfs;Class&#039;/&gt;
+    &lt;rdfs:subClassOf rdf:resource=&#039;#Component&#039;/&gt;
+   &lt;/rdf:Description&gt;
+
+  &lt;rdf:Description rdf:ID=&#039;WapCharacteristics&#039;&gt;
+    &lt;rdfs:comment xml:lang=&#039;en&#039;&gt;The WapCharacteristics component contains properties of the WAP environment supported by the device.&lt;/rdfs:comment&gt;
+    &lt;rdfs:label xml:lang=&#039;en&#039;&gt;Component: WapCharacteristics&lt;/rdfs:label&gt;
+    &lt;rdf:type rdf:resource=&#039;&amp;ns-rdfs;Class&#039;/&gt;
+    &lt;rdfs:subClassOf rdf:resource=&#039;#Component&#039;/&gt;
+   &lt;/rdf:Description&gt;
+
+  &lt;rdf:Description rdf:ID=&#039;PushCharacteristics&#039;&gt;
+    &lt;rdfs:comment xml:lang=&#039;en&#039;&gt;The PushCharacteristics component contains properties of the device&#039;s push capabilities, such as supported content mime types.&lt;/rdfs:comment&gt;
+    &lt;rdfs:label xml:lang=&#039;en&#039;&gt;Component: PushCharacteristics&lt;/rdfs:label&gt;
+    &lt;rdf:type rdf:resource=&#039;&amp;ns-rdfs;Class&#039;/&gt;
+    &lt;rdfs:subClassOf rdf:resource=&#039;#Component&#039;/&gt;
+  &lt;/rdf:Description&gt;
+
+  &lt;!-- ****************************************************************** --&gt;
+  &lt;!-- ***** Attributes for the HardwarePlatform Component ***** --&gt;
+  &lt;!-- ****************************************************************** --&gt;
+
+  &lt;rdf:Description rdf:ID=&#039;BitsPerPixel&#039;&gt;
+    &lt;rdfs:comment xml:lang=&#039;en&#039;&gt;
+      Description: The number of bits of color or grayscale information per pixel, related to the number of colors or shades of gray the device can display.
+      Examples: &quot;2&quot;, &quot;8&quot;
+    &lt;/rdfs:comment&gt;
+    &lt;rdfs:label xml:lang=&#039;en&#039;&gt;BitsPerPixel&lt;/rdfs:label&gt;
+    &lt;rdf:type rdf:resource=&#039;&amp;ns-rdf;Property&#039;/&gt;
+    &lt;rdfs:domain rdf:resource=&#039;#HardwarePlatform&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;prf-dt;Number&#039;/&gt;
+    &lt;prf:ResolutionRule rdf:datatype=&#039;&amp;prf-dt;ResolutionRule&#039;&gt;Override&lt;/prf:ResolutionRule&gt;
+  &lt;/rdf:Description&gt;
+
+  &lt;rdf:Description rdf:ID=&#039;BluetoothProfile&#039;&gt;
+    &lt;rdfs:comment xml:lang=&#039;en&#039;&gt;
+      Description: Supported Bluetooth profiles as defined in the Bluetooth specification [BLT].
+      Examples: &quot;dialup&quot;, &quot;lanAccess&quot;
+    &lt;/rdfs:comment&gt;
+    &lt;rdfs:label xml:lang=&#039;en&#039;&gt;BluetoothProfile&lt;/rdfs:label&gt;
+    &lt;rdf:type rdf:resource=&#039;&amp;ns-rdf;Property&#039;/&gt;
+    &lt;rdfs:domain rdf:resource=&#039;#HardwarePlatform&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;prf-dt;Literal&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;ns-rdf;Bag&#039;/&gt;
+    &lt;prf:ResolutionRule rdf:datatype=&#039;&amp;prf-dt;ResolutionRule&#039;&gt;Locked&lt;/prf:ResolutionRule&gt;
+  &lt;/rdf:Description&gt;
+
+  &lt;rdf:Description rdf:ID=&#039;CPU&#039;&gt;
+    &lt;rdfs:comment xml:lang=&#039;en&#039;&gt;
+      Description: Name and model number of the device CPU.
+      Examples: &quot;Pentium III&quot;, &quot;PowerPC 750&quot;
+    &lt;/rdfs:comment&gt;
+    &lt;rdfs:label xml:lang=&#039;en&#039;&gt;CPU&lt;/rdfs:label&gt;
+    &lt;rdf:type rdf:resource=&#039;&amp;ns-rdf;Property&#039;/&gt;
+    &lt;rdfs:domain rdf:resource=&#039;#HardwarePlatform&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;prf-dt;Literal&#039;/&gt;
+    &lt;prf:ResolutionRule rdf:datatype=&#039;&amp;prf-dt;ResolutionRule&#039;&gt;Locked&lt;/prf:ResolutionRule&gt;
+  &lt;/rdf:Description&gt;
+
+  &lt;rdf:Description rdf:ID=&#039;CPUMaximumFrequency&#039;&gt;
+    &lt;rdfs:comment xml:lang=&#039;en&#039;&gt;
+      Description: Processor max speed in MHz
+      Examples: &quot;533&quot;, &quot;166&quot;
+    &lt;/rdfs:comment&gt;
+    &lt;rdfs:label xml:lang=&#039;en&#039;&gt;CPUMaximumFrequency&lt;/rdfs:label&gt;
+    &lt;rdf:type rdf:resource=&#039;&amp;ns-rdf;Property&#039;/&gt;
+    &lt;rdfs:domain rdf:resource=&#039;#HardwarePlatform&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;prf-dt;Number&#039;/&gt;
+    &lt;prf:ResolutionRule rdf:datatype=&#039;&amp;prf-dt;ResolutionRule&#039;&gt;Locked&lt;/prf:ResolutionRule&gt;
+  &lt;/rdf:Description&gt;
+
+  &lt;rdf:Description rdf:ID=&#039;ColorCapable&#039;&gt;
+    &lt;rdfs:comment xml:lang=&#039;en&#039;&gt;
+      Description: Indicates whether the device&#039;s display supports color.  &quot;Yes&quot; means color is supported. &quot;No&quot; means the display supports only grayscale or black and white.
+      Examples: &quot;Yes&quot;, &quot;No&quot;
+    &lt;/rdfs:comment&gt;
+    &lt;rdfs:label xml:lang=&#039;en&#039;&gt;ColorCapable&lt;/rdfs:label&gt;
+    &lt;rdf:type rdf:resource=&#039;&amp;ns-rdf;Property&#039;/&gt;
+    &lt;rdfs:domain rdf:resource=&#039;#HardwarePlatform&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;prf-dt;Boolean&#039;/&gt;
+    &lt;prf:ResolutionRule rdf:datatype=&#039;&amp;prf-dt;ResolutionRule&#039;&gt;Override&lt;/prf:ResolutionRule&gt;
+  &lt;/rdf:Description&gt;
+
+  &lt;rdf:Description rdf:ID=&#039;ImageCapable&#039;&gt;
+    &lt;rdfs:comment xml:lang=&#039;en&#039;&gt;
+      Description: Indicates whether the device supports the display of images. If the value is &quot;Yes&quot;, the property CcppAccept may list the types of images supported.
+      Examples: &quot;Yes&quot;, &quot;No&quot;
+    &lt;/rdfs:comment&gt;
+    &lt;rdfs:label xml:lang=&#039;en&#039;&gt;ImageCapable&lt;/rdfs:label&gt;
+    &lt;rdf:type rdf:resource=&#039;&amp;ns-rdf;Property&#039;/&gt;
+    &lt;rdfs:domain rdf:resource=&#039;#HardwarePlatform&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;prf-dt;Boolean&#039;/&gt;
+    &lt;prf:ResolutionRule rdf:datatype=&#039;&amp;prf-dt;ResolutionRule&#039;&gt;Locked&lt;/prf:ResolutionRule&gt;
+  &lt;/rdf:Description&gt;
+
+  &lt;rdf:Description rdf:ID=&#039;InputCharSet&#039;&gt;
+    &lt;rdfs:comment xml:lang=&#039;en&#039;&gt;
+      Description: List of character sets supported by the device for text entry. Property&#039;s value is a list of character sets, where each item in the list is a character set name, as registered with IANA.
+      Examples: &quot;US-ASCII&quot;, &quot;ISO-8859-1&quot;, &quot;Shift_JIS&quot;
+    &lt;/rdfs:comment&gt;
+    &lt;rdfs:label xml:lang=&#039;en&#039;&gt;InputCharSet&lt;/rdfs:label&gt;
+    &lt;rdf:type rdf:resource=&#039;&amp;ns-rdf;Property&#039;/&gt;
+    &lt;rdfs:domain rdf:resource=&#039;#HardwarePlatform&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;prf-dt;Literal&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;ns-rdf;Bag&#039;/&gt;
+    &lt;prf:ResolutionRule rdf:datatype=&#039;&amp;prf-dt;ResolutionRule&#039;&gt;Append&lt;/prf:ResolutionRule&gt;
+  &lt;/rdf:Description&gt;
+
+    &lt;rdf:Description rdf:ID=&#039;Keyboard&#039;&gt;
+    &lt;rdfs:comment xml:lang=&#039;en&#039;&gt;
+      Description: Type of keyboard supported by the device, as an indicator of ease of text entry.
+      Examples: &quot;Disambiguating&quot;, &quot;Qwerty&quot;, &quot;PhoneKeypad&quot;
+    &lt;/rdfs:comment&gt;
+    &lt;rdfs:label xml:lang=&#039;en&#039;&gt;Keyboard&lt;/rdfs:label&gt;
+    &lt;rdf:type rdf:resource=&#039;&amp;ns-rdf;Property&#039;/&gt;
+    &lt;rdfs:domain rdf:resource=&#039;#HardwarePlatform&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;prf-dt;Literal&#039;/&gt;
+    &lt;prf:ResolutionRule rdf:datatype=&#039;&amp;prf-dt;ResolutionRule&#039;&gt;Locked&lt;/prf:ResolutionRule&gt;
+  &lt;/rdf:Description&gt;
+
+  &lt;rdf:Description rdf:ID=&#039;Model&#039;&gt;
+    &lt;rdfs:comment xml:lang=&#039;en&#039;&gt;
+      Description: Model number assigned to the terminal device by the vendor or manufacturer.
+      Examples: &quot;Mustang GT&quot;, &quot;Q30&quot;
+    &lt;/rdfs:comment&gt;
+    &lt;rdfs:label xml:lang=&#039;en&#039;&gt;Model&lt;/rdfs:label&gt;
+    &lt;rdf:type rdf:resource=&#039;&amp;ns-rdf;Property&#039;/&gt;
+    &lt;rdfs:domain rdf:resource=&#039;#HardwarePlatform&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;prf-dt;Literal&#039;/&gt;
+    &lt;prf:ResolutionRule rdf:datatype=&#039;&amp;prf-dt;ResolutionRule&#039;&gt;Locked&lt;/prf:ResolutionRule&gt;
+  &lt;/rdf:Description&gt;
+
+  &lt;rdf:Description rdf:ID=&#039;NumberOfSoftKeys&#039;&gt;
+    &lt;rdfs:comment xml:lang=&#039;en&#039;&gt;
+      Description: Number of soft keys available on the device.
+      Examples: &quot;3&quot;, &quot;2&quot;
+    &lt;/rdfs:comment&gt;
+    &lt;rdfs:label xml:lang=&#039;en&#039;&gt;NumberOfSoftKeys&lt;/rdfs:label&gt;
+    &lt;rdf:type rdf:resource=&#039;&amp;ns-rdf;Property&#039;/&gt;
+    &lt;rdfs:domain rdf:resource=&#039;#HardwarePlatform&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;prf-dt;Number&#039;/&gt;
+    &lt;prf:ResolutionRule rdf:datatype=&#039;&amp;prf-dt;ResolutionRule&#039;&gt;Locked&lt;/prf:ResolutionRule&gt;
+  &lt;/rdf:Description&gt;
+
+  &lt;rdf:Description rdf:ID=&#039;OutputCharSet&#039;&gt;
+    &lt;rdfs:comment xml:lang=&#039;en&#039;&gt;
+      Description: List of character sets supported by the device for output to the display. Property value is a list of character sets, where each item in the list is a character set name, as registered with IANA.
+      Examples: &quot;US-ASCII&quot;, &quot;ISO-8859-1&quot;, &quot;Shift_JIS&quot;
+    &lt;/rdfs:comment&gt;
+    &lt;rdfs:label xml:lang=&#039;en&#039;&gt;OutputCharSet&lt;/rdfs:label&gt;
+    &lt;rdf:type rdf:resource=&#039;&amp;ns-rdf;Property&#039;/&gt;
+    &lt;rdfs:domain rdf:resource=&#039;#HardwarePlatform&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;prf-dt;Literal&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;ns-rdf;Bag&#039;/&gt;
+    &lt;prf:ResolutionRule rdf:datatype=&#039;&amp;prf-dt;ResolutionRule&#039;&gt;Append&lt;/prf:ResolutionRule&gt;
+  &lt;/rdf:Description&gt;
+
+  &lt;rdf:Description rdf:ID=&#039;PixelAspectRatio&#039;&gt;
+    &lt;rdfs:comment xml:lang=&#039;en&#039;&gt;
+      Description: Ratio of pixel width to pixel height.
+      Examples: &quot;1x2&quot;
+    &lt;/rdfs:comment&gt;
+    &lt;rdfs:label xml:lang=&#039;en&#039;&gt;PixelAspectRatio&lt;/rdfs:label&gt;
+    &lt;rdf:type rdf:resource=&#039;&amp;ns-rdf;Property&#039;/&gt;
+    &lt;rdfs:domain rdf:resource=&#039;#HardwarePlatform&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;prf-dt;Dimension&#039;/&gt;
+    &lt;prf:ResolutionRule rdf:datatype=&#039;&amp;prf-dt;ResolutionRule&#039;&gt;Locked&lt;/prf:ResolutionRule&gt;
+  &lt;/rdf:Description&gt;
+
+  &lt;rdf:Description rdf:ID=&#039;PointingResolution&#039;&gt;
+    &lt;rdfs:comment xml:lang=&#039;en&#039;&gt;
+      Description: Type of resolution of the pointing accessory supported by the device.
+      Examples: &quot;Character&quot;, &quot;Line&quot;, &quot;Pixel&quot;
+    &lt;/rdfs:comment&gt;
+    &lt;rdfs:label xml:lang=&#039;en&#039;&gt;PointingResolution&lt;/rdfs:label&gt;
+    &lt;rdf:type rdf:resource=&#039;&amp;ns-rdf;Property&#039;/&gt;
+    &lt;rdfs:domain rdf:resource=&#039;#HardwarePlatform&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;prf-dt;Literal&#039;/&gt;
+    &lt;prf:ResolutionRule rdf:datatype=&#039;&amp;prf-dt;ResolutionRule&#039;&gt;Locked&lt;/prf:ResolutionRule&gt;
+  &lt;/rdf:Description&gt;
+
+  &lt;rdf:Description rdf:ID=&#039;ScreenSize&#039;&gt;
+    &lt;rdfs:comment xml:lang=&#039;en&#039;&gt;
+      Description: The size of the device&#039;s screen in units of pixels, composed of the screen width and the screen height.
+      Examples: &quot;160x160&quot;, &quot;640x480&quot;
+    &lt;/rdfs:comment&gt;
+    &lt;rdfs:label xml:lang=&#039;en&#039;&gt;ScreenSize&lt;/rdfs:label&gt;
+    &lt;rdf:type rdf:resource=&#039;&amp;ns-rdf;Property&#039;/&gt;
+    &lt;rdfs:domain rdf:resource=&#039;#HardwarePlatform&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;prf-dt;Dimension&#039;/&gt;
+    &lt;prf:ResolutionRule rdf:datatype=&#039;&amp;prf-dt;ResolutionRule&#039;&gt;Locked&lt;/prf:ResolutionRule&gt;
+  &lt;/rdf:Description&gt;
+
+  &lt;rdf:Description rdf:ID=&#039;ScreenSizeChar&#039;&gt;
+    &lt;rdfs:comment xml:lang=&#039;en&#039;&gt;
+      Description: Size of the device&#039;s screen in units of characters, composed of the screen width and screen height. The device&#039;s standard font should be used to determine this property&#039;s value. (Number of characters per row)x(Number of rows). In calculating this attribute use the largest character in the device&#039;s default font.
+      Examples: &quot;12x4&quot;, &quot;16x8&quot;
+    &lt;/rdfs:comment&gt;
+    &lt;rdfs:label xml:lang=&#039;en&#039;&gt;ScreenSizeChar&lt;/rdfs:label&gt;
+    &lt;rdf:type rdf:resource=&#039;&amp;ns-rdf;Property&#039;/&gt;
+    &lt;rdfs:domain rdf:resource=&#039;#HardwarePlatform&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;prf-dt;Dimension&#039;/&gt;
+    &lt;prf:ResolutionRule rdf:datatype=&#039;&amp;prf-dt;ResolutionRule&#039;&gt;Locked&lt;/prf:ResolutionRule&gt;
+  &lt;/rdf:Description&gt;
+
+  &lt;rdf:Description rdf:ID=&#039;SoundOutputCapable&#039;&gt;
+    &lt;rdfs:comment xml:lang=&#039;en&#039;&gt;
+      DEPRECATED
+      Description: Indicates whether the device supports sound output through an external speaker, headphone jack, or other sound output mechanism.
+      Examples: &quot;Yes&quot;, &quot;No&quot;
+    &lt;/rdfs:comment&gt;
+    &lt;rdfs:label xml:lang=&#039;en&#039;&gt;SoundOutputCapable&lt;/rdfs:label&gt;
+    &lt;rdf:type rdf:resource=&#039;&amp;ns-rdf;Property&#039;/&gt;
+    &lt;rdfs:domain rdf:resource=&#039;#HardwarePlatform&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;prf-dt;Boolean&#039;/&gt;
+    &lt;prf:ResolutionRule rdf:datatype=&#039;&amp;prf-dt;ResolutionRule&#039;&gt;Locked&lt;/prf:ResolutionRule&gt;
+  &lt;/rdf:Description&gt;
+
+  &lt;rdf:Description rdf:ID=&#039;StandardFontProportional&#039;&gt;
+    &lt;rdfs:comment xml:lang=&#039;en&#039;&gt;
+      Description: Indicates whether the device&#039;s standard font is proportional.
+      Examples: &quot;Yes&quot;, &quot;No&quot;
+    &lt;/rdfs:comment&gt;
+    &lt;rdfs:label xml:lang=&#039;en&#039;&gt;StandardFontProportional&lt;/rdfs:label&gt;
+    &lt;rdf:type rdf:resource=&#039;&amp;ns-rdf;Property&#039;/&gt;
+    &lt;rdfs:domain rdf:resource=&#039;#HardwarePlatform&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;prf-dt;Boolean&#039;/&gt;
+    &lt;prf:ResolutionRule rdf:datatype=&#039;&amp;prf-dt;ResolutionRule&#039;&gt;Locked&lt;/prf:ResolutionRule&gt;
+  &lt;/rdf:Description&gt;
+
+  &lt;rdf:Description rdf:ID=&#039;TextInputCapable&#039;&gt;
+    &lt;rdfs:comment xml:lang=&#039;en&#039;&gt;
+      DEPRECATED
+      Description: Indicates whether the device supports alpha-numeric text entry. &quot;Yes&quot; means the device supports entry of both letters and digits. &quot;No&quot; means the device supports only entry of digits.
+      Examples: &quot;Yes&quot;, &quot;No&quot;
+    &lt;/rdfs:comment&gt;
+    &lt;rdfs:label xml:lang=&#039;en&#039;&gt;TextInputCapable&lt;/rdfs:label&gt;
+    &lt;rdf:type rdf:resource=&#039;&amp;ns-rdf;Property&#039;/&gt;
+    &lt;rdfs:domain rdf:resource=&#039;#HardwarePlatform&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;prf-dt;Boolean&#039;/&gt;
+    &lt;prf:ResolutionRule rdf:datatype=&#039;&amp;prf-dt;ResolutionRule&#039;&gt;Locked&lt;/prf:ResolutionRule&gt;
+  &lt;/rdf:Description&gt;
+
+  &lt;rdf:Description rdf:ID=&#039;Vendor&#039;&gt;
+    &lt;rdfs:comment xml:lang=&#039;en&#039;&gt;
+      Description: Name of the vendor manufacturing the terminal device.
+      Examples: &quot;Ford&quot;, &quot;Lexus&quot;
+    &lt;/rdfs:comment&gt;
+    &lt;rdfs:label xml:lang=&#039;en&#039;&gt;Vendor&lt;/rdfs:label&gt;
+    &lt;rdf:type rdf:resource=&#039;&amp;ns-rdf;Property&#039;/&gt;
+    &lt;rdfs:domain rdf:resource=&#039;#HardwarePlatform&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;prf-dt;Literal&#039;/&gt;
+    &lt;prf:ResolutionRule rdf:datatype=&#039;&amp;prf-dt;ResolutionRule&#039;&gt;Locked&lt;/prf:ResolutionRule&gt;
+  &lt;/rdf:Description&gt;
+
+  &lt;rdf:Description rdf:ID=&#039;VoiceInputCapable&#039;&gt;
+    &lt;rdfs:comment xml:lang=&#039;en&#039;&gt;     
+      Description: Indicates whether the device supports any form of voice input, including speech recognition. This includes voice enabled browsers.
+      Examples: &quot;Yes&quot;, &quot;No&quot;
+    &lt;/rdfs:comment&gt;
+    &lt;rdfs:label xml:lang=&#039;en&#039;&gt;VoiceInputCapable&lt;/rdfs:label&gt;
+    &lt;rdf:type rdf:resource=&#039;&amp;ns-rdf;Property&#039;/&gt;
+    &lt;rdfs:domain rdf:resource=&#039;#HardwarePlatform&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;prf-dt;Boolean&#039;/&gt;
+    &lt;prf:ResolutionRule rdf:datatype=&#039;&amp;prf-dt;ResolutionRule&#039;&gt;Locked&lt;/prf:ResolutionRule&gt;
+  &lt;/rdf:Description&gt;
+
+
+  &lt;!-- ****************************************************************** --&gt;
+  &lt;!-- ***** Attributes for the SoftwarePlatform Component ***** --&gt;
+  &lt;!-- ****************************************************************** --&gt;
+
+
+  &lt;rdf:Description rdf:ID=&#039;AcceptDownloadableSoftware&#039;&gt;
+    &lt;rdfs:comment xml:lang=&#039;en&#039;&gt;     
+      Description: Indicates the user&#039;s preference on whether to accept downloadable software.
+      Examples: &quot;Yes&quot;, &quot;No&quot;
+    &lt;/rdfs:comment&gt;
+    &lt;rdfs:label xml:lang=&#039;en&#039;&gt;AcceptDownloadableSoftware&lt;/rdfs:label&gt;
+    &lt;rdf:type rdf:resource=&#039;&amp;ns-rdf;Property&#039;/&gt;
+    &lt;rdfs:domain rdf:resource=&#039;#SoftwarePlatform&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;prf-dt;Boolean&#039;/&gt;
+    &lt;prf:ResolutionRule rdf:datatype=&#039;&amp;prf-dt;ResolutionRule&#039;&gt;Locked&lt;/prf:ResolutionRule&gt;
+  &lt;/rdf:Description&gt;
+
+  &lt;rdf:Description rdf:ID=&#039;AudioInputEncoder&#039;&gt;
+    &lt;rdfs:comment xml:lang=&#039;en&#039;&gt;
+      Description: List of audio input encoders supported by the device.
+      Examples: &quot;G.711&quot;
+    &lt;/rdfs:comment&gt;
+    &lt;rdfs:label xml:lang=&#039;en&#039;&gt;AudioInputEncoder&lt;/rdfs:label&gt;
+    &lt;rdf:type rdf:resource=&#039;&amp;ns-rdf;Property&#039;/&gt;
+    &lt;rdfs:domain rdf:resource=&#039;#SoftwarePlatform&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;prf-dt;Literal&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;ns-rdf;Bag&#039;/&gt;
+    &lt;prf:ResolutionRule rdf:datatype=&#039;&amp;prf-dt;ResolutionRule&#039;&gt;Append&lt;/prf:ResolutionRule&gt;
+  &lt;/rdf:Description&gt;
+
+  &lt;rdf:Description rdf:ID=&#039;CLIPlatform&#039;&gt;
+    &lt;rdfs:comment xml:lang=&#039;en&#039;&gt;
+      Description: The list of standard Common Language Infrastructure platforms and profiles installed in the device.  Each item in the list is a name token describing the name and edition of the CLI platform specification including the name of the profile specification.
+      Examples: &quot;Standard CLI 2002/Compact&quot;, &quot;Standard CLI 2002/Kernel&quot;
+    &lt;/rdfs:comment&gt;
+    &lt;rdfs:label xml:lang=&#039;en&#039;&gt;CLIPlatform&lt;/rdfs:label&gt;
+    &lt;rdf:type rdf:resource=&#039;&amp;ns-rdf;Property&#039;/&gt;
+    &lt;rdfs:domain rdf:resource=&#039;#SoftwarePlatform&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;prf-dt;Literal&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;ns-rdf;Bag&#039;/&gt;
+    &lt;prf:ResolutionRule rdf:datatype=&#039;&amp;prf-dt;ResolutionRule&#039;&gt;Append&lt;/prf:ResolutionRule&gt;
+  &lt;/rdf:Description&gt;
+
+  &lt;rdf:Description rdf:ID=&#039;CcppAccept&#039;&gt;
+    &lt;rdfs:comment xml:lang=&#039;en&#039;&gt;
+      Description: List of content types the device supports. Property value is a list of MIME types, where each item in the list is a content type descriptor as specified by RFC 2045.
+      Examples: &quot;text/html&quot;, &quot;text/plain&quot;, &quot;text/html&quot;, &quot;image/gif&quot;
+    &lt;/rdfs:comment&gt;
+    &lt;rdfs:label xml:lang=&#039;en&#039;&gt;CcppAccept&lt;/rdfs:label&gt;
+    &lt;rdf:type rdf:resource=&#039;&amp;ns-rdf;Property&#039;/&gt;
+    &lt;rdfs:domain rdf:resource=&#039;#SoftwarePlatform&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;prf-dt;Literal&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;ns-rdf;Bag&#039;/&gt;
+    &lt;prf:ResolutionRule rdf:datatype=&#039;&amp;prf-dt;ResolutionRule&#039;&gt;Append&lt;/prf:ResolutionRule&gt;
+  &lt;/rdf:Description&gt;
+
+  &lt;rdf:Description rdf:ID=&#039;CcppAccept-Charset&#039;&gt;
+    &lt;rdfs:comment xml:lang=&#039;en&#039;&gt;
+      Description: List of character sets the device supports. Property value is a list of character sets, where each item in the list is a character set name registered with IANA.
+      Examples: &quot;US-ASCII&quot;, &quot;ISO-8859-1&quot;, &quot;Shift_JIS&quot;
+    &lt;/rdfs:comment&gt;
+    &lt;rdfs:label xml:lang=&#039;en&#039;&gt;CcppAccept-Charset&lt;/rdfs:label&gt;
+    &lt;rdf:type rdf:resource=&#039;&amp;ns-rdf;Property&#039;/&gt;
+    &lt;rdfs:domain rdf:resource=&#039;#SoftwarePlatform&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;prf-dt;Literal&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;ns-rdf;Bag&#039;/&gt;
+    &lt;prf:ResolutionRule rdf:datatype=&#039;&amp;prf-dt;ResolutionRule&#039;&gt;Append&lt;/prf:ResolutionRule&gt;
+  &lt;/rdf:Description&gt;
+
+  &lt;rdf:Description rdf:ID=&#039;CcppAccept-Encoding&#039;&gt;
+    &lt;rdfs:comment xml:lang=&#039;en&#039;&gt;
+      Description: List of transfer encodings the device supports.  Property value is a list of transfer encodings, where each item in the list is a transfer encoding name as specified by RFC 2045 and registered with IANA.
+      Examples: &quot;base64&quot;, &quot;quoted-printable&quot;
+    &lt;/rdfs:comment&gt;
+    &lt;rdfs:label xml:lang=&#039;en&#039;&gt;CcppAccept-Encoding&lt;/rdfs:label&gt;
+    &lt;rdf:type rdf:resource=&#039;&amp;ns-rdf;Property&#039;/&gt;
+    &lt;rdfs:domain rdf:resource=&#039;#SoftwarePlatform&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;prf-dt;Literal&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;ns-rdf;Bag&#039;/&gt;
+    &lt;prf:ResolutionRule rdf:datatype=&#039;&amp;prf-dt;ResolutionRule&#039;&gt;Append&lt;/prf:ResolutionRule&gt;
+  &lt;/rdf:Description&gt;
+
+  &lt;rdf:Description rdf:ID=&#039;CcppAccept-Language&#039;&gt;
+    &lt;rdfs:comment xml:lang=&#039;en&#039;&gt;
+      Description: List of preferred document languages. If a resource is available in more than one natural language, the server can use this property to determine which version of the resource to send to the device. The first item in the list should be considered the user&#039;s first choice, the second the second choice, and so on. Property value is a list of natural languages, where each item in the list is the name of a language as defined by RFC 3066[RFC3066].
+      Examples: &quot;zh-CN&quot;, &quot;en&quot;, &quot;fr&quot;
+    &lt;/rdfs:comment&gt;
+    &lt;rdfs:label xml:lang=&#039;en&#039;&gt;CcppAccept-Language&lt;/rdfs:label&gt;
+    &lt;rdf:type rdf:resource=&#039;&amp;ns-rdf;Property&#039;/&gt;
+    &lt;rdfs:domain rdf:resource=&#039;#SoftwarePlatform&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;prf-dt;Literal&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;ns-rdf;Seq&#039;/&gt;
+    &lt;prf:ResolutionRule rdf:datatype=&#039;&amp;prf-dt;ResolutionRule&#039;&gt;Append&lt;/prf:ResolutionRule&gt;
+  &lt;/rdf:Description&gt;
+
+  &lt;rdf:Description rdf:ID=&#039;CPCapable&#039;&gt;
+    &lt;rdfs:comment xml:lang=&#039;en&#039;&gt;
+      Description: Indicates whether the device provides Client Provisioning (CP) capabilities.
+      Examples: &quot;Yes&quot;, &quot;No&quot;
+    &lt;/rdfs:comment&gt;
+    &lt;rdfs:label xml:lang=&#039;en&#039;&gt;CPCapable&lt;/rdfs:label&gt;
+    &lt;rdf:type rdf:resource=&#039;&amp;ns-rdf;Property&#039;/&gt;
+    &lt;rdfs:domain rdf:resource=&#039;#SoftwarePlatform&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;prf-dt;Boolean&#039;/&gt;
+    &lt;prf:ResolutionRule rdf:datatype=&#039;&amp;prf-dt;ResolutionRule&#039;&gt;Locked&lt;/prf:ResolutionRule&gt;
+  &lt;/rdf:Description&gt;
+
+  &lt;rdf:Description rdf:ID=&#039;CPVersion&#039;&gt;
+    &lt;rdfs:comment xml:lang=&#039;en&#039;&gt;
+      Description: Version of the Client Provisioning (CP) capability within the device.
+      Examples: &quot;1.0&quot;
+    &lt;/rdfs:comment&gt;
+    &lt;rdfs:label xml:lang=&#039;en&#039;&gt;CPVersion&lt;/rdfs:label&gt;
+    &lt;rdf:type rdf:resource=&#039;&amp;ns-rdf;Property&#039;/&gt;
+    &lt;rdfs:domain rdf:resource=&#039;#SoftwarePlatform&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;prf-dt;Literal&#039;/&gt;
+    &lt;prf:ResolutionRule rdf:datatype=&#039;&amp;prf-dt;ResolutionRule&#039;&gt;Locked&lt;/prf:ResolutionRule&gt;
+  &lt;/rdf:Description&gt;
+
+  &lt;rdf:Description rdf:ID=&#039;DMCapable&#039;&gt;
+    &lt;rdfs:comment xml:lang=&#039;en&#039;&gt;
+      Description: Indicates whether the device provides Device Management capabilities.
+      Examples: &quot;Yes&quot;, &quot;No&quot;
+    &lt;/rdfs:comment&gt;
+    &lt;rdfs:label xml:lang=&#039;en&#039;&gt;DMCapable&lt;/rdfs:label&gt;
+    &lt;rdf:type rdf:resource=&#039;&amp;ns-rdf;Property&#039;/&gt;
+    &lt;rdfs:domain rdf:resource=&#039;#SoftwarePlatform&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;prf-dt;Boolean&#039;/&gt;
+    &lt;prf:ResolutionRule rdf:datatype=&#039;&amp;prf-dt;ResolutionRule&#039;&gt;Locked&lt;/prf:ResolutionRule&gt;
+  &lt;/rdf:Description&gt;
+
+  &lt;rdf:Description rdf:ID=&#039;DMVersion&#039;&gt;
+    &lt;rdfs:comment xml:lang=&#039;en&#039;&gt;
+      Description: Version of the Device Management (DM) capability within the device
+      Examples: &quot;1.1.2&quot;
+    &lt;/rdfs:comment&gt;
+    &lt;rdfs:label xml:lang=&#039;en&#039;&gt;DMVersion&lt;/rdfs:label&gt;
+    &lt;rdf:type rdf:resource=&#039;&amp;ns-rdf;Property&#039;/&gt;
+    &lt;rdfs:domain rdf:resource=&#039;#SoftwarePlatform&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;prf-dt;Literal&#039;/&gt;
+    &lt;prf:ResolutionRule rdf:datatype=&#039;&amp;prf-dt;ResolutionRule&#039;&gt;Locked&lt;/prf:ResolutionRule&gt;
+  &lt;/rdf:Description&gt;
+
+  &lt;rdf:Description rdf:ID=&#039;DownloadableSoftwareSupport&#039;&gt;
+    &lt;rdfs:comment xml:lang=&#039;en&#039;&gt;
+      Description: List of executable content types which the device supports and which it is willing to accept from the network. The property value is a list of MIME types, where each item in the list is a content type descriptor as specified by RFC 2045.
+      Examples: &quot;application/x-msdos-exe&quot;
+    &lt;/rdfs:comment&gt;
+    &lt;rdfs:label xml:lang=&#039;en&#039;&gt;DownloadableSoftwareSupport&lt;/rdfs:label&gt;
+    &lt;rdf:type rdf:resource=&#039;&amp;ns-rdf;Property&#039;/&gt;
+    &lt;rdfs:domain rdf:resource=&#039;#SoftwarePlatform&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;prf-dt;Literal&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;ns-rdf;Bag&#039;/&gt;
+    &lt;prf:ResolutionRule rdf:datatype=&#039;&amp;prf-dt;ResolutionRule&#039;&gt;Locked&lt;/prf:ResolutionRule&gt;
+  &lt;/rdf:Description&gt;
+
+  &lt;rdf:Description rdf:ID=&#039;Email-URI-Schemes&#039;&gt;
+    &lt;rdfs:comment xml:lang=&#039;en&#039;&gt;
+      Description: List of URI schemes the device supports for accessing e-mail. Property value is a list of URI schemes, where each item in the list is a URI scheme as defined in RFC 2396.
+      Examples: &quot;pop&quot;, &quot;imap&quot;, &quot;http&quot;, &quot;https&quot;
+    &lt;/rdfs:comment&gt;
+    &lt;rdfs:label xml:lang=&#039;en&#039;&gt;Email-URI-Schemes&lt;/rdfs:label&gt;
+    &lt;rdf:type rdf:resource=&#039;&amp;ns-rdf;Property&#039;/&gt;
+    &lt;rdfs:domain rdf:resource=&#039;#SoftwarePlatform&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;prf-dt;Literal&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;ns-rdf;Bag&#039;/&gt;
+    &lt;prf:ResolutionRule rdf:datatype=&#039;&amp;prf-dt;ResolutionRule&#039;&gt;Override&lt;/prf:ResolutionRule&gt;
+  &lt;/rdf:Description&gt;
+
+  &lt;rdf:Description rdf:ID=&#039;ImodeProfile&#039;&gt;
+    &lt;rdfs:comment xml:lang=&#039;en&#039;&gt;
+      Description: Indicates the Imode Profile of the device.
+      Examples: &quot;1&quot;, &quot;2&quot;, &quot;4&quot;
+    &lt;/rdfs:comment&gt;
+    &lt;rdfs:label xml:lang=&#039;en&#039;&gt;ImodeProfile&lt;/rdfs:label&gt;
+    &lt;rdf:type rdf:resource=&#039;&amp;ns-rdf;Property&#039;/&gt;
+    &lt;rdfs:domain rdf:resource=&#039;#SoftwarePlatform&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;prf-dt;Literal&#039;/&gt;
+    &lt;prf:ResolutionRule rdf:datatype=&#039;&amp;prf-dt;ResolutionRule&#039;&gt;Locked&lt;/prf:ResolutionRule&gt;
+  &lt;/rdf:Description&gt;
+
+  &lt;rdf:Description rdf:ID=&#039;ImodeStep&#039;&gt;
+    &lt;rdfs:comment xml:lang=&#039;en&#039;&gt;
+      Description: Indicates the Imode version of the device.
+      Examples: &quot;2&quot;, &quot;3&quot;
+    &lt;/rdfs:comment&gt;
+    &lt;rdfs:label xml:lang=&#039;en&#039;&gt;ImodeStep&lt;/rdfs:label&gt;
+    &lt;rdf:type rdf:resource=&#039;&amp;ns-rdf;Property&#039;/&gt;
+    &lt;rdfs:domain rdf:resource=&#039;#SoftwarePlatform&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;prf-dt;Literal&#039;/&gt;
+    &lt;prf:ResolutionRule rdf:datatype=&#039;&amp;prf-dt;ResolutionRule&#039;&gt;Locked&lt;/prf:ResolutionRule&gt;
+  &lt;/rdf:Description&gt;
+
+
+
+  &lt;rdf:Description rdf:ID=&#039;JVMVersion&#039;&gt;
+    &lt;rdfs:comment xml:lang=&#039;en&#039;&gt;
+      Description: List of the Java virtual machines installed on the device. Each item in the list is a name token describing the vendor and version of the VM.
+      Examples: &quot;SunJRE/1.2&quot;, &quot;MSJVM/1.0&quot;
+    &lt;/rdfs:comment&gt;
+    &lt;rdfs:label xml:lang=&#039;en&#039;&gt;JVMVersion&lt;/rdfs:label&gt;
+    &lt;rdf:type rdf:resource=&#039;&amp;ns-rdf;Property&#039;/&gt;
+    &lt;rdfs:domain rdf:resource=&#039;#SoftwarePlatform&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;prf-dt;Literal&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;ns-rdf;Bag&#039;/&gt;
+    &lt;prf:ResolutionRule rdf:datatype=&#039;&amp;prf-dt;ResolutionRule&#039;&gt;Append&lt;/prf:ResolutionRule&gt;
+  &lt;/rdf:Description&gt;
+
+  &lt;rdf:Description rdf:ID=&#039;JavaEnabled&#039;&gt;
+    &lt;rdfs:comment xml:lang=&#039;en&#039;&gt;
+      Description: Indicates whether the device supports a Java virtual machine.
+      Examples: &quot;Yes&quot;, &quot;No&quot;
+    &lt;/rdfs:comment&gt;
+    &lt;rdfs:label xml:lang=&#039;en&#039;&gt;JavaEnabled&lt;/rdfs:label&gt;
+    &lt;rdf:type rdf:resource=&#039;&amp;ns-rdf;Property&#039;/&gt;
+    &lt;rdfs:domain rdf:resource=&#039;#SoftwarePlatform&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;prf-dt;Boolean&#039;/&gt;
+    &lt;prf:ResolutionRule rdf:datatype=&#039;&amp;prf-dt;ResolutionRule&#039;&gt;Locked&lt;/prf:ResolutionRule&gt;
+  &lt;/rdf:Description&gt;
+
+  &lt;rdf:Description rdf:ID=&#039;JavaJsrListSupported&#039;&gt;
+    &lt;rdfs:comment xml:lang=&#039;en&#039;&gt;
+      Description: Indicates if the device allows the use of Java Specification Requests.
+      Examples: &quot;Yes&quot;, &quot;No&quot;
+    &lt;/rdfs:comment&gt;
+    &lt;rdfs:label xml:lang=&#039;en&#039;&gt;JavaJsrListSupported&lt;/rdfs:label&gt;
+    &lt;rdf:type rdf:resource=&#039;&amp;ns-rdf;Property&#039;/&gt;
+    &lt;rdfs:domain rdf:resource=&#039;#SoftwarePlatform&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;prf-dt;Boolean&#039;/&gt;
+    &lt;prf:ResolutionRule rdf:datatype=&#039;&amp;prf-dt;ResolutionRule&#039;&gt;Locked&lt;/prf:ResolutionRule&gt;
+  &lt;/rdf:Description&gt;
+
+  &lt;rdf:Description rdf:ID=&#039;JavaMaxDownloadJarSize&#039;&gt;
+    &lt;rdfs:comment xml:lang=&#039;en&#039;&gt;
+      Description: Indicates the device&#039;s maximum size in kilobytes for storing Java Archive files.
+      Examples: &quot;128&quot;, &quot;256&quot;
+    &lt;/rdfs:comment&gt;
+    &lt;rdfs:label xml:lang=&#039;en&#039;&gt;JavaMaxDownloadJarSize&lt;/rdfs:label&gt;
+    &lt;rdf:type rdf:resource=&#039;&amp;ns-rdf;Property&#039;/&gt;
+    &lt;rdfs:domain rdf:resource=&#039;#SoftwarePlatform&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;prf-dt;Number&#039;/&gt;
+    &lt;prf:ResolutionRule rdf:datatype=&#039;&amp;prf-dt;ResolutionRule&#039;&gt;Locked&lt;/prf:ResolutionRule&gt;
+  &lt;/rdf:Description&gt;
+
+  &lt;rdf:Description rdf:ID=&#039;JavaMaxHeapSize&#039;&gt;
+    &lt;rdfs:comment xml:lang=&#039;en&#039;&gt;
+      Description: Indicates the maximum execution memory size of a device in kilobytes for running a Java application.
+      Examples: &quot;128&quot;, &quot;256&quot;
+    &lt;/rdfs:comment&gt;
+    &lt;rdfs:label xml:lang=&#039;en&#039;&gt;JavaMaxHeapSize&lt;/rdfs:label&gt;
+    &lt;rdf:type rdf:resource=&#039;&amp;ns-rdf;Property&#039;/&gt;
+    &lt;rdfs:domain rdf:resource=&#039;#SoftwarePlatform&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;prf-dt;Number&#039;/&gt;
+    &lt;prf:ResolutionRule rdf:datatype=&#039;&amp;prf-dt;ResolutionRule&#039;&gt;Locked&lt;/prf:ResolutionRule&gt;
+  &lt;/rdf:Description&gt;
+
+  &lt;rdf:Description rdf:ID=&#039;JavaMaxMemorySize&#039;&gt;
+    &lt;rdfs:comment xml:lang=&#039;en&#039;&gt;
+      Description: Indicates the device&#039;s maximum size in kilobytes for storing Java applications.
+      Examples: &quot;256&quot;, &quot;64&quot;
+    &lt;/rdfs:comment&gt;
+    &lt;rdfs:label xml:lang=&#039;en&#039;&gt;JavaMaxMemorySize&lt;/rdfs:label&gt;
+    &lt;rdf:type rdf:resource=&#039;&amp;ns-rdf;Property&#039;/&gt;
+    &lt;rdfs:domain rdf:resource=&#039;#SoftwarePlatform&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;prf-dt;Number&#039;/&gt;
+    &lt;prf:ResolutionRule rdf:datatype=&#039;&amp;prf-dt;ResolutionRule&#039;&gt;Locked&lt;/prf:ResolutionRule&gt;
+  &lt;/rdf:Description&gt;
+
+  &lt;rdf:Description rdf:ID=&#039;JavaPackage&#039;&gt;
+    &lt;rdfs:comment xml:lang=&#039;en&#039;&gt;
+      Description: (from J2EE Client Provisioning) Details about optional packages installed on the device over and above those that are part of the Java profile, and the versions of these additional packages
+      Examples: &quot;com.acme.regexp/1.1&quot;, &quot;com.acme.helper/3.0&quot;
+    &lt;/rdfs:comment&gt;
+    &lt;rdfs:label xml:lang=&#039;en&#039;&gt;JavaPackage&lt;/rdfs:label&gt;
+    &lt;rdf:type rdf:resource=&#039;&amp;ns-rdf;Property&#039;/&gt;
+    &lt;rdfs:domain rdf:resource=&#039;#SoftwarePlatform&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;prf-dt;Literal&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;ns-rdf;Bag&#039;/&gt;
+    &lt;prf:ResolutionRule rdf:datatype=&#039;&amp;prf-dt;ResolutionRule&#039;&gt;Append&lt;/prf:ResolutionRule&gt;
+  &lt;/rdf:Description&gt;
+
+  &lt;rdf:Description rdf:ID=&#039;JavaPlatform&#039;&gt;
+    &lt;rdfs:comment xml:lang=&#039;en&#039;&gt;
+      Description: The list of JAVA platforms and profiles installed in the device. Each item in the list is a name token describing compatibility with the name and version of the java platform specification or the name and version of the profile specification name (if profile is included in the device)
+      Examples: &quot;PersonalJava&quot;, &quot;CLDC&quot;, &quot;MIDP&quot;
+    &lt;/rdfs:comment&gt;
+    &lt;rdfs:label xml:lang=&#039;en&#039;&gt;JavaPlatform&lt;/rdfs:label&gt;
+    &lt;rdf:type rdf:resource=&#039;&amp;ns-rdf;Property&#039;/&gt;
+    &lt;rdfs:domain rdf:resource=&#039;#SoftwarePlatform&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;prf-dt;Literal&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;ns-rdf;Bag&#039;/&gt;
+    &lt;prf:ResolutionRule rdf:datatype=&#039;&amp;prf-dt;ResolutionRule&#039;&gt;Append&lt;/prf:ResolutionRule&gt;
+  &lt;/rdf:Description&gt;
+
+  &lt;rdf:Description rdf:ID=&#039;JavaProtocol&#039;&gt;
+    &lt;rdfs:comment xml:lang=&#039;en&#039;&gt;
+      Description: (from J2EE Client Provisioning) Details about protocols supported by the device over and above those that are part of the standard Java profile indicated and the versions of these additional protocols
+      Examples: &quot;sms/1.0&quot;, &quot;file/1.0&quot;
+    &lt;/rdfs:comment&gt;
+    &lt;rdfs:label xml:lang=&#039;en&#039;&gt;JavaProtocol&lt;/rdfs:label&gt;
+    &lt;rdf:type rdf:resource=&#039;&amp;ns-rdf;Property&#039;/&gt;
+    &lt;rdfs:domain rdf:resource=&#039;#SoftwarePlatform&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;prf-dt;Literal&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;ns-rdf;Bag&#039;/&gt;
+    &lt;prf:ResolutionRule rdf:datatype=&#039;&amp;prf-dt;ResolutionRule&#039;&gt;Append&lt;/prf:ResolutionRule&gt;
+  &lt;/rdf:Description&gt;
+
+  &lt;rdf:Description rdf:ID=&#039;MexeClassmarks&#039;&gt;
+    &lt;rdfs:comment xml:lang=&#039;en&#039;&gt;
+      DEPRECATED
+      Description: List of MExE classmarks supported by the device.  Value &quot;1&quot; means the MExE device supports WAP, value &quot;2&quot; means that MExE device supports Personal Java, value &quot;3&quot; means that MExE device supports MIDP applications and value &quot;4&quot; means the device supports the CLI Platform.
+      Examples: &quot;1&quot;, &quot;3&quot;
+    &lt;/rdfs:comment&gt;
+    &lt;rdfs:label xml:lang=&#039;en&#039;&gt;MexeClassmarks&lt;/rdfs:label&gt;
+    &lt;rdf:type rdf:resource=&#039;&amp;ns-rdf;Property&#039;/&gt;
+    &lt;rdfs:domain rdf:resource=&#039;#SoftwarePlatform&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;prf-dt;Literal&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;ns-rdf;Bag&#039;/&gt;
+    &lt;prf:ResolutionRule rdf:datatype=&#039;&amp;prf-dt;ResolutionRule&#039;&gt;Locked&lt;/prf:ResolutionRule&gt;
+  &lt;/rdf:Description&gt;
+
+  &lt;rdf:Description rdf:ID=&#039;MexeSecureDomains&#039;&gt;
+    &lt;rdfs:comment xml:lang=&#039;en&#039;&gt;
+      DEPRECATED
+      Description: Indicates whether the device&#039;s supports MExE security domains. &quot;Yes&quot; means that security domains are supported in accordance with MExE specifications identified by the MexeSpec attribute. &quot;No&quot; means that security domains are not supported and the device has only untrusted domain (area).
+      Examples: &quot;Yes&quot;, &quot;No&quot;
+    &lt;/rdfs:comment&gt;
+    &lt;rdfs:label xml:lang=&#039;en&#039;&gt;MexeSecureDomains&lt;/rdfs:label&gt;
+    &lt;rdf:type rdf:resource=&#039;&amp;ns-rdf;Property&#039;/&gt;
+    &lt;rdfs:domain rdf:resource=&#039;#SoftwarePlatform&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;prf-dt;Boolean&#039;/&gt;
+    &lt;prf:ResolutionRule rdf:datatype=&#039;&amp;prf-dt;ResolutionRule&#039;&gt;Locked&lt;/prf:ResolutionRule&gt;
+  &lt;/rdf:Description&gt;
+
+  &lt;rdf:Description rdf:ID=&#039;MexeSpec&#039;&gt;
+    &lt;rdfs:comment xml:lang=&#039;en&#039;&gt;
+      DEPRECATED
+      Description: Class mark specialization. Refers to the first two digits of the version of the MExE Stage 2 spec.
+      Examples: &quot;7.02&quot;
+    &lt;/rdfs:comment&gt;
+    &lt;rdfs:label xml:lang=&#039;en&#039;&gt;MexeSpec&lt;/rdfs:label&gt;
+    &lt;rdf:type rdf:resource=&#039;&amp;ns-rdf;Property&#039;/&gt;
+    &lt;rdfs:domain rdf:resource=&#039;#SoftwarePlatform&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;prf-dt;Literal&#039;/&gt;
+    &lt;prf:ResolutionRule rdf:datatype=&#039;&amp;prf-dt;ResolutionRule&#039;&gt;Locked&lt;/prf:ResolutionRule&gt;
+  &lt;/rdf:Description&gt;
+
+  &lt;rdf:Description rdf:ID=&#039;OSName&#039;&gt;
+    &lt;rdfs:comment xml:lang=&#039;en&#039;&gt;
+      Description: Name of the device&#039;s operating system.
+      Examples: &quot;Mac OS&quot;, &quot;Windows NT&quot;
+    &lt;/rdfs:comment&gt;
+    &lt;rdfs:label xml:lang=&#039;en&#039;&gt;OSName&lt;/rdfs:label&gt;
+    &lt;rdf:type rdf:resource=&#039;&amp;ns-rdf;Property&#039;/&gt;
+    &lt;rdfs:domain rdf:resource=&#039;#SoftwarePlatform&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;prf-dt;Literal&#039;/&gt;
+    &lt;prf:ResolutionRule rdf:datatype=&#039;&amp;prf-dt;ResolutionRule&#039;&gt;Locked&lt;/prf:ResolutionRule&gt;
+  &lt;/rdf:Description&gt;
+
+  &lt;rdf:Description rdf:ID=&#039;OSVendor&#039;&gt;
+    &lt;rdfs:comment xml:lang=&#039;en&#039;&gt;
+      Description: Vendor of the device&#039;s operating system.
+      Examples: &quot;Apple&quot;, &quot;Microsoft&quot;
+    &lt;/rdfs:comment&gt;
+    &lt;rdfs:label xml:lang=&#039;en&#039;&gt;OSVendor&lt;/rdfs:label&gt;
+    &lt;rdf:type rdf:resource=&#039;&amp;ns-rdf;Property&#039;/&gt;
+    &lt;rdfs:domain rdf:resource=&#039;#SoftwarePlatform&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;prf-dt;Literal&#039;/&gt;
+    &lt;prf:ResolutionRule rdf:datatype=&#039;&amp;prf-dt;ResolutionRule&#039;&gt;Locked&lt;/prf:ResolutionRule&gt;
+  &lt;/rdf:Description&gt;
+
+  &lt;rdf:Description rdf:ID=&#039;OSVersion&#039;&gt;
+    &lt;rdfs:comment xml:lang=&#039;en&#039;&gt;
+      Description: Version of the device&#039;s operating system.
+      Examples: &quot;6.0&quot;, &quot;4.5&quot;
+    &lt;/rdfs:comment&gt;
+    &lt;rdfs:label xml:lang=&#039;en&#039;&gt;OSVersion&lt;/rdfs:label&gt;
+    &lt;rdf:type rdf:resource=&#039;&amp;ns-rdf;Property&#039;/&gt;
+    &lt;rdfs:domain rdf:resource=&#039;#SoftwarePlatform&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;prf-dt;Literal&#039;/&gt;
+    &lt;prf:ResolutionRule rdf:datatype=&#039;&amp;prf-dt;ResolutionRule&#039;&gt;Locked&lt;/prf:ResolutionRule&gt;
+  &lt;/rdf:Description&gt;
+
+  &lt;rdf:Description rdf:ID=&#039;RecipientAppAgent&#039;&gt;
+    &lt;rdfs:comment xml:lang=&#039;en&#039;&gt;
+      Description: User agent associated with the current request. Value should match the name of one of the components in the profile. A component name is specified by the ID attribute on the prf:Component element containing the properties of that component.
+      Examples: &quot;BrowserMail&quot;
+    &lt;/rdfs:comment&gt;
+    &lt;rdfs:label xml:lang=&#039;en&#039;&gt;RecipientAppAgent&lt;/rdfs:label&gt;
+    &lt;rdf:type rdf:resource=&#039;&amp;ns-rdf;Property&#039;/&gt;
+    &lt;rdfs:domain rdf:resource=&#039;#SoftwarePlatform&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;prf-dt;Literal&#039;/&gt;
+    &lt;prf:ResolutionRule rdf:datatype=&#039;&amp;prf-dt;ResolutionRule&#039;&gt;Locked&lt;/prf:ResolutionRule&gt;
+  &lt;/rdf:Description&gt;
+
+  &lt;rdf:Description rdf:ID=&#039;SoftwareNumber&#039;&gt;
+    &lt;rdfs:comment xml:lang=&#039;en&#039;&gt;
+      Description: Version of the device-specific software (firmware) to which the device&#039;s low-level software conforms.
+      Examples: &quot;2&quot;
+    &lt;/rdfs:comment&gt;
+    &lt;rdfs:label xml:lang=&#039;en&#039;&gt;SoftwareNumber&lt;/rdfs:label&gt;
+    &lt;rdf:type rdf:resource=&#039;&amp;ns-rdf;Property&#039;/&gt;
+    &lt;rdfs:domain rdf:resource=&#039;#SoftwarePlatform&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;prf-dt;Literal&#039;/&gt;
+    &lt;prf:ResolutionRule rdf:datatype=&#039;&amp;prf-dt;ResolutionRule&#039;&gt;Locked&lt;/prf:ResolutionRule&gt;
+  &lt;/rdf:Description&gt;
+
+  &lt;rdf:Description rdf:ID=&#039;SpeechRecognitionCapable&#039;&gt;
+    &lt;rdfs:comment xml:lang=&#039;en&#039;&gt;
+      Description: Indicates if device has speech recognition capabilities.
+      Examples: &quot;Yes&quot;; &quot;No&quot;
+    &lt;/rdfs:comment&gt;
+    &lt;rdfs:label xml:lang=&#039;en&#039;&gt;SpeechRecognitionCapable&lt;/rdfs:label&gt;
+    &lt;rdf:type rdf:resource=&#039;&amp;ns-rdf;Property&#039;/&gt;
+    &lt;rdfs:domain rdf:resource=&#039;#SoftwarePlatform&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;prf-dt;Boolean&#039;/&gt;
+    &lt;prf:ResolutionRule rdf:datatype=&#039;&amp;prf-dt;ResolutionRule&#039;&gt;Locked&lt;/prf:ResolutionRule&gt;
+  &lt;/rdf:Description&gt;
+
+  &lt;rdf:Description rdf:ID=&#039;SymbianUserInterfaceVersion&#039;&gt;
+    &lt;rdfs:comment xml:lang=&#039;en&#039;&gt;
+      Description: Indicates the Symbian user interface version of a device. The type &#039;Literal&#039; allows to define non-numerical versions such as &#039;2.1 beta&#039;.
+      Examples: &quot;1.0&quot;, &quot;2.1 beta&quot;
+    &lt;/rdfs:comment&gt;
+    &lt;rdfs:label xml:lang=&#039;en&#039;&gt;SymbianUserInterfaceVersion&lt;/rdfs:label&gt;
+    &lt;rdf:type rdf:resource=&#039;&amp;ns-rdf;Property&#039;/&gt;
+    &lt;rdfs:domain rdf:resource=&#039;#SoftwarePlatform&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;prf-dt;Literal&#039;/&gt;
+    &lt;prf:ResolutionRule rdf:datatype=&#039;&amp;prf-dt;ResolutionRule&#039;&gt;Locked&lt;/prf:ResolutionRule&gt;
+  &lt;/rdf:Description&gt;
+
+  &lt;rdf:Description rdf:ID=&#039;SymbianUserInterface&#039;&gt;
+    &lt;rdfs:comment xml:lang=&#039;en&#039;&gt;
+      Description: Indicates if the device has the Symbian user interface or the Symbian developer platform.
+      Examples: &quot;1.0&quot;, &quot;1.1&quot;
+    &lt;/rdfs:comment&gt;
+    &lt;rdfs:label xml:lang=&#039;en&#039;&gt;SymbianUserInterface&lt;/rdfs:label&gt;
+    &lt;rdf:type rdf:resource=&#039;&amp;ns-rdf;Property&#039;/&gt;
+    &lt;rdfs:domain rdf:resource=&#039;#SoftwarePlatform&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;prf-dt;Literal&#039;/&gt;
+    &lt;prf:ResolutionRule rdf:datatype=&#039;&amp;prf-dt;ResolutionRule&#039;&gt;Locked&lt;/prf:ResolutionRule&gt;
+  &lt;/rdf:Description&gt;
+
+  &lt;rdf:Description rdf:ID=&#039;VideoInputEncoder&#039;&gt;
+    &lt;rdfs:comment xml:lang=&#039;en&#039;&gt;
+      Description: List of video input encoders supported by the device.
+      Examples: &quot;MPEG-1&quot;, &quot;MPEG-2&quot;, &quot;H.261&quot;
+    &lt;/rdfs:comment&gt;
+    &lt;rdfs:label xml:lang=&#039;en&#039;&gt;VideoInputEncoder&lt;/rdfs:label&gt;
+    &lt;rdf:type rdf:resource=&#039;&amp;ns-rdf;Property&#039;/&gt;
+    &lt;rdfs:domain rdf:resource=&#039;#SoftwarePlatform&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;prf-dt;Literal&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;ns-rdf;Bag&#039;/&gt;
+    &lt;prf:ResolutionRule rdf:datatype=&#039;&amp;prf-dt;ResolutionRule&#039;&gt;Append&lt;/prf:ResolutionRule&gt;
+  &lt;/rdf:Description&gt;
+
+  &lt;rdf:Description rdf:ID=&#039;VoiceXMLCapable&#039;&gt;
+    &lt;rdfs:comment xml:lang=&#039;en&#039;&gt;
+      Description: Indicates if device is VoiceXML capable.
+      Examples: &quot;Yes&quot;, &quot;No&quot;
+    &lt;/rdfs:comment&gt;
+    &lt;rdfs:label xml:lang=&#039;en&#039;&gt;VoiceXMLCapable&lt;/rdfs:label&gt;
+    &lt;rdf:type rdf:resource=&#039;&amp;ns-rdf;Property&#039;/&gt;
+    &lt;rdfs:domain rdf:resource=&#039;#SoftwarePlatform&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;prf-dt;Boolean&#039;/&gt;
+    &lt;prf:ResolutionRule rdf:datatype=&#039;&amp;prf-dt;ResolutionRule&#039;&gt;Locked&lt;/prf:ResolutionRule&gt;
+  &lt;/rdf:Description&gt;
+
+  &lt;!-- ****************************************************************** --&gt;
+  &lt;!-- ***** Attributes for the NetworkCharacteristics Component ***** --&gt;
+  &lt;!-- ****************************************************************** --&gt;
+
+  &lt;rdf:Description rdf:ID=&#039;CurrentBearerService&#039;&gt;
+    &lt;rdfs:comment xml:lang=&#039;en&#039;&gt;
+      DEPRECATED
+      Description: The bearer on which the current session was opened.
+      Examples: &quot;GSM_USSD&quot;, &quot;IPV6&quot;, &quot;GSM_CSD_IPV4&quot;
+    &lt;/rdfs:comment&gt;
+    &lt;rdfs:label xml:lang=&#039;en&#039;&gt;CurrentBearerService&lt;/rdfs:label&gt;
+    &lt;rdf:type rdf:resource=&#039;&amp;ns-rdf;Property&#039;/&gt;
+    &lt;rdfs:domain rdf:resource=&#039;#NetworkCharacteristics&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;prf-dt;Literal&#039;/&gt;
+    &lt;prf:ResolutionRule rdf:datatype=&#039;&amp;prf-dt;ResolutionRule&#039;&gt;Locked&lt;/prf:ResolutionRule&gt;
+  &lt;/rdf:Description&gt;
+
+  &lt;rdf:Description rdf:ID=&#039;SecuritySupport&#039;&gt;
+    &lt;rdfs:comment xml:lang=&#039;en&#039;&gt;
+      Description: List of types of security or encryption mechanisms supported by the device.
+      Examples: &quot;WTLS-1&quot;, WTLS-2&quot;, &quot;WTLS-3&quot;, &quot;signText&quot;, &quot;PPTP&quot;
+    &lt;/rdfs:comment&gt;
+    &lt;rdfs:label xml:lang=&#039;en&#039;&gt;SecuritySupport&lt;/rdfs:label&gt;
+    &lt;rdf:type rdf:resource=&#039;&amp;ns-rdf;Property&#039;/&gt;
+    &lt;rdfs:domain rdf:resource=&#039;#NetworkCharacteristics&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;prf-dt;Literal&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;ns-rdf;Bag&#039;/&gt;
+    &lt;prf:ResolutionRule rdf:datatype=&#039;&amp;prf-dt;ResolutionRule&#039;&gt;Locked&lt;/prf:ResolutionRule&gt;
+  &lt;/rdf:Description&gt;
+
+  &lt;rdf:Description rdf:ID=&#039;SupportedBearers&#039;&gt;
+    &lt;rdfs:comment xml:lang=&#039;en&#039;&gt;
+      Description: List of bearers supported by the device.
+      Examples: &quot;GSM_USSD&quot;, &quot;IPV6&quot;, &quot;GSM_CSD_IPV4&quot;, &quot;Cell_Broadcast&quot;
+      THhe full list of supported bearers is available at the following link: &quot;http://www.openmobilealliance.org/tech/profiles/ccppschema-20030226.html#current&quot;)
+    &lt;/rdfs:comment&gt;
+    &lt;rdfs:label xml:lang=&#039;en&#039;&gt;SupportedBearers&lt;/rdfs:label&gt;
+    &lt;rdf:type rdf:resource=&#039;&amp;ns-rdf;Property&#039;/&gt;
+    &lt;rdfs:domain rdf:resource=&#039;#NetworkCharacteristics&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;prf-dt;Literal&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;ns-rdf;Bag&#039;/&gt;
+    &lt;prf:ResolutionRule rdf:datatype=&#039;&amp;prf-dt;ResolutionRule&#039;&gt;Locked&lt;/prf:ResolutionRule&gt;
+  &lt;/rdf:Description&gt;
+
+  &lt;rdf:Description rdf:ID=&#039;SupportedBluetoothVersion&#039;&gt;
+    &lt;rdfs:comment xml:lang=&#039;en&#039;&gt;
+      Description: Supported Bluetooth version.
+      Examples: &quot;1.0&quot;
+    &lt;/rdfs:comment&gt;
+    &lt;rdfs:label xml:lang=&#039;en&#039;&gt;SupportedBluetoothVersion&lt;/rdfs:label&gt;
+    &lt;rdf:type rdf:resource=&#039;&amp;ns-rdf;Property&#039;/&gt;
+    &lt;rdfs:domain rdf:resource=&#039;#NetworkCharacteristics&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;prf-dt;Literal&#039;/&gt;
+    &lt;prf:ResolutionRule rdf:datatype=&#039;&amp;prf-dt;ResolutionRule&#039;&gt;Locked&lt;/prf:ResolutionRule&gt;
+  &lt;/rdf:Description&gt;
+
+  &lt;rdf:Description rdf:ID=&#039;SupportedCDMACSD&#039;&gt;
+    &lt;rdfs:comment xml:lang=&#039;en&#039;&gt;
+      Description: Indicates if the device supports CDMA CSD bearer.
+      Examples: &quot;Yes&quot;, &quot;No&quot;
+    &lt;/rdfs:comment&gt;
+    &lt;rdfs:label xml:lang=&#039;en&#039;&gt;SupportedCDMACSD&lt;/rdfs:label&gt;
+    &lt;rdf:type rdf:resource=&#039;&amp;ns-rdf;Property&#039;/&gt;
+    &lt;rdfs:domain rdf:resource=&#039;#NetworkCharacteristics&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;prf-dt;Boolean&#039;/&gt;
+    &lt;prf:ResolutionRule rdf:datatype=&#039;&amp;prf-dt;ResolutionRule&#039;&gt;Locked&lt;/prf:ResolutionRule&gt;
+  &lt;/rdf:Description&gt;
+
+  &lt;rdf:Description rdf:ID=&#039;SupportedCDMAPACKET&#039;&gt;
+    &lt;rdfs:comment xml:lang=&#039;en&#039;&gt;
+      Description: Indicates if the device supports CDMA Packet Data bearer.
+      Examples: &quot;Yes&quot;, &quot;No&quot;
+    &lt;/rdfs:comment&gt;
+    &lt;rdfs:label xml:lang=&#039;en&#039;&gt;SupportedCDMAPACKET&lt;/rdfs:label&gt;
+    &lt;rdf:type rdf:resource=&#039;&amp;ns-rdf;Property&#039;/&gt;
+    &lt;rdfs:domain rdf:resource=&#039;#NetworkCharacteristics&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;prf-dt;Boolean&#039;/&gt;
+    &lt;prf:ResolutionRule rdf:datatype=&#039;&amp;prf-dt;ResolutionRule&#039;&gt;Locked&lt;/prf:ResolutionRule&gt;
+  &lt;/rdf:Description&gt;
+
+  &lt;rdf:Description rdf:ID=&#039;SupportedGSMCSD&#039;&gt;
+    &lt;rdfs:comment xml:lang=&#039;en&#039;&gt;
+      Description: Indicates if the device supports GSM CSD bearer.
+      Examples: &quot;Yes&quot;, &quot;No&quot;
+    &lt;/rdfs:comment&gt;
+    &lt;rdfs:label xml:lang=&#039;en&#039;&gt;SupportedGSMCSD&lt;/rdfs:label&gt;
+    &lt;rdf:type rdf:resource=&#039;&amp;ns-rdf;Property&#039;/&gt;
+    &lt;rdfs:domain rdf:resource=&#039;#NetworkCharacteristics&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;prf-dt;Boolean&#039;/&gt;
+    &lt;prf:ResolutionRule rdf:datatype=&#039;&amp;prf-dt;ResolutionRule&#039;&gt;Locked&lt;/prf:ResolutionRule&gt;
+  &lt;/rdf:Description&gt;
+
+  &lt;rdf:Description rdf:ID=&#039;SupportedGSMEDGE&#039;&gt;
+    &lt;rdfs:comment xml:lang=&#039;en&#039;&gt;
+      Description: Indicates if the device supports GSM EDGE bearer.
+      Examples: &quot;Yes&quot;, &quot;No&quot;
+    &lt;/rdfs:comment&gt;
+    &lt;rdfs:label xml:lang=&#039;en&#039;&gt;SupportedGSMEDGE&lt;/rdfs:label&gt;
+    &lt;rdf:type rdf:resource=&#039;&amp;ns-rdf;Property&#039;/&gt;
+    &lt;rdfs:domain rdf:resource=&#039;#NetworkCharacteristics&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;prf-dt;Boolean&#039;/&gt;
+    &lt;prf:ResolutionRule rdf:datatype=&#039;&amp;prf-dt;ResolutionRule&#039;&gt;Locked&lt;/prf:ResolutionRule&gt;
+  &lt;/rdf:Description&gt;
+
+  &lt;rdf:Description rdf:ID=&#039;SupportedGSMGPRS&#039;&gt;
+    &lt;rdfs:comment xml:lang=&#039;en&#039;&gt;
+      Description: Indicates if the device supports GSM GPRS bearer.
+      Examples: &quot;Yes&quot;, &quot;No&quot;
+    &lt;/rdfs:comment&gt;
+    &lt;rdfs:label xml:lang=&#039;en&#039;&gt;SupportedGSMGPRS&lt;/rdfs:label&gt;
+    &lt;rdf:type rdf:resource=&#039;&amp;ns-rdf;Property&#039;/&gt;
+    &lt;rdfs:domain rdf:resource=&#039;#NetworkCharacteristics&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;prf-dt;Boolean&#039;/&gt;
+    &lt;prf:ResolutionRule rdf:datatype=&#039;&amp;prf-dt;ResolutionRule&#039;&gt;Locked&lt;/prf:ResolutionRule&gt;
+  &lt;/rdf:Description&gt;
+
+  &lt;rdf:Description rdf:ID=&#039;SupportedUMTS&#039;&gt;
+    &lt;rdfs:comment xml:lang=&#039;en&#039;&gt;
+      Description: Indicates if the device supports UMTS bearer.
+      Examples: &quot;Yes&quot;, &quot;No&quot;
+    &lt;/rdfs:comment&gt;
+    &lt;rdfs:label xml:lang=&#039;en&#039;&gt;SupportedUMTS&lt;/rdfs:label&gt;
+    &lt;rdf:type rdf:resource=&#039;&amp;ns-rdf;Property&#039;/&gt;
+    &lt;rdfs:domain rdf:resource=&#039;#NetworkCharacteristics&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;prf-dt;Boolean&#039;/&gt;
+    &lt;prf:ResolutionRule rdf:datatype=&#039;&amp;prf-dt;ResolutionRule&#039;&gt;Locked&lt;/prf:ResolutionRule&gt;
+  &lt;/rdf:Description&gt;
+
+  &lt;rdf:Description rdf:ID=&#039;SupportedHSDPA&#039;&gt;
+    &lt;rdfs:comment xml:lang=&#039;en&#039;&gt;
+      Description: Indicates if the device supports HSDPA bearer.
+      Examples: &quot;Yes&quot;, &quot;No&quot;
+    &lt;/rdfs:comment&gt;
+    &lt;rdfs:label xml:lang=&#039;en&#039;&gt;SupportedHSDPA&lt;/rdfs:label&gt;
+    &lt;rdf:type rdf:resource=&#039;&amp;ns-rdf;Property&#039;/&gt;
+    &lt;rdfs:domain rdf:resource=&#039;#NetworkCharacteristics&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;prf-dt;Boolean&#039;/&gt;
+    &lt;prf:ResolutionRule rdf:datatype=&#039;&amp;prf-dt;ResolutionRule&#039;&gt;Locked&lt;/prf:ResolutionRule&gt;
+  &lt;/rdf:Description&gt;
+
+  &lt;rdf:Description rdf:ID=&#039;SupportedWiFi&#039;&gt;
+    &lt;rdfs:comment xml:lang=&#039;en&#039;&gt;
+      Description: Indicates if the device supports WiFi bearer.
+      Examples: &quot;Yes&quot;, &quot;No&quot;
+    &lt;/rdfs:comment&gt;
+    &lt;rdfs:label xml:lang=&#039;en&#039;&gt;SupportedWiFi&lt;/rdfs:label&gt;
+    &lt;rdf:type rdf:resource=&#039;&amp;ns-rdf;Property&#039;/&gt;
+    &lt;rdfs:domain rdf:resource=&#039;#NetworkCharacteristics&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;prf-dt;Boolean&#039;/&gt;
+    &lt;prf:ResolutionRule rdf:datatype=&#039;&amp;prf-dt;ResolutionRule&#039;&gt;Locked&lt;/prf:ResolutionRule&gt;
+  &lt;/rdf:Description&gt;
+
+  &lt;rdf:Description rdf:ID=&#039;SupportedWiFiVersion&#039;&gt;
+    &lt;rdfs:comment xml:lang=&#039;en&#039;&gt;
+      Description: Indicates the supported WiFi version.
+      Examples: &quot;802.11a&quot;, &quot;802.11g&quot;
+    &lt;/rdfs:comment&gt;
+    &lt;rdfs:label xml:lang=&#039;en&#039;&gt;SupportedWiFiVersion&lt;/rdfs:label&gt;
+    &lt;rdf:type rdf:resource=&#039;&amp;ns-rdf;Property&#039;/&gt;
+    &lt;rdfs:domain rdf:resource=&#039;#NetworkCharacteristics&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;prf-dt;Literal&#039;/&gt;
+    &lt;prf:ResolutionRule rdf:datatype=&#039;&amp;prf-dt;ResolutionRule&#039;&gt;Locked&lt;/prf:ResolutionRule&gt;
+  &lt;/rdf:Description&gt;
+
+  &lt;rdf:Description rdf:ID=&#039;SupportedWiMax&#039;&gt;
+    &lt;rdfs:comment xml:lang=&#039;en&#039;&gt;
+      Description: Indicates if the device supports WiMax bearer.
+      Examples: &quot;Yes&quot;, &quot;No&quot;
+    &lt;/rdfs:comment&gt;
+    &lt;rdfs:label xml:lang=&#039;en&#039;&gt;SupportedWiMax&lt;/rdfs:label&gt;
+    &lt;rdf:type rdf:resource=&#039;&amp;ns-rdf;Property&#039;/&gt;
+    &lt;rdfs:domain rdf:resource=&#039;#NetworkCharacteristics&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;prf-dt;Boolean&#039;/&gt;
+    &lt;prf:ResolutionRule rdf:datatype=&#039;&amp;prf-dt;ResolutionRule&#039;&gt;Locked&lt;/prf:ResolutionRule&gt;
+  &lt;/rdf:Description&gt;
+
+  &lt;rdf:Description rdf:ID=&#039;SupportedWiMaxVersion&#039;&gt;
+    &lt;rdfs:comment xml:lang=&#039;en&#039;&gt;
+      Description: Indicates the supported WiMax version.
+      Examples: &quot;802.16a&quot;, &quot;802.16e&quot;
+    &lt;/rdfs:comment&gt;
+    &lt;rdfs:label xml:lang=&#039;en&#039;&gt;SupportedWiMaxVersion&lt;/rdfs:label&gt;
+    &lt;rdf:type rdf:resource=&#039;&amp;ns-rdf;Property&#039;/&gt;
+    &lt;rdfs:domain rdf:resource=&#039;#NetworkCharacteristics&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;prf-dt;Literal&#039;/&gt;
+    &lt;prf:ResolutionRule rdf:datatype=&#039;&amp;prf-dt;ResolutionRule&#039;&gt;Locked&lt;/prf:ResolutionRule&gt;
+  &lt;/rdf:Description&gt;
+
+
+  &lt;!-- ****************************************************************** --&gt;
+  &lt;!-- ***** Attributes for the BrowserUA Component ***** --&gt;
+  &lt;!-- ****************************************************************** --&gt;
+
+  &lt;rdf:Description rdf:ID=&#039;BookmarksSupported&#039;&gt;
+    &lt;rdfs:comment xml:lang=&#039;en&#039;&gt;
+      Description: Indicates whether the device is able of saving the address of a web site in a favourite list.
+      Examples: &quot;Yes&quot;, &quot;No&quot;
+    &lt;/rdfs:comment&gt;
+    &lt;rdfs:label xml:lang=&#039;en&#039;&gt;BookmarksSupported&lt;/rdfs:label&gt;
+    &lt;rdf:type rdf:resource=&#039;&amp;ns-rdf;Property&#039;/&gt;
+    &lt;rdfs:domain rdf:resource=&#039;#BrowserUA&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;prf-dt;Boolean&#039;/&gt;
+    &lt;prf:ResolutionRule rdf:datatype=&#039;&amp;prf-dt;ResolutionRule&#039;&gt;Locked&lt;/prf:ResolutionRule&gt;
+  &lt;/rdf:Description&gt;
+
+  &lt;rdf:Description rdf:ID=&#039;BrowserName&#039;&gt;
+    &lt;rdfs:comment xml:lang=&#039;en&#039;&gt;
+      Description: Name of the browser user agent associated with the current request.
+      Examples: &quot;Mozilla&quot;, &quot;MSIE&quot;, &quot;WAP42&quot;
+    &lt;/rdfs:comment&gt;
+    &lt;rdfs:label xml:lang=&#039;en&#039;&gt;BrowserName&lt;/rdfs:label&gt;
+    &lt;rdf:type rdf:resource=&#039;&amp;ns-rdf;Property&#039;/&gt;
+    &lt;rdfs:domain rdf:resource=&#039;#BrowserUA&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;prf-dt;Literal&#039;/&gt;
+    &lt;prf:ResolutionRule rdf:datatype=&#039;&amp;prf-dt;ResolutionRule&#039;&gt;Locked&lt;/prf:ResolutionRule&gt;
+  &lt;/rdf:Description&gt;
+
+  &lt;rdf:Description rdf:ID=&#039;BrowserScreenSize&#039;&gt;
+    &lt;rdfs:comment xml:lang=&#039;en&#039;&gt;
+      Description: The usable size of the device&#039;s screen (without the scrollbars and/or the status/softkeys bars) in units of pixels, composed of the screen width and of the screen height.
+      Examples: &quot;160x140&quot;, &quot;220x180&quot;
+    &lt;/rdfs:comment&gt;
+    &lt;rdfs:label xml:lang=&#039;en&#039;&gt;BrowserScreenSize&lt;/rdfs:label&gt;
+    &lt;rdf:type rdf:resource=&#039;&amp;ns-rdf;Property&#039;/&gt;
+    &lt;rdfs:domain rdf:resource=&#039;#BrowserUA&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;prf-dt;Dimension&#039;/&gt;
+    &lt;prf:ResolutionRule rdf:datatype=&#039;&amp;prf-dt;ResolutionRule&#039;&gt;Locked&lt;/prf:ResolutionRule&gt;
+  &lt;/rdf:Description&gt;
+
+  &lt;rdf:Description rdf:ID=&#039;BrowserVersion&#039;&gt;
+    &lt;rdfs:comment xml:lang=&#039;en&#039;&gt;
+      Description: Version of the browser.
+      Examples: &quot;1.0&quot;
+    &lt;/rdfs:comment&gt;
+    &lt;rdfs:label xml:lang=&#039;en&#039;&gt;BrowserVersion&lt;/rdfs:label&gt;
+    &lt;rdf:type rdf:resource=&#039;&amp;ns-rdf;Property&#039;/&gt;
+    &lt;rdfs:domain rdf:resource=&#039;#BrowserUA&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;prf-dt;Literal&#039;/&gt;
+    &lt;prf:ResolutionRule rdf:datatype=&#039;&amp;prf-dt;ResolutionRule&#039;&gt;Locked&lt;/prf:ResolutionRule&gt;
+  &lt;/rdf:Description&gt;
+
+  &lt;rdf:Description rdf:ID=&#039;DownloadableBrowserApps&#039;&gt;
+    &lt;rdfs:comment xml:lang=&#039;en&#039;&gt;
+      Description: List of executable content types which the browser supports and which it is willing to accept from the network. The property value is a list of MIME types, where each item in the list is a content type descriptor as specified by RFC 2045.
+      Examples: &quot;application/x-java-vm/java-applet&quot;
+    &lt;/rdfs:comment&gt;
+    &lt;rdfs:label xml:lang=&#039;en&#039;&gt;DownloadableBrowserApps&lt;/rdfs:label&gt;
+    &lt;rdf:type rdf:resource=&#039;&amp;ns-rdf;Property&#039;/&gt;
+    &lt;rdfs:domain rdf:resource=&#039;#BrowserUA&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;prf-dt;Literal&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;ns-rdf;Bag&#039;/&gt;
+    &lt;prf:ResolutionRule rdf:datatype=&#039;&amp;prf-dt;ResolutionRule&#039;&gt;Append&lt;/prf:ResolutionRule&gt;
+  &lt;/rdf:Description&gt;
+
+  &lt;rdf:Description rdf:ID=&#039;FramesCapable&#039;&gt;
+    &lt;rdfs:comment xml:lang=&#039;en&#039;&gt;
+      Description: Indicates whether the browser is capable of displaying frames.
+      Examples: &quot;Yes&quot;, &quot;No&quot;
+    &lt;/rdfs:comment&gt;
+    &lt;rdfs:label xml:lang=&#039;en&#039;&gt;FramesCapable&lt;/rdfs:label&gt;
+    &lt;rdf:type rdf:resource=&#039;&amp;ns-rdf;Property&#039;/&gt;
+    &lt;rdfs:domain rdf:resource=&#039;#BrowserUA&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;prf-dt;Boolean&#039;/&gt;
+    &lt;prf:ResolutionRule rdf:datatype=&#039;&amp;prf-dt;ResolutionRule&#039;&gt;Override&lt;/prf:ResolutionRule&gt;
+  &lt;/rdf:Description&gt;
+
+  &lt;rdf:Description rdf:ID=&#039;HtmlVersion&#039;&gt;
+    &lt;rdfs:comment xml:lang=&#039;en&#039;&gt;
+      Description: Version of HyperText Markup Language (HTML) supported by the browser.
+      Examples: &quot;2.0&quot;, &quot;3.2&quot;, &quot;4.0&quot;
+    &lt;/rdfs:comment&gt;
+    &lt;rdfs:label xml:lang=&#039;en&#039;&gt;HtmlVersion&lt;/rdfs:label&gt;
+    &lt;rdf:type rdf:resource=&#039;&amp;ns-rdf;Property&#039;/&gt;
+    &lt;rdfs:domain rdf:resource=&#039;#BrowserUA&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;prf-dt;Literal&#039;/&gt;
+    &lt;prf:ResolutionRule rdf:datatype=&#039;&amp;prf-dt;ResolutionRule&#039;&gt;Locked&lt;/prf:ResolutionRule&gt;
+  &lt;/rdf:Description&gt;
+
+  &lt;rdf:Description rdf:ID=&#039;JavaAppletEnabled&#039;&gt;
+    &lt;rdfs:comment xml:lang=&#039;en&#039;&gt;
+      Description: Indicates whether the browser supports Java applets.
+      Examples: &quot;Yes&quot;, &quot;No&quot;
+    &lt;/rdfs:comment&gt;
+    &lt;rdfs:label xml:lang=&#039;en&#039;&gt;JavaAppletEnabled&lt;/rdfs:label&gt;
+    &lt;rdf:type rdf:resource=&#039;&amp;ns-rdf;Property&#039;/&gt;
+    &lt;rdfs:domain rdf:resource=&#039;#BrowserUA&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;prf-dt;Boolean&#039;/&gt;
+    &lt;prf:ResolutionRule rdf:datatype=&#039;&amp;prf-dt;ResolutionRule&#039;&gt;Locked&lt;/prf:ResolutionRule&gt;
+  &lt;/rdf:Description&gt;
+
+  &lt;rdf:Description rdf:ID=&#039;JavaScriptEnabled&#039;&gt;
+    &lt;rdfs:comment xml:lang=&#039;en&#039;&gt;
+      Description: Indicates whether the browser supports JavaScript.
+      Examples: &quot;Yes&quot;, &quot;No&quot;
+    &lt;/rdfs:comment&gt;
+    &lt;rdfs:label xml:lang=&#039;en&#039;&gt;JavaScriptEnabled&lt;/rdfs:label&gt;
+    &lt;rdf:type rdf:resource=&#039;&amp;ns-rdf;Property&#039;/&gt;
+    &lt;rdfs:domain rdf:resource=&#039;#BrowserUA&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;prf-dt;Boolean&#039;/&gt;
+    &lt;prf:ResolutionRule rdf:datatype=&#039;&amp;prf-dt;ResolutionRule&#039;&gt;Locked&lt;/prf:ResolutionRule&gt;
+  &lt;/rdf:Description&gt;
+
+  &lt;rdf:Description rdf:ID=&#039;JavaScriptVersion&#039;&gt;
+    &lt;rdfs:comment xml:lang=&#039;en&#039;&gt;
+      Description: Version of the JavaScript language supported by the browser.
+      Examples: &quot;1.4&quot;
+    &lt;/rdfs:comment&gt;
+    &lt;rdfs:label xml:lang=&#039;en&#039;&gt;JavaScriptVersion&lt;/rdfs:label&gt;
+    &lt;rdf:type rdf:resource=&#039;&amp;ns-rdf;Property&#039;/&gt;
+    &lt;rdfs:domain rdf:resource=&#039;#BrowserUA&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;prf-dt;Literal&#039;/&gt;
+    &lt;prf:ResolutionRule rdf:datatype=&#039;&amp;prf-dt;ResolutionRule&#039;&gt;Locked&lt;/prf:ResolutionRule&gt;
+  &lt;/rdf:Description&gt;
+
+  &lt;rdf:Description rdf:ID=&#039;MultipleObjectsSameLine&#039;&gt;
+    &lt;rdfs:comment xml:lang=&#039;en&#039;&gt;
+      Description: Indicates if the device is able to display several different objects on the same line, for instance an image and a link.
+      Examples: &quot;Yes&quot;, &quot;No&quot;
+    &lt;/rdfs:comment&gt;
+    &lt;rdfs:label xml:lang=&#039;en&#039;&gt;MultipleObjectsSameLine&lt;/rdfs:label&gt;
+    &lt;rdf:type rdf:resource=&#039;&amp;ns-rdf;Property&#039;/&gt;
+    &lt;rdfs:domain rdf:resource=&#039;#BrowserUA&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;prf-dt;Boolean&#039;/&gt;
+    &lt;prf:ResolutionRule rdf:datatype=&#039;&amp;prf-dt;ResolutionRule&#039;&gt;Override&lt;/prf:ResolutionRule&gt;
+  &lt;/rdf:Description&gt;
+
+  &lt;rdf:Description rdf:ID=&#039;PipelineCapable&#039;&gt;
+    &lt;rdfs:comment xml:lang=&#039;en&#039;&gt;
+      Description: Indicates if the devicesupports pipelining feature.
+      Examples: &quot;Yes&quot;, &quot;No&quot;
+    &lt;/rdfs:comment&gt;
+    &lt;rdfs:label xml:lang=&#039;en&#039;&gt;PipelineCapable&lt;/rdfs:label&gt;
+    &lt;rdf:type rdf:resource=&#039;&amp;ns-rdf;Property&#039;/&gt;
+    &lt;rdfs:domain rdf:resource=&#039;#BrowserUA&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;prf-dt;Boolean&#039;/&gt;
+    &lt;prf:ResolutionRule rdf:datatype=&#039;&amp;prf-dt;ResolutionRule&#039;&gt;Locked&lt;/prf:ResolutionRule&gt;
+  &lt;/rdf:Description&gt;
+
+  &lt;rdf:Description rdf:ID=&#039;PreferenceForFrames&#039;&gt;
+    &lt;rdfs:comment xml:lang=&#039;en&#039;&gt;
+      DEPRECATED
+      Description: Indicates the user&#039;s preference for receiving HTML content that contains frames.
+      Examples: &quot;Yes&quot;, &quot;No&quot;
+    &lt;/rdfs:comment&gt;
+    &lt;rdfs:label xml:lang=&#039;en&#039;&gt;PreferenceForFrames&lt;/rdfs:label&gt;
+    &lt;rdf:type rdf:resource=&#039;&amp;ns-rdf;Property&#039;/&gt;
+    &lt;rdfs:domain rdf:resource=&#039;#BrowserUA&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;prf-dt;Boolean&#039;/&gt;
+    &lt;prf:ResolutionRule rdf:datatype=&#039;&amp;prf-dt;ResolutionRule&#039;&gt;Locked&lt;/prf:ResolutionRule&gt;
+  &lt;/rdf:Description&gt;
+
+  &lt;rdf:Description rdf:ID=&#039;TablesCapable&#039;&gt;
+    &lt;rdfs:comment xml:lang=&#039;en&#039;&gt;
+      Description: Indicates whether the browser is capable of displaying tables.
+      Examples: &quot;Yes&quot;, &quot;No&quot;
+    &lt;/rdfs:comment&gt;
+    &lt;rdfs:label xml:lang=&#039;en&#039;&gt;TablesCapable&lt;/rdfs:label&gt;
+    &lt;rdf:type rdf:resource=&#039;&amp;ns-rdf;Property&#039;/&gt;
+    &lt;rdfs:domain rdf:resource=&#039;#BrowserUA&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;prf-dt;Boolean&#039;/&gt;
+    &lt;prf:ResolutionRule rdf:datatype=&#039;&amp;prf-dt;ResolutionRule&#039;&gt;Locked&lt;/prf:ResolutionRule&gt;
+  &lt;/rdf:Description&gt;
+
+  &lt;rdf:Description rdf:ID=&#039;XhtmlModules&#039;&gt;
+    &lt;rdfs:comment xml:lang=&#039;en&#039;&gt;
+      Description: List of XHTML modules supported by the browser. Property value is a list of module names, where each item in the list is the name of an XHTML module as defined by the W3C document &quot;Modularization of XHTML&quot;, Section 4. List items are separated by white space. Note that the referenced document is a work in progress. Any subsequent changes to the module naming conventions should be reflected in the values of this property.
+      Examples: &quot;XHTML1-struct&quot;, &quot;XHTML1-blkstruct&quot;, &quot;XHTML1-frames&quot;
+    &lt;/rdfs:comment&gt;
+    &lt;rdfs:label xml:lang=&#039;en&#039;&gt;XhtmlModules&lt;/rdfs:label&gt;
+    &lt;rdf:type rdf:resource=&#039;&amp;ns-rdf;Property&#039;/&gt;
+    &lt;rdfs:domain rdf:resource=&#039;#BrowserUA&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;prf-dt;Literal&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;ns-rdf;Bag&#039;/&gt;
+    &lt;prf:ResolutionRule rdf:datatype=&#039;&amp;prf-dt;ResolutionRule&#039;&gt;Append&lt;/prf:ResolutionRule&gt;
+  &lt;/rdf:Description&gt;
+
+  &lt;rdf:Description rdf:ID=&#039;XhtmlVersion&#039;&gt;
+    &lt;rdfs:comment xml:lang=&#039;en&#039;&gt;
+      Description: Version of XHTML supported by the browser.
+      Examples: &quot;1.0&quot;
+    &lt;/rdfs:comment&gt;
+    &lt;rdfs:label xml:lang=&#039;en&#039;&gt;XhtmlVersion&lt;/rdfs:label&gt;
+    &lt;rdf:type rdf:resource=&#039;&amp;ns-rdf;Property&#039;/&gt;
+    &lt;rdfs:domain rdf:resource=&#039;#BrowserUA&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;prf-dt;Literal&#039;/&gt;
+    &lt;prf:ResolutionRule rdf:datatype=&#039;&amp;prf-dt;ResolutionRule&#039;&gt;Locked&lt;/prf:ResolutionRule&gt;
+  &lt;/rdf:Description&gt;
+
+  &lt;!-- ****************************************************************** --&gt;
+  &lt;!-- ***** Attributes for the WapCharacteristics Component ***** --&gt;
+  &lt;!-- ****************************************************************** --&gt;
+
+  &lt;rdf:Description rdf:ID=&#039;DrmClass&#039;&gt;
+    &lt;rdfs:comment xml:lang=&#039;en&#039;&gt;
+      Description: DRM Conformance Class as defined in OMA-Download-DRM-v1_0
+      Examples: &quot;ForwardLock&quot;, &quot;CombinedDelivery&quot;, &quot;SeparateDelivery&quot;
+    &lt;/rdfs:comment&gt;
+    &lt;rdfs:label xml:lang=&#039;en&#039;&gt;DrmClass&lt;/rdfs:label&gt;
+    &lt;rdf:type rdf:resource=&#039;&amp;ns-rdf;Property&#039;/&gt;
+    &lt;rdfs:domain rdf:resource=&#039;#WapCharacteristics&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;prf-dt;Literal&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;ns-rdf;Bag&#039;/&gt;
+    &lt;prf:ResolutionRule rdf:datatype=&#039;&amp;prf-dt;ResolutionRule&#039;&gt;Locked&lt;/prf:ResolutionRule&gt;
+  &lt;/rdf:Description&gt;
+
+  &lt;rdf:Description rdf:ID=&#039;DrmConstraints&#039;&gt;
+    &lt;rdfs:comment xml:lang=&#039;en&#039;&gt;
+      Description: DRM permission constraints as defined in OMA-Download-DRMREL-v1_0.  The datetime and interval constraints depend on having a secure clock in the terminal.
+      Examples: &quot;datetime&quot;, &quot;interval&quot;
+    &lt;/rdfs:comment&gt;
+    &lt;rdfs:label xml:lang=&#039;en&#039;&gt;DrmConstraints&lt;/rdfs:label&gt;
+    &lt;rdf:type rdf:resource=&#039;&amp;ns-rdf;Property&#039;/&gt;
+    &lt;rdfs:domain rdf:resource=&#039;#WapCharacteristics&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;prf-dt;Literal&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;ns-rdf;Bag&#039;/&gt;
+    &lt;prf:ResolutionRule rdf:datatype=&#039;&amp;prf-dt;ResolutionRule&#039;&gt;Locked&lt;/prf:ResolutionRule&gt;
+  &lt;/rdf:Description&gt;
+
+  &lt;rdf:Description rdf:ID=&#039;OmaDownload&#039;&gt;
+    &lt;rdfs:comment xml:lang=&#039;en&#039;&gt;
+      Description: Supports OMA Download as defined in OMA-Download-OTA-v1_0
+      Examples: &quot;Yes&quot;, &quot;No&quot;
+    &lt;/rdfs:comment&gt;
+    &lt;rdfs:label xml:lang=&#039;en&#039;&gt;OmaDownload&lt;/rdfs:label&gt;
+    &lt;rdf:type rdf:resource=&#039;&amp;ns-rdf;Property&#039;/&gt;
+    &lt;rdfs:domain rdf:resource=&#039;#WapCharacteristics&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;prf-dt;Boolean&#039;/&gt;
+    &lt;prf:ResolutionRule rdf:datatype=&#039;&amp;prf-dt;ResolutionRule&#039;&gt;Locked&lt;/prf:ResolutionRule&gt;
+  &lt;/rdf:Description&gt;
+
+  &lt;rdf:Description rdf:ID=&#039;SupportedPictogramSet&#039;&gt;
+    &lt;rdfs:comment xml:lang=&#039;en&#039;&gt;
+      Description: Pictogram classes supported by the device as defined in &quot;WAP Pictogram specification&quot;.
+      Examples: &quot;core&quot;, &quot;core/operation&quot;, &quot;human&quot;
+    &lt;/rdfs:comment&gt;
+    &lt;rdfs:label xml:lang=&#039;en&#039;&gt;SupportedPictogramSet&lt;/rdfs:label&gt;
+    &lt;rdf:type rdf:resource=&#039;&amp;ns-rdf;Property&#039;/&gt;
+    &lt;rdfs:domain rdf:resource=&#039;#WapCharacteristics&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;prf-dt;Literal&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;ns-rdf;Bag&#039;/&gt;
+    &lt;prf:ResolutionRule rdf:datatype=&#039;&amp;prf-dt;ResolutionRule&#039;&gt;Append&lt;/prf:ResolutionRule&gt;
+  &lt;/rdf:Description&gt;
+
+  &lt;rdf:Description rdf:ID=&#039;WapDeviceClass&#039;&gt;
+    &lt;rdfs:comment xml:lang=&#039;en&#039;&gt;
+      Description: Classification of the device based on capabilities as identified in the WAP 1.1 specifications. Current values are &quot;A&quot;, &quot;B&quot; and &quot;C&quot;.
+      Examples: &quot;A&quot;
+    &lt;/rdfs:comment&gt;
+    &lt;rdfs:label xml:lang=&#039;en&#039;&gt;WapDeviceClass&lt;/rdfs:label&gt;
+    &lt;rdf:type rdf:resource=&#039;&amp;ns-rdf;Property&#039;/&gt;
+    &lt;rdfs:domain rdf:resource=&#039;#WapCharacteristics&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;prf-dt;Literal&#039;/&gt;
+    &lt;prf:ResolutionRule rdf:datatype=&#039;&amp;prf-dt;ResolutionRule&#039;&gt;Locked&lt;/prf:ResolutionRule&gt;
+  &lt;/rdf:Description&gt;
+
+  &lt;rdf:Description rdf:ID=&#039;WapVersion&#039;&gt;
+    &lt;rdfs:comment xml:lang=&#039;en&#039;&gt;
+      Description: Version of WAP supported.
+      Examples: &quot;1.1&quot;, &quot;1.2.1&quot;, &quot;2.0&quot;
+    &lt;/rdfs:comment&gt;
+    &lt;rdfs:label xml:lang=&#039;en&#039;&gt;WapVersion&lt;/rdfs:label&gt;
+    &lt;rdf:type rdf:resource=&#039;&amp;ns-rdf;Property&#039;/&gt;
+    &lt;rdfs:domain rdf:resource=&#039;#WapCharacteristics&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;prf-dt;Literal&#039;/&gt;
+    &lt;prf:ResolutionRule rdf:datatype=&#039;&amp;prf-dt;ResolutionRule&#039;&gt;Locked&lt;/prf:ResolutionRule&gt;
+  &lt;/rdf:Description&gt;
+
+  &lt;rdf:Description rdf:ID=&#039;WmlDeckSize&#039;&gt;
+    &lt;rdfs:comment xml:lang=&#039;en&#039;&gt;
+      Description: Maximum size of a WML deck that can be downloaded to the device. This may be an estimate of the maximum size if the true maximum size is not known. Value is number of bytes.
+      Examples: &quot;4096&quot;
+    &lt;/rdfs:comment&gt;
+    &lt;rdfs:label xml:lang=&#039;en&#039;&gt;WmlDeckSize&lt;/rdfs:label&gt;
+    &lt;rdf:type rdf:resource=&#039;&amp;ns-rdf;Property&#039;/&gt;
+    &lt;rdfs:domain rdf:resource=&#039;#WapCharacteristics&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;prf-dt;Number&#039;/&gt;
+    &lt;prf:ResolutionRule rdf:datatype=&#039;&amp;prf-dt;ResolutionRule&#039;&gt;Locked&lt;/prf:ResolutionRule&gt;
+  &lt;/rdf:Description&gt;
+
+  &lt;rdf:Description rdf:ID=&#039;WmlScriptLibraries&#039;&gt;
+    &lt;rdfs:comment xml:lang=&#039;en&#039;&gt;
+      Description: List of mandatory and optional libraries supported in the device&#039;s WMLScript VM.
+      Examples: &quot;Lang&quot;, &quot;Float&quot;, &quot;String&quot;, &quot;URL&quot;, &quot;WMLBrowser&quot;, &quot;Dialogs&quot;, &quot;PSTOR&quot;
+    &lt;/rdfs:comment&gt;
+    &lt;rdfs:label xml:lang=&#039;en&#039;&gt;WmlScriptLibraries&lt;/rdfs:label&gt;
+    &lt;rdf:type rdf:resource=&#039;&amp;ns-rdf;Property&#039;/&gt;
+    &lt;rdfs:domain rdf:resource=&#039;#WapCharacteristics&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;prf-dt;Literal&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;ns-rdf;Bag&#039;/&gt;
+    &lt;prf:ResolutionRule rdf:datatype=&#039;&amp;prf-dt;ResolutionRule&#039;&gt;Locked&lt;/prf:ResolutionRule&gt;
+  &lt;/rdf:Description&gt;
+
+  &lt;rdf:Description rdf:ID=&#039;WmlScriptVersion&#039;&gt;
+    &lt;rdfs:comment xml:lang=&#039;en&#039;&gt;
+      Description: List of WMLScript versions supported by the device.  Property value is a list of version numbers, where each item in the list is a version string conforming to Version.
+      Examples: &quot;1.1&quot;, &quot;1.2&quot;
+    &lt;/rdfs:comment&gt;
+    &lt;rdfs:label xml:lang=&#039;en&#039;&gt;WmlScriptVersion&lt;/rdfs:label&gt;
+    &lt;rdf:type rdf:resource=&#039;&amp;ns-rdf;Property&#039;/&gt;
+    &lt;rdfs:domain rdf:resource=&#039;#WapCharacteristics&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;prf-dt;Literal&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;ns-rdf;Bag&#039;/&gt;
+    &lt;prf:ResolutionRule rdf:datatype=&#039;&amp;prf-dt;ResolutionRule&#039;&gt;Append&lt;/prf:ResolutionRule&gt;
+  &lt;/rdf:Description&gt;
+
+  &lt;rdf:Description rdf:ID=&#039;WmlVersion&#039;&gt;
+    &lt;rdfs:comment xml:lang=&#039;en&#039;&gt;
+      Description: List of WML language versions supported by the device.  Property value is a list of version numbers, where each item in the list is a version string conforming to Version.
+      Examples: &quot;1.1&quot;, &quot;2.0&quot;
+    &lt;/rdfs:comment&gt;
+    &lt;rdfs:label xml:lang=&#039;en&#039;&gt;WmlVersion&lt;/rdfs:label&gt;
+    &lt;rdf:type rdf:resource=&#039;&amp;ns-rdf;Property&#039;/&gt;
+    &lt;rdfs:domain rdf:resource=&#039;#WapCharacteristics&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;prf-dt;Literal&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;ns-rdf;Bag&#039;/&gt;
+    &lt;prf:ResolutionRule rdf:datatype=&#039;&amp;prf-dt;ResolutionRule&#039;&gt;Append&lt;/prf:ResolutionRule&gt;
+  &lt;/rdf:Description&gt;
+
+  &lt;rdf:Description rdf:ID=&#039;WtaVersion&#039;&gt;
+    &lt;rdfs:comment xml:lang=&#039;en&#039;&gt;
+      Description: Version of WTA user agent.
+      Examples: &quot;1.1&quot;
+    &lt;/rdfs:comment&gt;
+    &lt;rdfs:label xml:lang=&#039;en&#039;&gt;WtaVersion&lt;/rdfs:label&gt;
+    &lt;rdf:type rdf:resource=&#039;&amp;ns-rdf;Property&#039;/&gt;
+    &lt;rdfs:domain rdf:resource=&#039;#WapCharacteristics&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;prf-dt;Literal&#039;/&gt;
+    &lt;prf:ResolutionRule rdf:datatype=&#039;&amp;prf-dt;ResolutionRule&#039;&gt;Locked&lt;/prf:ResolutionRule&gt;
+  &lt;/rdf:Description&gt;
+
+  &lt;rdf:Description rdf:ID=&#039;WtaiLibraries&#039;&gt;
+    &lt;rdfs:comment xml:lang=&#039;en&#039;&gt;
+      Description: List of WTAI network common and network specific libraries supported by the device.  Property value is a list of WTA library names, where each item in the list list is a library name as specified by &quot;WAP WTAI&quot; and its addendums. Any future addendums to &quot;WAP WTAI&quot; should be reflected in the values of this property.
+      Examples: &quot;WTAVoiceCall&quot;, &quot;WTANetText&quot;, &quot;WTAPhoneBook&quot;, &quot;WTACallLog&quot;, &quot;WTAMisc&quot;, &quot;WTAGSM&quot;, &quot;WTAIS136&quot;, &quot;WTAPDC&quot;
+    &lt;/rdfs:comment&gt;
+    &lt;rdfs:label xml:lang=&#039;en&#039;&gt;WtaiLibraries&lt;/rdfs:label&gt;
+    &lt;rdf:type rdf:resource=&#039;&amp;ns-rdf;Property&#039;/&gt;
+    &lt;rdfs:domain rdf:resource=&#039;#WapCharacteristics&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;prf-dt;Literal&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;ns-rdf;Bag&#039;/&gt;
+    &lt;prf:ResolutionRule rdf:datatype=&#039;&amp;prf-dt;ResolutionRule&#039;&gt;Locked&lt;/prf:ResolutionRule&gt;
+  &lt;/rdf:Description&gt;
+
+
+  &lt;!-- ****************************************************************** --&gt;
+  &lt;!-- ***** Attributes for the PushCharacteristics Component ***** --&gt;
+  &lt;!-- ****************************************************************** --&gt;
+
+  &lt;rdf:Description rdf:ID=&#039;Push-Version&#039;&gt;
+    &lt;rdfs:comment xml:lang=&#039;en&#039;&gt;
+      Description: Represents the most recent version of the (WAP) Push enabler supported.
+      Examples: &quot;2.1&quot;,&quot;2.2&quot;
+    &lt;/rdfs:comment&gt;
+    &lt;rdfs:label xml:lang=&#039;en&#039;&gt;Push-Version&lt;/rdfs:label&gt;
+    &lt;rdf:type rdf:resource=&#039;&amp;ns-rdf;Property&#039;/&gt;
+    &lt;rdfs:domain rdf:resource=&#039;#PushCharacteristics&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;prf-dt;Literal&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;ns-rdf;Bag&#039;/&gt;
+    &lt;prf:ResolutionRule rdf:datatype=&#039;&amp;prf-dt;ResolutionRule&#039;&gt;Override&lt;/prf:ResolutionRule&gt;
+  &lt;/rdf:Description&gt;
+
+  &lt;rdf:Description rdf:ID=&#039;Push-SupportedBearers&#039;&gt;
+    &lt;rdfs:comment xml:lang=&#039;en&#039;&gt;
+      Description: List of bearers supported for WAP Push.
+      Examples: &quot;SMS&quot;,&quot;WSP-CL&quot;, &quot;WSP-CO&quot;, &quot;HTTP&quot;, &quot;HTTPS&quot;
+    &lt;/rdfs:comment&gt;
+    &lt;rdfs:label xml:lang=&#039;en&#039;&gt;Push-SupportedBearers&lt;/rdfs:label&gt;
+    &lt;rdf:type rdf:resource=&#039;&amp;ns-rdf;Property&#039;/&gt;
+    &lt;rdfs:domain rdf:resource=&#039;#PushCharacteristics&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;prf-dt;Literal&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;ns-rdf;Bag&#039;/&gt;
+    &lt;prf:ResolutionRule rdf:datatype=&#039;&amp;prf-dt;ResolutionRule&#039;&gt;Override&lt;/prf:ResolutionRule&gt;
+  &lt;/rdf:Description&gt;
+
+  &lt;rdf:Description rdf:ID=&#039;Push-Accept&#039;&gt;
+    &lt;rdfs:comment xml:lang=&#039;en&#039;&gt;
+      Description: List of content types the device supports, which can be carried inside the message/http entity body when OTA-HTTP is used.                   Property value is a list of MIME types, where each item in the list is a content type descriptor as specified by RFC 2045.
+      Examples: &quot;text/html&quot;, &quot;text/plain&quot;, &quot;image/gif&quot;
+    &lt;/rdfs:comment&gt;
+    &lt;rdfs:label xml:lang=&#039;en&#039;&gt;Push-Accept&lt;/rdfs:label&gt;
+    &lt;rdf:type rdf:resource=&#039;&amp;ns-rdf;Property&#039;/&gt;
+    &lt;rdfs:domain rdf:resource=&#039;#PushCharacteristics&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;prf-dt;Literal&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;ns-rdf;Bag&#039;/&gt;
+    &lt;prf:ResolutionRule rdf:datatype=&#039;&amp;prf-dt;ResolutionRule&#039;&gt;Override&lt;/prf:ResolutionRule&gt;
+  &lt;/rdf:Description&gt;
+
+
+  &lt;rdf:Description rdf:ID=&#039;Push-Accept-AppID&#039;&gt;
+    &lt;rdfs:comment xml:lang=&#039;en&#039;&gt;
+     Description: List of applications the device supports, where each item in the list is an application-id on absoluteURI format as specified in [PushMsg]. A wildcard (&quot;*&quot;) may be used to indicate support for any application. The authoritative values for this attribute could be found at http://www.openmobilealliance.org/tech/omna/omna-push-app-id.htm 
+      Examples: &quot;x-wap-application:wml.ua&quot;, &quot;x-wap-application:emn.ua, &quot;x-wap-application:*&quot;
+
+    &lt;/rdfs:comment&gt;
+    &lt;rdfs:label xml:lang=&#039;en&#039;&gt;Push-Accept-AppID&lt;/rdfs:label&gt;
+    &lt;rdf:type rdf:resource=&#039;&amp;ns-rdf;Property&#039;/&gt;
+    &lt;rdfs:domain rdf:resource=&#039;#PushCharacteristics&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;prf-dt;Literal&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;ns-rdf;Bag&#039;/&gt;
+    &lt;prf:ResolutionRule rdf:datatype=&#039;&amp;prf-dt;ResolutionRule&#039;&gt;Override&lt;/prf:ResolutionRule&gt;
+  &lt;/rdf:Description&gt;
+
+  &lt;rdf:Description rdf:ID=&#039;Push-Accept-Charset&#039;&gt;
+    &lt;rdfs:comment xml:lang=&#039;en&#039;&gt;
+      Description: List of character sets the device supports. Property value is a list of character sets, where each item in the list is a character set name registered with IANA.
+      Examples: &quot;US-ASCII&quot;, &quot;ISO-8859-1&quot;, &quot;Shift_JIS&quot;
+    &lt;/rdfs:comment&gt;
+    &lt;rdfs:label xml:lang=&#039;en&#039;&gt;Push-Accept-Charset&lt;/rdfs:label&gt;
+    &lt;rdf:type rdf:resource=&#039;&amp;ns-rdf;Property&#039;/&gt;
+    &lt;rdfs:domain rdf:resource=&#039;#PushCharacteristics&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;prf-dt;Literal&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;ns-rdf;Bag&#039;/&gt;
+    &lt;prf:ResolutionRule rdf:datatype=&#039;&amp;prf-dt;ResolutionRule&#039;&gt;Override&lt;/prf:ResolutionRule&gt;
+  &lt;/rdf:Description&gt;
+
+  &lt;rdf:Description rdf:ID=&#039;Push-Accept-Encoding&#039;&gt;
+    &lt;rdfs:comment xml:lang=&#039;en&#039;&gt;
+      Description: List of transfer encodings the device supports.  Property value is a list of transfer encodings, where each item in the list is a transfer encoding name as specified by RFC 2045 and registered with IANA.
+      Examples: &quot;base64&quot;, &quot;quoted-printable&quot;
+    &lt;/rdfs:comment&gt;
+    &lt;rdfs:label xml:lang=&#039;en&#039;&gt;Push-Accept-Encoding&lt;/rdfs:label&gt;
+    &lt;rdf:type rdf:resource=&#039;&amp;ns-rdf;Property&#039;/&gt;
+    &lt;rdfs:domain rdf:resource=&#039;#PushCharacteristics&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;prf-dt;Literal&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;ns-rdf;Bag&#039;/&gt;
+    &lt;prf:ResolutionRule rdf:datatype=&#039;&amp;prf-dt;ResolutionRule&#039;&gt;Override&lt;/prf:ResolutionRule&gt;
+  &lt;/rdf:Description&gt;
+
+  &lt;rdf:Description rdf:ID=&#039;Push-Accept-Language&#039;&gt;
+    &lt;rdfs:comment xml:lang=&#039;en&#039;&gt;
+      Description: List of preferred document languages. If a resource is available in more than one natural language, the server can use this property to determine which version of the resource to send to the device. The first item in the list should be considered the user&#039;s first choice, the second the second choice, and so on. Property value is a list of natural languages, where each item in the list is the name of a language as defined by RFC 3066[RFC3066].
+      Examples: &quot;zh-CN&quot;, &quot;en&quot;, &quot;fr&quot;
+    &lt;/rdfs:comment&gt;
+    &lt;rdfs:label xml:lang=&#039;en&#039;&gt;Push-Accept-Language&lt;/rdfs:label&gt;
+    &lt;rdf:type rdf:resource=&#039;&amp;ns-rdf;Property&#039;/&gt;
+    &lt;rdfs:domain rdf:resource=&#039;#PushCharacteristics&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;prf-dt;Literal&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;ns-rdf;Seq&#039;/&gt;
+    &lt;prf:ResolutionRule rdf:datatype=&#039;&amp;prf-dt;ResolutionRule&#039;&gt;Override&lt;/prf:ResolutionRule&gt;
+  &lt;/rdf:Description&gt;
+
+  &lt;rdf:Description rdf:ID=&#039;Push-MaxPushReq&#039;&gt;
+    &lt;rdfs:comment xml:lang=&#039;en&#039;&gt;
+      Description: Maximum number of outstanding push requests that the device can handle.
+      Examples: &quot;1&quot;, &quot;5&quot;
+    &lt;/rdfs:comment&gt;
+    &lt;rdfs:label xml:lang=&#039;en&#039;&gt;Push-MaxPushReq&lt;/rdfs:label&gt;
+    &lt;rdf:type rdf:resource=&#039;&amp;ns-rdf;Property&#039;/&gt;
+    &lt;rdfs:domain rdf:resource=&#039;#PushCharacteristics&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;prf-dt;Number&#039;/&gt;
+    &lt;prf:ResolutionRule rdf:datatype=&#039;&amp;prf-dt;ResolutionRule&#039;&gt;Override&lt;/prf:ResolutionRule&gt;
+  &lt;/rdf:Description&gt;
+
+  &lt;rdf:Description rdf:ID=&#039;Push-MsgSize&#039;&gt;
+    &lt;rdfs:comment xml:lang=&#039;en&#039;&gt;
+      Description: Maximum size of a push message that the device can handle. Value is number of bytes.
+      Examples: &quot;1024&quot;, &quot;1400&quot;
+    &lt;/rdfs:comment&gt;
+    &lt;rdfs:label xml:lang=&#039;en&#039;&gt;Push-MsgSize&lt;/rdfs:label&gt;
+    &lt;rdf:type rdf:resource=&#039;&amp;ns-rdf;Property&#039;/&gt;
+    &lt;rdfs:domain rdf:resource=&#039;#PushCharacteristics&#039;/&gt;
+    &lt;rdfs:range rdf:resource=&#039;&amp;prf-dt;Number&#039;/&gt;
+    &lt;prf:ResolutionRule rdf:datatype=&#039;&amp;prf-dt;ResolutionRule&#039;&gt;Override&lt;/prf:ResolutionRule&gt;
+  &lt;/rdf:Description&gt;
+
+
+
+&lt;/rdf:RDF&gt;</pre>
+</body>
+</html>
